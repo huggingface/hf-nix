@@ -440,8 +440,6 @@ buildPythonPackage rec {
   # NB technical debt: building without NNPACK as workaround for missing `six`
   USE_NNPACK = 0;
 
-  USE_MPS = setBool stdenv.hostPlatform.isDarwin;
-
   cmakeFlags =
     [
       # (lib.cmakeBool "CMAKE_FIND_DEBUG_MODE" true)
@@ -508,6 +506,9 @@ buildPythonPackage rec {
     }
     // lib.optionalAttrs rocmSupport {
       AOTRITON_INSTALLED_PREFIX = rocmPackages.aotriton_0_9;
+    }
+    // lib.optionalAttrs stdenv.hostPlatform.isDarwin {
+      USE_MPS = 1;
     };
 
   nativeBuildInputs =
