@@ -1,6 +1,10 @@
 {
   lib,
 
+  meta ? {
+    platforms = lib.platforms.linux;
+  },
+
   autoAddDriverRunpath,
   buildPythonPackage,
   cmake,
@@ -58,4 +62,6 @@ buildPythonPackage rec {
   doCheck = false;
 
   pythonImportsCheck = [ "${lib.replaceStrings [ "-" ] [ "_" ] pname}" ];
+
+  inherit meta;
 }

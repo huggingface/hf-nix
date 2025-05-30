@@ -69,5 +69,6 @@ buildPythonPackage rec {
   meta = with lib; {
     description = "Flash attention";
     license = licenses.asl20;
+    platforms = platforms.linux;
   };
 }

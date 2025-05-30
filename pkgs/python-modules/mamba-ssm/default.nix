@@ -74,5 +74,6 @@ buildPythonPackage rec {
   meta = with lib; {
     description = "Mamba selective space state model";
     license = licenses.asl20;
+    platforms = platforms.linux;
   };
 }

@@ -77,5 +77,6 @@ buildPythonPackage rec {
   meta = with lib; {
     description = "Activation-aware Weight Quantization (AWQ) kernels";
     license = licenses.mit;
+    platforms = platforms.linux;
   };
 }
