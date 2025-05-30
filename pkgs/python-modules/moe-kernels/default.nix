@@ -73,5 +73,6 @@ buildPythonPackage rec {
   meta = with lib; {
     description = "Mixture of Experts kernels";
     license = licenses.asl20;
+    platforms = platforms.linux;
   };
 }

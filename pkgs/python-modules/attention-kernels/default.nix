@@ -76,5 +76,6 @@ buildPythonPackage rec {
   meta = with lib; {
     description = "Attention kernels";
     license = licenses.asl20;
+    platforms = platforms.linux;
   };
 }

@@ -72,5 +72,6 @@ buildPythonPackage rec {
   meta = with lib; {
     description = "Marlin quantization kernels";
     license = licenses.asl20;
+    platforms = platforms.linux;
   };
 }

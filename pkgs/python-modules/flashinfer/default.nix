@@ -71,5 +71,6 @@ buildPythonPackage rec {
   meta = with lib; {
     description = "Flashinfer";
     license = licenses.asl20;
+    platforms = platforms.linux;
   };
 }

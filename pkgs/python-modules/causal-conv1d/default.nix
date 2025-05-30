@@ -73,5 +73,6 @@ buildPythonPackage rec {
   meta = with lib; {
     description = "Causal 1D convolution";
     license = licenses.asl20;
+    platforms = platforms.linux;
   };
 }

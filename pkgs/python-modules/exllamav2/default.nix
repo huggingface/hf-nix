@@ -76,5 +76,6 @@ buildPythonPackage rec {
   meta = with lib; {
     description = "Inference library for running local LLMs on modern consumer GPUs";
     license = licenses.mit;
+    platforms = platforms.linux;
   };
 }
