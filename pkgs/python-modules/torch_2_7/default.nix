@@ -34,7 +34,7 @@
   MPISupport ? false,
   mpi,
   buildDocs ? false,
-  cxx11Abi ? false,
+  cxx11Abi ? true,
 
   # tests.cudaAvailable:
   callPackage,
