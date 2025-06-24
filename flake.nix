@@ -15,6 +15,7 @@
       nixpkgs,
     }:
     let
+      isCudaSystem = system: system == "x86_64-linux" || system == "aarch64-linux";
       cudaConfig = {
         allowUnfree = true;
         cudaSupport = true;
@@ -57,7 +58,7 @@
             inherit system;
             overlays = [ overlay ];
           };
-          pkgs = if system == "x86_64-linux" then pkgsCuda else pkgsGeneric;
+          pkgs = if isCudaSystem system then pkgsCuda else pkgsGeneric;
           inherit (pkgs) lib;
         in
         rec {
@@ -107,7 +108,7 @@
     // {
 
       # Cheating a bit to conform to the schema.
-      lib.config = cudaConfig;
+      lib.config = system: if isCudaSystem system then cudaConfig else { };
       overlays.default = overlay;
     };
 }
