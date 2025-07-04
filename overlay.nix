@@ -106,13 +106,13 @@ rec {
 
         quantization = buildKernel rec {
           pname = "quantization";
-          version = "0.0.4";
+          version = "0.1.0";
           src = fetchKernel {
             repo_id = "kernels-community/${pname}";
             inherit version;
-            hash = "sha256-qAMKM+2pKbYkJ9bHWlVijKcknrBjeFHLTXU2LCKA2dw=";
+            hash = "sha256-zG2FJUPM/Rv37jLUypAuG6GhZz1/0RjxPiNGkOT2VqQ=";
           };
-          cutlass = final.cutlass_3_6;
+          cutlass = final.cutlass_3_9;
         };
 
         quantization-eetq = buildKernel rec {
