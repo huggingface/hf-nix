@@ -3,7 +3,6 @@
   fetchPypi,
   setuptools,
   huggingface-hub,
-  torch,
 }:
 
 buildPythonPackage rec {
@@ -21,7 +20,6 @@ buildPythonPackage rec {
 
   dependencies = [
     huggingface-hub
-    torch
   ];
 
   pythonImportsCheck = [ "kernels" ];
