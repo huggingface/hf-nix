@@ -19,6 +19,8 @@ rec {
       rocmSupport = true;
     }).magma;
 
+  nvtx = final.callPackage ./pkgs/nvtx { };
+
   pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
     (
       python-self: python-super: with python-self; {
