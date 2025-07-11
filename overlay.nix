@@ -145,6 +145,8 @@ rec {
         torch_2_6 = callPackage ./pkgs/python-modules/torch_2_6 { rocmPackages = final.rocmPackages_6_2; };
 
         torch_2_7 = callPackage ./pkgs/python-modules/torch_2_7 { rocmPackages = final.rocmPackages_6_3; };
+
+        torch_2_8 = callPackage ./pkgs/python-modules/torch_2_8 { rocmPackages = final.rocmPackages_6_4; };
       }
     )
   ];
