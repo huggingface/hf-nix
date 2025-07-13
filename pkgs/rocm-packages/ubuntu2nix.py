@@ -6,15 +6,21 @@ from typing import Any, Dict, Set
 from urllib import request
 
 BASEURL = "https://repo.radeon.com/rocm/apt/{version}"
-UBUNTU_VERSION = "20.04"
+
+UBUNTU_VERSION_SUFFIXES = {
+    "focal": "20.04",
+    "jammy": "22.04",
+}
 
 parser = argparse.ArgumentParser(description="Parse ROCm repository")
 parser.add_argument("version", help="ROCm version")
+parser.add_argument("--ubuntu-version", help="Ubuntu version", choices=list(UBUNTU_VERSION_SUFFIXES.keys()), default='focal')
 
 
 class Package:
-    def __init__(self, info: Dict[str, Any]):
+    def __init__(self, info: Dict[str, Any], ubuntu_version: str):
         self._info = info
+        self._ubuntu_version_suffix = UBUNTU_VERSION_SUFFIXES[ubuntu_version]
 
     def __str__(self):
         return f"{self._info['Package']} {self._info['Version']}"
@@ -36,16 +42,16 @@ class Package:
 
     @property
     def version(self) -> str:
-        return self._info["Version"].removesuffix(f"~{UBUNTU_VERSION}")
+        return self._info["Version"].removesuffix(f"~{self._ubuntu_version_suffix}")
 
     @property
     def filename(self) -> str:
         return self._info["Filename"]
 
 
-def package_info(version: str):
+def package_info(*, ubuntu_version:str, version: str):
     packages_url = (
-        f"{BASEURL.format(version=version)}/dists/focal/main/binary-amd64/Packages"
+        f"{BASEURL.format(version=version)}/dists/{ubuntu_version}/main/binary-amd64/Packages"
     )
     packages = request.urlopen(packages_url).read().decode("utf-8")
 
@@ -55,7 +61,7 @@ def package_info(version: str):
 
         if len(line) == 0:
             if "Package" in info:
-                yield Package(info)
+                yield Package(info, ubuntu_version)
             info = {}
             continue
         elif line[0] == " ":
@@ -73,7 +79,7 @@ def package_info(version: str):
 def __main__():
     args = parser.parse_args()
     packages = {}
-    for pkg in package_info(args.version):
+    for pkg in package_info(ubuntu_version=args.ubuntu_version, version=args.version):
         # Skip debug symbol packages for now.
         if "dbgsym" not in pkg.name:
             packages[pkg.name] = pkg

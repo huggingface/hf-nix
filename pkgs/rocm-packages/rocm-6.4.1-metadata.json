@@ -1,0 +1,3478 @@
+{
+  "amd-smi-lib": {
+    "deps": [
+      "rocm-core"
+    ],
+    "components": [
+      {
+        "name": "amd-smi-lib",
+        "sha256": "20a2da05812f33c02d717ee68eda98b231769016edb04f2416c32c0d1f57496a",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/a/amd-smi-lib/amd-smi-lib_25.4.2.60401-83~22.04_amd64.deb",
+        "version": "25.4.2.60401-83"
+      },
+      {
+        "name": "amd-smi-lib-rpath",
+        "sha256": "e63932ee741c9397d577a8008b2509dfc5adbd5edacbb8979554ede66dd0a758",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/a/amd-smi-lib-rpath6.4.1/amd-smi-lib-rpath6.4.1_25.4.2.60401-83~22.04_amd64.deb",
+        "version": "25.4.2.60401-83"
+      }
+    ],
+    "version": "25.4.2.60401-83"
+  },
+  "amd-smi-lib-asan": {
+    "deps": [
+      "rocm-core-asan"
+    ],
+    "components": [
+      {
+        "name": "amd-smi-lib-asan",
+        "sha256": "fc58e66943f6b3f43433d6ae0b4ced6d997d69ee5f821781ad335408023eeed1",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/a/amd-smi-lib-asan/amd-smi-lib-asan_25.4.2.60401-83~22.04_amd64.deb",
+        "version": "25.4.2.60401-83"
+      },
+      {
+        "name": "amd-smi-lib-asan-rpath",
+        "sha256": "3a3ada9873d68b31e0992eafd40e7c835b1484fac489ca136db56fed8a0e5874",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/a/amd-smi-lib-asan-rpath6.4.1/amd-smi-lib-asan-rpath6.4.1_25.4.2.60401-83~22.04_amd64.deb",
+        "version": "25.4.2.60401-83"
+      }
+    ],
+    "version": "25.4.2.60401-83"
+  },
+  "comgr": {
+    "deps": [
+      "rocm-core"
+    ],
+    "components": [
+      {
+        "name": "comgr",
+        "sha256": "ba02bdf830458668a39300ad082419f4bac3644bf5727c496846697e9fddf429",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/c/comgr/comgr_3.0.0.60401-83~22.04_amd64.deb",
+        "version": "3.0.0.60401-83"
+      },
+      {
+        "name": "comgr-rpath",
+        "sha256": "a8fb3a6a855119aa793fb4d4eed3d2a1b43502165d012c4c2a5cfcc7ae2f82eb",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/c/comgr-rpath6.4.1/comgr-rpath6.4.1_3.0.0.60401-83~22.04_amd64.deb",
+        "version": "3.0.0.60401-83"
+      }
+    ],
+    "version": "3.0.0.60401-83"
+  },
+  "comgr-asan": {
+    "deps": [
+      "rocm-core-asan"
+    ],
+    "components": [
+      {
+        "name": "comgr-asan",
+        "sha256": "dbd07bee32c269ceb26eecd336b78529bfd023cd030fef53861046cbe8a8b185",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/c/comgr-asan/comgr-asan_3.0.0.60401-83~22.04_amd64.deb",
+        "version": "3.0.0.60401-83"
+      },
+      {
+        "name": "comgr-asan-rpath",
+        "sha256": "257381633c847fee3c9b3b0494d80e7351a7a4aa584b59a800e249ea1522e551",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/c/comgr-asan-rpath6.4.1/comgr-asan-rpath6.4.1_3.0.0.60401-83~22.04_amd64.deb",
+        "version": "3.0.0.60401-83"
+      }
+    ],
+    "version": "3.0.0.60401-83"
+  },
+  "composablekernel-ckprofiler": {
+    "deps": [
+      "rocm-core"
+    ],
+    "components": [
+      {
+        "name": "composablekernel-ckprofiler",
+        "sha256": "c5cd59b6a70b966634ace70a1149d004509c2df453f22bb063b6a05e35202ff5",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/c/composablekernel-ckprofiler/composablekernel-ckprofiler_1.1.0.60401-83~22.04_amd64.deb",
+        "version": "1.1.0.60401-83"
+      },
+      {
+        "name": "composablekernel-ckprofiler-rpath",
+        "sha256": "0538a0391e2126f6fbd8c739ce5349e913f628902f8bcdd667e263788f930c78",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/c/composablekernel-ckprofiler-rpath6.4.1/composablekernel-ckprofiler-rpath6.4.1_1.1.0.60401-83~22.04_amd64.deb",
+        "version": "1.1.0.60401-83"
+      }
+    ],
+    "version": "1.1.0.60401-83"
+  },
+  "composablekernel-dev": {
+    "deps": [
+      "rocm-core"
+    ],
+    "components": [
+      {
+        "name": "composablekernel-dev",
+        "sha256": "27b8f62538a856e9769092f29bbdea2cfb6237b3b975539650645adc02a94066",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/c/composablekernel-dev/composablekernel-dev_1.1.0.60401-83~22.04_amd64.deb",
+        "version": "1.1.0.60401-83"
+      },
+      {
+        "name": "composablekernel-dev-rpath",
+        "sha256": "590113475c84ec1383645708e17109d64e05e47cb186bd1cdc8ed2cd06381397",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/c/composablekernel-dev-rpath6.4.1/composablekernel-dev-rpath6.4.1_1.1.0.60401-83~22.04_amd64.deb",
+        "version": "1.1.0.60401-83"
+      }
+    ],
+    "version": "1.1.0.60401-83"
+  },
+  "half": {
+    "deps": [
+      "rocm-core"
+    ],
+    "components": [
+      {
+        "name": "half",
+        "sha256": "5bffadcfc0c58bc1b8f5e6a3546bde8e4e2ec681d30973dc31afcdaa2952e832",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/h/half/half_1.12.0.60401-83~22.04_amd64.deb",
+        "version": "1.12.0.60401-83"
+      },
+      {
+        "name": "half-rpath",
+        "sha256": "ac848db18ea861e5ed94104df66de8ee86149f2c392d6ea9037f13d268f74ff8",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/h/half-rpath6.4.1/half-rpath6.4.1_1.12.0.60401-83~22.04_amd64.deb",
+        "version": "1.12.0.60401-83"
+      }
+    ],
+    "version": "1.12.0.60401-83"
+  },
+  "hip-dev": {
+    "deps": [
+      "hip-runtime-amd",
+      "hipcc",
+      "hsa-rocr",
+      "rocm-core",
+      "rocm-llvm"
+    ],
+    "components": [
+      {
+        "name": "hip-dev",
+        "sha256": "e10323a872b833c7846f7a6d204efa8126b2b6b1727f6da317b687ea4da8fb0e",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/h/hip-dev/hip-dev_6.4.43483.60401-83~22.04_amd64.deb",
+        "version": "6.4.43483.60401-83"
+      },
+      {
+        "name": "hip-dev-rpath",
+        "sha256": "37b7dc641a15b2aa02f1cd80a44a7cec7135371d323e99a35aaf33e4bb23413c",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/h/hip-dev-rpath6.4.1/hip-dev-rpath6.4.1_6.4.43483.60401-83~22.04_amd64.deb",
+        "version": "6.4.43483.60401-83"
+      }
+    ],
+    "version": "6.4.43483.60401-83"
+  },
+  "hip-doc": {
+    "deps": [
+      "hip-dev",
+      "rocm-core"
+    ],
+    "components": [
+      {
+        "name": "hip-doc",
+        "sha256": "e0b98e5975a1cb7aedc841a40de8c5681c9207359ccafe80c2a0278dde44ec30",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/h/hip-doc/hip-doc_6.4.43483.60401-83~22.04_amd64.deb",
+        "version": "6.4.43483.60401-83"
+      },
+      {
+        "name": "hip-doc-rpath",
+        "sha256": "22eeabe0e814f69f5cef28a61102343629379be9680d6293ed23282a3c5c60b7",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/h/hip-doc-rpath6.4.1/hip-doc-rpath6.4.1_6.4.43483.60401-83~22.04_amd64.deb",
+        "version": "6.4.43483.60401-83"
+      }
+    ],
+    "version": "6.4.43483.60401-83"
+  },
+  "hip-runtime-amd": {
+    "deps": [
+      "comgr",
+      "hsa-rocr",
+      "rocm-core",
+      "rocminfo",
+      "rocprofiler-register"
+    ],
+    "components": [
+      {
+        "name": "hip-runtime-amd",
+        "sha256": "dee21498aa4fd4dd267efad563b4cc7fc3363d60f46b626c23681631f5f0cf79",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/h/hip-runtime-amd/hip-runtime-amd_6.4.43483.60401-83~22.04_amd64.deb",
+        "version": "6.4.43483.60401-83"
+      },
+      {
+        "name": "hip-runtime-amd-rpath",
+        "sha256": "f02f0907490ec365393c8ddda19af2f9c4c9157e397a51e7fc313e3551892791",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/h/hip-runtime-amd-rpath6.4.1/hip-runtime-amd-rpath6.4.1_6.4.43483.60401-83~22.04_amd64.deb",
+        "version": "6.4.43483.60401-83"
+      }
+    ],
+    "version": "6.4.43483.60401-83"
+  },
+  "hip-runtime-amd-asan": {
+    "deps": [
+      "comgr-asan",
+      "hsa-rocr-asan",
+      "rocm-core-asan",
+      "rocm-llvm",
+      "rocminfo"
+    ],
+    "components": [
+      {
+        "name": "hip-runtime-amd-asan",
+        "sha256": "7c3d20d00f108581c772b32a1971a09c204e872ab2f92933559bec7d643532a8",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/h/hip-runtime-amd-asan/hip-runtime-amd-asan_6.4.43483.60401-83~22.04_amd64.deb",
+        "version": "6.4.43483.60401-83"
+      },
+      {
+        "name": "hip-runtime-amd-asan-rpath",
+        "sha256": "ca0c09dfd82499086db887ffbc705418b6b6817a37fa20e619cec41cc9390347",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/h/hip-runtime-amd-asan-rpath6.4.1/hip-runtime-amd-asan-rpath6.4.1_6.4.43483.60401-83~22.04_amd64.deb",
+        "version": "6.4.43483.60401-83"
+      }
+    ],
+    "version": "6.4.43483.60401-83"
+  },
+  "hip-runtime-nvidia": {
+    "deps": [
+      "hipcc-nvidia",
+      "rocm-core"
+    ],
+    "components": [
+      {
+        "name": "hip-runtime-nvidia",
+        "sha256": "74d99c0b1db31b401bdc92daaa33c0981ce489b2a2acaa596683fa0eef883eb1",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/h/hip-runtime-nvidia/hip-runtime-nvidia_6.4.43483.60401-83~22.04_amd64.deb",
+        "version": "6.4.43483.60401-83"
+      },
+      {
+        "name": "hip-runtime-nvidia-rpath",
+        "sha256": "69c0fcc06aa2c61a76621a68fb72cd608b9aa01099dbe316b0fc87ab887a9654",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/h/hip-runtime-nvidia-rpath6.4.1/hip-runtime-nvidia-rpath6.4.1_6.4.43483.60401-83~22.04_amd64.deb",
+        "version": "6.4.43483.60401-83"
+      }
+    ],
+    "version": "6.4.43483.60401-83"
+  },
+  "hip-samples": {
+    "deps": [
+      "hip-dev",
+      "hipcc",
+      "rocm-core"
+    ],
+    "components": [
+      {
+        "name": "hip-samples",
+        "sha256": "aec7e01c694592de65eab35842e9069e49ee054a0a866afeed6e6bca8b739218",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/h/hip-samples/hip-samples_6.4.43483.60401-83~22.04_amd64.deb",
+        "version": "6.4.43483.60401-83"
+      },
+      {
+        "name": "hip-samples-rpath",
+        "sha256": "b4fb6b59e76875d29c2feb003a951ab6ed1423f14df594ccd2bfd84e706b8817",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/h/hip-samples-rpath6.4.1/hip-samples-rpath6.4.1_6.4.43483.60401-83~22.04_amd64.deb",
+        "version": "6.4.43483.60401-83"
+      }
+    ],
+    "version": "6.4.43483.60401-83"
+  },
+  "hipblas": {
+    "deps": [
+      "hipblas-common-dev",
+      "rocblas",
+      "rocm-core",
+      "rocsolver"
+    ],
+    "components": [
+      {
+        "name": "hipblas",
+        "sha256": "9d1bb3a5006a5b69655abbd890efaad1d347b3cd66b5d0a7fe60a6885494b19b",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/h/hipblas/hipblas_2.4.0.60401-83~22.04_amd64.deb",
+        "version": "2.4.0.60401-83"
+      },
+      {
+        "name": "hipblas-dev",
+        "sha256": "df5dd894a6840693f060fcdd1e96c0e8cf9eed16b2763643f17a5a9c4baa69a5",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/h/hipblas-dev/hipblas-dev_2.4.0.60401-83~22.04_amd64.deb",
+        "version": "2.4.0.60401-83"
+      },
+      {
+        "name": "hipblas-dev-rpath",
+        "sha256": "57b8981b1cc113393a9b1667b9848781af29bd2a89b2a10ea5fc63177287694b",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/h/hipblas-dev-rpath6.4.1/hipblas-dev-rpath6.4.1_2.4.0.60401-83~22.04_amd64.deb",
+        "version": "2.4.0.60401-83"
+      },
+      {
+        "name": "hipblas-rpath",
+        "sha256": "cdc7fbd02b3d7cf17eeae64ada9655534f4c44ef79b31a85efc96119e234cc1c",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/h/hipblas-rpath6.4.1/hipblas-rpath6.4.1_2.4.0.60401-83~22.04_amd64.deb",
+        "version": "2.4.0.60401-83"
+      }
+    ],
+    "version": "2.4.0.60401-83"
+  },
+  "hipblas-asan": {
+    "deps": [
+      "rocblas",
+      "rocm-core-asan",
+      "rocsolver"
+    ],
+    "components": [
+      {
+        "name": "hipblas-asan",
+        "sha256": "7a1f57caeaf6dac5b53732ac92f812b941bf43dba65174d9c67b27ca3db5d119",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/h/hipblas-asan/hipblas-asan_2.4.0.60401-83~22.04_amd64.deb",
+        "version": "2.4.0.60401-83"
+      },
+      {
+        "name": "hipblas-asan-rpath",
+        "sha256": "ab82790eeae5ce9358a67dfca1865ba7a1878137753319829a45db03b70ed7b3",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/h/hipblas-asan-rpath6.4.1/hipblas-asan-rpath6.4.1_2.4.0.60401-83~22.04_amd64.deb",
+        "version": "2.4.0.60401-83"
+      }
+    ],
+    "version": "2.4.0.60401-83"
+  },
+  "hipblas-common-dev": {
+    "deps": [
+      "rocm-core"
+    ],
+    "components": [
+      {
+        "name": "hipblas-common-dev",
+        "sha256": "5df3e4a8a1959cbf94106f7bf87d7fb71bf06e726cde00c6092ef29bbd8156f0",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/h/hipblas-common-dev/hipblas-common-dev_1.0.0.60401-83~22.04_amd64.deb",
+        "version": "1.0.0.60401-83"
+      },
+      {
+        "name": "hipblas-common-dev-rpath",
+        "sha256": "8cc90a33fc76a52bdafed839fb13022ceba12beaddb2290c8a3107a17214ca90",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/h/hipblas-common-dev-rpath6.4.1/hipblas-common-dev-rpath6.4.1_1.0.0.60401-83~22.04_amd64.deb",
+        "version": "1.0.0.60401-83"
+      }
+    ],
+    "version": "1.0.0.60401-83"
+  },
+  "hipblaslt": {
+    "deps": [
+      "hipblas-common-dev",
+      "rocm-core",
+      "roctracer"
+    ],
+    "components": [
+      {
+        "name": "hipblaslt",
+        "sha256": "23e6facad7bd1a17223761e06e9c6d1561c5a9e80f052e5f1589d21ab7167e9e",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/h/hipblaslt/hipblaslt_0.12.1.60401-83~22.04_amd64.deb",
+        "version": "0.12.1.60401-83"
+      },
+      {
+        "name": "hipblaslt-dev",
+        "sha256": "46eb2285c76d246b162eb54cc7f9e5cb7bcdd0aa83d57ecaea440e57260f2f4a",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/h/hipblaslt-dev/hipblaslt-dev_0.12.1.60401-83~22.04_amd64.deb",
+        "version": "0.12.1.60401-83"
+      },
+      {
+        "name": "hipblaslt-dev-rpath",
+        "sha256": "f14feb947a230dc7f4dcca3e93d943e82c98002873d3c718a8da84846b94c256",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/h/hipblaslt-dev-rpath6.4.1/hipblaslt-dev-rpath6.4.1_0.12.1.60401-83~22.04_amd64.deb",
+        "version": "0.12.1.60401-83"
+      },
+      {
+        "name": "hipblaslt-rpath",
+        "sha256": "867442899684c74bce696a45e09bd7d4bed45fda874dd2a48a71799ebb751f33",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/h/hipblaslt-rpath6.4.1/hipblaslt-rpath6.4.1_0.12.1.60401-83~22.04_amd64.deb",
+        "version": "0.12.1.60401-83"
+      }
+    ],
+    "version": "0.12.1.60401-83"
+  },
+  "hipblaslt-asan": {
+    "deps": [
+      "rocm-core-asan",
+      "roctracer"
+    ],
+    "components": [
+      {
+        "name": "hipblaslt-asan",
+        "sha256": "52e51caa03cbc0671c8722120f13b648a90e7a07043652394640a1077fce64b4",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/h/hipblaslt-asan/hipblaslt-asan_0.12.1.60401-83~22.04_amd64.deb",
+        "version": "0.12.1.60401-83"
+      },
+      {
+        "name": "hipblaslt-asan-rpath",
+        "sha256": "5efa7df4853a791b848e4f04509b7654370f31f3c980fd55f80df007cbda9a7d",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/h/hipblaslt-asan-rpath6.4.1/hipblaslt-asan-rpath6.4.1_0.12.1.60401-83~22.04_amd64.deb",
+        "version": "0.12.1.60401-83"
+      }
+    ],
+    "version": "0.12.1.60401-83"
+  },
+  "hipcc": {
+    "deps": [
+      "rocm-core",
+      "rocm-llvm"
+    ],
+    "components": [
+      {
+        "name": "hipcc",
+        "sha256": "71aabfdefdd126fe6145b0e21be6964371d550b4be1b955095db6cbb53f9e146",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/h/hipcc/hipcc_1.1.1.60401-83~22.04_amd64.deb",
+        "version": "1.1.1.60401-83"
+      },
+      {
+        "name": "hipcc-rpath",
+        "sha256": "3ce6aa33bae886a3d44941eb984d02a049b904e7aacaa1c2b10904d72ef8cc76",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/h/hipcc-rpath6.4.1/hipcc-rpath6.4.1_1.1.1.60401-83~22.04_amd64.deb",
+        "version": "1.1.1.60401-83"
+      }
+    ],
+    "version": "1.1.1.60401-83"
+  },
+  "hipcc-nvidia": {
+    "deps": [
+      "rocm-core"
+    ],
+    "components": [
+      {
+        "name": "hipcc-nvidia",
+        "sha256": "8493448cef4a8af9fdd111b4673cd4bbbdb8d561d9a4a412fc20d1feab73d4a7",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/h/hipcc-nvidia/hipcc-nvidia_1.1.1.60401-83~22.04_amd64.deb",
+        "version": "1.1.1.60401-83"
+      },
+      {
+        "name": "hipcc-nvidia-rpath",
+        "sha256": "64c4d74760324d2f06598d7f63837ac7f96a3a7a0982be5b02ab187f8098d0bb",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/h/hipcc-nvidia-rpath6.4.1/hipcc-nvidia-rpath6.4.1_1.1.1.60401-83~22.04_amd64.deb",
+        "version": "1.1.1.60401-83"
+      }
+    ],
+    "version": "1.1.1.60401-83"
+  },
+  "hipcub-dev": {
+    "deps": [
+      "rocm-core",
+      "rocprim-dev"
+    ],
+    "components": [
+      {
+        "name": "hipcub-dev",
+        "sha256": "fb30135690cb247862ab997caec1f92757ac69ed0f734659166dc159a946f407",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/h/hipcub-dev/hipcub-dev_3.4.0.60401-83~22.04_amd64.deb",
+        "version": "3.4.0.60401-83"
+      },
+      {
+        "name": "hipcub-dev-rpath",
+        "sha256": "656720e7f396b1a581c7c902c06e84c60e6be07cf2b6d69d04feeee60f2aee84",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/h/hipcub-dev-rpath6.4.1/hipcub-dev-rpath6.4.1_3.4.0.60401-83~22.04_amd64.deb",
+        "version": "3.4.0.60401-83"
+      }
+    ],
+    "version": "3.4.0.60401-83"
+  },
+  "hipfft": {
+    "deps": [
+      "rocfft",
+      "rocm-core"
+    ],
+    "components": [
+      {
+        "name": "hipfft",
+        "sha256": "64f2bc139adf53f00affdda5b189d60d491b93a7260c4cbcffc7b26af6569348",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/h/hipfft/hipfft_1.0.18.60401-83~22.04_amd64.deb",
+        "version": "1.0.18.60401-83"
+      },
+      {
+        "name": "hipfft-dev",
+        "sha256": "6b7e88ebedd52ec2203679c786f738484d6f2150fe7dca5a90427141a889ed5b",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/h/hipfft-dev/hipfft-dev_1.0.18.60401-83~22.04_amd64.deb",
+        "version": "1.0.18.60401-83"
+      },
+      {
+        "name": "hipfft-dev-rpath",
+        "sha256": "a817ed79b0eb5153e5b1936008d3f15daa82eb006f2172d746f179d3012f75f7",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/h/hipfft-dev-rpath6.4.1/hipfft-dev-rpath6.4.1_1.0.18.60401-83~22.04_amd64.deb",
+        "version": "1.0.18.60401-83"
+      },
+      {
+        "name": "hipfft-rpath",
+        "sha256": "b767c1c9f962aca102710e4a48f0a2ed3adc01a83b3d28db36ebf06a3bfb0d73",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/h/hipfft-rpath6.4.1/hipfft-rpath6.4.1_1.0.18.60401-83~22.04_amd64.deb",
+        "version": "1.0.18.60401-83"
+      }
+    ],
+    "version": "1.0.18.60401-83"
+  },
+  "hipfft-asan": {
+    "deps": [
+      "rocfft",
+      "rocm-core-asan"
+    ],
+    "components": [
+      {
+        "name": "hipfft-asan",
+        "sha256": "0b7bdbc1849ebb5d2ce3919860e2c5061c982cec1c7163171e7a124ea2d180f5",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/h/hipfft-asan/hipfft-asan_1.0.18.60401-83~22.04_amd64.deb",
+        "version": "1.0.18.60401-83"
+      },
+      {
+        "name": "hipfft-asan-rpath",
+        "sha256": "6f21557be0a8d5bdfa9f4f363f37d81d5e3ef5d1beb5ef6fff556482dd4a0bc2",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/h/hipfft-asan-rpath6.4.1/hipfft-asan-rpath6.4.1_1.0.18.60401-83~22.04_amd64.deb",
+        "version": "1.0.18.60401-83"
+      }
+    ],
+    "version": "1.0.18.60401-83"
+  },
+  "hipfort-dev": {
+    "deps": [
+      "hip-runtime-amd",
+      "rocm-core"
+    ],
+    "components": [
+      {
+        "name": "hipfort-dev",
+        "sha256": "5ba22767b8fb737dd8b307444b543cda232ec692d716bd43006ed1514ec91053",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/h/hipfort-dev/hipfort-dev_0.6.0.60401-83~22.04_amd64.deb",
+        "version": "0.6.0.60401-83"
+      },
+      {
+        "name": "hipfort-dev-rpath",
+        "sha256": "67ae4968ebbd7981a0eedcf7d7eeb052f381cdeb9e63e1014def7c99cfce510a",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/h/hipfort-dev-rpath6.4.1/hipfort-dev-rpath6.4.1_0.6.0.60401-83~22.04_amd64.deb",
+        "version": "0.6.0.60401-83"
+      }
+    ],
+    "version": "0.6.0.60401-83"
+  },
+  "hipify-clang": {
+    "deps": [
+      "rocm-core"
+    ],
+    "components": [
+      {
+        "name": "hipify-clang",
+        "sha256": "0c7ca7f06b0c543838108c267cfa082663c6991f2da36b1c33a8649625b82141",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/h/hipify-clang/hipify-clang_19.0.0.60401-83~22.04_amd64.deb",
+        "version": "19.0.0.60401-83"
+      },
+      {
+        "name": "hipify-clang-rpath",
+        "sha256": "cfefde37009f52e19e3a665ae035a9784d021acc30d27630470a8fab7b71caf4",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/h/hipify-clang-rpath6.4.1/hipify-clang-rpath6.4.1_19.0.0.60401-83~22.04_amd64.deb",
+        "version": "19.0.0.60401-83"
+      }
+    ],
+    "version": "19.0.0.60401-83"
+  },
+  "hiprand": {
+    "deps": [
+      "rocm-core"
+    ],
+    "components": [
+      {
+        "name": "hiprand",
+        "sha256": "1bb01aa2d9b96e999dff6fbf67edeab7d743bb182ce653b048628393e1d9756d",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/h/hiprand/hiprand_2.12.0.60401-83~22.04_amd64.deb",
+        "version": "2.12.0.60401-83"
+      },
+      {
+        "name": "hiprand-dev",
+        "sha256": "6deb08288aa1900202d52c34899d5f54195d00d32c96d45b2e6d6f840dc018ae",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/h/hiprand-dev/hiprand-dev_2.12.0.60401-83~22.04_amd64.deb",
+        "version": "2.12.0.60401-83"
+      },
+      {
+        "name": "hiprand-dev-rpath",
+        "sha256": "19be226856ba40351a9c5a7a8831980d70ccac48b7917ee5a6cfcfd99e28de5f",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/h/hiprand-dev-rpath6.4.1/hiprand-dev-rpath6.4.1_2.12.0.60401-83~22.04_amd64.deb",
+        "version": "2.12.0.60401-83"
+      },
+      {
+        "name": "hiprand-rpath",
+        "sha256": "0fc98ec8208ef4b21fab811d11fd16516b16cfa762614febf9ba04d179525aab",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/h/hiprand-rpath6.4.1/hiprand-rpath6.4.1_2.12.0.60401-83~22.04_amd64.deb",
+        "version": "2.12.0.60401-83"
+      }
+    ],
+    "version": "2.12.0.60401-83"
+  },
+  "hiprand-asan": {
+    "deps": [
+      "rocm-core-asan"
+    ],
+    "components": [
+      {
+        "name": "hiprand-asan",
+        "sha256": "5b28404916f4d275e638a8bd6f37b9ff225cd8ca11bcc51da4bee82f80db22a0",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/h/hiprand-asan/hiprand-asan_2.12.0.60401-83~22.04_amd64.deb",
+        "version": "2.12.0.60401-83"
+      },
+      {
+        "name": "hiprand-asan-rpath",
+        "sha256": "30f3ffe635f90e8b405cb1d01684495fc8061c9a7719f82bda02a9ddacbf8cae",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/h/hiprand-asan-rpath6.4.1/hiprand-asan-rpath6.4.1_2.12.0.60401-83~22.04_amd64.deb",
+        "version": "2.12.0.60401-83"
+      }
+    ],
+    "version": "2.12.0.60401-83"
+  },
+  "hipsolver": {
+    "deps": [
+      "rocblas",
+      "rocm-core",
+      "rocsolver"
+    ],
+    "components": [
+      {
+        "name": "hipsolver",
+        "sha256": "d461a5a321aad9743dd91906b393615cc2066e7ca792092d4d7619aa14903612",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/h/hipsolver/hipsolver_2.4.0.60401-83~22.04_amd64.deb",
+        "version": "2.4.0.60401-83"
+      },
+      {
+        "name": "hipsolver-dev",
+        "sha256": "a4ffd06f7148b195e68ff80fbdd614992d9d69a841be0ce8ba98ac1c1b7b4491",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/h/hipsolver-dev/hipsolver-dev_2.4.0.60401-83~22.04_amd64.deb",
+        "version": "2.4.0.60401-83"
+      },
+      {
+        "name": "hipsolver-dev-rpath",
+        "sha256": "137465c39a7abff60342fe40b8d9977f612428fd5b89d7871a7776a02bca975a",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/h/hipsolver-dev-rpath6.4.1/hipsolver-dev-rpath6.4.1_2.4.0.60401-83~22.04_amd64.deb",
+        "version": "2.4.0.60401-83"
+      },
+      {
+        "name": "hipsolver-rpath",
+        "sha256": "20223edabf955aeb7bac7a3893f5f71d8c4a940b7764d8918078ec3a6dfb5775",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/h/hipsolver-rpath6.4.1/hipsolver-rpath6.4.1_2.4.0.60401-83~22.04_amd64.deb",
+        "version": "2.4.0.60401-83"
+      }
+    ],
+    "version": "2.4.0.60401-83"
+  },
+  "hipsolver-asan": {
+    "deps": [
+      "rocblas",
+      "rocm-core-asan",
+      "rocsolver"
+    ],
+    "components": [
+      {
+        "name": "hipsolver-asan",
+        "sha256": "1832c6b1fe2b07d221139e29809cd4223e6e3b1b2d50fc839eb5b4b6da54087f",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/h/hipsolver-asan/hipsolver-asan_2.4.0.60401-83~22.04_amd64.deb",
+        "version": "2.4.0.60401-83"
+      },
+      {
+        "name": "hipsolver-asan-rpath",
+        "sha256": "88239f93a510d27332e6b642bc1709c6932f1759a2f61fe69558d0618a7e68c2",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/h/hipsolver-asan-rpath6.4.1/hipsolver-asan-rpath6.4.1_2.4.0.60401-83~22.04_amd64.deb",
+        "version": "2.4.0.60401-83"
+      }
+    ],
+    "version": "2.4.0.60401-83"
+  },
+  "hipsparse": {
+    "deps": [
+      "rocm-core",
+      "rocsparse"
+    ],
+    "components": [
+      {
+        "name": "hipsparse",
+        "sha256": "742c06039eb264d8de5338c52acc82f63d8e407eaff4d2d27354280a715380e1",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/h/hipsparse/hipsparse_3.2.0.60401-83~22.04_amd64.deb",
+        "version": "3.2.0.60401-83"
+      },
+      {
+        "name": "hipsparse-dev",
+        "sha256": "87077c062653ff1ed63a272482bc970804959ce56b560e057e7788dc4515ec18",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/h/hipsparse-dev/hipsparse-dev_3.2.0.60401-83~22.04_amd64.deb",
+        "version": "3.2.0.60401-83"
+      },
+      {
+        "name": "hipsparse-dev-rpath",
+        "sha256": "aca3416b08893476069a0aa0404edbf3fd809212f72ed1379ade247a5285a159",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/h/hipsparse-dev-rpath6.4.1/hipsparse-dev-rpath6.4.1_3.2.0.60401-83~22.04_amd64.deb",
+        "version": "3.2.0.60401-83"
+      },
+      {
+        "name": "hipsparse-rpath",
+        "sha256": "f649f7de4c30c7e1d1ce5ecc4e4eba5f42faceee4493b1400d4cb5dc3c3c48ef",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/h/hipsparse-rpath6.4.1/hipsparse-rpath6.4.1_3.2.0.60401-83~22.04_amd64.deb",
+        "version": "3.2.0.60401-83"
+      }
+    ],
+    "version": "3.2.0.60401-83"
+  },
+  "hipsparse-asan": {
+    "deps": [
+      "rocm-core-asan",
+      "rocsparse"
+    ],
+    "components": [
+      {
+        "name": "hipsparse-asan",
+        "sha256": "a048f35cd349786a37d39ba216cf7fa2a58b8f76e1b52f3550a2b0776cc3679e",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/h/hipsparse-asan/hipsparse-asan_3.2.0.60401-83~22.04_amd64.deb",
+        "version": "3.2.0.60401-83"
+      },
+      {
+        "name": "hipsparse-asan-rpath",
+        "sha256": "86598fa96ee7dcc8aa0509c2814cf201b8c2da2a896b23fb0986ae34f7ede22e",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/h/hipsparse-asan-rpath6.4.1/hipsparse-asan-rpath6.4.1_3.2.0.60401-83~22.04_amd64.deb",
+        "version": "3.2.0.60401-83"
+      }
+    ],
+    "version": "3.2.0.60401-83"
+  },
+  "hipsparselt": {
+    "deps": [
+      "hipsparse",
+      "rocm-core"
+    ],
+    "components": [
+      {
+        "name": "hipsparselt",
+        "sha256": "4015b40aee8e6306126bdf6b7c7a8e422563c2a44acb21b77d67a1a06415fee1",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/h/hipsparselt/hipsparselt_0.2.3.60401-83~22.04_amd64.deb",
+        "version": "0.2.3.60401-83"
+      },
+      {
+        "name": "hipsparselt-dev",
+        "sha256": "f8ec29a5fee87401d28612ed20fd41e45d180b1263dd84c8aa4956351881d3ce",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/h/hipsparselt-dev/hipsparselt-dev_0.2.3.60401-83~22.04_amd64.deb",
+        "version": "0.2.3.60401-83"
+      },
+      {
+        "name": "hipsparselt-dev-rpath",
+        "sha256": "cf6a6a02f2fe327042be1ff52ea5ef195435df353e737178e481a30021ccf75c",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/h/hipsparselt-dev-rpath6.4.1/hipsparselt-dev-rpath6.4.1_0.2.3.60401-83~22.04_amd64.deb",
+        "version": "0.2.3.60401-83"
+      },
+      {
+        "name": "hipsparselt-rpath",
+        "sha256": "9643e5dd269c13ce6d80d63a5c258c813a1a8c18b86cc614ab36742a7e67aee8",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/h/hipsparselt-rpath6.4.1/hipsparselt-rpath6.4.1_0.2.3.60401-83~22.04_amd64.deb",
+        "version": "0.2.3.60401-83"
+      }
+    ],
+    "version": "0.2.3.60401-83"
+  },
+  "hipsparselt-asan": {
+    "deps": [
+      "hipsparse",
+      "rocm-core-asan"
+    ],
+    "components": [
+      {
+        "name": "hipsparselt-asan",
+        "sha256": "d6a516636fc3a10228d4dc9082efd57ad272a3372dd66dfd10886b6b96f9d5ba",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/h/hipsparselt-asan/hipsparselt-asan_0.2.3.60401-83~22.04_amd64.deb",
+        "version": "0.2.3.60401-83"
+      },
+      {
+        "name": "hipsparselt-asan-rpath",
+        "sha256": "cca1b3cba2b68c1725f0bd2948b7c3261f42576f01a83bea29ca7f1053a01f26",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/h/hipsparselt-asan-rpath6.4.1/hipsparselt-asan-rpath6.4.1_0.2.3.60401-83~22.04_amd64.deb",
+        "version": "0.2.3.60401-83"
+      }
+    ],
+    "version": "0.2.3.60401-83"
+  },
+  "hiptensor": {
+    "deps": [
+      "rocm-core"
+    ],
+    "components": [
+      {
+        "name": "hiptensor",
+        "sha256": "a565c334d0d7210ff584b350271262c038abc9d9711defe735e2c934e6fc6228",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/h/hiptensor/hiptensor_1.5.0.60401-83~22.04_amd64.deb",
+        "version": "1.5.0.60401-83"
+      },
+      {
+        "name": "hiptensor-dev",
+        "sha256": "f7e12eeba3b07258daee7445b5e7fc57e998d2ca89f657fb07283a2510723af4",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/h/hiptensor-dev/hiptensor-dev_1.5.0.60401-83~22.04_amd64.deb",
+        "version": "1.5.0.60401-83"
+      },
+      {
+        "name": "hiptensor-dev-rpath",
+        "sha256": "ef877bbb20898eab297eb0853207fba20f1e550069bb50599d6aa6b39dbb9af2",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/h/hiptensor-dev-rpath6.4.1/hiptensor-dev-rpath6.4.1_1.5.0.60401-83~22.04_amd64.deb",
+        "version": "1.5.0.60401-83"
+      },
+      {
+        "name": "hiptensor-rpath",
+        "sha256": "ba3588769e31b50d079bf13a314f3cd9bdcbc7da57819a9e8d16cf80aeaadea4",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/h/hiptensor-rpath6.4.1/hiptensor-rpath6.4.1_1.5.0.60401-83~22.04_amd64.deb",
+        "version": "1.5.0.60401-83"
+      }
+    ],
+    "version": "1.5.0.60401-83"
+  },
+  "hiptensor-asan": {
+    "deps": [
+      "rocm-core-asan"
+    ],
+    "components": [
+      {
+        "name": "hiptensor-asan",
+        "sha256": "91f846ae90c4e6178c79ab1a73cc62398f42539338cabba62a27fffb827488c8",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/h/hiptensor-asan/hiptensor-asan_1.5.0.60401-83~22.04_amd64.deb",
+        "version": "1.5.0.60401-83"
+      },
+      {
+        "name": "hiptensor-asan-rpath",
+        "sha256": "ad9790538246ca92c781cd87b7f49a7d66378b7f0128d1743acdb9e0e905f55c",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/h/hiptensor-asan-rpath6.4.1/hiptensor-asan-rpath6.4.1_1.5.0.60401-83~22.04_amd64.deb",
+        "version": "1.5.0.60401-83"
+      }
+    ],
+    "version": "1.5.0.60401-83"
+  },
+  "hsa-amd-aqlprofile": {
+    "deps": [
+      "rocm-core"
+    ],
+    "components": [
+      {
+        "name": "hsa-amd-aqlprofile",
+        "sha256": "9e0917b47d40318f73d4323bdc0fdaa27202931544bc4e89f706c4ddd9bd9428",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/h/hsa-amd-aqlprofile/hsa-amd-aqlprofile_1.0.0.60401-83~22.04_amd64.deb",
+        "version": "1.0.0.60401-83"
+      },
+      {
+        "name": "hsa-amd-aqlprofile-rpath",
+        "sha256": "68bad576aa79a4b8992ca9a25861343380338ce5739de29aab925d34964b6977",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/h/hsa-amd-aqlprofile-rpath6.4.1/hsa-amd-aqlprofile-rpath6.4.1_1.0.0.60401-83~22.04_amd64.deb",
+        "version": "1.0.0.60401-83"
+      }
+    ],
+    "version": "1.0.0.60401-83"
+  },
+  "hsa-amd-aqlprofile-asan": {
+    "deps": [
+      "rocm-core-asan"
+    ],
+    "components": [
+      {
+        "name": "hsa-amd-aqlprofile-asan",
+        "sha256": "0ef49fe4012ef1e254a7fcc4582ea25e0b8e45f0b0dda4818bc27a421a7fd53f",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/h/hsa-amd-aqlprofile-asan/hsa-amd-aqlprofile-asan_1.0.0.60401-83~22.04_amd64.deb",
+        "version": "1.0.0.60401-83"
+      },
+      {
+        "name": "hsa-amd-aqlprofile-asan-rpath",
+        "sha256": "0cc7bf97b8f5136c0bc9d358685df968e7d2578477e385b09cb4bd366a1a8111",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/h/hsa-amd-aqlprofile-asan-rpath6.4.1/hsa-amd-aqlprofile-asan-rpath6.4.1_1.0.0.60401-83~22.04_amd64.deb",
+        "version": "1.0.0.60401-83"
+      }
+    ],
+    "version": "1.0.0.60401-83"
+  },
+  "hsa-rocr": {
+    "deps": [
+      "rocm-core",
+      "rocprofiler-register"
+    ],
+    "components": [
+      {
+        "name": "hsa-rocr",
+        "sha256": "07a37ac162acbc5f054b0ea9cfd4e37e1640adee367d31aad15d504c49999372",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/h/hsa-rocr/hsa-rocr_1.15.0.60401-83~22.04_amd64.deb",
+        "version": "1.15.0.60401-83"
+      },
+      {
+        "name": "hsa-rocr-dev",
+        "sha256": "e1221293f8a5501ef01324c381e61d76a5d2e0f11032e4d33766dc53efc75813",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/h/hsa-rocr-dev/hsa-rocr-dev_1.15.0.60401-83~22.04_amd64.deb",
+        "version": "1.15.0.60401-83"
+      },
+      {
+        "name": "hsa-rocr-dev-rpath",
+        "sha256": "ce35f529a1170588b7d4f51a3b7f9c583731c67071777b61b47dae66fefe25e5",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/h/hsa-rocr-dev-rpath6.4.1/hsa-rocr-dev-rpath6.4.1_1.15.0.60401-83~22.04_amd64.deb",
+        "version": "1.15.0.60401-83"
+      },
+      {
+        "name": "hsa-rocr-rpath",
+        "sha256": "1c90c5aaf74f6985c5ac666f81bcc77ed7a0206c54c56012689b6ba2167ca9ee",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/h/hsa-rocr-rpath6.4.1/hsa-rocr-rpath6.4.1_1.15.0.60401-83~22.04_amd64.deb",
+        "version": "1.15.0.60401-83"
+      }
+    ],
+    "version": "1.15.0.60401-83"
+  },
+  "hsa-rocr-asan": {
+    "deps": [
+      "rocm-core-asan"
+    ],
+    "components": [
+      {
+        "name": "hsa-rocr-asan",
+        "sha256": "903615d9fb7ee49702d627765925d390c2a28a90734c69816e148eebe35f59ea",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/h/hsa-rocr-asan/hsa-rocr-asan_1.15.0.60401-83~22.04_amd64.deb",
+        "version": "1.15.0.60401-83"
+      },
+      {
+        "name": "hsa-rocr-asan-rpath",
+        "sha256": "702a166a30bb36fbdc9c48468de18482be4e79f9e2435d611fb3192ad0b43647",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/h/hsa-rocr-asan-rpath6.4.1/hsa-rocr-asan-rpath6.4.1_1.15.0.60401-83~22.04_amd64.deb",
+        "version": "1.15.0.60401-83"
+      }
+    ],
+    "version": "1.15.0.60401-83"
+  },
+  "migraphx": {
+    "deps": [
+      "half",
+      "hip-dev",
+      "hip-runtime-amd",
+      "hipblaslt",
+      "miopen-hip",
+      "rocblas",
+      "rocm-core"
+    ],
+    "components": [
+      {
+        "name": "migraphx",
+        "sha256": "07bd5f046e52b688a9e3475ae6a37019baf80008a9c19c0f8055c1c2952143ee",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/m/migraphx/migraphx_2.12.0.60401-83~22.04_amd64.deb",
+        "version": "2.12.0.60401-83"
+      },
+      {
+        "name": "migraphx-dev",
+        "sha256": "b2902863a6982d1aaeae50f5b8679dc60983e01e2cbe4fb21f6198a12de189be",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/m/migraphx-dev/migraphx-dev_2.12.0.60401-83~22.04_amd64.deb",
+        "version": "2.12.0.60401-83"
+      },
+      {
+        "name": "migraphx-dev-rpath",
+        "sha256": "d7ec48bcd89e19173ed9f35790ed406a5c2be3b6e0c5dd872c3a70abe2c3dad6",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/m/migraphx-dev-rpath6.4.1/migraphx-dev-rpath6.4.1_2.12.0.60401-83~22.04_amd64.deb",
+        "version": "2.12.0.60401-83"
+      },
+      {
+        "name": "migraphx-rpath",
+        "sha256": "2f6ad8dcfd8c4c37304b462bd28595d3bb648f84fb4ad98cdfab60fe12d6ad92",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/m/migraphx-rpath6.4.1/migraphx-rpath6.4.1_2.12.0.60401-83~22.04_amd64.deb",
+        "version": "2.12.0.60401-83"
+      }
+    ],
+    "version": "2.12.0.60401-83"
+  },
+  "migraphx-asan": {
+    "deps": [
+      "half",
+      "hip-dev",
+      "hip-runtime-amd",
+      "hipblaslt",
+      "miopen-hip",
+      "rocblas",
+      "rocm-core-asan"
+    ],
+    "components": [
+      {
+        "name": "migraphx-asan",
+        "sha256": "f0a962449c7978ecfdc85f0b7a55e84534797b6811ef98d062aeab63b82db3c7",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/m/migraphx-asan/migraphx-asan_2.12.0.60401-83~22.04_amd64.deb",
+        "version": "2.12.0.60401-83"
+      },
+      {
+        "name": "migraphx-asan-rpath",
+        "sha256": "0033fd4787665ea99e0d6ae94764afcbb844a9b7333383e83d070fe6f6d23e6b",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/m/migraphx-asan-rpath6.4.1/migraphx-asan-rpath6.4.1_2.12.0.60401-83~22.04_amd64.deb",
+        "version": "2.12.0.60401-83"
+      }
+    ],
+    "version": "2.12.0.60401-83"
+  },
+  "miopen-hip": {
+    "deps": [
+      "comgr",
+      "hip-runtime-amd",
+      "hipblaslt",
+      "rocblas",
+      "rocm-core",
+      "rocrand",
+      "roctracer"
+    ],
+    "components": [
+      {
+        "name": "miopen-hip",
+        "sha256": "584431b94f2809f553633a887a7f88d308391114cc9547da305d5ddcd84bd3e5",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/m/miopen-hip/miopen-hip_3.4.0.60401-83~22.04_amd64.deb",
+        "version": "3.4.0.60401-83"
+      },
+      {
+        "name": "miopen-hip-dev",
+        "sha256": "939f6650adcbe7f98a79437c063910f397516f535a6a159a0b605bcd1f8d23b1",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/m/miopen-hip-dev/miopen-hip-dev_3.4.0.60401-83~22.04_amd64.deb",
+        "version": "3.4.0.60401-83"
+      },
+      {
+        "name": "miopen-hip-dev-rpath",
+        "sha256": "7e46dc31c89041c4d08a377011f5a5abb1f435f17be077e69864c529b8f2ed6f",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/m/miopen-hip-dev-rpath6.4.1/miopen-hip-dev-rpath6.4.1_3.4.0.60401-83~22.04_amd64.deb",
+        "version": "3.4.0.60401-83"
+      },
+      {
+        "name": "miopen-hip-rpath",
+        "sha256": "6f4881d4dd87d8e6b592c0eee45b637af5f94fb585d63913a73610401a212155",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/m/miopen-hip-rpath6.4.1/miopen-hip-rpath6.4.1_3.4.0.60401-83~22.04_amd64.deb",
+        "version": "3.4.0.60401-83"
+      }
+    ],
+    "version": "3.4.0.60401-83"
+  },
+  "miopen-hip-asan": {
+    "deps": [
+      "comgr",
+      "hip-runtime-amd-asan",
+      "hipblaslt",
+      "rocblas",
+      "rocm-core",
+      "rocm-core-asan",
+      "rocrand",
+      "roctracer"
+    ],
+    "components": [
+      {
+        "name": "miopen-hip-asan",
+        "sha256": "297ab78684f580b4d3ecc206b76474f6aaadc97fe5acea6026579eda8accc5ff",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/m/miopen-hip-asan/miopen-hip-asan_3.4.0.60401-83~22.04_amd64.deb",
+        "version": "3.4.0.60401-83"
+      },
+      {
+        "name": "miopen-hip-asan-rpath",
+        "sha256": "7da9ef3c258314de328c1211c5d5df20bfdae0ad24cc6497b32fb84651ff84a8",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/m/miopen-hip-asan-rpath6.4.1/miopen-hip-asan-rpath6.4.1_3.4.0.60401-83~22.04_amd64.deb",
+        "version": "3.4.0.60401-83"
+      }
+    ],
+    "version": "3.4.0.60401-83"
+  },
+  "miopen-hip-gfx1030kdb": {
+    "deps": [
+      "comgr",
+      "hip-runtime-amd",
+      "hipblaslt",
+      "rocblas",
+      "rocm-core",
+      "rocrand",
+      "roctracer"
+    ],
+    "components": [
+      {
+        "name": "miopen-hip-gfx1030kdb",
+        "sha256": "0d94949fe8cfbc27a157d6a33058945a7d17b3c1843ca8062fa51c914d2cd330",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/m/miopen-hip-gfx1030kdb/miopen-hip-gfx1030kdb_3.4.0.60401-83~22.04_amd64.deb",
+        "version": "3.4.0.60401-83"
+      },
+      {
+        "name": "miopen-hip-gfx1030kdb-rpath",
+        "sha256": "7e650df86ee66d04f755645a441314875aa7e91b8582316c5c74644759dc4d38",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/m/miopen-hip-gfx1030kdb-rpath6.4.1/miopen-hip-gfx1030kdb-rpath6.4.1_3.4.0.60401-83~22.04_amd64.deb",
+        "version": "3.4.0.60401-83"
+      }
+    ],
+    "version": "3.4.0.60401-83"
+  },
+  "miopen-hip-gfx900kdb": {
+    "deps": [
+      "comgr",
+      "hip-runtime-amd",
+      "hipblaslt",
+      "rocblas",
+      "rocm-core",
+      "rocrand",
+      "roctracer"
+    ],
+    "components": [
+      {
+        "name": "miopen-hip-gfx900kdb",
+        "sha256": "98b060ed4174994464f4f34ba8fd0742830e63414ed99d3c9ac4a18b2f331bde",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/m/miopen-hip-gfx900kdb/miopen-hip-gfx900kdb_3.4.0.60401-83~22.04_amd64.deb",
+        "version": "3.4.0.60401-83"
+      },
+      {
+        "name": "miopen-hip-gfx900kdb-rpath",
+        "sha256": "4b16bc9aa0743a60739f02337eade99fe824f6140c2d1733db9de74ef4a3cd40",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/m/miopen-hip-gfx900kdb-rpath6.4.1/miopen-hip-gfx900kdb-rpath6.4.1_3.4.0.60401-83~22.04_amd64.deb",
+        "version": "3.4.0.60401-83"
+      }
+    ],
+    "version": "3.4.0.60401-83"
+  },
+  "miopen-hip-gfx906kdb": {
+    "deps": [
+      "comgr",
+      "hip-runtime-amd",
+      "hipblaslt",
+      "rocblas",
+      "rocm-core",
+      "rocrand",
+      "roctracer"
+    ],
+    "components": [
+      {
+        "name": "miopen-hip-gfx906kdb",
+        "sha256": "527f15774fc70f986d64894a2156686aa123ba1dbaa50eeab4460024b8932686",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/m/miopen-hip-gfx906kdb/miopen-hip-gfx906kdb_3.4.0.60401-83~22.04_amd64.deb",
+        "version": "3.4.0.60401-83"
+      },
+      {
+        "name": "miopen-hip-gfx906kdb-rpath",
+        "sha256": "0fe98872bf8a7da31ed71a8f19828b4a040c28ffaa4ff199c37cabd95f1af3cc",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/m/miopen-hip-gfx906kdb-rpath6.4.1/miopen-hip-gfx906kdb-rpath6.4.1_3.4.0.60401-83~22.04_amd64.deb",
+        "version": "3.4.0.60401-83"
+      }
+    ],
+    "version": "3.4.0.60401-83"
+  },
+  "miopen-hip-gfx908kdb": {
+    "deps": [
+      "comgr",
+      "hip-runtime-amd",
+      "hipblaslt",
+      "rocblas",
+      "rocm-core",
+      "rocrand",
+      "roctracer"
+    ],
+    "components": [
+      {
+        "name": "miopen-hip-gfx908kdb",
+        "sha256": "734356619ef614fa0650f91f14b7c12a3c0cbc83478e74e5fc2d14de9c57c588",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/m/miopen-hip-gfx908kdb/miopen-hip-gfx908kdb_3.4.0.60401-83~22.04_amd64.deb",
+        "version": "3.4.0.60401-83"
+      },
+      {
+        "name": "miopen-hip-gfx908kdb-rpath",
+        "sha256": "756600d388929ef18bf279422fe46fd2f9914cc8becabd22074bba110763d03a",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/m/miopen-hip-gfx908kdb-rpath6.4.1/miopen-hip-gfx908kdb-rpath6.4.1_3.4.0.60401-83~22.04_amd64.deb",
+        "version": "3.4.0.60401-83"
+      }
+    ],
+    "version": "3.4.0.60401-83"
+  },
+  "miopen-hip-gfx90akdb": {
+    "deps": [
+      "comgr",
+      "hip-runtime-amd",
+      "hipblaslt",
+      "rocblas",
+      "rocm-core",
+      "rocrand",
+      "roctracer"
+    ],
+    "components": [
+      {
+        "name": "miopen-hip-gfx90akdb",
+        "sha256": "83975281b7448f1d6a33cfab9d2abc619b8675a044042c480a4b7c144db87463",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/m/miopen-hip-gfx90akdb/miopen-hip-gfx90akdb_3.4.0.60401-83~22.04_amd64.deb",
+        "version": "3.4.0.60401-83"
+      },
+      {
+        "name": "miopen-hip-gfx90akdb-rpath",
+        "sha256": "aeba3702d1c725bcdccfb5e07222e61cd0af8faf85e7388ed8bb4425f998713b",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/m/miopen-hip-gfx90akdb-rpath6.4.1/miopen-hip-gfx90akdb-rpath6.4.1_3.4.0.60401-83~22.04_amd64.deb",
+        "version": "3.4.0.60401-83"
+      }
+    ],
+    "version": "3.4.0.60401-83"
+  },
+  "miopen-hip-gfx942kdb": {
+    "deps": [
+      "comgr",
+      "hip-runtime-amd",
+      "hipblaslt",
+      "rocblas",
+      "rocm-core",
+      "rocrand",
+      "roctracer"
+    ],
+    "components": [
+      {
+        "name": "miopen-hip-gfx942kdb",
+        "sha256": "3364159106265ce469e03aa1f521cf8fd954f0b8a0422ecc3ae99105f291b88e",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/m/miopen-hip-gfx942kdb/miopen-hip-gfx942kdb_3.4.0.60401-83~22.04_amd64.deb",
+        "version": "3.4.0.60401-83"
+      },
+      {
+        "name": "miopen-hip-gfx942kdb-rpath",
+        "sha256": "dc080bc84d50facb2bb9892b771622eb60777e3335780669f4c6be07e0a8e110",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/m/miopen-hip-gfx942kdb-rpath6.4.1/miopen-hip-gfx942kdb-rpath6.4.1_3.4.0.60401-83~22.04_amd64.deb",
+        "version": "3.4.0.60401-83"
+      }
+    ],
+    "version": "3.4.0.60401-83"
+  },
+  "mivisionx": {
+    "deps": [
+      "half",
+      "migraphx",
+      "miopen-hip",
+      "openmp-extras-dev",
+      "openmp-extras-runtime",
+      "rocblas",
+      "rocm-core",
+      "rocm-hip-runtime",
+      "rpp"
+    ],
+    "components": [
+      {
+        "name": "mivisionx",
+        "sha256": "6427ca42b319c899ff528679467ef04fb34168b74b33249c3fc55ca243a0b162",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/m/mivisionx/mivisionx_3.2.0.60401-83~22.04_amd64.deb",
+        "version": "3.2.0.60401-83"
+      },
+      {
+        "name": "mivisionx-dev",
+        "sha256": "cad23936813014d694ca2f8359f34f3f7f28e11bc6dd01988de0502c4e0cb94b",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/m/mivisionx-dev/mivisionx-dev_3.2.0.60401-83~22.04_amd64.deb",
+        "version": "3.2.0.60401-83"
+      },
+      {
+        "name": "mivisionx-dev-rpath",
+        "sha256": "4e7df8189e622b71f458689725ee477640e5417bf3193f4f2e238a0c3d8ca3be",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/m/mivisionx-dev-rpath6.4.1/mivisionx-dev-rpath6.4.1_3.2.0.60401-83~22.04_amd64.deb",
+        "version": "3.2.0.60401-83"
+      },
+      {
+        "name": "mivisionx-rpath",
+        "sha256": "83d03cdc8233fe2ccdb8312693a688a40d87019a055aaa173e81e7764f7ebce3",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/m/mivisionx-rpath6.4.1/mivisionx-rpath6.4.1_3.2.0.60401-83~22.04_amd64.deb",
+        "version": "3.2.0.60401-83"
+      }
+    ],
+    "version": "3.2.0.60401-83"
+  },
+  "mivisionx-asan": {
+    "deps": [
+      "migraphx",
+      "miopen-hip",
+      "openmp-extras-runtime",
+      "rocblas",
+      "rocm-core-asan",
+      "rocm-hip-runtime",
+      "rpp"
+    ],
+    "components": [
+      {
+        "name": "mivisionx-asan",
+        "sha256": "1f88558ea3e75bbf27d91e5736e36cd7c42d8e4eec32c33f98ada8c7a2364c39",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/m/mivisionx-asan/mivisionx-asan_3.2.0.60401-83~22.04_amd64.deb",
+        "version": "3.2.0.60401-83"
+      },
+      {
+        "name": "mivisionx-asan-rpath",
+        "sha256": "c19c0ee1a7b9de15f1d9bdee3f1c9e18a09cfd4d19cee0f424a16a76c38fd557",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/m/mivisionx-asan-rpath6.4.1/mivisionx-asan-rpath6.4.1_3.2.0.60401-83~22.04_amd64.deb",
+        "version": "3.2.0.60401-83"
+      }
+    ],
+    "version": "3.2.0.60401-83"
+  },
+  "mivisionx-test": {
+    "deps": [
+      "mivisionx",
+      "rocm-core"
+    ],
+    "components": [
+      {
+        "name": "mivisionx-test",
+        "sha256": "4315783e3173e9f3bec8ffd6bb4c5a390faa53b08250cc55267b3f0f992a9203",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/m/mivisionx-test/mivisionx-test_3.2.0.60401-83~22.04_amd64.deb",
+        "version": "3.2.0.60401-83"
+      },
+      {
+        "name": "mivisionx-test-rpath",
+        "sha256": "7f22b76567e7bf25a19056e8fb56ced6d25cccc550609bb162e4d2498088dbd2",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/m/mivisionx-test-rpath6.4.1/mivisionx-test-rpath6.4.1_3.2.0.60401-83~22.04_amd64.deb",
+        "version": "3.2.0.60401-83"
+      }
+    ],
+    "version": "3.2.0.60401-83"
+  },
+  "openmp-extras-asan": {
+    "deps": [
+      "hsa-rocr-asan",
+      "rocm-core-asan"
+    ],
+    "components": [
+      {
+        "name": "openmp-extras-asan",
+        "sha256": "e07946614ffb762fa719d13db78b4a7a83fb627d7e872a088c3f52e3b62dbf22",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/o/openmp-extras-asan/openmp-extras-asan_18.63.0.60401-83~22.04_amd64.deb",
+        "version": "18.63.0.60401-83"
+      },
+      {
+        "name": "openmp-extras-asan-rpath",
+        "sha256": "2fbe74d43b4da010af0e5ee89120b53d4085d303b1a56cacdb9b22c777e9c689",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/o/openmp-extras-asan-rpath6.4.1/openmp-extras-asan-rpath6.4.1_18.63.0.60401-83~22.04_amd64.deb",
+        "version": "18.63.0.60401-83"
+      }
+    ],
+    "version": "18.63.0.60401-83"
+  },
+  "openmp-extras-dev": {
+    "deps": [
+      "hsa-rocr",
+      "openmp-extras-runtime",
+      "rocm-core",
+      "rocm-device-libs",
+      "rocm-llvm"
+    ],
+    "components": [
+      {
+        "name": "openmp-extras-dev",
+        "sha256": "973fc5a040be9b80c53407256eab518d0714355bc53f34281266e1c24d788c98",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/o/openmp-extras-dev/openmp-extras-dev_18.63.0.60401-83~22.04_amd64.deb",
+        "version": "18.63.0.60401-83"
+      },
+      {
+        "name": "openmp-extras-dev-rpath",
+        "sha256": "1ad7861ae14737f38359419bc91b8202a04e397b88f3bddba58b60d4078ae73c",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/o/openmp-extras-dev-rpath6.4.1/openmp-extras-dev-rpath6.4.1_18.63.0.60401-83~22.04_amd64.deb",
+        "version": "18.63.0.60401-83"
+      }
+    ],
+    "version": "18.63.0.60401-83"
+  },
+  "openmp-extras-runtime": {
+    "deps": [
+      "hsa-rocr",
+      "rocm-core"
+    ],
+    "components": [
+      {
+        "name": "openmp-extras-runtime",
+        "sha256": "d09b8062ae72113b3486bfab6a3d648cdcf60ef334c08f6c95466d803b0aa216",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/o/openmp-extras-runtime/openmp-extras-runtime_18.63.0.60401-83~22.04_amd64.deb",
+        "version": "18.63.0.60401-83"
+      },
+      {
+        "name": "openmp-extras-runtime-rpath",
+        "sha256": "88540f7faf63218b8ac07c45ea19d1d1a3ad2875be8261473aa15d2840052369",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/o/openmp-extras-runtime-rpath6.4.1/openmp-extras-runtime-rpath6.4.1_18.63.0.60401-83~22.04_amd64.deb",
+        "version": "18.63.0.60401-83"
+      }
+    ],
+    "version": "18.63.0.60401-83"
+  },
+  "rccl": {
+    "deps": [
+      "hip-runtime-amd",
+      "rocm-core",
+      "rocm-smi-lib"
+    ],
+    "components": [
+      {
+        "name": "rccl",
+        "sha256": "6b5675f7bb81b03387a64478a896a671d10e83a5629e54a0c3a8bf503a7ac106",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rccl/rccl_2.22.3.60401-83~22.04_amd64.deb",
+        "version": "2.22.3.60401-83"
+      },
+      {
+        "name": "rccl-dev",
+        "sha256": "fa563de9f06da443203e2b3d893d4a412541ba23e7a426200914aecd99baadeb",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rccl-dev/rccl-dev_2.22.3.60401-83~22.04_amd64.deb",
+        "version": "2.22.3.60401-83"
+      },
+      {
+        "name": "rccl-dev-rpath",
+        "sha256": "7fef24767b7b0915d9769ec6ccfe9684a1ec6e81154b6c67f591bd8bc43d7017",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rccl-dev-rpath6.4.1/rccl-dev-rpath6.4.1_2.22.3.60401-83~22.04_amd64.deb",
+        "version": "2.22.3.60401-83"
+      },
+      {
+        "name": "rccl-rpath",
+        "sha256": "ac467aa0177e872fe919f36163c4b5ab5189d29eb0be93991910e45ba340871a",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rccl-rpath6.4.1/rccl-rpath6.4.1_2.22.3.60401-83~22.04_amd64.deb",
+        "version": "2.22.3.60401-83"
+      }
+    ],
+    "version": "2.22.3.60401-83"
+  },
+  "rccl-asan": {
+    "deps": [
+      "hip-runtime-amd-asan",
+      "rocm-core-asan",
+      "rocm-smi-lib",
+      "rocprofiler-register"
+    ],
+    "components": [
+      {
+        "name": "rccl-asan",
+        "sha256": "205ebe6360fedb0f3554285194b7c79196509e1d27a19633c6cffb08ea750456",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rccl-asan/rccl-asan_2.22.3.60401-83~22.04_amd64.deb",
+        "version": "2.22.3.60401-83"
+      },
+      {
+        "name": "rccl-asan-rpath",
+        "sha256": "f17c7e426ac1f0d8cf54de6f4c01a126793892759b7547f688c92cfba1c5d870",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rccl-asan-rpath6.4.1/rccl-asan-rpath6.4.1_2.22.3.60401-83~22.04_amd64.deb",
+        "version": "2.22.3.60401-83"
+      }
+    ],
+    "version": "2.22.3.60401-83"
+  },
+  "rccl-unittests": {
+    "deps": [
+      "rccl"
+    ],
+    "components": [
+      {
+        "name": "rccl-unittests",
+        "sha256": "467b2e3a9bee13206392156c43a599309ce915620c7216594cc264360e1f3433",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rccl-unittests/rccl-unittests_2.22.3.60401-83~22.04_amd64.deb",
+        "version": "2.22.3.60401-83"
+      },
+      {
+        "name": "rccl-unittests-rpath",
+        "sha256": "71b565f01418bcd292d2c852ce5952f9f43700383caf5db532cb9031815bd75c",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rccl-unittests-rpath6.4.1/rccl-unittests-rpath6.4.1_2.22.3.60401-83~22.04_amd64.deb",
+        "version": "2.22.3.60401-83"
+      }
+    ],
+    "version": "2.22.3.60401-83"
+  },
+  "rdc": {
+    "deps": [
+      "amd-smi-lib"
+    ],
+    "components": [
+      {
+        "name": "rdc",
+        "sha256": "c0326a2b41a661d8d1b6671216e860504fc88ded78bda4bacdf29a301be0155d",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rdc/rdc_0.3.0.60401-83~22.04_amd64.deb",
+        "version": "0.3.0.60401-83"
+      },
+      {
+        "name": "rdc-rpath",
+        "sha256": "594c093c8a294b7313af8a65b198c2c092275a8f0f634e21452cc84a84cbf894",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rdc-rpath6.4.1/rdc-rpath6.4.1_0.3.0.60401-83~22.04_amd64.deb",
+        "version": "0.3.0.60401-83"
+      }
+    ],
+    "version": "0.3.0.60401-83"
+  },
+  "rocal": {
+    "deps": [
+      "mivisionx",
+      "rpp"
+    ],
+    "components": [
+      {
+        "name": "rocal",
+        "sha256": "dbecd41f3ea697fc528106ebd82f4aac6d6fac360e752925fab3c744c346feb0",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocal/rocal_2.2.0.60401-83~22.04_amd64.deb",
+        "version": "2.2.0.60401-83"
+      },
+      {
+        "name": "rocal-dev",
+        "sha256": "c08222589c54dc3c862a52c7f76c595ab66eadf5038dd434b5a1783a02bc5c56",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocal-dev/rocal-dev_2.2.0.60401-83~22.04_amd64.deb",
+        "version": "2.2.0.60401-83"
+      },
+      {
+        "name": "rocal-dev-rpath",
+        "sha256": "a2365d59af68aad599c2d98e91266e27ea83062acd22d017fc6fbaaaf26f6acd",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocal-dev-rpath6.4.1/rocal-dev-rpath6.4.1_2.2.0.60401-83~22.04_amd64.deb",
+        "version": "2.2.0.60401-83"
+      },
+      {
+        "name": "rocal-rpath",
+        "sha256": "21cbab94880920934d42d61ed84f4f001ec570887b5f2220703b00edd4088a2c",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocal-rpath6.4.1/rocal-rpath6.4.1_2.2.0.60401-83~22.04_amd64.deb",
+        "version": "2.2.0.60401-83"
+      }
+    ],
+    "version": "2.2.0.60401-83"
+  },
+  "rocal-test": {
+    "deps": [
+      "rocal"
+    ],
+    "components": [
+      {
+        "name": "rocal-test",
+        "sha256": "5183d24ed44a79f25bf8cdbdef74706292b9571c84650ab85dd2e48a2d99dd78",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocal-test/rocal-test_2.2.0.60401-83~22.04_amd64.deb",
+        "version": "2.2.0.60401-83"
+      },
+      {
+        "name": "rocal-test-rpath",
+        "sha256": "4263cb74ced5db7ebd90b330b949714e6ec070633b8fd42d6c95b2fe1cc5a844",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocal-test-rpath6.4.1/rocal-test-rpath6.4.1_2.2.0.60401-83~22.04_amd64.deb",
+        "version": "2.2.0.60401-83"
+      }
+    ],
+    "version": "2.2.0.60401-83"
+  },
+  "rocalution": {
+    "deps": [
+      "hip-runtime-amd",
+      "rocblas",
+      "rocm-core",
+      "rocrand",
+      "rocsparse"
+    ],
+    "components": [
+      {
+        "name": "rocalution",
+        "sha256": "e4ed7ff01779b2ba65b30ba4692fa5d32486cfa24c8257a2f292379e02ad361b",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocalution/rocalution_3.2.3.60401-83~22.04_amd64.deb",
+        "version": "3.2.3.60401-83"
+      },
+      {
+        "name": "rocalution-dev",
+        "sha256": "f92fd52326dc37cb01da296df6eed57332eed14260558fd3f3eab105af6d745b",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocalution-dev/rocalution-dev_3.2.3.60401-83~22.04_amd64.deb",
+        "version": "3.2.3.60401-83"
+      },
+      {
+        "name": "rocalution-dev-rpath",
+        "sha256": "e213720450ee21eee7a65d19420d8d8a4d12aa35756ce1fa9ed28abd4dd8f670",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocalution-dev-rpath6.4.1/rocalution-dev-rpath6.4.1_3.2.3.60401-83~22.04_amd64.deb",
+        "version": "3.2.3.60401-83"
+      },
+      {
+        "name": "rocalution-rpath",
+        "sha256": "efe82b4140ff69b6127fb7ff98220e3e3675c981805be2609977530fa549f32a",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocalution-rpath6.4.1/rocalution-rpath6.4.1_3.2.3.60401-83~22.04_amd64.deb",
+        "version": "3.2.3.60401-83"
+      }
+    ],
+    "version": "3.2.3.60401-83"
+  },
+  "rocalution-asan": {
+    "deps": [
+      "hip-runtime-amd-asan",
+      "rocblas",
+      "rocm-core-asan",
+      "rocrand",
+      "rocsparse"
+    ],
+    "components": [
+      {
+        "name": "rocalution-asan",
+        "sha256": "399a56898051ff5d42e8c4248a467726f014d2e4f650fa9c3f4b6421dd714586",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocalution-asan/rocalution-asan_3.2.3.60401-83~22.04_amd64.deb",
+        "version": "3.2.3.60401-83"
+      },
+      {
+        "name": "rocalution-asan-rpath",
+        "sha256": "8bf969961a929696824169db2ae802a365e1ddc4b9710dbf0695aa9364b38939",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocalution-asan-rpath6.4.1/rocalution-asan-rpath6.4.1_3.2.3.60401-83~22.04_amd64.deb",
+        "version": "3.2.3.60401-83"
+      }
+    ],
+    "version": "3.2.3.60401-83"
+  },
+  "rocblas": {
+    "deps": [
+      "hip-runtime-amd",
+      "hipblaslt",
+      "rocm-core"
+    ],
+    "components": [
+      {
+        "name": "rocblas",
+        "sha256": "0f850a080c312d80c0b928b48efca4fb507c64e95536aaefe7f23c6fc0c1fe09",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocblas/rocblas_4.4.0.60401-83~22.04_amd64.deb",
+        "version": "4.4.0.60401-83"
+      },
+      {
+        "name": "rocblas-dev",
+        "sha256": "caffc1656c4a6e5507fdf1e24ef1e30def2f5fa02ac0dd1ff3cdbc7a27f2cd0c",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocblas-dev/rocblas-dev_4.4.0.60401-83~22.04_amd64.deb",
+        "version": "4.4.0.60401-83"
+      },
+      {
+        "name": "rocblas-dev-rpath",
+        "sha256": "f891c4c14451b82e42ed456a4a48d58045c2b01bad8c47d9cbb8ed00f0d2d0da",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocblas-dev-rpath6.4.1/rocblas-dev-rpath6.4.1_4.4.0.60401-83~22.04_amd64.deb",
+        "version": "4.4.0.60401-83"
+      },
+      {
+        "name": "rocblas-rpath",
+        "sha256": "b72b451e965c4b153691b935cd71c6c0e1cd4cc4438d0cf0baf980681c27fab1",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocblas-rpath6.4.1/rocblas-rpath6.4.1_4.4.0.60401-83~22.04_amd64.deb",
+        "version": "4.4.0.60401-83"
+      }
+    ],
+    "version": "4.4.0.60401-83"
+  },
+  "rocblas-asan": {
+    "deps": [
+      "hip-runtime-amd-asan",
+      "hipblaslt",
+      "rocm-core-asan"
+    ],
+    "components": [
+      {
+        "name": "rocblas-asan",
+        "sha256": "b36acae0e4ef9280e20cd77e72841d63b8e03440488bfd054d297de643984fd1",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocblas-asan/rocblas-asan_4.4.0.60401-83~22.04_amd64.deb",
+        "version": "4.4.0.60401-83"
+      },
+      {
+        "name": "rocblas-asan-rpath",
+        "sha256": "ee96f0d16702f10d2c5939ad20a2fc7c6b58155014f487fadd3944bf208c3a8b",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocblas-asan-rpath6.4.1/rocblas-asan-rpath6.4.1_4.4.0.60401-83~22.04_amd64.deb",
+        "version": "4.4.0.60401-83"
+      }
+    ],
+    "version": "4.4.0.60401-83"
+  },
+  "rocdecode": {
+    "deps": [
+      "rocm-core",
+      "rocm-hip-runtime",
+      "rocprofiler-register"
+    ],
+    "components": [
+      {
+        "name": "rocdecode",
+        "sha256": "d54cb25b1de11baced19c02b2d593ae0170a7ae0899a4618c724b1bfda8c9c26",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocdecode/rocdecode_0.10.0.60401-83~22.04_amd64.deb",
+        "version": "0.10.0.60401-83"
+      },
+      {
+        "name": "rocdecode-dev",
+        "sha256": "84a5b1ca4e4d0e0752c2d0496d78cad98a8b549d9a2828ece21e23c5105d8675",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocdecode-dev/rocdecode-dev_0.10.0.60401-83~22.04_amd64.deb",
+        "version": "0.10.0.60401-83"
+      },
+      {
+        "name": "rocdecode-dev-rpath",
+        "sha256": "f6a877d81662ad92da581a7e3fcd9ed4a81f856f282b8db1c12580f2334c3bfc",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocdecode-dev-rpath6.4.1/rocdecode-dev-rpath6.4.1_0.10.0.60401-83~22.04_amd64.deb",
+        "version": "0.10.0.60401-83"
+      },
+      {
+        "name": "rocdecode-rpath",
+        "sha256": "e8a49ef1e9d3f18ce3cc97ae7a9e2bb59a0980478b675143547b75e25ddb62f4",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocdecode-rpath6.4.1/rocdecode-rpath6.4.1_0.10.0.60401-83~22.04_amd64.deb",
+        "version": "0.10.0.60401-83"
+      }
+    ],
+    "version": "0.10.0.60401-83"
+  },
+  "rocdecode-test": {
+    "deps": [
+      "rocdecode",
+      "rocm-core"
+    ],
+    "components": [
+      {
+        "name": "rocdecode-test",
+        "sha256": "4257b265a66adfca2038114514b24dd48391e090ea167a1c44eb3aeb3cbf2954",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocdecode-test/rocdecode-test_0.10.0.60401-83~22.04_amd64.deb",
+        "version": "0.10.0.60401-83"
+      },
+      {
+        "name": "rocdecode-test-rpath",
+        "sha256": "3ebadf0079995e08720199e887a008c2740b01aafb7105b56ac062ca759029b6",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocdecode-test-rpath6.4.1/rocdecode-test-rpath6.4.1_0.10.0.60401-83~22.04_amd64.deb",
+        "version": "0.10.0.60401-83"
+      }
+    ],
+    "version": "0.10.0.60401-83"
+  },
+  "rocfft": {
+    "deps": [
+      "rocm-core"
+    ],
+    "components": [
+      {
+        "name": "rocfft",
+        "sha256": "0c2ec9e4b492adb6d782db21d6438751d93be4c0ac64a9b8d0dd294a32ca7586",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocfft/rocfft_1.0.32.60401-83~22.04_amd64.deb",
+        "version": "1.0.32.60401-83"
+      },
+      {
+        "name": "rocfft-dev",
+        "sha256": "d0b91fdedc947ca4d023ae8aca3d04471d91ee7ba541e1b2f0bd4fbae59198a2",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocfft-dev/rocfft-dev_1.0.32.60401-83~22.04_amd64.deb",
+        "version": "1.0.32.60401-83"
+      },
+      {
+        "name": "rocfft-dev-rpath",
+        "sha256": "0869b386fee5fb76b7eb20013398d6130b1565a55a3fd3b1e7b5212f4413dda0",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocfft-dev-rpath6.4.1/rocfft-dev-rpath6.4.1_1.0.32.60401-83~22.04_amd64.deb",
+        "version": "1.0.32.60401-83"
+      },
+      {
+        "name": "rocfft-rpath",
+        "sha256": "d122f81cdd499b108b76e412e58184a837a4bc4d9743d1310a5175fe5817341a",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocfft-rpath6.4.1/rocfft-rpath6.4.1_1.0.32.60401-83~22.04_amd64.deb",
+        "version": "1.0.32.60401-83"
+      }
+    ],
+    "version": "1.0.32.60401-83"
+  },
+  "rocfft-asan": {
+    "deps": [
+      "rocm-core-asan"
+    ],
+    "components": [
+      {
+        "name": "rocfft-asan",
+        "sha256": "f733746ade59104f43dcdf9c3c993ab7544c62ee580a847276afe4b9de34df3f",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocfft-asan/rocfft-asan_1.0.32.60401-83~22.04_amd64.deb",
+        "version": "1.0.32.60401-83"
+      },
+      {
+        "name": "rocfft-asan-rpath",
+        "sha256": "f17dfa379752709ea22fdc87f20b27fd885e4eef1af6a43dc885da867f07ecf0",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocfft-asan-rpath6.4.1/rocfft-asan-rpath6.4.1_1.0.32.60401-83~22.04_amd64.deb",
+        "version": "1.0.32.60401-83"
+      }
+    ],
+    "version": "1.0.32.60401-83"
+  },
+  "rocjpeg": {
+    "deps": [
+      "rocm-core",
+      "rocm-hip-runtime",
+      "rocprofiler-register"
+    ],
+    "components": [
+      {
+        "name": "rocjpeg",
+        "sha256": "4b1963e86df3379a8067f5d75e0dc15bb24d050e2c6f47e2f95650264a28b3b5",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocjpeg/rocjpeg_0.8.0.60401-83~22.04_amd64.deb",
+        "version": "0.8.0.60401-83"
+      },
+      {
+        "name": "rocjpeg-dev",
+        "sha256": "ac62e6ac447b65f123fa6849162df75c8ae14d3e9b1462de0dc0524df5abea69",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocjpeg-dev/rocjpeg-dev_0.8.0.60401-83~22.04_amd64.deb",
+        "version": "0.8.0.60401-83"
+      },
+      {
+        "name": "rocjpeg-dev-rpath",
+        "sha256": "4ada2e04ef5e11483d0baf65b6ffdb1f6f35ee191e5c5cd230b14ce10e59c4bf",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocjpeg-dev-rpath6.4.1/rocjpeg-dev-rpath6.4.1_0.8.0.60401-83~22.04_amd64.deb",
+        "version": "0.8.0.60401-83"
+      },
+      {
+        "name": "rocjpeg-rpath",
+        "sha256": "9f9e61e81db6090800970167f7aaa8c019476a5d4ec016731166d005a252ca91",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocjpeg-rpath6.4.1/rocjpeg-rpath6.4.1_0.8.0.60401-83~22.04_amd64.deb",
+        "version": "0.8.0.60401-83"
+      }
+    ],
+    "version": "0.8.0.60401-83"
+  },
+  "rocjpeg-test": {
+    "deps": [
+      "rocjpeg",
+      "rocm-core"
+    ],
+    "components": [
+      {
+        "name": "rocjpeg-test",
+        "sha256": "f64726a30471947bb516bfb627dfd01c6e8416dae0af25e84f9e969351a4b5dd",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocjpeg-test/rocjpeg-test_0.8.0.60401-83~22.04_amd64.deb",
+        "version": "0.8.0.60401-83"
+      },
+      {
+        "name": "rocjpeg-test-rpath",
+        "sha256": "a5909d5f1d3fa43f061f90c9bb4ad47a732b4e31a400fe373d01f5e2f15c61d0",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocjpeg-test-rpath6.4.1/rocjpeg-test-rpath6.4.1_0.8.0.60401-83~22.04_amd64.deb",
+        "version": "0.8.0.60401-83"
+      }
+    ],
+    "version": "0.8.0.60401-83"
+  },
+  "rocm": {
+    "deps": [
+      "amd-smi-lib",
+      "comgr",
+      "hip-dev",
+      "hip-doc",
+      "hip-runtime-amd",
+      "hip-samples",
+      "hipcc",
+      "hipify-clang",
+      "hsa-amd-aqlprofile",
+      "hsa-rocr",
+      "migraphx",
+      "mivisionx",
+      "openmp-extras-dev",
+      "openmp-extras-runtime",
+      "rocm-cmake",
+      "rocm-core",
+      "rocm-dbgapi",
+      "rocm-debug-agent",
+      "rocm-developer-tools",
+      "rocm-device-libs",
+      "rocm-gdb",
+      "rocm-llvm",
+      "rocm-ml-sdk",
+      "rocm-opencl",
+      "rocm-opencl-sdk",
+      "rocm-openmp-sdk",
+      "rocm-smi-lib",
+      "rocm-utils",
+      "rocprofiler",
+      "rocprofiler-plugins",
+      "rocprofiler-register",
+      "rocprofiler-sdk",
+      "rocprofiler-sdk-roctx",
+      "roctracer",
+      "rpp"
+    ],
+    "components": [
+      {
+        "name": "rocm",
+        "sha256": "79e33d1eb05122e8d856780f199ea87220439e8ce3836df7027e70ff813fe6ee",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocm/rocm_6.4.1.60401-83~22.04_amd64.deb",
+        "version": "6.4.1.60401-83"
+      },
+      {
+        "name": "rocm-dev",
+        "sha256": "b06fb5e5c26109a73a6aef1f340909a1730781315579892d55faca92e9fcb9cc",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocm-dev/rocm-dev_6.4.1.60401-83~22.04_amd64.deb",
+        "version": "6.4.1.60401-83"
+      },
+      {
+        "name": "rocm-dev-rpath",
+        "sha256": "3848dcaf143970e8b4faa8cab190bd45dd3e3a88b0fff50a7919cb362d46035f",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocm-dev-rpath6.4.1/rocm-dev-rpath6.4.1_6.4.1.60401-83~22.04_amd64.deb",
+        "version": "6.4.1.60401-83"
+      },
+      {
+        "name": "rocm-rpath",
+        "sha256": "a1fcc64b26a6738652d35b9f87dbab42c8bdae3dcabaf59a577f0182b66a327b",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocm-rpath6.4.1/rocm-rpath6.4.1_6.4.1.60401-83~22.04_amd64.deb",
+        "version": "6.4.1.60401-83"
+      }
+    ],
+    "version": "6.4.1.60401-83"
+  },
+  "rocm-asan": {
+    "deps": [
+      "migraphx-asan",
+      "mivisionx-asan",
+      "rocm",
+      "rocm-core-asan",
+      "rocm-developer-tools-asan",
+      "rocm-language-runtime-asan",
+      "rocm-ml-libraries-asan",
+      "rocm-opencl-runtime-asan"
+    ],
+    "components": [
+      {
+        "name": "rocm-asan",
+        "sha256": "3ac2099cebf5aa2539d20b5f3ef339878ac1afe088943d3c864759fcd58a8643",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocm-asan/rocm-asan_6.4.1.60401-83~22.04_amd64.deb",
+        "version": "6.4.1.60401-83"
+      },
+      {
+        "name": "rocm-asan-rpath",
+        "sha256": "703e7c572405e73ea2fd469abc1ca6604972c5d27d6e1a9192a04de36c01f28f",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocm-asan-rpath6.4.1/rocm-asan-rpath6.4.1_6.4.1.60401-83~22.04_amd64.deb",
+        "version": "6.4.1.60401-83"
+      }
+    ],
+    "version": "6.4.1.60401-83"
+  },
+  "rocm-bandwidth-test": {
+    "deps": [
+      "hsa-rocr"
+    ],
+    "components": [
+      {
+        "name": "rocm-bandwidth-test",
+        "sha256": "65facc0681a82c7e4bf35cbc894f918e9949ca1393168fcb4d4f862ab1df5f5d",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocm-bandwidth-test/rocm-bandwidth-test_1.4.0.60401-83~22.04_amd64.deb",
+        "version": "1.4.0.60401-83"
+      },
+      {
+        "name": "rocm-bandwidth-test-rpath",
+        "sha256": "2607bf465cf17b893bcb1ea297c2f1df89c01521364d475b924c3810f7850caa",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocm-bandwidth-test-rpath6.4.1/rocm-bandwidth-test-rpath6.4.1_1.4.0.60401-83~22.04_amd64.deb",
+        "version": "1.4.0.60401-83"
+      }
+    ],
+    "version": "1.4.0.60401-83"
+  },
+  "rocm-cmake": {
+    "deps": [
+      "rocm-core"
+    ],
+    "components": [
+      {
+        "name": "rocm-cmake",
+        "sha256": "8df81128faf1f4f3ba21a62e6f3433b6ac27e51c2070f243e5b6ed30941de174",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocm-cmake/rocm-cmake_0.14.0.60401-83~22.04_amd64.deb",
+        "version": "0.14.0.60401-83"
+      },
+      {
+        "name": "rocm-cmake-rpath",
+        "sha256": "164f46e1edad1eabd32c08e0e4d1c2827a9b6b455763c7c641a31d5cca1abd53",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocm-cmake-rpath6.4.1/rocm-cmake-rpath6.4.1_0.14.0.60401-83~22.04_amd64.deb",
+        "version": "0.14.0.60401-83"
+      }
+    ],
+    "version": "0.14.0.60401-83"
+  },
+  "rocm-core": {
+    "deps": [],
+    "components": [
+      {
+        "name": "rocm-core",
+        "sha256": "221236cf665597beea8c6faeffa1569fc35a6ad4cab89d5c8931974120b42621",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocm-core/rocm-core_6.4.1.60401-83~22.04_amd64.deb",
+        "version": "6.4.1.60401-83"
+      },
+      {
+        "name": "rocm-core-rpath",
+        "sha256": "833792c9efba7d12568a8f951a8ae5302ddd65067f411df059d7e2e2fd462397",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocm-core-rpath6.4.1/rocm-core-rpath6.4.1_6.4.1.60401-83~22.04_amd64.deb",
+        "version": "6.4.1.60401-83"
+      }
+    ],
+    "version": "6.4.1.60401-83"
+  },
+  "rocm-core-asan": {
+    "deps": [
+      "rocm-core"
+    ],
+    "components": [
+      {
+        "name": "rocm-core-asan",
+        "sha256": "8de132cc26b33b8b8c9211cd4e41f40a5c9d0eaaa17ced1b1226dc50123315aa",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocm-core-asan/rocm-core-asan_6.4.1.60401-83~22.04_amd64.deb",
+        "version": "6.4.1.60401-83"
+      },
+      {
+        "name": "rocm-core-asan-rpath",
+        "sha256": "7573a7c0750ed4b29df49e44368825b365e817e5c598f01b8bffa433988e606a",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocm-core-asan-rpath6.4.1/rocm-core-asan-rpath6.4.1_6.4.1.60401-83~22.04_amd64.deb",
+        "version": "6.4.1.60401-83"
+      }
+    ],
+    "version": "6.4.1.60401-83"
+  },
+  "rocm-dbgapi": {
+    "deps": [
+      "rocm-core"
+    ],
+    "components": [
+      {
+        "name": "rocm-dbgapi",
+        "sha256": "a80130dd6332f86d891d3a345a27a4a9489a632bcda232dcb1c64878e5c0d2d7",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocm-dbgapi/rocm-dbgapi_0.77.2.60401-83~22.04_amd64.deb",
+        "version": "0.77.2.60401-83"
+      },
+      {
+        "name": "rocm-dbgapi-rpath",
+        "sha256": "c3c80e02f4980ee7b0560445c3717e9cb6de5bba7538078f50af856a522e772f",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocm-dbgapi-rpath6.4.1/rocm-dbgapi-rpath6.4.1_0.77.2.60401-83~22.04_amd64.deb",
+        "version": "0.77.2.60401-83"
+      }
+    ],
+    "version": "0.77.2.60401-83"
+  },
+  "rocm-dbgapi-asan": {
+    "deps": [
+      "rocm-core-asan"
+    ],
+    "components": [
+      {
+        "name": "rocm-dbgapi-asan",
+        "sha256": "5e67a3244b5b91eb17d864676c600c46e18224087449ea9591892e1b0955e19d",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocm-dbgapi-asan/rocm-dbgapi-asan_0.77.2.60401-83~22.04_amd64.deb",
+        "version": "0.77.2.60401-83"
+      },
+      {
+        "name": "rocm-dbgapi-asan-rpath",
+        "sha256": "a00be2a98787fc8038f6830f27c1ac305525e94cac7b3802853a5478fb56081b",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocm-dbgapi-asan-rpath6.4.1/rocm-dbgapi-asan-rpath6.4.1_0.77.2.60401-83~22.04_amd64.deb",
+        "version": "0.77.2.60401-83"
+      }
+    ],
+    "version": "0.77.2.60401-83"
+  },
+  "rocm-debug-agent": {
+    "deps": [
+      "rocm-core",
+      "rocm-dbgapi"
+    ],
+    "components": [
+      {
+        "name": "rocm-debug-agent",
+        "sha256": "d180451bc02625a2e62c11fec72c9ca684ba47841ea05347e4d35cb880938395",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocm-debug-agent/rocm-debug-agent_2.0.4.60401-83~22.04_amd64.deb",
+        "version": "2.0.4.60401-83"
+      },
+      {
+        "name": "rocm-debug-agent-rpath",
+        "sha256": "25a6d645f2ed1f62f8c7a867941f98a226c21df89ac57bd57ccb60c0b90aa0cc",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocm-debug-agent-rpath6.4.1/rocm-debug-agent-rpath6.4.1_2.0.4.60401-83~22.04_amd64.deb",
+        "version": "2.0.4.60401-83"
+      }
+    ],
+    "version": "2.0.4.60401-83"
+  },
+  "rocm-debug-agent-asan": {
+    "deps": [
+      "rocm-core-asan",
+      "rocm-dbgapi-asan"
+    ],
+    "components": [
+      {
+        "name": "rocm-debug-agent-asan",
+        "sha256": "2ca4effa9b245d8baf1c0edf1a08a719139fcdf763aff74b1b71a5fa81c61b14",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocm-debug-agent-asan/rocm-debug-agent-asan_2.0.4.60401-83~22.04_amd64.deb",
+        "version": "2.0.4.60401-83"
+      },
+      {
+        "name": "rocm-debug-agent-asan-rpath",
+        "sha256": "e85ea66307bb3ecf5de88b021b396f1373c554b0283bb575d1e7ba8a0c547b71",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocm-debug-agent-asan-rpath6.4.1/rocm-debug-agent-asan-rpath6.4.1_2.0.4.60401-83~22.04_amd64.deb",
+        "version": "2.0.4.60401-83"
+      }
+    ],
+    "version": "2.0.4.60401-83"
+  },
+  "rocm-dev-asan": {
+    "deps": [
+      "amd-smi-lib-asan",
+      "comgr-asan",
+      "hip-runtime-amd-asan",
+      "hsa-amd-aqlprofile-asan",
+      "hsa-rocr-asan",
+      "openmp-extras-asan",
+      "rocm",
+      "rocm-core-asan",
+      "rocm-dbgapi-asan",
+      "rocm-debug-agent-asan",
+      "rocm-opencl-asan",
+      "rocm-smi-lib-asan",
+      "rocprofiler-asan",
+      "roctracer-asan"
+    ],
+    "components": [
+      {
+        "name": "rocm-dev-asan",
+        "sha256": "c945960cf65ecbf497a2fce14a8e52e1971703fa1a45933470b8de840544490e",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocm-dev-asan/rocm-dev-asan_6.4.1.60401-83~22.04_amd64.deb",
+        "version": "6.4.1.60401-83"
+      },
+      {
+        "name": "rocm-dev-asan-rpath",
+        "sha256": "034dccbdcacc07d5c299ec26853ab7cbb19ee007d0ecf0765dea205bbd69f4a6",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocm-dev-asan-rpath6.4.1/rocm-dev-asan-rpath6.4.1_6.4.1.60401-83~22.04_amd64.deb",
+        "version": "6.4.1.60401-83"
+      }
+    ],
+    "version": "6.4.1.60401-83"
+  },
+  "rocm-developer-tools": {
+    "deps": [
+      "amd-smi-lib",
+      "hsa-amd-aqlprofile",
+      "rocm-core",
+      "rocm-dbgapi",
+      "rocm-debug-agent",
+      "rocm-gdb",
+      "rocm-language-runtime",
+      "rocm-smi-lib",
+      "rocprofiler",
+      "rocprofiler-compute",
+      "rocprofiler-plugins",
+      "rocprofiler-register",
+      "rocprofiler-sdk",
+      "rocprofiler-sdk-roctx",
+      "rocprofiler-systems",
+      "roctracer"
+    ],
+    "components": [
+      {
+        "name": "rocm-developer-tools",
+        "sha256": "dc34bb9d5b5b9ba0056d680389b029ea7210f9fb64a036d7afb55337b5bd76fb",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocm-developer-tools/rocm-developer-tools_6.4.1.60401-83~22.04_amd64.deb",
+        "version": "6.4.1.60401-83"
+      },
+      {
+        "name": "rocm-developer-tools-rpath",
+        "sha256": "1574067a6df18e556ed1bf07b57cf2cdd2a40d92e15382f439b2725084f04fc1",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocm-developer-tools-rpath6.4.1/rocm-developer-tools-rpath6.4.1_6.4.1.60401-83~22.04_amd64.deb",
+        "version": "6.4.1.60401-83"
+      }
+    ],
+    "version": "6.4.1.60401-83"
+  },
+  "rocm-developer-tools-asan": {
+    "deps": [
+      "amd-smi-lib-asan",
+      "hsa-amd-aqlprofile-asan",
+      "rocm-core-asan",
+      "rocm-dbgapi-asan",
+      "rocm-debug-agent-asan",
+      "rocm-developer-tools",
+      "rocm-language-runtime-asan",
+      "rocm-smi-lib-asan",
+      "rocprofiler-asan",
+      "roctracer-asan"
+    ],
+    "components": [
+      {
+        "name": "rocm-developer-tools-asan",
+        "sha256": "c5a6020665aacbfcd3ba1331d790b9a0966eaed41900207cd0bf78ec77e6b6ff",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocm-developer-tools-asan/rocm-developer-tools-asan_6.4.1.60401-83~22.04_amd64.deb",
+        "version": "6.4.1.60401-83"
+      },
+      {
+        "name": "rocm-developer-tools-asan-rpath",
+        "sha256": "88acfe48a1a8760a195877099efee747a2cf4cc0930f5aec0ad0eca077e20dc3",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocm-developer-tools-asan-rpath6.4.1/rocm-developer-tools-asan-rpath6.4.1_6.4.1.60401-83~22.04_amd64.deb",
+        "version": "6.4.1.60401-83"
+      }
+    ],
+    "version": "6.4.1.60401-83"
+  },
+  "rocm-device-libs": {
+    "deps": [
+      "rocm-core"
+    ],
+    "components": [
+      {
+        "name": "rocm-device-libs",
+        "sha256": "080c1cbcade5a22cea800256eccc993116ae05b60f11785fda76beffe68c38bf",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocm-device-libs/rocm-device-libs_1.0.0.60401-83~22.04_amd64.deb",
+        "version": "1.0.0.60401-83"
+      },
+      {
+        "name": "rocm-device-libs-rpath",
+        "sha256": "fcd8f066242562a6e789a5f126dc0296a08a74ef6ab0378d24895613aed5a906",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocm-device-libs-rpath6.4.1/rocm-device-libs-rpath6.4.1_1.0.0.60401-83~22.04_amd64.deb",
+        "version": "1.0.0.60401-83"
+      }
+    ],
+    "version": "1.0.0.60401-83"
+  },
+  "rocm-gdb": {
+    "deps": [
+      "rocm-core",
+      "rocm-dbgapi"
+    ],
+    "components": [
+      {
+        "name": "rocm-gdb",
+        "sha256": "5a02416d962278d7fd83e285894d53ace5e4cb4430982e8bf79ffa17aaabab83",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocm-gdb/rocm-gdb_15.2.60401-83~22.04_amd64.deb",
+        "version": "15.2.60401-83"
+      },
+      {
+        "name": "rocm-gdb-rpath",
+        "sha256": "efe979a50e404d00b4687731893391c3243bdc4df3732ec4b48a1f9dbec62195",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocm-gdb-rpath6.4.1/rocm-gdb-rpath6.4.1_15.2.60401-83~22.04_amd64.deb",
+        "version": "15.2.60401-83"
+      }
+    ],
+    "version": "15.2.60401-83"
+  },
+  "rocm-hip-libraries": {
+    "deps": [
+      "hipblas",
+      "hipblaslt",
+      "hipfft",
+      "hiprand",
+      "hipsolver",
+      "hipsparse",
+      "hipsparselt",
+      "hiptensor",
+      "rccl",
+      "rocalution",
+      "rocblas",
+      "rocfft",
+      "rocm-core",
+      "rocm-hip-runtime",
+      "rocm-smi-lib",
+      "rocrand",
+      "rocsolver",
+      "rocsparse"
+    ],
+    "components": [
+      {
+        "name": "rocm-hip-libraries",
+        "sha256": "b902aa964db9d9a0ae6b55f5ab4c62f0eba180e114971c5fec82e9cc6ef30fde",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocm-hip-libraries/rocm-hip-libraries_6.4.1.60401-83~22.04_amd64.deb",
+        "version": "6.4.1.60401-83"
+      },
+      {
+        "name": "rocm-hip-libraries-rpath",
+        "sha256": "a2a1beb9ee833667f336ac8c6c1e95a97fa8302150545445321558beee7e2055",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocm-hip-libraries-rpath6.4.1/rocm-hip-libraries-rpath6.4.1_6.4.1.60401-83~22.04_amd64.deb",
+        "version": "6.4.1.60401-83"
+      }
+    ],
+    "version": "6.4.1.60401-83"
+  },
+  "rocm-hip-libraries-asan": {
+    "deps": [
+      "hipblas-asan",
+      "hipblaslt-asan",
+      "hipfft-asan",
+      "hiprand-asan",
+      "hipsolver-asan",
+      "hipsparse-asan",
+      "hipsparselt-asan",
+      "hiptensor-asan",
+      "rccl-asan",
+      "rocalution-asan",
+      "rocblas-asan",
+      "rocfft-asan",
+      "rocm-core-asan",
+      "rocm-hip-libraries",
+      "rocm-hip-runtime-asan",
+      "rocm-smi-lib-asan",
+      "rocrand-asan",
+      "rocsolver-asan",
+      "rocsparse-asan"
+    ],
+    "components": [
+      {
+        "name": "rocm-hip-libraries-asan",
+        "sha256": "977b02cb3b425116511f3d0fc2e85fb7e6dd011e6f4c7f258d279302ecbce940",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocm-hip-libraries-asan/rocm-hip-libraries-asan_6.4.1.60401-83~22.04_amd64.deb",
+        "version": "6.4.1.60401-83"
+      },
+      {
+        "name": "rocm-hip-libraries-asan-rpath",
+        "sha256": "b14f5664243bd8616d71c2ffd9d5a48923f12588896c4eba6d8e1a288518afed",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocm-hip-libraries-asan-rpath6.4.1/rocm-hip-libraries-asan-rpath6.4.1_6.4.1.60401-83~22.04_amd64.deb",
+        "version": "6.4.1.60401-83"
+      }
+    ],
+    "version": "6.4.1.60401-83"
+  },
+  "rocm-hip-runtime": {
+    "deps": [
+      "hip-dev",
+      "hip-doc",
+      "hip-runtime-amd",
+      "hip-samples",
+      "hipcc",
+      "hipify-clang",
+      "hsa-rocr",
+      "rocm-cmake",
+      "rocm-core",
+      "rocm-device-libs",
+      "rocm-language-runtime",
+      "rocm-llvm",
+      "rocminfo"
+    ],
+    "components": [
+      {
+        "name": "rocm-hip-runtime",
+        "sha256": "b99805af43f0e3280fcf8d4cf21c5870a12b67a66910da00ea6ca745d4e19282",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocm-hip-runtime/rocm-hip-runtime_6.4.1.60401-83~22.04_amd64.deb",
+        "version": "6.4.1.60401-83"
+      },
+      {
+        "name": "rocm-hip-runtime-dev",
+        "sha256": "f9996ad43c175bf6afdd166b0f33cc044bf4fd324dcb9ef78f77f5b71ec9bdfc",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocm-hip-runtime-dev/rocm-hip-runtime-dev_6.4.1.60401-83~22.04_amd64.deb",
+        "version": "6.4.1.60401-83"
+      },
+      {
+        "name": "rocm-hip-runtime-dev-rpath",
+        "sha256": "d00e528ac2d4ef1c2e55412f488266232a75cc6df5e2404749b608369cb7983b",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocm-hip-runtime-dev-rpath6.4.1/rocm-hip-runtime-dev-rpath6.4.1_6.4.1.60401-83~22.04_amd64.deb",
+        "version": "6.4.1.60401-83"
+      },
+      {
+        "name": "rocm-hip-runtime-rpath",
+        "sha256": "193c3eb6bb04226d6cb21720c91d8f174026e2a544e3d9195a212195d79eea70",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocm-hip-runtime-rpath6.4.1/rocm-hip-runtime-rpath6.4.1_6.4.1.60401-83~22.04_amd64.deb",
+        "version": "6.4.1.60401-83"
+      }
+    ],
+    "version": "6.4.1.60401-83"
+  },
+  "rocm-hip-runtime-asan": {
+    "deps": [
+      "hip-runtime-amd-asan",
+      "rocm-core-asan",
+      "rocm-hip-runtime",
+      "rocm-language-runtime-asan"
+    ],
+    "components": [
+      {
+        "name": "rocm-hip-runtime-asan",
+        "sha256": "6f9a43a93dfb342da6f55f6c2bf47d9e95b901ea07904a9393d9a51abd15bb8f",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocm-hip-runtime-asan/rocm-hip-runtime-asan_6.4.1.60401-83~22.04_amd64.deb",
+        "version": "6.4.1.60401-83"
+      },
+      {
+        "name": "rocm-hip-runtime-asan-rpath",
+        "sha256": "1f9ea1f5b4233224c3d6ef679336c18fd2be41629b1d7b0192721b95d977669c",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocm-hip-runtime-asan-rpath6.4.1/rocm-hip-runtime-asan-rpath6.4.1_6.4.1.60401-83~22.04_amd64.deb",
+        "version": "6.4.1.60401-83"
+      }
+    ],
+    "version": "6.4.1.60401-83"
+  },
+  "rocm-hip-sdk": {
+    "deps": [
+      "composablekernel-dev",
+      "hipblas",
+      "hipblas-common-dev",
+      "hipblaslt",
+      "hipcub-dev",
+      "hipfft",
+      "hipfort-dev",
+      "hiprand",
+      "hipsolver",
+      "hipsparse",
+      "hipsparselt",
+      "hiptensor",
+      "rccl",
+      "rocalution",
+      "rocblas",
+      "rocfft",
+      "rocm-core",
+      "rocm-hip-libraries",
+      "rocm-hip-runtime",
+      "rocprim-dev",
+      "rocrand",
+      "rocsolver",
+      "rocsparse",
+      "rocthrust-dev",
+      "rocwmma-dev"
+    ],
+    "components": [
+      {
+        "name": "rocm-hip-sdk",
+        "sha256": "0eeec9452c8f0f072c459b2b9638e7c9e7129d5fab73e1b2a734992e1eea8b5a",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocm-hip-sdk/rocm-hip-sdk_6.4.1.60401-83~22.04_amd64.deb",
+        "version": "6.4.1.60401-83"
+      },
+      {
+        "name": "rocm-hip-sdk-rpath",
+        "sha256": "991a920d20f357f13ad92e1bcd8d5d83fdf7175af287cfb76462a628cd89e98c",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocm-hip-sdk-rpath6.4.1/rocm-hip-sdk-rpath6.4.1_6.4.1.60401-83~22.04_amd64.deb",
+        "version": "6.4.1.60401-83"
+      }
+    ],
+    "version": "6.4.1.60401-83"
+  },
+  "rocm-language-runtime": {
+    "deps": [
+      "comgr",
+      "hsa-rocr",
+      "openmp-extras-runtime",
+      "rocm-core"
+    ],
+    "components": [
+      {
+        "name": "rocm-language-runtime",
+        "sha256": "cda08716b516c872c39e7b2a160118f0c0c7ae0ef7f9ffd246af8b6d231d33ff",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocm-language-runtime/rocm-language-runtime_6.4.1.60401-83~22.04_amd64.deb",
+        "version": "6.4.1.60401-83"
+      },
+      {
+        "name": "rocm-language-runtime-rpath",
+        "sha256": "bc77fc08224d0b8f4469dcdfc8698111328161d0284c0fa71a2fc80bde11cfc4",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocm-language-runtime-rpath6.4.1/rocm-language-runtime-rpath6.4.1_6.4.1.60401-83~22.04_amd64.deb",
+        "version": "6.4.1.60401-83"
+      }
+    ],
+    "version": "6.4.1.60401-83"
+  },
+  "rocm-language-runtime-asan": {
+    "deps": [
+      "comgr-asan",
+      "hsa-rocr-asan",
+      "openmp-extras-asan",
+      "rocm-core-asan",
+      "rocm-language-runtime"
+    ],
+    "components": [
+      {
+        "name": "rocm-language-runtime-asan",
+        "sha256": "dd2af20f71a7d536c42d2a0c2c37e8ec8db934e8fc541a44c471d07d313c5112",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocm-language-runtime-asan/rocm-language-runtime-asan_6.4.1.60401-83~22.04_amd64.deb",
+        "version": "6.4.1.60401-83"
+      },
+      {
+        "name": "rocm-language-runtime-asan-rpath",
+        "sha256": "74bb5a72294d1e860c89bf3cf40e90e49916f32d2b12cb4db2b6a3701a3de96b",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocm-language-runtime-asan-rpath6.4.1/rocm-language-runtime-asan-rpath6.4.1_6.4.1.60401-83~22.04_amd64.deb",
+        "version": "6.4.1.60401-83"
+      }
+    ],
+    "version": "6.4.1.60401-83"
+  },
+  "rocm-libs": {
+    "deps": [
+      "composablekernel-dev",
+      "half",
+      "hipblas",
+      "hipblas-common-dev",
+      "hipblaslt",
+      "hipcub-dev",
+      "hipfft",
+      "hiprand",
+      "hipsolver",
+      "hipsparse",
+      "hipsparselt",
+      "hiptensor",
+      "miopen-hip",
+      "rccl",
+      "rocalution",
+      "rocblas",
+      "rocfft",
+      "rocm-core",
+      "rocprim-dev",
+      "rocrand",
+      "rocsolver",
+      "rocsparse",
+      "rocthrust-dev",
+      "rocwmma-dev"
+    ],
+    "components": [
+      {
+        "name": "rocm-libs",
+        "sha256": "af2aca54d073efc7fcd89ad7d38cba0550d61a014b3dcdc6e54572ce590481c3",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocm-libs/rocm-libs_6.4.1.60401-83~22.04_amd64.deb",
+        "version": "6.4.1.60401-83"
+      },
+      {
+        "name": "rocm-libs-rpath",
+        "sha256": "25557c38c064ea018c648fa31a3b23ec6070e50401ae213067f9ee902fed38b4",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocm-libs-rpath6.4.1/rocm-libs-rpath6.4.1_6.4.1.60401-83~22.04_amd64.deb",
+        "version": "6.4.1.60401-83"
+      }
+    ],
+    "version": "6.4.1.60401-83"
+  },
+  "rocm-llvm": {
+    "deps": [
+      "rocm-core"
+    ],
+    "components": [
+      {
+        "name": "rocm-llvm",
+        "sha256": "1dec6406f10c8f2b8fa2baefd1b7a8af844908d7da1493fca407ea696f5b0877",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocm-llvm/rocm-llvm_19.0.0.25184.60401-83~22.04_amd64.deb",
+        "version": "19.0.0.25184.60401-83"
+      },
+      {
+        "name": "rocm-llvm-dev",
+        "sha256": "b36fe5c9fb769a2133f25c3ecd5288961ee3bfdd0aef8d5714004b18d9744aef",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocm-llvm-dev/rocm-llvm-dev_19.0.0.25184.60401-83~22.04_amd64.deb",
+        "version": "19.0.0.25184.60401-83"
+      },
+      {
+        "name": "rocm-llvm-dev-rpath",
+        "sha256": "685f518f4e78a740fc719621c5fd46e564a302bf25e7d297412ca443db1b1fec",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocm-llvm-dev-rpath6.4.1/rocm-llvm-dev-rpath6.4.1_19.0.0.25184.60401-83~22.04_amd64.deb",
+        "version": "19.0.0.25184.60401-83"
+      },
+      {
+        "name": "rocm-llvm-rpath",
+        "sha256": "c66a957d161a60dc4c9c188ccbe4b87cfc99a74b331d018b70de8530940af873",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocm-llvm-rpath6.4.1/rocm-llvm-rpath6.4.1_19.0.0.25184.60401-83~22.04_amd64.deb",
+        "version": "19.0.0.25184.60401-83"
+      }
+    ],
+    "version": "19.0.0.25184.60401-83"
+  },
+  "rocm-llvm-docs": {
+    "deps": [
+      "rocm-core"
+    ],
+    "components": [
+      {
+        "name": "rocm-llvm-docs",
+        "sha256": "e35b0e797e662acaa2ef9ca11ab2758bf1a124ec8187a1b23bd41d401c533568",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocm-llvm-docs/rocm-llvm-docs_19.0.0.25184.60401-83~22.04_amd64.deb",
+        "version": "19.0.0.25184.60401-83"
+      },
+      {
+        "name": "rocm-llvm-docs-rpath",
+        "sha256": "8432e591f9a056f41416b3f103db9d61e5e60b9ce75f515ab22be3fddac3d407",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocm-llvm-docs-rpath6.4.1/rocm-llvm-docs-rpath6.4.1_19.0.0.25184.60401-83~22.04_amd64.deb",
+        "version": "19.0.0.25184.60401-83"
+      }
+    ],
+    "version": "19.0.0.25184.60401-83"
+  },
+  "rocm-ml-libraries": {
+    "deps": [
+      "half",
+      "miopen-hip",
+      "rocm-core",
+      "rocm-hip-libraries",
+      "rocm-llvm"
+    ],
+    "components": [
+      {
+        "name": "rocm-ml-libraries",
+        "sha256": "63f7242b83f58d827a0fcf8db45c88195a01bc669b43d5a20e95295fe064a303",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocm-ml-libraries/rocm-ml-libraries_6.4.1.60401-83~22.04_amd64.deb",
+        "version": "6.4.1.60401-83"
+      },
+      {
+        "name": "rocm-ml-libraries-rpath",
+        "sha256": "13a7b0dacdb999cd5ebf4f23ef6a88666ef5fa0cab1eecc292a09cb4a3562cd8",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocm-ml-libraries-rpath6.4.1/rocm-ml-libraries-rpath6.4.1_6.4.1.60401-83~22.04_amd64.deb",
+        "version": "6.4.1.60401-83"
+      }
+    ],
+    "version": "6.4.1.60401-83"
+  },
+  "rocm-ml-libraries-asan": {
+    "deps": [
+      "miopen-hip-asan",
+      "rocm-core-asan",
+      "rocm-hip-libraries-asan",
+      "rocm-ml-libraries"
+    ],
+    "components": [
+      {
+        "name": "rocm-ml-libraries-asan",
+        "sha256": "a4b017a05fbf1cd559908a036c33852c4a1aec95ad6592d0ebf407d3101bd484",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocm-ml-libraries-asan/rocm-ml-libraries-asan_6.4.1.60401-83~22.04_amd64.deb",
+        "version": "6.4.1.60401-83"
+      },
+      {
+        "name": "rocm-ml-libraries-asan-rpath",
+        "sha256": "2b99fcd8409fc727d0db1628cadebff6e4de10597c2179f52654108c624f2ada",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocm-ml-libraries-asan-rpath6.4.1/rocm-ml-libraries-asan-rpath6.4.1_6.4.1.60401-83~22.04_amd64.deb",
+        "version": "6.4.1.60401-83"
+      }
+    ],
+    "version": "6.4.1.60401-83"
+  },
+  "rocm-ml-sdk": {
+    "deps": [
+      "miopen-hip",
+      "rocm-core",
+      "rocm-hip-sdk",
+      "rocm-ml-libraries"
+    ],
+    "components": [
+      {
+        "name": "rocm-ml-sdk",
+        "sha256": "22e0b280d40b364bdecad871eead3bbc6a7a5cee680994be93091760ac34a9b3",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocm-ml-sdk/rocm-ml-sdk_6.4.1.60401-83~22.04_amd64.deb",
+        "version": "6.4.1.60401-83"
+      },
+      {
+        "name": "rocm-ml-sdk-rpath",
+        "sha256": "5a3f1dfa011f0a983c3a9e559f88c2ed0da3852fff7c165f10de0132eaf2586e",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocm-ml-sdk-rpath6.4.1/rocm-ml-sdk-rpath6.4.1_6.4.1.60401-83~22.04_amd64.deb",
+        "version": "6.4.1.60401-83"
+      }
+    ],
+    "version": "6.4.1.60401-83"
+  },
+  "rocm-ml-sdk-asan": {
+    "deps": [
+      "rocm-core-asan",
+      "rocm-ml-libraries-asan",
+      "rocm-ml-sdk"
+    ],
+    "components": [
+      {
+        "name": "rocm-ml-sdk-asan",
+        "sha256": "e47e29f5c57f81f1714e8223c4791e52b88ebe9b73265dee2b18665eba96f5a4",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocm-ml-sdk-asan/rocm-ml-sdk-asan_6.4.1.60401-83~22.04_amd64.deb",
+        "version": "6.4.1.60401-83"
+      },
+      {
+        "name": "rocm-ml-sdk-asan-rpath",
+        "sha256": "20570ca76c60ed8cfe34817fcd13db10bd65b4f224eaf9b8948a9e8950a99e73",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocm-ml-sdk-asan-rpath6.4.1/rocm-ml-sdk-asan-rpath6.4.1_6.4.1.60401-83~22.04_amd64.deb",
+        "version": "6.4.1.60401-83"
+      }
+    ],
+    "version": "6.4.1.60401-83"
+  },
+  "rocm-ocltst": {
+    "deps": [],
+    "components": [
+      {
+        "name": "rocm-ocltst",
+        "sha256": "4306b61f09372c5afd39398a7a1355309065680ae03e65943b23e91c62d94168",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocm-ocltst/rocm-ocltst_2.0.0.60401-83~22.04_amd64.deb",
+        "version": "2.0.0.60401-83"
+      },
+      {
+        "name": "rocm-ocltst-rpath",
+        "sha256": "347159218bef0b6bc0cee15e19050c576905547b311c6ba205db1a6c1cb711fb",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocm-ocltst-rpath6.4.1/rocm-ocltst-rpath6.4.1_2.0.0.60401-83~22.04_amd64.deb",
+        "version": "2.0.0.60401-83"
+      }
+    ],
+    "version": "2.0.0.60401-83"
+  },
+  "rocm-opencl": {
+    "deps": [
+      "comgr",
+      "hsa-rocr",
+      "rocm-core"
+    ],
+    "components": [
+      {
+        "name": "rocm-opencl",
+        "sha256": "4ebe784a380f990c9e1956412feee70ae964a476dfc8767aa678cfd651714234",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocm-opencl/rocm-opencl_2.0.0.60401-83~22.04_amd64.deb",
+        "version": "2.0.0.60401-83"
+      },
+      {
+        "name": "rocm-opencl-dev",
+        "sha256": "3ec802a44dc7a3e5831b1ac169f4767febf94729c61b81a8f30cff81aea38287",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocm-opencl-dev/rocm-opencl-dev_2.0.0.60401-83~22.04_amd64.deb",
+        "version": "2.0.0.60401-83"
+      },
+      {
+        "name": "rocm-opencl-dev-rpath",
+        "sha256": "68e229cd5bef25d96e00064cf9d064c2fa41dd47bceec81f3f5e2b95072b053b",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocm-opencl-dev-rpath6.4.1/rocm-opencl-dev-rpath6.4.1_2.0.0.60401-83~22.04_amd64.deb",
+        "version": "2.0.0.60401-83"
+      },
+      {
+        "name": "rocm-opencl-rpath",
+        "sha256": "2dd3e40358f1b92d4f9b9d91bbe769e02cd887035ddd44bdc6240efd87ea77e5",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocm-opencl-rpath6.4.1/rocm-opencl-rpath6.4.1_2.0.0.60401-83~22.04_amd64.deb",
+        "version": "2.0.0.60401-83"
+      }
+    ],
+    "version": "2.0.0.60401-83"
+  },
+  "rocm-opencl-asan": {
+    "deps": [
+      "comgr-asan",
+      "hsa-rocr-asan",
+      "rocm-core-asan"
+    ],
+    "components": [
+      {
+        "name": "rocm-opencl-asan",
+        "sha256": "9d2e7a67c7f314bda4bb444787993e3e9bac29d0612f0289b48302de610e2cab",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocm-opencl-asan/rocm-opencl-asan_2.0.0.60401-83~22.04_amd64.deb",
+        "version": "2.0.0.60401-83"
+      },
+      {
+        "name": "rocm-opencl-asan-rpath",
+        "sha256": "56859466872e6b32538fc5881c29c3645f19f5196bba1cd359d40e97a7975d3e",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocm-opencl-asan-rpath6.4.1/rocm-opencl-asan-rpath6.4.1_2.0.0.60401-83~22.04_amd64.deb",
+        "version": "2.0.0.60401-83"
+      }
+    ],
+    "version": "2.0.0.60401-83"
+  },
+  "rocm-opencl-runtime": {
+    "deps": [
+      "rocm-core",
+      "rocm-language-runtime",
+      "rocm-opencl"
+    ],
+    "components": [
+      {
+        "name": "rocm-opencl-runtime",
+        "sha256": "70665be8bad9a28d931f45f4acdb244a01094dd47d7be07c51ee3ed76869655c",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocm-opencl-runtime/rocm-opencl-runtime_6.4.1.60401-83~22.04_amd64.deb",
+        "version": "6.4.1.60401-83"
+      },
+      {
+        "name": "rocm-opencl-runtime-rpath",
+        "sha256": "c290be227df4765baae733c7de8716b0ae14e62fd91ab030b5acc26b507e36c4",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocm-opencl-runtime-rpath6.4.1/rocm-opencl-runtime-rpath6.4.1_6.4.1.60401-83~22.04_amd64.deb",
+        "version": "6.4.1.60401-83"
+      }
+    ],
+    "version": "6.4.1.60401-83"
+  },
+  "rocm-opencl-runtime-asan": {
+    "deps": [
+      "rocm-core-asan",
+      "rocm-language-runtime-asan",
+      "rocm-opencl-asan",
+      "rocm-opencl-runtime"
+    ],
+    "components": [
+      {
+        "name": "rocm-opencl-runtime-asan",
+        "sha256": "04b640ad3e257611669fe3977864934b009190aea231c2fa1254b82861f96bda",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocm-opencl-runtime-asan/rocm-opencl-runtime-asan_6.4.1.60401-83~22.04_amd64.deb",
+        "version": "6.4.1.60401-83"
+      },
+      {
+        "name": "rocm-opencl-runtime-asan-rpath",
+        "sha256": "5b73901ec12525865a2fe1fd7d1c04a525039144698730a1347049523bbaf76e",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocm-opencl-runtime-asan-rpath6.4.1/rocm-opencl-runtime-asan-rpath6.4.1_6.4.1.60401-83~22.04_amd64.deb",
+        "version": "6.4.1.60401-83"
+      }
+    ],
+    "version": "6.4.1.60401-83"
+  },
+  "rocm-opencl-sdk": {
+    "deps": [
+      "hsa-rocr",
+      "rocm-core",
+      "rocm-opencl",
+      "rocm-opencl-runtime"
+    ],
+    "components": [
+      {
+        "name": "rocm-opencl-sdk",
+        "sha256": "e3ebdb4b7d6dbc9f83af2e1e728d1df60fabb2a4cc0f09dae583b7cd1bfd9ae5",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocm-opencl-sdk/rocm-opencl-sdk_6.4.1.60401-83~22.04_amd64.deb",
+        "version": "6.4.1.60401-83"
+      },
+      {
+        "name": "rocm-opencl-sdk-rpath",
+        "sha256": "4177a190d854c4dbae922f444bb8a7121152bf2f21491ed09e69fd65a05d926b",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocm-opencl-sdk-rpath6.4.1/rocm-opencl-sdk-rpath6.4.1_6.4.1.60401-83~22.04_amd64.deb",
+        "version": "6.4.1.60401-83"
+      }
+    ],
+    "version": "6.4.1.60401-83"
+  },
+  "rocm-openmp-sdk": {
+    "deps": [
+      "hsa-rocr",
+      "openmp-extras-dev",
+      "rocm-core",
+      "rocm-device-libs",
+      "rocm-language-runtime",
+      "rocm-llvm"
+    ],
+    "components": [
+      {
+        "name": "rocm-openmp-sdk",
+        "sha256": "7ed34b9c3a2a4e4a64f60dc2c60c722bf515cb2c32a6f9aea1d50faf0357590f",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocm-openmp-sdk/rocm-openmp-sdk_6.4.1.60401-83~22.04_amd64.deb",
+        "version": "6.4.1.60401-83"
+      },
+      {
+        "name": "rocm-openmp-sdk-rpath",
+        "sha256": "4dd9419edcc1a77ea3be2e097607cd849a796e5c445b722727ae27a8a260ff4c",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocm-openmp-sdk-rpath6.4.1/rocm-openmp-sdk-rpath6.4.1_6.4.1.60401-83~22.04_amd64.deb",
+        "version": "6.4.1.60401-83"
+      }
+    ],
+    "version": "6.4.1.60401-83"
+  },
+  "rocm-smi-lib": {
+    "deps": [
+      "rocm-core"
+    ],
+    "components": [
+      {
+        "name": "rocm-smi-lib",
+        "sha256": "3db3358e0ae302b4589e586d6b9dae2ae183d521e61979723d9eb918c7bfbde1",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocm-smi-lib/rocm-smi-lib_7.5.0.60401-83~22.04_amd64.deb",
+        "version": "7.5.0.60401-83"
+      },
+      {
+        "name": "rocm-smi-lib-rpath",
+        "sha256": "0bae5be336c87fd7cd1dd8d9d516fd4528b461320080fcf25db95569addf2ad3",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocm-smi-lib-rpath6.4.1/rocm-smi-lib-rpath6.4.1_7.5.0.60401-83~22.04_amd64.deb",
+        "version": "7.5.0.60401-83"
+      }
+    ],
+    "version": "7.5.0.60401-83"
+  },
+  "rocm-smi-lib-asan": {
+    "deps": [
+      "rocm-core-asan"
+    ],
+    "components": [
+      {
+        "name": "rocm-smi-lib-asan",
+        "sha256": "691fd4c28be233fb93de342a6fb08fa66e5ce84d77a1039a1493e9c73360da83",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocm-smi-lib-asan/rocm-smi-lib-asan_7.5.0.60401-83~22.04_amd64.deb",
+        "version": "7.5.0.60401-83"
+      },
+      {
+        "name": "rocm-smi-lib-asan-rpath",
+        "sha256": "159357b9be9443fe89255620f2d2faf72b7da61031e476efe57b3fcde4ec7789",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocm-smi-lib-asan-rpath6.4.1/rocm-smi-lib-asan-rpath6.4.1_7.5.0.60401-83~22.04_amd64.deb",
+        "version": "7.5.0.60401-83"
+      }
+    ],
+    "version": "7.5.0.60401-83"
+  },
+  "rocm-utils": {
+    "deps": [
+      "rocm-cmake",
+      "rocm-core",
+      "rocminfo"
+    ],
+    "components": [
+      {
+        "name": "rocm-utils",
+        "sha256": "e789cbafbb57215464fa8c2ae8d83b5f45b0a447cbf563a4d8c35a0c1d72812c",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocm-utils/rocm-utils_6.4.1.60401-83~22.04_amd64.deb",
+        "version": "6.4.1.60401-83"
+      },
+      {
+        "name": "rocm-utils-rpath",
+        "sha256": "a840fc24bfcb01eadad559ac6ae0b3c7b1a663b8bf97b4b99f140f826422147f",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocm-utils-rpath6.4.1/rocm-utils-rpath6.4.1_6.4.1.60401-83~22.04_amd64.deb",
+        "version": "6.4.1.60401-83"
+      }
+    ],
+    "version": "6.4.1.60401-83"
+  },
+  "rocm-validation-suite": {
+    "deps": [
+      "comgr",
+      "hip-runtime-amd",
+      "hipblaslt",
+      "hiprand",
+      "hsa-rocr",
+      "rocblas",
+      "rocm-core",
+      "rocm-smi-lib"
+    ],
+    "components": [
+      {
+        "name": "rocm-validation-suite",
+        "sha256": "a4c33c94199725fbd8f5a046393a9160c7b193f86dfb16c6f72e0c5bd2844d32",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocm-validation-suite/rocm-validation-suite_1.1.0.60401-83~22.04_amd64.deb",
+        "version": "1.1.0.60401-83"
+      },
+      {
+        "name": "rocm-validation-suite-rpath",
+        "sha256": "4bf6709eb1f7bec7641cb63b7052ad785c14f25f034a5af4421c7a97d17c2d13",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocm-validation-suite-rpath6.4.1/rocm-validation-suite-rpath6.4.1_1.1.0.60401-83~22.04_amd64.deb",
+        "version": "1.1.0.60401-83"
+      }
+    ],
+    "version": "1.1.0.60401-83"
+  },
+  "rocminfo": {
+    "deps": [
+      "hsa-rocr",
+      "rocm-core"
+    ],
+    "components": [
+      {
+        "name": "rocminfo",
+        "sha256": "55d19b59464dd444002d12bf1fe8c762c15f2ae79f9dccbbf38360b42e3156b6",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocminfo/rocminfo_1.0.0.60401-83~22.04_amd64.deb",
+        "version": "1.0.0.60401-83"
+      },
+      {
+        "name": "rocminfo-rpath",
+        "sha256": "081a44e0a430c3bfdf3c31ab59602cc8843f653ba77462b5a31f80aa1d7a305e",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocminfo-rpath6.4.1/rocminfo-rpath6.4.1_1.0.0.60401-83~22.04_amd64.deb",
+        "version": "1.0.0.60401-83"
+      }
+    ],
+    "version": "1.0.0.60401-83"
+  },
+  "rocprim-dev": {
+    "deps": [
+      "hip-runtime-amd",
+      "rocm-core"
+    ],
+    "components": [
+      {
+        "name": "rocprim-dev",
+        "sha256": "e42b3945e186fdc02764fe0fcc5a1df6d5b42aa76123075adae6f6aa0e18c358",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocprim-dev/rocprim-dev_3.4.0.60401-83~22.04_amd64.deb",
+        "version": "3.4.0.60401-83"
+      },
+      {
+        "name": "rocprim-dev-rpath",
+        "sha256": "430931f176b601bcc7a19a24ca5cc9b20b4d966bce52d9e89ef47fae1a3cfb31",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocprim-dev-rpath6.4.1/rocprim-dev-rpath6.4.1_3.4.0.60401-83~22.04_amd64.deb",
+        "version": "3.4.0.60401-83"
+      }
+    ],
+    "version": "3.4.0.60401-83"
+  },
+  "rocprofiler": {
+    "deps": [
+      "hsa-rocr",
+      "rocm-core",
+      "rocminfo"
+    ],
+    "components": [
+      {
+        "name": "rocprofiler",
+        "sha256": "67ce087b2ab127375ad95e574a7a5c88f8d8794f9ed1926bd3a6d8abd65604db",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocprofiler/rocprofiler_2.0.60401.60401-83~22.04_amd64.deb",
+        "version": "2.0.60401.60401-83"
+      },
+      {
+        "name": "rocprofiler-dev",
+        "sha256": "f3767c98fb814ef3fd53c9d37415817652e8067ea82398a4be3fb30852524885",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocprofiler-dev/rocprofiler-dev_2.0.60401.60401-83~22.04_amd64.deb",
+        "version": "2.0.60401.60401-83"
+      },
+      {
+        "name": "rocprofiler-dev-rpath",
+        "sha256": "ce19deb57d2258718ff3c638dd26c5af65873e4670d48aea109d2dca1f522d41",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocprofiler-dev-rpath6.4.1/rocprofiler-dev-rpath6.4.1_2.0.60401.60401-83~22.04_amd64.deb",
+        "version": "2.0.60401.60401-83"
+      },
+      {
+        "name": "rocprofiler-rpath",
+        "sha256": "da1188636b20359c5ac22199c537b2e4550d0c3695ae2977a158ee6ed0f35c11",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocprofiler-rpath6.4.1/rocprofiler-rpath6.4.1_2.0.60401.60401-83~22.04_amd64.deb",
+        "version": "2.0.60401.60401-83"
+      }
+    ],
+    "version": "2.0.60401.60401-83"
+  },
+  "rocprofiler-asan": {
+    "deps": [
+      "hsa-rocr-asan",
+      "rocm-core-asan"
+    ],
+    "components": [
+      {
+        "name": "rocprofiler-asan",
+        "sha256": "9e8662b955242bc860d7cc98a7f0a5c68ee8efa50238185822c92b130e512092",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocprofiler-asan/rocprofiler-asan_2.0.60401.60401-83~22.04_amd64.deb",
+        "version": "2.0.60401.60401-83"
+      },
+      {
+        "name": "rocprofiler-asan-rpath",
+        "sha256": "9ce3f471566daabe6c20d5574cd7d427e73f7ee7a63fe3bd868bc6a44e04442d",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocprofiler-asan-rpath6.4.1/rocprofiler-asan-rpath6.4.1_2.0.60401.60401-83~22.04_amd64.deb",
+        "version": "2.0.60401.60401-83"
+      }
+    ],
+    "version": "2.0.60401.60401-83"
+  },
+  "rocprofiler-compute": {
+    "deps": [
+      "rocprofiler"
+    ],
+    "components": [
+      {
+        "name": "rocprofiler-compute",
+        "sha256": "abc0891d28660727844c31cdb1bdeff50233b7bf56e8354612eb9f65239d9714",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocprofiler-compute/rocprofiler-compute_3.1.0.60401-83~22.04_amd64.deb",
+        "version": "3.1.0.60401-83"
+      },
+      {
+        "name": "rocprofiler-compute-rpath",
+        "sha256": "e60fe8284c173232213d3300041464e7d4c486d8bc5be708afc4ea0952bbb9cc",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocprofiler-compute-rpath6.4.1/rocprofiler-compute-rpath6.4.1_3.1.0.60401-83~22.04_amd64.deb",
+        "version": "3.1.0.60401-83"
+      }
+    ],
+    "version": "3.1.0.60401-83"
+  },
+  "rocprofiler-docs": {
+    "deps": [
+      "hsa-rocr",
+      "rocm-core",
+      "rocprofiler"
+    ],
+    "components": [
+      {
+        "name": "rocprofiler-docs",
+        "sha256": "7e52afe0455270dc392d404f13d3bf5f24c1c3c748327896f02a530237d8f7d2",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocprofiler-docs/rocprofiler-docs_2.0.60401.60401-83~22.04_amd64.deb",
+        "version": "2.0.60401.60401-83"
+      },
+      {
+        "name": "rocprofiler-docs-rpath",
+        "sha256": "04412a70e3048a2d4b0ebd129ca4899cd84007dedfa0d92766d6fa2e77fc60d4",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocprofiler-docs-rpath6.4.1/rocprofiler-docs-rpath6.4.1_2.0.60401.60401-83~22.04_amd64.deb",
+        "version": "2.0.60401.60401-83"
+      }
+    ],
+    "version": "2.0.60401.60401-83"
+  },
+  "rocprofiler-plugins": {
+    "deps": [
+      "hsa-rocr",
+      "rocm-core",
+      "rocprofiler"
+    ],
+    "components": [
+      {
+        "name": "rocprofiler-plugins",
+        "sha256": "9d7d8aa8e2ee47e0c86bba64be453da7a38af02836ed92b6d3a09921588cf572",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocprofiler-plugins/rocprofiler-plugins_2.0.60401.60401-83~22.04_amd64.deb",
+        "version": "2.0.60401.60401-83"
+      },
+      {
+        "name": "rocprofiler-plugins-rpath",
+        "sha256": "3d706774f76162beb93fe2471bd50e56490308b7b01853cf8ccd0cb4dce85dc8",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocprofiler-plugins-rpath6.4.1/rocprofiler-plugins-rpath6.4.1_2.0.60401.60401-83~22.04_amd64.deb",
+        "version": "2.0.60401.60401-83"
+      }
+    ],
+    "version": "2.0.60401.60401-83"
+  },
+  "rocprofiler-register": {
+    "deps": [
+      "rocm-core"
+    ],
+    "components": [
+      {
+        "name": "rocprofiler-register",
+        "sha256": "da49a66ca3e6ee8b9491777c2b5170b6020e8308371e26b869d7af81bc50f571",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocprofiler-register/rocprofiler-register_0.4.0.60401-83~22.04_amd64.deb",
+        "version": "0.4.0.60401-83"
+      },
+      {
+        "name": "rocprofiler-register-rpath",
+        "sha256": "72704db5f450e4c20a1d3d154778137fcdc63ffba8da4f36c00093f426b20908",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocprofiler-register-rpath6.4.1/rocprofiler-register-rpath6.4.1_0.4.0.60401-83~22.04_amd64.deb",
+        "version": "0.4.0.60401-83"
+      }
+    ],
+    "version": "0.4.0.60401-83"
+  },
+  "rocprofiler-sdk": {
+    "deps": [
+      "rocm-core",
+      "rocprofiler-sdk-roctx"
+    ],
+    "components": [
+      {
+        "name": "rocprofiler-sdk",
+        "sha256": "9890bc2ddbf563edbb50fc8d227a56da462a8bcdd08dbc2f549c924b89c42a59",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocprofiler-sdk/rocprofiler-sdk_0.6.0-83~22.04_amd64.deb",
+        "version": "0.6.0-83"
+      },
+      {
+        "name": "rocprofiler-sdk-rpath",
+        "sha256": "aaf3a8c7814089eeccb16780d04c8dd1c436c191a65b5bd4a9e29712815b25db",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocprofiler-sdk-rpath6.4.1/rocprofiler-sdk-rpath6.4.1_0.6.0-83~22.04_amd64.deb",
+        "version": "0.6.0-83"
+      }
+    ],
+    "version": "0.6.0-83"
+  },
+  "rocprofiler-sdk-roctx": {
+    "deps": [
+      "rocm-core"
+    ],
+    "components": [
+      {
+        "name": "rocprofiler-sdk-roctx",
+        "sha256": "87eddf255f80bbe3c371e0a087a1045ec82766903077de2fb708ed1958ab62fb",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocprofiler-sdk-roctx/rocprofiler-sdk-roctx_0.6.0-83~22.04_amd64.deb",
+        "version": "0.6.0-83"
+      },
+      {
+        "name": "rocprofiler-sdk-roctx-rpath",
+        "sha256": "0a7a649b1cf5168289e71f17360fb1732d476540c014ad1541a84a18442e1cf6",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocprofiler-sdk-roctx-rpath6.4.1/rocprofiler-sdk-roctx-rpath6.4.1_0.6.0-83~22.04_amd64.deb",
+        "version": "0.6.0-83"
+      }
+    ],
+    "version": "0.6.0-83"
+  },
+  "rocprofiler-systems": {
+    "deps": [
+      "rocm-smi-lib",
+      "rocprofiler-sdk"
+    ],
+    "components": [
+      {
+        "name": "rocprofiler-systems",
+        "sha256": "6a0811c7b7751278d24d7fbdf9a085271b41b23b7dece1539d86ad104ec74108",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocprofiler-systems/rocprofiler-systems_1.0.1.60401-83~22.04_amd64.deb",
+        "version": "1.0.1.60401-83"
+      },
+      {
+        "name": "rocprofiler-systems-rpath",
+        "sha256": "212497e00274c28a7957fcaaae9d6ce44aa9803da55b4a3117e6c8f14ba02a24",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocprofiler-systems-rpath6.4.1/rocprofiler-systems-rpath6.4.1_1.0.1.60401-83~22.04_amd64.deb",
+        "version": "1.0.1.60401-83"
+      }
+    ],
+    "version": "1.0.1.60401-83"
+  },
+  "rocrand": {
+    "deps": [
+      "rocm-core"
+    ],
+    "components": [
+      {
+        "name": "rocrand",
+        "sha256": "8d77ce48dc4256bcdba122c9243febd083ffc9147c340ef793f362d8611e35d3",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocrand/rocrand_3.3.0.60401-83~22.04_amd64.deb",
+        "version": "3.3.0.60401-83"
+      },
+      {
+        "name": "rocrand-dev",
+        "sha256": "eeaa28b540cf1ca190a668ad386aecccde8b90fe632e1b3a969f337c7478509d",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocrand-dev/rocrand-dev_3.3.0.60401-83~22.04_amd64.deb",
+        "version": "3.3.0.60401-83"
+      },
+      {
+        "name": "rocrand-dev-rpath",
+        "sha256": "d1456526fe703211732d272b361ebe4d7a26f364193375d09416be5e4daa41fd",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocrand-dev-rpath6.4.1/rocrand-dev-rpath6.4.1_3.3.0.60401-83~22.04_amd64.deb",
+        "version": "3.3.0.60401-83"
+      },
+      {
+        "name": "rocrand-rpath",
+        "sha256": "a25db860a1933ddf455ef5bdd47966df1c5a74d5f0a48dae4a3851e9a58550cd",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocrand-rpath6.4.1/rocrand-rpath6.4.1_3.3.0.60401-83~22.04_amd64.deb",
+        "version": "3.3.0.60401-83"
+      }
+    ],
+    "version": "3.3.0.60401-83"
+  },
+  "rocrand-asan": {
+    "deps": [
+      "rocm-core-asan"
+    ],
+    "components": [
+      {
+        "name": "rocrand-asan",
+        "sha256": "bf2da93b503cf3fe22df8324d161e2095a6e485aded4ad0425f9a06c5f7c98a5",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocrand-asan/rocrand-asan_3.3.0.60401-83~22.04_amd64.deb",
+        "version": "3.3.0.60401-83"
+      },
+      {
+        "name": "rocrand-asan-rpath",
+        "sha256": "7e16fa298e4f9c17b81252f8b3063c7829a430c8bbe8ffa99db795d2b33c35ea",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocrand-asan-rpath6.4.1/rocrand-asan-rpath6.4.1_3.3.0.60401-83~22.04_amd64.deb",
+        "version": "3.3.0.60401-83"
+      }
+    ],
+    "version": "3.3.0.60401-83"
+  },
+  "rocshmem-dev": {
+    "deps": [
+      "hip-runtime-amd",
+      "hsa-rocr",
+      "rocm",
+      "rocm-core"
+    ],
+    "components": [
+      {
+        "name": "rocshmem-dev",
+        "sha256": "5533a4dc2db190dea8c1ac258cc914fcfe3851f27727c40b3fcf3efd89061f7a",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocshmem-dev/rocshmem-dev_2.0.0.60401-83~22.04_amd64.deb",
+        "version": "2.0.0.60401-83"
+      },
+      {
+        "name": "rocshmem-dev-rpath",
+        "sha256": "05f1071f51575e67504c052e24edbc19f71482b093efcef2ed3b885299825c3c",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocshmem-dev-rpath6.4.1/rocshmem-dev-rpath6.4.1_2.0.0.60401-83~22.04_amd64.deb",
+        "version": "2.0.0.60401-83"
+      }
+    ],
+    "version": "2.0.0.60401-83"
+  },
+  "rocsolver": {
+    "deps": [
+      "rocblas",
+      "rocm-core"
+    ],
+    "components": [
+      {
+        "name": "rocsolver",
+        "sha256": "82451d985c3f9ea9472df45e044651a16cc7a8d510a338e57e0d7c19b04a7243",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocsolver/rocsolver_3.28.0.60401-83~22.04_amd64.deb",
+        "version": "3.28.0.60401-83"
+      },
+      {
+        "name": "rocsolver-dev",
+        "sha256": "26b4bfc60e41655b4780d35204df775ec2c1f847b1da26c718dd4d649e18376e",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocsolver-dev/rocsolver-dev_3.28.0.60401-83~22.04_amd64.deb",
+        "version": "3.28.0.60401-83"
+      },
+      {
+        "name": "rocsolver-dev-rpath",
+        "sha256": "ec607c9c9cdd7729840d68f612867ad378fe3553d92838a027af7325f0c1e1b4",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocsolver-dev-rpath6.4.1/rocsolver-dev-rpath6.4.1_3.28.0.60401-83~22.04_amd64.deb",
+        "version": "3.28.0.60401-83"
+      },
+      {
+        "name": "rocsolver-rpath",
+        "sha256": "2aa31c1214e8f5dbee6dec87d6c63d2f9c0d10bea09a1217e1786b10fbbfea42",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocsolver-rpath6.4.1/rocsolver-rpath6.4.1_3.28.0.60401-83~22.04_amd64.deb",
+        "version": "3.28.0.60401-83"
+      }
+    ],
+    "version": "3.28.0.60401-83"
+  },
+  "rocsolver-asan": {
+    "deps": [
+      "rocblas",
+      "rocm-core-asan"
+    ],
+    "components": [
+      {
+        "name": "rocsolver-asan",
+        "sha256": "19963ff4203c7b9527047c1f8789e867af7466c0e0b4a29ca2515ce8fc314543",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocsolver-asan/rocsolver-asan_3.28.0.60401-83~22.04_amd64.deb",
+        "version": "3.28.0.60401-83"
+      },
+      {
+        "name": "rocsolver-asan-rpath",
+        "sha256": "8e42fd49edcaa8ae42a8912f4e8d86c4df12ccca792ccd5859e2122f74af3714",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocsolver-asan-rpath6.4.1/rocsolver-asan-rpath6.4.1_3.28.0.60401-83~22.04_amd64.deb",
+        "version": "3.28.0.60401-83"
+      }
+    ],
+    "version": "3.28.0.60401-83"
+  },
+  "rocsparse": {
+    "deps": [
+      "hip-runtime-amd",
+      "rocm-core"
+    ],
+    "components": [
+      {
+        "name": "rocsparse",
+        "sha256": "d30ed6c108371c578874e1bd76e964ba429f774beebf92c682ddda94497b5780",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocsparse/rocsparse_3.4.0.60401-83~22.04_amd64.deb",
+        "version": "3.4.0.60401-83"
+      },
+      {
+        "name": "rocsparse-dev",
+        "sha256": "ba4a1e0c53a2bfc296e799171dd7c3ca7663323427258cf7a93a64c5b0f88d96",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocsparse-dev/rocsparse-dev_3.4.0.60401-83~22.04_amd64.deb",
+        "version": "3.4.0.60401-83"
+      },
+      {
+        "name": "rocsparse-dev-rpath",
+        "sha256": "cb9bb7a11b78e4ddecc5772b1a9a10130ecbae271dcb4e2cc6d16fc9de231a8d",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocsparse-dev-rpath6.4.1/rocsparse-dev-rpath6.4.1_3.4.0.60401-83~22.04_amd64.deb",
+        "version": "3.4.0.60401-83"
+      },
+      {
+        "name": "rocsparse-rpath",
+        "sha256": "fb4352962f6c7c1e7bfbe6e571e3a4d98895647feba4bbaaaeb9113cc1572d21",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocsparse-rpath6.4.1/rocsparse-rpath6.4.1_3.4.0.60401-83~22.04_amd64.deb",
+        "version": "3.4.0.60401-83"
+      }
+    ],
+    "version": "3.4.0.60401-83"
+  },
+  "rocsparse-asan": {
+    "deps": [
+      "hip-runtime-amd-asan",
+      "rocblas",
+      "rocm-core-asan"
+    ],
+    "components": [
+      {
+        "name": "rocsparse-asan",
+        "sha256": "9717fee6cc61364e61ef9c1e0361e25969c013ef289c663624ed6f5eaafa452a",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocsparse-asan/rocsparse-asan_3.4.0.60401-83~22.04_amd64.deb",
+        "version": "3.4.0.60401-83"
+      },
+      {
+        "name": "rocsparse-asan-rpath",
+        "sha256": "c40f295a2d104621786ee10033eb9389175c1de5aa9e0c96ec0ccfd965b4d3d6",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocsparse-asan-rpath6.4.1/rocsparse-asan-rpath6.4.1_3.4.0.60401-83~22.04_amd64.deb",
+        "version": "3.4.0.60401-83"
+      }
+    ],
+    "version": "3.4.0.60401-83"
+  },
+  "rocthrust-dev": {
+    "deps": [
+      "rocm-core",
+      "rocprim-dev"
+    ],
+    "components": [
+      {
+        "name": "rocthrust-dev",
+        "sha256": "961400899a7d484b26fa7f91b772bd3f06b2199bd63fd35f6df7c89d049acdcb",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocthrust-dev/rocthrust-dev_3.3.0.60401-83~22.04_amd64.deb",
+        "version": "3.3.0.60401-83"
+      },
+      {
+        "name": "rocthrust-dev-rpath",
+        "sha256": "2fccf9f839e4785534dea1378adcdb936c7997a7119e563c535119a8909c901b",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocthrust-dev-rpath6.4.1/rocthrust-dev-rpath6.4.1_3.3.0.60401-83~22.04_amd64.deb",
+        "version": "3.3.0.60401-83"
+      }
+    ],
+    "version": "3.3.0.60401-83"
+  },
+  "roctracer": {
+    "deps": [
+      "hsa-rocr",
+      "rocm-core"
+    ],
+    "components": [
+      {
+        "name": "roctracer",
+        "sha256": "58cead537cf07c8a8770bfe28346c3b3c92cc4297b51e307c9032b04434b187c",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/roctracer/roctracer_4.1.60401.60401-83~22.04_amd64.deb",
+        "version": "4.1.60401.60401-83"
+      },
+      {
+        "name": "roctracer-dev",
+        "sha256": "5bb52357a3326edabde80a8cbd89d95d68083e1f8e5e3751989b0b81e51420b1",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/roctracer-dev/roctracer-dev_4.1.60401.60401-83~22.04_amd64.deb",
+        "version": "4.1.60401.60401-83"
+      },
+      {
+        "name": "roctracer-dev-rpath",
+        "sha256": "ee89f6ea5993b5360375995498347f986f2834353ae4c4435d0a044e1569a835",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/roctracer-dev-rpath6.4.1/roctracer-dev-rpath6.4.1_4.1.60401.60401-83~22.04_amd64.deb",
+        "version": "4.1.60401.60401-83"
+      },
+      {
+        "name": "roctracer-rpath",
+        "sha256": "ec2d8564c9aa7ba0cb63c7f5071965f6758f843019bc793534a0af31de25e15f",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/roctracer-rpath6.4.1/roctracer-rpath6.4.1_4.1.60401.60401-83~22.04_amd64.deb",
+        "version": "4.1.60401.60401-83"
+      }
+    ],
+    "version": "4.1.60401.60401-83"
+  },
+  "roctracer-asan": {
+    "deps": [
+      "rocm-core-asan"
+    ],
+    "components": [
+      {
+        "name": "roctracer-asan",
+        "sha256": "4bb47694acf8c38219790fbffebcc89ca2859a2c1bacc49e57463629fade5bd6",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/roctracer-asan/roctracer-asan_4.1.60401.60401-83~22.04_amd64.deb",
+        "version": "4.1.60401.60401-83"
+      },
+      {
+        "name": "roctracer-asan-rpath",
+        "sha256": "5f6c411cbe2735bc83df62686611d5dd1ff5b3cc06d4799c55beb9710147d9d7",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/roctracer-asan-rpath6.4.1/roctracer-asan-rpath6.4.1_4.1.60401.60401-83~22.04_amd64.deb",
+        "version": "4.1.60401.60401-83"
+      }
+    ],
+    "version": "4.1.60401.60401-83"
+  },
+  "rocwmma-dev": {
+    "deps": [
+      "rocm-core"
+    ],
+    "components": [
+      {
+        "name": "rocwmma-dev",
+        "sha256": "e3ecdf8d5ce28bd09c6851d5489874f772e808f033cc8810b59ce88e30a49715",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocwmma-dev/rocwmma-dev_1.7.0.60401-83~22.04_amd64.deb",
+        "version": "1.7.0.60401-83"
+      },
+      {
+        "name": "rocwmma-dev-rpath",
+        "sha256": "e6ed65692630dd67d6336c99c53f64331e253be1bde361c960f2c28d5aeaf619",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rocwmma-dev-rpath6.4.1/rocwmma-dev-rpath6.4.1_1.7.0.60401-83~22.04_amd64.deb",
+        "version": "1.7.0.60401-83"
+      }
+    ],
+    "version": "1.7.0.60401-83"
+  },
+  "rpp": {
+    "deps": [
+      "half",
+      "openmp-extras-dev",
+      "openmp-extras-runtime",
+      "rocm-hip-runtime"
+    ],
+    "components": [
+      {
+        "name": "rpp",
+        "sha256": "2eacbb917f7f729c02599dde84b54f4c11c8a7d70259be3db1ae9edf4992e2d1",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rpp/rpp_1.9.10.60401-83~22.04_amd64.deb",
+        "version": "1.9.10.60401-83"
+      },
+      {
+        "name": "rpp-dev",
+        "sha256": "67df8b9ff1588dd114dbcf394254a9812307588b2519a5b88cae033ad1ac0c73",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rpp-dev/rpp-dev_1.9.10.60401-83~22.04_amd64.deb",
+        "version": "1.9.10.60401-83"
+      },
+      {
+        "name": "rpp-dev-rpath",
+        "sha256": "0ad1cf8f15980d9be1af75b1bff584259aa3ecfe872c3b2f6b30c89f2d443e1e",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rpp-dev-rpath6.4.1/rpp-dev-rpath6.4.1_1.9.10.60401-83~22.04_amd64.deb",
+        "version": "1.9.10.60401-83"
+      },
+      {
+        "name": "rpp-rpath",
+        "sha256": "5e44ac69b003e65caef4964fc368f18c84e05cc14ff790d483b10499c13389cb",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rpp-rpath6.4.1/rpp-rpath6.4.1_1.9.10.60401-83~22.04_amd64.deb",
+        "version": "1.9.10.60401-83"
+      }
+    ],
+    "version": "1.9.10.60401-83"
+  },
+  "rpp-asan": {
+    "deps": [
+      "rocm-core-asan"
+    ],
+    "components": [
+      {
+        "name": "rpp-asan",
+        "sha256": "c0608d87d8547c9e802346fbb323c5782a23828f0f50d89e0a9d194177df8ed9",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rpp-asan/rpp-asan_1.9.10.60401-83~22.04_amd64.deb",
+        "version": "1.9.10.60401-83"
+      },
+      {
+        "name": "rpp-asan-rpath",
+        "sha256": "943379d85c93703c7ecb73394a75fd8d71fc0e22a8c479055eeac50e51a74f0c",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rpp-asan-rpath6.4.1/rpp-asan-rpath6.4.1_1.9.10.60401-83~22.04_amd64.deb",
+        "version": "1.9.10.60401-83"
+      }
+    ],
+    "version": "1.9.10.60401-83"
+  },
+  "rpp-test": {
+    "deps": [
+      "rpp"
+    ],
+    "components": [
+      {
+        "name": "rpp-test",
+        "sha256": "fb57b90167efd60168efb8df674e1d42217313b99ed4075f263ed5f03dbe1df9",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rpp-test/rpp-test_1.9.10.60401-83~22.04_amd64.deb",
+        "version": "1.9.10.60401-83"
+      },
+      {
+        "name": "rpp-test-rpath",
+        "sha256": "9d60eee70f77221993c23e373fc61f9dbe8c804c00a83c1dafdf15f395c9705f",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/r/rpp-test-rpath6.4.1/rpp-test-rpath6.4.1_1.9.10.60401-83~22.04_amd64.deb",
+        "version": "1.9.10.60401-83"
+      }
+    ],
+    "version": "1.9.10.60401-83"
+  },
+  "transferbench-dev": {
+    "deps": [
+      "hsa-rocr",
+      "rocm-core"
+    ],
+    "components": [
+      {
+        "name": "transferbench-dev",
+        "sha256": "4f9687d65d4274e45d110451b611869ce7fae0c35739ae7bd6952a381925ac10",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/t/transferbench-dev/transferbench-dev_1.57.0.60401-83~22.04_amd64.deb",
+        "version": "1.57.0.60401-83"
+      },
+      {
+        "name": "transferbench-dev-rpath",
+        "sha256": "36f29a7367c87dea2515f56657178d0166ff5f13bf9168db56303246dc9cf018",
+        "url": "https://repo.radeon.com/rocm/apt/6.4.1/pool/main/t/transferbench-dev-rpath6.4.1/transferbench-dev-rpath6.4.1_1.57.0.60401-83~22.04_amd64.deb",
+        "version": "1.57.0.60401-83"
+      }
+    ],
+    "version": "1.57.0.60401-83"
+  }
+}

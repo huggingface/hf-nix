@@ -155,6 +155,7 @@ rec {
     versions = [
       "6.2.4"
       "6.3.4"
+      "6.4.1"
     ];
     newRocmPackages = final.callPackage ./pkgs/rocm-packages { };
   in
