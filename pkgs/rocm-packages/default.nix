@@ -22,7 +22,9 @@ let
     # Packages that are joins of other packages.
     (callPackage ./joins.nix { })
     # Add aotriton
-    (final: prev: { inherit (prev.callPackage ../aotriton { }) aotriton_0_8 aotriton_0_9; })
+    (final: prev: {
+      inherit (prev.callPackage ../aotriton { }) aotriton_0_8 aotriton_0_9 aotriton_0_10;
+    })
   ];
 in
 lib.makeScope newScope (lib.extends composed fixedPoint)

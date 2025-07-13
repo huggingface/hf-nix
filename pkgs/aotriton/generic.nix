@@ -33,23 +33,28 @@
   gpuTargets,
   patches ? [ ],
   src,
+  extraPythonDepends ? ps: [ ],
 }:
 
 stdenv.mkDerivation (
   finalAttrs:
   let
-    py = python3.withPackages (ps: [
-      ps.pyyaml
-      ps.distutils
-      ps.setuptools
-      ps.packaging
-      ps.numpy
-      ps.wheel
-      ps.filelock
-      ps.iniconfig
-      ps.pluggy
-      ps.pybind11
-    ]);
+    py = python3.withPackages (
+      ps:
+      [
+        ps.pyyaml
+        ps.distutils
+        ps.setuptools
+        ps.packaging
+        ps.numpy
+        ps.wheel
+        ps.filelock
+        ps.iniconfig
+        ps.pluggy
+        ps.pybind11
+      ]
+      ++ extraPythonDepends ps
+    );
     gpuTargets' = lib.concatStringsSep ";" gpuTargets;
     compiler = "amdclang++";
     cFlags = "-O3 -DNDEBUG";
@@ -62,6 +67,10 @@ stdenv.mkDerivation (
 
     env.CXX = compiler;
     env.ROCM_PATH = "${rocmPackages.clr}";
+    # Since aotriton 0.10b, the generated source files contain a unicode
+    # asterisk character (＊). When using a reponse file, this somehow
+    # gets replaced by a octal representation of the UTF-8 encoding.
+    env.NIX_CC_USE_RESPONSE_FILE = 0;
     requiredSystemFeatures = [ "big-parallel" ];
 
     outputs =
@@ -159,9 +168,11 @@ stdenv.mkDerivation (
       sed -i '2s;^;set(CMAKE_VERBOSE_MAKEFILE ON CACHE BOOL "ON")\n;' CMakeLists.txt
       sed -i '2s;^;set(CMAKE_SUPPRESS_DEVELOPER_WARNINGS ON CACHE BOOL "ON")\n;' third_party/triton/CMakeLists.txt
       sed -i '2s;^;set(CMAKE_VERBOSE_MAKEFILE ON CACHE BOOL "ON")\n;' third_party/triton/CMakeLists.txt
-      substituteInPlace third_party/triton/python/setup.py \
-        --replace-fail "from distutils.command.clean import clean" "import setuptools;from distutils.command.clean import clean" \
-        --replace-fail 'system == "Linux"' 'False'
+      if [ -f third_party/triton/python/setup.py ]; then
+        substituteInPlace third_party/triton/python/setup.py \
+          --replace-fail "from distutils.command.clean import clean" "import setuptools;from distutils.command.clean import clean" \
+          --replace-fail 'system == "Linux"' 'False'
+      fi
       # sed -i 's|^download_and_copy|dict|g' third_party/triton/python/setup.py
       cmakeFlagsArray+=(
         '-DCMAKE_C_FLAGS_RELEASE=${cFlags}'

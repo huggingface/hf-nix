@@ -54,8 +54,42 @@ in
       "gfx942"
       "gfx950"
       "gfx1100"
-      "gfx1101"
+      "gfx1151"
       "gfx1201"
     ];
   };
+
+  aotriton_0_10 = generic rec {
+    version = "0.10b";
+
+    src = fetchFromGitHub {
+      owner = "ROCm";
+      repo = "aotriton";
+      rev = version;
+      hash = "sha256-R5LULmHFP50uI9S228opyg1+1SROxqx1hMPLuATNyoc=";
+      fetchSubmodules = true;
+    };
+
+    patches = [
+      # A bunch of implicit type narrowing issues that are rejected by newer
+      # compilers.
+      ./v0.10b-explicit-cast-for-narrowing.diff
+      # Fails with: ld.lld: error: unable to insert .comment after .comment
+      ./v0.10b-no-ld-script.diff
+    ];
+
+    gpuTargets = [
+      # aotriton GPU support list:
+      # https://github.com/ROCm/aotriton/blob/main/v2python/gpu_targets.py
+      "gfx90a"
+      "gfx942"
+      "gfx950"
+      "gfx1100"
+      "gfx1101"
+      "gfx1201"
+    ];
+
+    extraPythonDepends = ps: [ ps.pandas ];
+  };
+
 }
