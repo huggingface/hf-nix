@@ -4,7 +4,7 @@
   callPackage,
   fetchurl,
   stdenv,
-  dpkg,
+  rpmextract,
   rsync,
   rocmPackages,
 
@@ -37,8 +37,8 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [
     autoPatchelfHook
-    dpkg
     rocmPackages.markForRocmRootHook
+    rpmextract
     rsync
   ];
 
@@ -50,7 +50,7 @@ stdenv.mkDerivation rec {
   # dpkg hook does not seem to work for multiple sources.
   unpackPhase = ''
     for src in $srcs; do
-      dpkg-deb -x "$src" .
+      rpmextract "$src"
     done
   '';
 
@@ -60,6 +60,11 @@ stdenv.mkDerivation rec {
     cp -rT opt/rocm-* $out
     runHook postInstall
   '';
+
+  # Stripping the binaries from the RHEL packages breaks them, so disable
+  # it (seems kind of superfluous anyway, since the RPM build probably does
+  # stripping as well).
+  dontStrip = true;
 
   autoPatchelfIgnoreMissingDeps = [
     # Not sure where this comes from, not in the distribution.
@@ -72,7 +77,7 @@ stdenv.mkDerivation rec {
     # by /bin/roofline-* for older Linux distributions.
     "libamdhip64.so.5"
 
-    # Python 3.8 is not in nixpkgs anymore.
-    "libpython3.8.so.1.0"
+    # Python versions not in nixpkgs anymore.
+    "libpython3.6m.so.1.0"
   ];
 }

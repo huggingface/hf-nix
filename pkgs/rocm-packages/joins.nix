@@ -10,7 +10,7 @@ final: prev: {
     inherit (final)
       comgr
       hipcc
-      hip-dev
+      hip-devel
       hip-runtime-amd
       hsa-rocr
       markForRocmRootHook
@@ -39,11 +39,13 @@ final: prev: {
 
       mkdir -p $out
 
-      for path in ${openmp-extras-dev} ${openmp-extras-runtime}; do
+      for path in ${openmp-extras-devel} ${openmp-extras-runtime}; do
         rsync --exclude=nix-support -a $path/lib/llvm/ $out/
       done
 
       runHook postInstall
     '';
+
+    dontStrip = true;
   };
 }

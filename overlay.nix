@@ -9,6 +9,18 @@ rec {
 
   fetchKernel = final.callPackage ./pkgs/fetch-kernel { };
 
+  # Used by ROCm.
+  libffi_3_2 = final.libffi_3_3.overrideAttrs (
+    finalAttrs: _: {
+      version = "3.2.1";
+      src = final.fetchurl {
+        url =
+          with finalAttrs; "https://gcc.gnu.org/pub/${pname}/${pname}-${version}.tar.gz";
+        hash = "sha256-0G67jh2aItGeONY/24OVQlPzm+3F1GIyoFZFaFciyjc=";
+      };
+    }
+  );
+
   magma-cuda-static = prev.magma-cuda-static.overrideAttrs (
     _: prevAttrs: { buildInputs = prevAttrs.buildInputs ++ [ (prev.lib.getLib prev.gfortran.cc) ]; }
   );
@@ -20,6 +32,20 @@ rec {
     }).magma;
 
   nvtx = final.callPackage ./pkgs/nvtx { };
+
+  rocmPackages = final.rocmPackages_6_3;
+
+  # Remove when we remove ROCm 6.2.
+  suitesparse_4_4 = prev.suitesparse_4_4.overrideAttrs (
+    _: prevAttrs: {
+      postInstall = prevAttrs.postInstall + ''
+        ln -s $out/lib/libsuitesparse.so $out/lib/libsuitesparse.so.4
+        # All dynamic libraries are just symplinks to the main library.
+        ln -s $out/lib/libsuitesparse.so $out/lib/libcholmod.so.3
+        ln -s $out/lib/libsuitesparse.so $out/lib/libsuitesparseconfig.so.4
+      '';
+    }
+  );
 
   pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
     (
@@ -128,8 +154,6 @@ rec {
           cutlass = final.cutlass_2_10;
         };
 
-        rocmPackages = final.rocmPackages_6_3;
-
         rotary = buildKernel rec {
           pname = "rotary";
           version = "0.0.2";
@@ -142,11 +166,11 @@ rec {
 
         torch = python-self.torch_2_7;
 
-        torch_2_6 = callPackage ./pkgs/python-modules/torch_2_6 { rocmPackages = final.rocmPackages_6_2; };
+        torch_2_6 = callPackage ./pkgs/python-modules/torch_2_6 { };
 
-        torch_2_7 = callPackage ./pkgs/python-modules/torch_2_7 { rocmPackages = final.rocmPackages_6_3; };
+        torch_2_7 = callPackage ./pkgs/python-modules/torch_2_7 { };
 
-        torch_2_8 = callPackage ./pkgs/python-modules/torch_2_8 { rocmPackages = final.rocmPackages_6_4; };
+        torch_2_8 = callPackage ./pkgs/python-modules/torch_2_8 { };
       }
     )
   ];

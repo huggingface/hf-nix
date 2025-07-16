@@ -7,7 +7,7 @@
   clang,
   comgr,
   hipcc,
-  hip-dev,
+  hip-devel,
   hip-runtime-amd,
   hsa-rocr,
   perl,
@@ -55,7 +55,7 @@ stdenv.mkDerivation {
 
     mkdir -p $out
 
-    for path in ${hipcc} ${hip-dev} ${hip-runtime-amd} ${rocm-opencl}; do
+    for path in ${hipcc} ${hip-devel} ${hip-runtime-amd} ${rocm-opencl}; do
       rsync -a --exclude=nix-support $path/ $out/
     done
 
@@ -72,6 +72,8 @@ stdenv.mkDerivation {
 
     runHook postInstall
   '';
+
+  dontStrip = true;
 
   passthru = {
     gpuTargets = lib.forEach [

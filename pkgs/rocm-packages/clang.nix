@@ -3,7 +3,7 @@
   wrapCCWith,
   bintools,
   glibc,
-  hip-dev,
+  hip-devel,
   llvm,
   rocm-device-libs,
   rsync,
@@ -41,10 +41,12 @@ wrapCCWith rec {
       # include HIP/CUDA compatibility headers.
       chmod -R +w $out/share
       mkdir -p $out/share/hip
-      cp ${hip-dev}/share/hip/version $out/share/hip
+      cp ${hip-devel}/share/hip/version $out/share/hip
 
       runHook postInstall
     '';
+
+    dontStrip = true;
 
     passthru = {
       isClang = true;

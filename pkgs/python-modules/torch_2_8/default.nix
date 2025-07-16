@@ -209,7 +209,7 @@ let
       clr
       comgr
       hipblas
-      hipblas-common-dev
+      hipblas-common-devel
       hipblaslt
       hipfft
       hipify-clang
@@ -545,13 +545,13 @@ buildPythonPackage rec {
     ++ lib.optionals rocmSupport (
       with rocmPackages;
       [
-        composablekernel-dev
-        hipcub-dev
+        composablekernel-devel
+        hipcub-devel
         libdrm
         openmp
         rocmtoolkit_joined
-        rocprim-dev
-        rocthrust-dev
+        rocprim-devel
+        rocthrust-devel
       ]
     )
     ++ lib.optionals (cudaSupport || rocmSupport) [ effectiveMagma ]

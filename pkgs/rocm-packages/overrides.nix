@@ -21,13 +21,13 @@ applyOverrides {
   hipblas =
     {
       lib,
-      hipblas-common-dev ? null,
+      hipblas-common-devel ? null,
     }:
     prevAttrs: {
       # Only available starting ROCm 6.3.
       propagatedBuildInputs =
         prevAttrs.buildInputs
-        ++ lib.optionals (hipblas-common-dev != null) [ hipblas-common-dev ];
+        ++ lib.optionals (hipblas-common-devel != null) [ hipblas-common-devel ];
     };
 
   hipblaslt =
@@ -59,7 +59,7 @@ applyOverrides {
       ];
     };
 
-  openmp-extras-dev =
+  openmp-extras-devel =
     { ncurses, zlib }:
     prevAttrs: {
       buildInputs = prevAttrs.buildInputs ++ [
@@ -69,9 +69,12 @@ applyOverrides {
     };
 
   openmp-extras-runtime =
-    { rocm-llvm }:
+    { rocm-llvm, libffi_3_2 }:
     prevAttrs: {
-      buildInputs = prevAttrs.buildInputs ++ [ rocm-llvm ];
+      buildInputs = prevAttrs.buildInputs ++ [
+        libffi_3_2
+        rocm-llvm
+      ];
       # Can we change rocm-llvm to pick these up?
       installPhase =
         (prevAttrs.installPhase or "")
@@ -81,10 +84,18 @@ applyOverrides {
     };
 
   hipsolver =
-    { suitesparse }:
-    prevAttrs: {
+    { lib, suitesparse, suitesparse_4_4 }:
+    prevAttrs:
+    let
+      effectiveSuitesparse =
+        # Remove this conditional when removing ROCm 6.2.
+        if lib.versionAtLeast prevAttrs.version "2.3.0" then
+          suitesparse
+        else
+          suitesparse_4_4;
+    in {
       buildInputs = prevAttrs.buildInputs ++ [
-        suitesparse
+        effectiveSuitesparse
       ];
     };
 
