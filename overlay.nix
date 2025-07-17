@@ -14,8 +14,7 @@ rec {
     finalAttrs: _: {
       version = "3.2.1";
       src = final.fetchurl {
-        url =
-          with finalAttrs; "https://gcc.gnu.org/pub/${pname}/${pname}-${version}.tar.gz";
+        url = with finalAttrs; "https://gcc.gnu.org/pub/${pname}/${pname}-${version}.tar.gz";
         hash = "sha256-0G67jh2aItGeONY/24OVQlPzm+3F1GIyoFZFaFciyjc=";
       };
     }
@@ -38,12 +37,14 @@ rec {
   # Remove when we remove ROCm 6.2.
   suitesparse_4_4 = prev.suitesparse_4_4.overrideAttrs (
     _: prevAttrs: {
-      postInstall = prevAttrs.postInstall + ''
-        ln -s $out/lib/libsuitesparse.so $out/lib/libsuitesparse.so.4
-        # All dynamic libraries are just symplinks to the main library.
-        ln -s $out/lib/libsuitesparse.so $out/lib/libcholmod.so.3
-        ln -s $out/lib/libsuitesparse.so $out/lib/libsuitesparseconfig.so.4
-      '';
+      postInstall =
+        prevAttrs.postInstall
+        + ''
+          ln -s $out/lib/libsuitesparse.so $out/lib/libsuitesparse.so.4
+          # All dynamic libraries are just symplinks to the main library.
+          ln -s $out/lib/libsuitesparse.so $out/lib/libcholmod.so.3
+          ln -s $out/lib/libsuitesparse.so $out/lib/libsuitesparseconfig.so.4
+        '';
     }
   );
 

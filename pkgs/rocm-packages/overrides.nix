@@ -84,16 +84,18 @@ applyOverrides {
     };
 
   hipsolver =
-    { lib, suitesparse, suitesparse_4_4 }:
+    {
+      lib,
+      suitesparse,
+      suitesparse_4_4,
+    }:
     prevAttrs:
     let
       effectiveSuitesparse =
         # Remove this conditional when removing ROCm 6.2.
-        if lib.versionAtLeast prevAttrs.version "2.3.0" then
-          suitesparse
-        else
-          suitesparse_4_4;
-    in {
+        if lib.versionAtLeast prevAttrs.version "2.3.0" then suitesparse else suitesparse_4_4;
+    in
+    {
       buildInputs = prevAttrs.buildInputs ++ [
         effectiveSuitesparse
       ];
