@@ -11,14 +11,14 @@
 
 buildPythonPackage rec {
   pname = "hf-xet";
-  version = "1.0.0";
+  version = "1.1.5";
   pyproject = true;
 
   src = fetchFromGitHub {
     owner = "huggingface";
     repo = "xet-core";
     rev = "v${version}";
-    hash = "sha256-4eM1H17teHr5IqZCnjr12nAxiWfzbeZ9lrhEHIUnzZs=";
+    hash = "sha256-udjZcXTH+Mc4Gvj6bSPv1xi4MyXrLeCYav+7CzKWyhY=";
   };
 
   sourceRoot = "${src.name}/hf_xet";
@@ -26,18 +26,13 @@ buildPythonPackage rec {
   cargoDeps = rustPlatform.fetchCargoVendor {
     inherit src;
     sourceRoot = "${src.name}/hf_xet";
-    hash = "sha256-dZ2RdMNgWkRZqFGy31ax7TSGMhuPeBac6AHBFFQzirk=";
+    hash = "sha256-PTzYubJHFvhq6T3314R4aqBAJlwehOqF7SbpLu4Jo6E=";
   };
 
   build-system = [
+    pkg-config
     rustPlatform.cargoSetupHook
     rustPlatform.maturinBuildHook
-  ];
-
-  nativeBuildInputs = [
-    # Used by the build script of the openssl crate.
-    perl
-    pkg-config
   ];
 
   buildInputs = [ openssl.dev ];
