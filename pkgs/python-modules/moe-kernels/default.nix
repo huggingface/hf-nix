@@ -26,6 +26,8 @@ buildPythonPackage rec {
     hash = "sha256-heZpJboVPGUbQgpK49YDayPm4rD/GWwbeuZNv/Byzyw=";
   };
 
+  pyproject = true;
+
   stdenv = cudaPackages.backendStdenv;
 
   nativeBuildInputs = with cudaPackages; [

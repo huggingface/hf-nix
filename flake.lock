@@ -35,17 +35,17 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1747820358,
-        "narHash": "sha256-fTqsZsUX6M3yeEvgyQvXcbGmT2CaRVyVwsi8eK29Oj4=",
-        "owner": "danieldk",
+        "lastModified": 1752785354,
+        "narHash": "sha256-Y33ryUz7MPqKrZwlbQcsYCUz2jAJCacRf8jbs0tYUlA=",
+        "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "d3c1681180717528068082103bf323147de6ab0b",
+        "rev": "d38025438a6ee456758dc03188ca6873a415463b",
         "type": "github"
       },
       "original": {
-        "owner": "danieldk",
-        "ref": "cudatoolkit-12.9-kernel-builder",
+        "owner": "nixos",
         "repo": "nixpkgs",
+        "rev": "d38025438a6ee456758dc03188ca6873a415463b",
         "type": "github"
       }
     },

@@ -8,6 +8,7 @@
   git,
   ninja,
   packaging,
+  setuptools,
   which,
   cudaPackages,
   torch,
@@ -28,6 +29,10 @@ buildPythonPackage rec {
   };
 
   stdenv = cudaPackages.backendStdenv;
+
+  pyproject = true;
+
+  build-system = [ setuptools ];
 
   buildInputs = with cudaPackages; [
     cuda_cccl

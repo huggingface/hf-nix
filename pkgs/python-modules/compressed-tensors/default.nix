@@ -2,6 +2,7 @@
   lib,
   buildPythonPackage,
   fetchFromGitHub,
+  setuptools,
   pydantic,
   torch,
   transformers,
@@ -17,6 +18,10 @@ buildPythonPackage rec {
     rev = version;
     hash = "sha256-65QqVLz3ITz1mqn1gK5MbN4BN3jzwsYsZbLscs57ZIM=";
   };
+
+  pyproject = true;
+
+  build-system = [ setuptools ];
 
   dependencies = [
     torch

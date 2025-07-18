@@ -7,10 +7,11 @@
 
   autoAddDriverRunpath,
   buildPythonPackage,
+  build2cmake,
   cmake,
   cudaPackages,
   ninja,
-  build2cmake,
+  setuptools,
 
   torch,
 }:
@@ -26,12 +27,16 @@
 buildPythonPackage rec {
   inherit pname version src;
 
+  pyproject = true;
+
   nativeBuildInputs = [
     autoAddDriverRunpath
     cmake
     cudaPackages.cuda_nvcc
     ninja
   ];
+
+  build-system = [ setuptools ];
 
   buildInputs = [
     torch.cxxdev

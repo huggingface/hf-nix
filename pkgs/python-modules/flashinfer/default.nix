@@ -9,6 +9,7 @@
   ninja,
   packaging,
   psutil,
+  setuptools,
   which,
   cudaPackages,
   torch,
@@ -29,6 +30,10 @@ buildPythonPackage rec {
   prePatch = "chmod -R +w ..";
 
   stdenv = cudaPackages.backendStdenv;
+
+  pyproject = true;
+
+  build-system = [ setuptools ];
 
   buildInputs = with cudaPackages; [
     torch.cxxdev
