@@ -12,6 +12,7 @@
   setuptools,
   which,
   cudaPackages,
+  einops,
   torch,
 }:
 
@@ -40,6 +41,10 @@ buildPythonPackage rec {
     libcusolver
     libcusparse
     psutil
+  ];
+
+  dependencies = [
+    einops
   ];
 
   nativeBuildInputs = [
