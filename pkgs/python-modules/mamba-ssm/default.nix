@@ -11,21 +11,22 @@
   setuptools,
   which,
   cudaPackages,
-  torch,
   einops,
+  torch,
   transformers,
+  triton,
 }:
 
 buildPythonPackage rec {
   pname = "mamba";
-  version = "2.2.2";
+  version = "2.2.4";
 
   src = fetchFromGitHub {
     owner = "state-spaces";
     repo = pname;
     rev = "v${version}";
     fetchSubmodules = true;
-    hash = "sha256-R702JjM3AGk7upN7GkNK8u1q4ekMK9fYQkpO6Re45Ng=";
+    hash = "sha256-noATHU9OiLzWc6rwiyL0wD9Q85Y/3bVpilKdUT9h0kU=";
   };
 
   stdenv = cudaPackages.backendStdenv;
@@ -50,11 +51,11 @@ buildPythonPackage rec {
   ];
 
   dependencies = [
-    torch
     packaging
     einops
     torch
     transformers
+    triton
   ];
 
   env = {
@@ -74,7 +75,8 @@ buildPythonPackage rec {
     export MAX_JOBS=$NIX_BUILD_CORES
   '';
 
-  pythonImportsCheck = [ "mamba_ssm" ];
+  # Import seems to require a GPU.
+  #pythonImportsCheck = [ "mamba_ssm" ];
 
   meta = with lib; {
     description = "Mamba selective space state model";
