@@ -12,6 +12,7 @@
   setuptools,
   which,
   cudaPackages,
+  einops,
   torch,
 }:
 
@@ -42,6 +43,11 @@ buildPythonPackage rec {
     psutil
   ];
 
+  dependencies = [
+    einops
+    torch
+  ];
+
   nativeBuildInputs = [
     autoAddDriverRunpath
     cmake
@@ -55,8 +61,6 @@ buildPythonPackage rec {
     CUDA_HOME = "${lib.getDev cudaPackages.cuda_nvcc}";
     FLASH_ATTENTION_FORCE_BUILD = "TRUE";
   };
-
-  propagatedBuildInputs = [ torch ];
 
   # cmake/ninja are used for parallel builds, but we don't want the
   # cmake configure hook to kick in.
