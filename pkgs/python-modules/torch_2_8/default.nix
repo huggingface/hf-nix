@@ -315,6 +315,10 @@ buildPythonPackage rec {
       pyiGenPath = "${typing-extensions}/${python.sitePackages}:${pyyaml}/${python.sitePackages}";
     in
     ''
+      substituteInPlace pyproject.toml \
+        --replace-fail "setuptools>=62.3.0,<80.0" \
+                       "setuptools>=62.3.0"
+
       substituteInPlace cmake/public/cuda.cmake \
         --replace-fail \
           'message(FATAL_ERROR "Found two conflicting CUDA' \
