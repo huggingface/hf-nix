@@ -62,6 +62,7 @@
   psutil,
   pyyaml,
   requests,
+  setuptools,
   sympy,
   types-dataclasses,
   typing-extensions,
@@ -612,7 +613,8 @@ buildPythonPackage rec {
 
     # torch/csrc requires `pybind11` at runtime
     pybind11
-  ] ++ lib.optionals tritonSupport [ _tritonEffective ];
+  ] ++ lib.optionals (lib.versionAtLeast python.version "3.12") [ setuptools ]
+    ++ lib.optionals tritonSupport [ _tritonEffective ];
 
   propagatedCxxBuildInputs =
     [ ] ++ lib.optionals MPISupport [ mpi ] ++ lib.optionals rocmSupport [ rocmtoolkit_joined ];
