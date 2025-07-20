@@ -285,7 +285,7 @@ in
 buildPythonPackage rec {
   pname = "torch";
   # Don't forget to update torch-bin to the same version.
-  version = "2.7.0";
+  version = "2.7.1";
   pyproject = true;
 
   stdenv = effectiveStdenv;
@@ -303,10 +303,9 @@ buildPythonPackage rec {
     owner = "pytorch";
     repo = "pytorch";
     # Switch back after 2.7 is released.
-    #tag = "v${version}";
-    tag = "v2.7.0-rc9";
+    tag = "v${version}";
     fetchSubmodules = true;
-    hash = "sha256-4QMLBqD2/0QzwmHqNAyEam6bDsuI6YT9LNBYM62ne2U=";
+    hash = "sha256-wVzYx8YYoL8rVYb9DwF6ai16UzPvSO4WhNvddh09RXM=";
   };
 
   patches =
