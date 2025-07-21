@@ -574,32 +574,34 @@ buildPythonPackage rec {
   pythonRelaxDeps = [
     "sympy"
   ];
-  dependencies = [
-    astunparse
-    expecttest
-    filelock
-    fsspec
-    hypothesis
-    jinja2
-    networkx
-    ninja
-    packaging
-    psutil
-    pyyaml
-    requests
-    sympy
-    types-dataclasses
-    typing-extensions
+  dependencies =
+    [
+      astunparse
+      expecttest
+      filelock
+      fsspec
+      hypothesis
+      jinja2
+      networkx
+      ninja
+      packaging
+      psutil
+      pyyaml
+      requests
+      sympy
+      types-dataclasses
+      typing-extensions
 
-    # the following are required for tensorboard support
-    pillow
-    six
-    tensorboard
-    protobuf
+      # the following are required for tensorboard support
+      pillow
+      six
+      tensorboard
+      protobuf
 
-    # torch/csrc requires `pybind11` at runtime
-    pybind11
-  ] ++ lib.optionals (lib.versionAtLeast python.version "3.12") [ setuptools ]
+      # torch/csrc requires `pybind11` at runtime
+      pybind11
+    ]
+    ++ lib.optionals (lib.versionAtLeast python.version "3.12") [ setuptools ]
     ++ lib.optionals tritonSupport [ _tritonEffective ];
 
   propagatedCxxBuildInputs =
