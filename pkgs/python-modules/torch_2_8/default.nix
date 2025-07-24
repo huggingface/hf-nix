@@ -157,6 +157,17 @@ let
           "8.6"
           "9.0"
         ];
+        # Not a supported upstream configuration, but keep it around for
+        # builds that fail on newer CUDA versions.
+        "12.4" = [
+          "5.0"
+          "6.0"
+          "7.0"
+          "7.5"
+          "8.0"
+          "8.6"
+          "9.0"
+        ];
       };
       real = capsPerCudaVersion."${lib.versions.majorMinor cudaPackages.cudaMajorMinorVersion}";
       ptx = lists.map (x: "${x}+PTX") real;
