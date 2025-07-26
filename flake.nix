@@ -3,8 +3,9 @@
 
   inputs = {
     flake-utils.url = "github:numtide/flake-utils";
-    # Upstream commit that adds CUDA 12.9, nixos-unstable-small is still behind.
-    nixpkgs.url = "github:nixos/nixpkgs/d38025438a6ee456758dc03188ca6873a415463b";
+    # Temporary branch to back out gcc hook that causes installPhase
+    # rebuilds, see: https://github.com/NixOS/nixpkgs/issues/428546
+    nixpkgs.url = "github:danieldk/nixpkgs/header-test";
     flake-compat.url = "github:edolstra/flake-compat";
   };
 
