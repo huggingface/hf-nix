@@ -100,6 +100,8 @@ rec {
 
         marlin-kernels = callPackage ./pkgs/python-modules/marlin-kernels { };
 
+        mktestdocs = callPackage ./pkgs/python-modules/mktestdocs { };
+
         moe = buildKernel rec {
           pname = "moe";
           version = "0.3.0";

@@ -86,6 +86,7 @@
                 hf-xet
                 kernels
                 mamba-ssm
+                mktestdocs
                 moe
                 opentelemetry-instrumentation-grpc
                 outlines
