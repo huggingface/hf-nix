@@ -82,7 +82,7 @@
     if cudaSupport then
       triton-cuda
     else if rocmSupport then
-      rocmPackages.aotriton_0_9
+      python.pkgs.triton-rocm
     else
       triton,
   triton-cuda,
@@ -226,6 +226,7 @@ let
     name = "rocm-merged";
 
     paths = with rocmPackages; [
+      aotriton_0_9
       clr
       comgr
       hipblas
