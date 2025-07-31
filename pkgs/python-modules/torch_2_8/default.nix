@@ -299,9 +299,9 @@ buildPythonPackage rec {
     owner = "pytorch";
     repo = "pytorch";
     #tag = "v${version}";
-    tag = "v${version}-rc6";
+    tag = "v${version}-rc8";
     fetchSubmodules = true;
-    hash = "sha256-/z6L3B3EtjGD6xlVqRtpLOZaH8NCg9KqcJSfUc7HoOM=";
+    hash = "sha256-tAY5WUoWNyewjODFukkjicqUjdvmV9a6QlmY6xfV5f4=";
   };
 
   patches =
