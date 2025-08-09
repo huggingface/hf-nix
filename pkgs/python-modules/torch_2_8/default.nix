@@ -109,6 +109,8 @@
   # ROCm dependencies
   rocmSupport ? config.rocmSupport,
   rocmPackages,
+  xpuSupport ? (config.xpuSupport or false),
+  xpuPackages,
   gpuTargets ? [ ],
 }:
 
@@ -278,6 +280,16 @@ let
     #"Rocm support is currently broken because `rocmPackages.hipblaslt` is unpackaged. (2024-06-09)" =
     #  rocmSupport;
   };
+  torchXpuOpsSrc =
+    if xpuSupport then
+      fetchFromGitHub {
+        owner = "intel";
+        repo = "torch-xpu-ops";
+        rev = "3a9419c8bb6a98dd3e3cd473c36691fb4abeae40";
+        hash = "sha256-cNNnqJXfFO7UOJtXmDGKS2s1Jjs0+/AztPMjE3K/YG0=";
+      }
+    else
+      null;
 in
 buildPythonPackage rec {
   pname = "torch";
@@ -321,6 +333,11 @@ buildPythonPackage rec {
     # https://github.com/pytorch/pytorch/pull/108847
     ./pytorch-pr-108847.patch
   ];
+
+  postUnpack = lib.optionalString xpuSupport ''
+    cp -r --no-preserve=mode ${torchXpuOpsSrc} $sourceRoot/third_party/torch-xpu-ops
+    patch -d $sourceRoot/third_party/torch-xpu-ops -p1 < ${./0001-patch-xpu-ops-CMake.patch}
+  '';
 
   postPatch =
     let
@@ -374,6 +391,20 @@ buildPythonPackage rec {
     + lib.optionalString cudaSupport ''
       rm cmake/Modules/FindCUDAToolkit.cmake
     ''
+    + lib.optionalString xpuSupport ''
+      # replace oneapi DIR
+      substituteInPlace cmake/Modules/FindMKL.cmake \
+        --replace-fail 'SET(DEFAULT_INTEL_ONEAPI_DIR "/opt/intel/oneapi")' 'SET(DEFAULT_INTEL_ONEAPI_DIR ${xpuPackages.oneapi-torch-dev}/oneapi)'
+      # replace mkldnn build for xpu
+      sed -i '/ExternalProject_Add(xpu_mkldnn_proj/,/^ *)/s/^/#/' cmake/Modules/FindMKLDNN.cmake
+      substituteInPlace cmake/Modules/FindMKLDNN.cmake \
+        --replace-fail 'ExternalProject_Get_Property(xpu_mkldnn_proj SOURCE_DIR BINARY_DIR)' '# ExternalProject_Get_Property(xpu_mkldnn_proj SOURCE_DIR BINARY_DIR)' \
+        --replace-fail  "set(XPU_MKLDNN_LIBRARIES \''${BINARY_DIR}/src/\''${DNNL_LIB_NAME})" "set(XPU_MKLDNN_LIBRARIES ${xpuPackages.onednn-xpu}/lib/libdnnl.a)" \
+        --replace-fail  "set(XPU_MKLDNN_INCLUDE \''${SOURCE_DIR}/include \''${BINARY_DIR}/include)" "set(XPU_MKLDNN_INCLUDE ${xpuPackages.onednn-xpu}/include)"
+      # comment torch-xpu-ops git clone block in pytorch/caffe2/CMakeLists.txt
+      sed -i '/set(TORCH_XPU_OPS_REPO_URL/,/^  endif()/s/^/#/' caffe2/CMakeLists.txt
+      sed -i '/execute_process(/,/^  endif()/s/^/#/' caffe2/CMakeLists.txt
+    ''
     # error: no member named 'aligned_alloc' in the global namespace; did you mean simply 'aligned_alloc'
     # This lib overrided aligned_alloc hence the error message. Tltr: his function is linkable but not in header.
     +
@@ -402,6 +433,9 @@ buildPythonPackage rec {
     + lib.optionalString rocmSupport ''
       export PYTORCH_ROCM_ARCH="${gpuTargetString}"
       python tools/amd_build/build_amd.py
+    ''
+    + lib.optionalString xpuSupport ''
+      export LD_LIBRARY_PATH=${xpuPackages.ocloc}/lib:$LD_LIBRARY_PATH
     '';
 
   # Use pytorch's custom configurations
@@ -568,6 +602,13 @@ buildPythonPackage rec {
       rocmtoolkit_joined
       rocprim-devel
       rocthrust-devel
+    ]
+  )
+  ++ lib.optionals xpuSupport (
+    with xpuPackages;
+    [
+      oneapi-torch-dev
+      onednn-xpu
     ]
   )
   ++ lib.optionals (cudaSupport || rocmSupport) [ effectiveMagma ]

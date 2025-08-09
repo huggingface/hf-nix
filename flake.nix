@@ -34,6 +34,11 @@
         rocmSupport = true;
       };
 
+      xpuConfig = {
+        allowUnfree = true;
+        xpuSupport = true;
+      };
+
       overlay = import ./overlay.nix;
     in
     flake-utils.lib.eachSystem
@@ -52,6 +57,11 @@
           pkgsRocm = import nixpkgs {
             inherit system;
             config = rocmConfig;
+            overlays = [ overlay ];
+          };
+          pkgsXpu = import nixpkgs {
+            inherit system;
+            config = xpuConfig;
             overlays = [ overlay ];
           };
           pkgsGeneric = import nixpkgs {
@@ -97,6 +107,12 @@
                 torch
                 transformers
                 ;
+            };
+
+            xpu = {
+              python3Packages = with pkgsXpu.python3.pkgs; {
+                inherit torch torch_2_7;
+              };
             };
 
             rocm = {

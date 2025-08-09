@@ -212,9 +212,9 @@ rec {
 
         torch = python-self.torch_2_8;
 
-        torch_2_7 = callPackage ./pkgs/python-modules/torch_2_7 { };
+        torch_2_7 = callPackage ./pkgs/python-modules/torch_2_7 { xpuPackages = final.xpuPackages_2025_0; };
 
-        torch_2_8 = callPackage ./pkgs/python-modules/torch_2_8 { };
+        torch_2_8 = callPackage ./pkgs/python-modules/torch_2_8 { xpuPackages = final.xpuPackages_2025_1; };
 
         transformers = callPackage ./pkgs/python-modules/transformers { };
 
@@ -242,5 +242,24 @@ rec {
         packageMetadata = readPackageMetadata ./pkgs/rocm-packages/rocm-${version}-metadata.json;
       };
     }) versions
+  )
+)
+// (
+  let
+    flattenVersion = prev.lib.strings.replaceStrings [ "." ] [ "_" ];
+    readPackageMetadata = path: (builtins.fromJSON (builtins.readFile path));
+    xpuVersions = [
+      "2025.0.2"
+      "2025.1.3"
+    ];
+    newXpuPackages = final.callPackage ./pkgs/xpu-packages { };
+  in
+  builtins.listToAttrs (
+    map (version: {
+      name = "xpuPackages_${flattenVersion (prev.lib.versions.majorMinor version)}";
+      value = newXpuPackages {
+        packageMetadata = readPackageMetadata ./pkgs/xpu-packages/intel-deep-learning-${version}.json;
+      };
+    }) xpuVersions
   )
 )
