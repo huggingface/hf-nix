@@ -7,6 +7,8 @@ rec {
 
   build2cmake = final.callPackage ./pkgs/build2cmake { };
 
+  cudaPackages = prev.cudaPackages_12_9;
+
   fetchKernel = final.callPackage ./pkgs/fetch-kernel { };
 
   # Used by ROCm.
