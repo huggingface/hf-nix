@@ -298,10 +298,9 @@ buildPythonPackage rec {
   src = fetchFromGitHub {
     owner = "pytorch";
     repo = "pytorch";
-    #tag = "v${version}";
-    tag = "v${version}-rc8";
+    tag = "v${version}";
     fetchSubmodules = true;
-    hash = "sha256-tAY5WUoWNyewjODFukkjicqUjdvmV9a6QlmY6xfV5f4=";
+    hash = "sha256-5JDYFoBe6bC9Dz143Bm/5OEOWsQxjctAR9fI4f6G2W8=";
   };
 
   patches =
