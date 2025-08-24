@@ -88,7 +88,6 @@
                 mktestdocs
                 moe
                 opentelemetry-instrumentation-grpc
-                outlines
                 paged-attention
                 punica-sgmv
                 quantization
