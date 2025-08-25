@@ -22,12 +22,13 @@ cudaPackages.backendStdenv.mkDerivation rec {
     inherit hash;
   };
 
-  nativeBuildInputs =
-    [ cmake ]
-    ++ (with cudaPackages; [
-      setupCudaHook
-      cuda_nvcc
-    ]);
+  nativeBuildInputs = [
+    cmake
+  ]
+  ++ (with cudaPackages; [
+    setupCudaHook
+    cuda_nvcc
+  ]);
 
   buildInputs = [ python3 ] ++ (with cudaPackages; [ cuda_cudart ]);
 

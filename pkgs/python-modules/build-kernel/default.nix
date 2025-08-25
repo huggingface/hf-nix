@@ -40,7 +40,8 @@ buildPythonPackage rec {
 
   buildInputs = [
     torch.cxxdev
-  ] ++ lib.optionals (cutlass != null) [ cutlass ];
+  ]
+  ++ lib.optionals (cutlass != null) [ cutlass ];
 
   dependencies = [
     torch

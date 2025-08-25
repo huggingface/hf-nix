@@ -73,19 +73,18 @@ stdenv.mkDerivation (
     env.NIX_CC_USE_RESPONSE_FILE = 0;
     requiredSystemFeatures = [ "big-parallel" ];
 
-    outputs =
-      [
-        "out"
-      ]
-      ++ lib.optionals buildTests [
-        "test"
-      ]
-      ++ lib.optionals buildBenchmarks [
-        "benchmark"
-      ]
-      ++ lib.optionals buildSamples [
-        "sample"
-      ];
+    outputs = [
+      "out"
+    ]
+    ++ lib.optionals buildTests [
+      "test"
+    ]
+    ++ lib.optionals buildBenchmarks [
+      "benchmark"
+    ]
+    ++ lib.optionals buildSamples [
+      "sample"
+    ];
 
     # ROCM doesn't include an empty cuda.h?
     # It does in AMD's distribution
@@ -112,35 +111,34 @@ stdenv.mkDerivation (
       '')
     ];
 
-    buildInputs =
-      [
-        libffi
-        ncurses
-        xz
-        nlohmann_json
-        #rocmlir
-        #cudaRtIncludes
+    buildInputs = [
+      libffi
+      ncurses
+      xz
+      nlohmann_json
+      #rocmlir
+      #cudaRtIncludes
 
-        # Tensile deps - not optional, building without tensile isn't actually supported
-        msgpack # FIXME: not included in cmake!
-        libxml2
-        python3Packages.msgpack
-        zlib
-        zstd
-        #python3Packages.joblib
-      ]
-      ++ (with rocmPackages; [
-        hipblas
-        openmp
-        rocblas
-        rocsolver
-      ])
-      ++ lib.optionals buildTests [
-        gtest
-      ]
-      ++ lib.optionals (buildTests || buildBenchmarks) [
-        lapack-reference
-      ];
+      # Tensile deps - not optional, building without tensile isn't actually supported
+      msgpack # FIXME: not included in cmake!
+      libxml2
+      python3Packages.msgpack
+      zlib
+      zstd
+      #python3Packages.joblib
+    ]
+    ++ (with rocmPackages; [
+      hipblas
+      openmp
+      rocblas
+      rocsolver
+    ])
+    ++ lib.optionals buildTests [
+      gtest
+    ]
+    ++ lib.optionals (buildTests || buildBenchmarks) [
+      lapack-reference
+    ];
 
     env.TRITON_OFFLINE_BUILD = 1;
     env.LLVM_SYSPATH = "${triton-llvm'}";
@@ -194,35 +192,34 @@ stdenv.mkDerivation (
       ninja -v install
     '';
 
-    cmakeFlags =
-      [
-        #"--debug"
-        #"--trace"
-        "-Wno-dev"
-        "-DAOTRITON_NOIMAGE_MODE=ON" # FIXME: Should be able to build with object code but generate_shim is failing
-        "-DCMAKE_BUILD_TYPE=Release"
-        "-DCMAKE_VERBOSE_MAKEFILE=ON"
-        # "-DCMAKE_CXX_COMPILER=hipcc" # MUST be set because tensile uses this
-        # "-DCMAKE_C_COMPILER=${lib.getBin clr}/bin/hipcc"
-        "-DVIRTUALENV_PYTHON_EXENAME=${lib.getExe py}"
-        "-DCMAKE_CXX_COMPILER=${compiler}"
-        # Manually define CMAKE_INSTALL_<DIR>
-        # See: https://github.com/NixOS/nixpkgs/pull/197838
-        "-DCMAKE_INSTALL_BINDIR=bin"
-        "-DCMAKE_INSTALL_LIBDIR=lib"
-        "-DCMAKE_INSTALL_INCLUDEDIR=include"
-        "-DAMDGPU_TARGETS=${gpuTargets'}"
-        "-DGPU_TARGETS=${gpuTargets'}"
-      ]
-      ++ lib.optionals buildTests [
-        "-DBUILD_CLIENTS_TESTS=ON"
-      ]
-      ++ lib.optionals buildBenchmarks [
-        "-DBUILD_CLIENTS_BENCHMARKS=ON"
-      ]
-      ++ lib.optionals buildSamples [
-        "-DBUILD_CLIENTS_SAMPLES=ON"
-      ];
+    cmakeFlags = [
+      #"--debug"
+      #"--trace"
+      "-Wno-dev"
+      "-DAOTRITON_NOIMAGE_MODE=ON" # FIXME: Should be able to build with object code but generate_shim is failing
+      "-DCMAKE_BUILD_TYPE=Release"
+      "-DCMAKE_VERBOSE_MAKEFILE=ON"
+      # "-DCMAKE_CXX_COMPILER=hipcc" # MUST be set because tensile uses this
+      # "-DCMAKE_C_COMPILER=${lib.getBin clr}/bin/hipcc"
+      "-DVIRTUALENV_PYTHON_EXENAME=${lib.getExe py}"
+      "-DCMAKE_CXX_COMPILER=${compiler}"
+      # Manually define CMAKE_INSTALL_<DIR>
+      # See: https://github.com/NixOS/nixpkgs/pull/197838
+      "-DCMAKE_INSTALL_BINDIR=bin"
+      "-DCMAKE_INSTALL_LIBDIR=lib"
+      "-DCMAKE_INSTALL_INCLUDEDIR=include"
+      "-DAMDGPU_TARGETS=${gpuTargets'}"
+      "-DGPU_TARGETS=${gpuTargets'}"
+    ]
+    ++ lib.optionals buildTests [
+      "-DBUILD_CLIENTS_TESTS=ON"
+    ]
+    ++ lib.optionals buildBenchmarks [
+      "-DBUILD_CLIENTS_BENCHMARKS=ON"
+    ]
+    ++ lib.optionals buildSamples [
+      "-DBUILD_CLIENTS_SAMPLES=ON"
+    ];
 
     postInstall =
       lib.optionalString buildTests ''

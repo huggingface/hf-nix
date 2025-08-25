@@ -45,7 +45,8 @@ stdenv.mkDerivation rec {
   buildInputs = [
     stdenv.cc.cc.lib
     stdenv.cc.cc.libgcc
-  ] ++ (map (dep: rocmPackages.${dep}) filteredDeps);
+  ]
+  ++ (map (dep: rocmPackages.${dep}) filteredDeps);
 
   # dpkg hook does not seem to work for multiple sources.
   unpackPhase = ''

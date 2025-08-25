@@ -39,14 +39,12 @@ rec {
   # Remove when we remove ROCm 6.2.
   suitesparse_4_4 = prev.suitesparse_4_4.overrideAttrs (
     _: prevAttrs: {
-      postInstall =
-        prevAttrs.postInstall
-        + ''
-          ln -s $out/lib/libsuitesparse.so $out/lib/libsuitesparse.so.4
-          # All dynamic libraries are just symplinks to the main library.
-          ln -s $out/lib/libsuitesparse.so $out/lib/libcholmod.so.3
-          ln -s $out/lib/libsuitesparse.so $out/lib/libsuitesparseconfig.so.4
-        '';
+      postInstall = prevAttrs.postInstall + ''
+        ln -s $out/lib/libsuitesparse.so $out/lib/libsuitesparse.so.4
+        # All dynamic libraries are just symplinks to the main library.
+        ln -s $out/lib/libsuitesparse.so $out/lib/libcholmod.so.3
+        ln -s $out/lib/libsuitesparse.so $out/lib/libsuitesparseconfig.so.4
+      '';
     }
   );
 

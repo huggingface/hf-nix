@@ -26,8 +26,7 @@ applyOverrides {
     prevAttrs: {
       # Only available starting ROCm 6.3.
       propagatedBuildInputs =
-        prevAttrs.buildInputs
-        ++ lib.optionals (hipblas-common-devel != null) [ hipblas-common-devel ];
+        prevAttrs.buildInputs ++ lib.optionals (hipblas-common-devel != null) [ hipblas-common-devel ];
     };
 
   hipblaslt =
@@ -76,11 +75,9 @@ applyOverrides {
         rocm-llvm
       ];
       # Can we change rocm-llvm to pick these up?
-      installPhase =
-        (prevAttrs.installPhase or "")
-        + ''
-          addAutoPatchelfSearchPath ${rocm-llvm}/lib/llvm/lib
-        '';
+      installPhase = (prevAttrs.installPhase or "") + ''
+        addAutoPatchelfSearchPath ${rocm-llvm}/lib/llvm/lib
+      '';
     };
 
   hipsolver =
@@ -136,13 +133,11 @@ applyOverrides {
         zstd
       ];
 
-      installPhase =
-        (prevAttrs.installPhase or "")
-        + ''
-          # Dead symlink(s).
-          chmod -R +w $out/lib
-          rm -f $out/lib/llvm/bin/flang
-        '';
+      installPhase = (prevAttrs.installPhase or "") + ''
+        # Dead symlink(s).
+        chmod -R +w $out/lib
+        rm -f $out/lib/llvm/bin/flang
+      '';
     };
 
   rocminfo =
