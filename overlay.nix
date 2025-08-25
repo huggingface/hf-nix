@@ -1,4 +1,7 @@
 final: prev:
+let
+  gccVersions = final.callPackage ./pkgs/gcc/all.nix { noSysDirs = true; };
+in
 rec {
   # Use MKL for BLAS/LAPACK on x86_64.
   blas = if final.stdenv.isx86_64 then prev.blas.override { blasProvider = prev.mkl; } else prev.blas;
@@ -27,6 +30,10 @@ rec {
   cudaPackages = final.lib.recurseIntoAttrs cudaPackages_12;
 
   fetchKernel = final.callPackage ./pkgs/fetch-kernel { };
+
+  # These gcc versions are not in nixpkgs anymore, but we need them for older CUDA versions.
+  gcc11Stdenv = final.overrideCC final.gccStdenv gccVersions.gcc11;
+  gcc12Stdenv = final.overrideCC final.gccStdenv gccVersions.gcc12;
 
   # Used by ROCm.
   libffi_3_2 = final.libffi_3_3.overrideAttrs (
