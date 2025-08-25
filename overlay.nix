@@ -7,7 +7,24 @@ rec {
 
   build2cmake = final.callPackage ./pkgs/build2cmake { };
 
-  cudaPackages = prev.cudaPackages_12_9;
+  # Top-level fix-point used in `cudaPackages`' internals
+  _cuda = import ./pkgs/cuda-packages/_cuda { inherit (final) lib; };
+
+  cudaPackages_11_8 = final.callPackage ./pkgs/cuda-packages { cudaMajorMinorVersion = "11.8"; };
+  cudaPackages_11 = final.lib.recurseIntoAttrs cudaPackages_11_8;
+
+  cudaPackages_12_0 = final.callPackage ./pkgs/cuda-packages { cudaMajorMinorVersion = "12.0"; };
+  cudaPackages_12_1 = final.callPackage ./pkgs/cuda-packages { cudaMajorMinorVersion = "12.1"; };
+  cudaPackages_12_2 = final.callPackage ./pkgs/cuda-packages { cudaMajorMinorVersion = "12.2"; };
+  cudaPackages_12_3 = final.callPackage ./pkgs/cuda-packages { cudaMajorMinorVersion = "12.3"; };
+  cudaPackages_12_4 = final.callPackage ./pkgs/cuda-packages { cudaMajorMinorVersion = "12.4"; };
+  cudaPackages_12_5 = final.callPackage ./pkgs/cuda-packages { cudaMajorMinorVersion = "12.5"; };
+  cudaPackages_12_6 = final.callPackage ./pkgs/cuda-packages { cudaMajorMinorVersion = "12.6"; };
+  cudaPackages_12_8 = final.callPackage ./pkgs/cuda-packages { cudaMajorMinorVersion = "12.8"; };
+  cudaPackages_12_9 = final.callPackage ./pkgs/cuda-packages { cudaMajorMinorVersion = "12.9"; };
+  cudaPackages_12 = cudaPackages_12_9;
+
+  cudaPackages = final.lib.recurseIntoAttrs cudaPackages_12;
 
   fetchKernel = final.callPackage ./pkgs/fetch-kernel { };
 
