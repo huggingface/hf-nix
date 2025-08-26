@@ -18,12 +18,13 @@
 }:
 
 let
+  hipClangPath = "${clang}/bin";
   wrapperArgs = [
     "--prefix PATH : $out/bin"
     "--prefix LD_LIBRARY_PATH : ${hsa-rocr}"
     "--set HIP_PLATFORM amd"
     "--set HIP_PATH $out"
-    "--set HIP_CLANG_PATH ${clang}/bin"
+    "--set HIP_CLANG_PATH ${hipClangPath}"
     "--set DEVICE_LIB_PATH ${rocm-device-libs}/amdgcn/bitcode"
     "--set HSA_PATH ${hsa-rocr}"
     "--set ROCM_PATH $out"
@@ -71,6 +72,19 @@ stdenv.mkDerivation {
     wrapProgram $out/bin/hipconfig.pl ${lib.concatStringsSep " " wrapperArgs}
 
     runHook postInstall
+  '';
+
+  postInstall = ''
+    mkdir -p $out/nix-support/
+    echo '
+    export HIP_PATH="${placeholder "out"}"
+    export HIP_PLATFORM=amd
+    export HIP_DEVICE_LIB_PATH="${rocm-device-libs}/amdgcn/bitcode"
+    export NIX_CC_USE_RESPONSE_FILE=0
+    export HIP_CLANG_PATH="${hipClangPath}"
+    export HSA_PATH="${hsa-rocr}"' > $out/nix-support/setup-hook
+
+    ln -s ${clang} $out/llvm
   '';
 
   dontStrip = true;
