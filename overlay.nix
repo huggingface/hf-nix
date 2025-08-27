@@ -212,8 +212,6 @@ rec {
 
         torch = python-self.torch_2_8;
 
-        torch_2_6 = callPackage ./pkgs/python-modules/torch_2_6 { };
-
         torch_2_7 = callPackage ./pkgs/python-modules/torch_2_7 { };
 
         torch_2_8 = callPackage ./pkgs/python-modules/torch_2_8 { };
