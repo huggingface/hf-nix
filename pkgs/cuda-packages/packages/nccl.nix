@@ -100,9 +100,7 @@ backendStdenv.mkDerivation (finalAttrs: {
     # https://forums.developer.nvidia.com/t/can-jetson-orin-support-nccl/232845/9
     badPlatforms = lib.optionals flags.isJetsonBuild [ "aarch64-linux" ];
     maintainers = with maintainers; [
-      mdaiter
-      orivej
     ];
-    teams = [ teams.cuda ];
+    teams = [ ];
   };
 })

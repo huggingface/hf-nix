@@ -240,7 +240,6 @@ stdenv.mkDerivation {
     license = licenses.bsd3;
     homepage = "http://icl.cs.utk.edu/magma/index.html";
     platforms = platforms.linux;
-    maintainers = with maintainers; [ connorbaker ];
 
     # Cf. https://bitbucket.org/icl/magma/src/fcfe5aa61c1a4c664b36a73ebabbdbab82765e9f/CMakeLists.txt#lines-20
     broken =

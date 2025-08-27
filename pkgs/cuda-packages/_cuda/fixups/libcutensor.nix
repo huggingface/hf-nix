@@ -12,7 +12,7 @@ finalAttrs: prevAttrs: {
   meta = prevAttrs.meta or { } // {
     description = "cuTENSOR: A High-Performance CUDA Library For Tensor Primitives";
     homepage = "https://developer.nvidia.com/cutensor";
-    maintainers = prevAttrs.meta.maintainers or [ ] ++ [ lib.maintainers.obsidian-systems-maintenance ];
+    maintainers = prevAttrs.meta.maintainers or [ ];
     teams = prevAttrs.meta.teams;
     license = lib.licenses.unfreeRedistributable // {
       shortName = "cuTENSOR EULA";

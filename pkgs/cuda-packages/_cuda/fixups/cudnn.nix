@@ -55,13 +55,7 @@ finalAttrs: prevAttrs: {
 
   meta = prevAttrs.meta or { } // {
     homepage = "https://developer.nvidia.com/cudnn";
-    maintainers =
-      prevAttrs.meta.maintainers or [ ]
-      ++ (with maintainers; [
-        mdaiter
-        samuela
-        connorbaker
-      ]);
+    maintainers = prevAttrs.meta.maintainers or [ ];
     # TODO(@connorbaker): Temporary workaround to avoid changing the derivation hash since introducing more
     # brokenConditions would change the derivation as they're top-level and __structuredAttrs is set.
     teams = prevAttrs.meta.teams or [ ];

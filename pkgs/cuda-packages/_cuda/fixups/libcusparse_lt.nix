@@ -12,7 +12,7 @@ finalAttrs: prevAttrs: {
   meta = prevAttrs.meta or { } // {
     description = "cuSPARSELt: A High-Performance CUDA Library for Sparse Matrix-Matrix Multiplication";
     homepage = "https://developer.nvidia.com/cusparselt-downloads";
-    maintainers = prevAttrs.meta.maintainers or [ ] ++ [ lib.maintainers.sepiabrown ];
+    maintainers = prevAttrs.meta.maintainers or [ ];
     teams = prevAttrs.meta.teams or [ ];
     license = lib.licenses.unfreeRedistributable // {
       shortName = "cuSPARSELt EULA";
