@@ -1,4 +1,5 @@
 {
+  lib,
   stdenv,
   fetchFromGitHub,
   cmake,
@@ -7,60 +8,26 @@
   writeShellScriptBin,
   setupXpuHook,
   oneapi-torch-dev,
-  dpcppVersion,
+  intel-oneapi-dpcpp-cpp,
 }:
 
 let
-  version =
-    if dpcppVersion == "2025.1" then
-      "3.8.1"
-    else if dpcppVersion == "2025.0" then
-      "3.7.1"
-    else
-      "3.8.1";
-  rev =
-    if dpcppVersion == "2025.1" then
-      "v3.8.1"
-    else if dpcppVersion == "2025.0" then
-      "v3.7.1"
-    else
-      "v3.8.1";
-  sha256 =
-    if dpcppVersion == "2025.1" then
-      "sha256-x4leRd0xPFUygjAv/D125CIXn7lYSyzUKsd9IDh/vCc="
-    else if dpcppVersion == "2025.0" then
-      "sha256-+4z5l0mJsw0SOW245GfZh41mdHGZ8u+xED7afm6pQjs="
-    else
-      "sha256-x4leRd0xPFUygjAv/D125CIXn7lYSyzUKsd9IDh/vCc=";
-in
-stdenv.mkDerivation rec {
-  pname = "onednn-xpu";
-  inherit version;
-
-  src = fetchFromGitHub {
-    owner = "oneapi-src";
-    repo = "oneDNN";
-    inherit rev sha256;
+  dpcppVersion = intel-oneapi-dpcpp-cpp.version;
+  oneDnnVersions = {
+    "2025.0" = {
+      version = "3.7.1";
+      hash = "sha256-+4z5l0mJsw0SOW245GfZh41mdHGZ8u+xED7afm6pQjs=";
+    };
+    "2025.1" = {
+      version = "3.8.1";
+      hash = "sha256-x4leRd0xPFUygjAv/D125CIXn7lYSyzUKsd9IDh/vCc=";
+    };
   };
-
-  env.CXXFLAGS = "-isystem${oneapi-torch-dev}/oneapi/compiler/latest/lib/clang/21/include -I${stdenv.cc.libc_dev}/include -I${gcc.cc}/include/c++/${gcc.version}  -I${gcc.cc}/include/c++/${gcc.version}/x86_64-unknown-linux-gnu";
-  env.LDFLAGS =
-    "-L${stdenv.cc}/lib -L${stdenv.cc}/lib64"
-    + " -L${gcc.cc}/lib/gcc/x86_64-unknown-linux-gnu/${gcc.version}"
-    + " -L${stdenv.cc.cc.lib}/lib";
-
-  nativeBuildInputs = [
-    (writeShellScriptBin "icx" ''
-      exec ${oneapi-torch-dev}/oneapi/compiler/latest/bin/icx \
-      -B${stdenv.cc.libc}/lib -B${oneapi-torch-dev}/oneapi/compiler/latest/lib/crt -isysroot ${stdenv.cc.libc_dev} -isystem${stdenv.cc.libc_dev}/include \
-      "$@"
-    '')
-    (writeShellScriptBin "icpx" ''
-      exec  ${oneapi-torch-dev}/oneapi/compiler/latest/bin/icpx \
-      -B${stdenv.cc.libc}/lib -B${oneapi-torch-dev}/oneapi/compiler/latest/lib/crt -isysroot ${stdenv.cc.libc_dev} -isystem${stdenv.cc.libc_dev}/include \
-      "$@"
-    '')
-    (writeShellScriptBin "g++" ''
+  oneDnnVersion =
+    oneDnnVersions.${lib.versions.majorMinor dpcppVersion}
+    or (throw "Unsupported DPC++ version: ${dpcppVersion}");
+  hostCompiler = (
+    writeShellScriptBin "g++" ''
       exec ${gcc.cc}/bin/g++ \
         -nostdinc  \
         -isysroot ${stdenv.cc.libc_dev} \
@@ -69,7 +36,21 @@ stdenv.mkDerivation rec {
         -I${gcc.cc}/include/c++/${gcc.version}/x86_64-unknown-linux-gnu \
         -I${gcc.cc}/lib/gcc/x86_64-unknown-linux-gnu/${gcc.version}/include \
         "$@"
-    '')
+    ''
+  );
+in
+stdenv.mkDerivation {
+  pname = "onednn-xpu";
+  inherit (oneDnnVersion) version;
+
+  src = fetchFromGitHub {
+    owner = "oneapi-src";
+    repo = "oneDNN";
+    tag = "v${oneDnnVersion.version}";
+    inherit (oneDnnVersion) hash;
+  };
+
+  nativeBuildInputs = [
     cmake
     ninja
     setupXpuHook
@@ -85,9 +66,9 @@ stdenv.mkDerivation rec {
     "-DDNNL_BUILD_EXAMPLES=OFF"
     "-DONEDNN_BUILD_GRAPH=ON"
     "-DDNNL_LIBRARY_TYPE=STATIC"
-    "-DDNNL_DPCPP_HOST_COMPILER=g++"
-    "-DOpenCL_LIBRARY=${oneapi-torch-dev}/oneapi/compiler/latest/lib/libOpenCL.so"
-    "-DOpenCL_INCLUDE_DIR=${oneapi-torch-dev}/oneapi/compiler/latest/include"
+    "-DDNNL_DPCPP_HOST_COMPILER=${hostCompiler}/bin/g++"
+    #"-DOpenCL_LIBRARY=${oneapi-torch-dev}/oneapi/compiler/latest/lib/libOpenCL.so"
+    #"-DOpenCL_INCLUDE_DIR=${oneapi-torch-dev}/oneapi/compiler/latest/include"
   ];
 
   installPhase = ''

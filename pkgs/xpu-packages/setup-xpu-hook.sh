@@ -23,28 +23,46 @@ declare -Ag xpuHostPathsSeen=()
 declare -Ag xpuOutputToPath=()
 
 extendXpuHostPathsSeen() {
-    local markerPath="$1/nix-support/include-in-xpu-root"
+    (( "${NIX_DEBUG:-0}" >= 1 )) && echo "extendXpuHostPathsSeen $1" >&2
 
+    local markerPath="$1/nix-support/include-in-xpu-root"
     [[ ! -f "${markerPath}" ]] && return 0
     [[ -v xpuHostPathsSeen[$1] ]] && return 0
 
     xpuHostPathsSeen["$1"]=1
 
-    # read mark, export the env
-    while IFS= read -r line; do
-        if [[ "$line" == XPU_COMPILER_BIN=* ]]; then
-            export PATH="${PATH:-}:${line#XPU_COMPILER_BIN=}"
-        elif [[ "$line" == XPU_COMPILER_LIB=* ]]; then
-            export LD_LIBRARY_PATH="${line#XPU_COMPILER_LIB=}:${LD_LIBRARY_PATH:-}"
-        elif [[ "$line" == XPU_COMPILER_INCLUDE=* ]]; then
-            export CPATH="${line#XPU_COMPILER_INCLUDE=}:${CPATH:-}"
-        elif [[ "$line" == XPU_MKL_BIN=* ]]; then
-            export PATH="${PATH:-}:${line#XPU_MKL_BIN=}"
-        elif [[ "$line" == XPU_MKL_LIB=* ]]; then
-            export LD_LIBRARY_PATH="${LD_LIBRARY_PATH:-}:${line#XPU_MKL_LIB=}"
-        elif [[ "$line" == XPU_MKL_INCLUDE=* ]]; then
-            export CPATH="${line#XPU_MKL_INCLUDE=}:${CPATH:-}"
-        fi
-    done < "$markerPath"
+    # E.g. cuda_cudart-lib
+    local xpuOutputName
+    # Fail gracefully if the file is empty.
+    # One reason the file may be empty: the package was built with strictDeps set, but the current build does not have
+    # strictDeps set.
+    read -r xpuOutputName < "$markerPath" || return 0
+
+    [[ -z "$xpuOutputName" ]] && return 0
+
+    local oldPath="${xpuOutputToPath[$xpuOutputName]-}"
+    [[ -n "$oldPath" ]] && echo "extendXpuHostPathsSeen: warning: overwriting $xpuOutputName from $oldPath to $1" >&2
+    xpuOutputToPath["$xpuOutputName"]="$1"
 }
 addEnvHooks "$targetOffset" extendXpuHostPathsSeen
+
+propagateXpuLibraries() {
+    (( "${NIX_DEBUG:-0}" >= 1 )) && echo "propagateXpuLibraries: xpuPropagateToOutput=$xpuPropagateToOutput xpuHostPathsSeen=${!xpuHostPathsSeen[*]}" >&2
+
+    [[ -z "${xpuPropagateToOutput-}" ]] && return 0
+
+    mkdir -p "${!xpuPropagateToOutput}/nix-support"
+    # One'd expect this should be propagated-bulid-build-deps, but that doesn't seem to work
+    echo "@setupXpuHook@" >> "${!xpuPropagateToOutput}/nix-support/propagated-native-build-inputs"
+
+    local propagatedBuildInputs=( "${!xpuHostPathsSeen[@]}" )
+    for output in $(getAllOutputNames) ; do
+        if [[ ! "$output" = "$xpuPropagateToOutput" ]] ; then
+            appendToVar propagatedBuildInputs "${!output}"
+        fi
+        break
+    done
+
+    # One'd expect this should be propagated-host-host-deps, but that doesn't seem to work
+    printWords "${propagatedBuildInputs[@]}" >> "${!xpuPropagateToOutput}/nix-support/propagated-build-inputs"
+}

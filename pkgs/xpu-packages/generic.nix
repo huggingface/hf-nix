@@ -33,7 +33,6 @@ stdenv.mkDerivation rec {
   buildInputs = [
     stdenv.cc.cc.lib
     stdenv.cc.cc.libgcc
-    # Add zlib for libz.so.1 dependency
     zlib
   ];
 
@@ -48,15 +47,17 @@ stdenv.mkDerivation rec {
     runHook preInstall
     mkdir -p $out
 
+    find . -type d \( -name "bin" -o -name "include" -o -name "lib" -o -name "share" \) -prune -exec cp -r {} $out/ \;
+
     # Check if opt/intel exists and copy content
-    if [ -d "opt/intel" ]; then
-      cp -rT opt/intel $out
-    elif [ -d "opt" ]; then
-      cp -rT opt $out
-    else
-      # Fallback: copy everything if no opt directory found
-      cp -r . $out/
-    fi
+    #if [ -d "opt/intel" ]; then
+    #  cp -rT opt/intel $out
+    #elif [ -d "opt" ]; then
+    #  cp -rT opt $out
+    #else
+    #  # Fallback: copy everything if no opt directory found
+    #  cp -r . $out/
+    #fi
 
     runHook postInstall
   '';
@@ -81,35 +82,11 @@ stdenv.mkDerivation rec {
     "libhwloc.so.15" # Hardware Locality library
     "libhwloc.so.5" # Hardware Locality library
 
-    # Intel math and compiler libraries
-    "libimf.so" # Intel Math Functions library
-    "libsvml.so" # Intel Short Vector Math Library
-    "libirng.so" # Intel Random Number Generator library
-    "libintlc.so.5" # Intel Compiler library
-    "libur_loader.so.0" # Unified Runtime loader
-    "libffi.so" # Foreign Function Interface library
-    "libumf.so.0" # Unified Memory Framework
-    "libxptifw.so" # Intel XPU Profiling and Tracing Interface
-
-    # MKL libraries (provided by other MKL packages or cross-dependencies)
-    "libmkl_core.so.2" # MKL Core library
-    "libmkl_intel_lp64.so.2" # MKL Intel LP64 interface
-    "libmkl_intel_thread.so.2" # MKL Intel threading layer
-    "libmkl_sequential.so.2" # MKL sequential layer
-
-    # MPI libraries (not part of oneAPI, used by benchmarks only)
-    "libmpi.so.12" # Message Passing Interface library
-    "libmpicxx.so.12" # MPI C++ bindings
-    "libmpifort.so.12" # MPI Fortran bindings
-    "libiomp5.so" # OMP library
-
     # System libraries that might not be available
     "libpython3.6m.so.1.0"
     "libpython3.7m.so.1.0"
     "libpython3.8.so.1.0"
     "libpython3.9.so.1.0"
-    "libonnxruntime.1.12.22.721.so"
-    "libelf.so.1"
   ];
 
   meta = with lib; {

@@ -4,38 +4,23 @@
 
 (( ${hostOffset:?} == -1 && ${targetOffset:?} == 0)) || return 0
 
-
 markForXPU_ROOT() {
     mkdir -p "${prefix:?}/nix-support"
     local markerPath="$prefix/nix-support/include-in-xpu-root"
 
+    # Return early if the file already exists.
     [[ -f "$markerPath" ]] && return 0
+
+
+    # Always create the file, even if it's empty, since setup-xpu-hook relies on its existence.
+    # However, only populate it if strictDeps is not set.
     touch "$markerPath"
 
+    # Return early if strictDeps is set.
     [[ -n "${strictDeps-}" ]] && return 0
 
-    echo "${name:?}-${output:?}" > "$markerPath"
-
-    # export compiler bin/lib/include
-    if [[ -d "$prefix/oneapi/compiler/latest/bin" ]]; then
-        echo "XPU_COMPILER_BIN=$prefix/oneapi/compiler/latest/bin" >> "$markerPath"
-    fi
-    if [[ -d "$prefix/oneapi/compiler/latest/lib" ]]; then
-        echo "XPU_COMPILER_LIB=$prefix/oneapi/compiler/latest/lib" >> "$markerPath"
-    fi
-    if [[ -d "$prefix/oneapi/compiler/latest/include" ]]; then
-        echo "XPU_COMPILER_INCLUDE=$prefix/oneapi/compiler/latest/include" >> "$markerPath"
-    fi
-    # export MKL bin/lib/include
-    if [[ -d "$prefix/oneapi/mkl/latest/bin" ]]; then
-        echo "XPU_MKL_BIN=$prefix/oneapi/mkl/latest/bin" >> "$markerPath"
-    fi
-    if [[ -d "$prefix/oneapi/mkl/latest/lib" ]]; then
-        echo "XPU_MKL_LIB=$prefix/oneapi/mkl/latest/lib" >> "$markerPath"
-    fi
-    if [[ -d "$prefix/oneapi/mkl/latest/include" ]]; then
-        echo "XPU_MKL_INCLUDE=$prefix/oneapi/mkl/latest/include" >> "$markerPath"
-    fi
+    # Populate the file with the package name and output.
+    echo "${pname:?}-${output:?}" > "$markerPath"
 }
 
 fixupOutputHooks+=(markForXPU_ROOT)

@@ -1,19 +1,19 @@
 {
-  "intel-deep-learning-essentials-2025.0": {
+  "intel-deep-learning-essentials": {
     "deps": [
-      "intel-deep-learning-essentials-env-2025.0",
-      "intel-deep-learning-essentials-getting-started-2025.0",
-      "intel-oneapi-ccl-devel-2021.14",
-      "intel-oneapi-common-licensing-2025.0",
-      "intel-oneapi-common-oneapi-vars-2025.0",
+      "intel-deep-learning-essentials-env",
+      "intel-deep-learning-essentials-getting-started",
+      "intel-oneapi-ccl",
+      "intel-oneapi-common-licensing",
+      "intel-oneapi-common-oneapi-vars",
       "intel-oneapi-common-vars",
-      "intel-oneapi-compiler-dpcpp-cpp-2025.0",
-      "intel-oneapi-dev-utilities-2025.0",
-      "intel-oneapi-dnnl-devel-2025.0",
-      "intel-oneapi-libdpstd-devel-2022.7",
-      "intel-oneapi-mkl-devel-2025.0",
-      "intel-oneapi-tlt-2025.0",
-      "intel-pti-dev-0.10"
+      "intel-oneapi-compiler-dpcpp-cpp",
+      "intel-oneapi-dev-utilities",
+      "intel-oneapi-dnnl",
+      "intel-oneapi-libdpstd-devel",
+      "intel-oneapi-mkl-devel",
+      "intel-oneapi-tlt",
+      "intel-pti-dev"
     ],
     "components": [
       {
@@ -25,9 +25,9 @@
     ],
     "version": "2025.0.2"
   },
-  "intel-deep-learning-essentials-env-2025.0": {
+  "intel-deep-learning-essentials-env": {
     "deps": [
-      "intel-oneapi-tlt-2025.0"
+      "intel-oneapi-tlt"
     ],
     "components": [
       {
@@ -39,7 +39,7 @@
     ],
     "version": "2025.0.2"
   },
-  "intel-deep-learning-essentials-getting-started-2025.0": {
+  "intel-deep-learning-essentials-getting-started": {
     "deps": [],
     "components": [
       {
@@ -51,12 +51,12 @@
     ],
     "version": "2025.0.2"
   },
-  "intel-oneapi-ccl-2021.14": {
+  "intel-oneapi-ccl": {
     "deps": [
-      "intel-oneapi-common-licensing-2025.0",
-      "intel-oneapi-common-oneapi-vars-2025.0",
+      "intel-oneapi-common-licensing",
+      "intel-oneapi-common-oneapi-vars",
       "intel-oneapi-common-vars",
-      "intel-oneapi-mpi-devel-2021.14"
+      "intel-oneapi-mpi"
     ],
     "components": [
       {
@@ -64,19 +64,7 @@
         "sha256": "6853d1c38dd67f6c18c869959fba9ec1d984959b669cc995aaf01cb0ec138054",
         "url": "https://yum.repos.intel.com/oneapi/intel-oneapi-ccl-2021.14-2021.14.0-505.x86_64.rpm",
         "version": "2021.14.0"
-      }
-    ],
-    "version": "2021.14.0"
-  },
-  "intel-oneapi-ccl-devel-2021.14": {
-    "deps": [
-      "intel-oneapi-ccl-2021.14",
-      "intel-oneapi-common-licensing-2025.0",
-      "intel-oneapi-common-oneapi-vars-2025.0",
-      "intel-oneapi-common-vars",
-      "intel-oneapi-mpi-devel-2021.14"
-    ],
-    "components": [
+      },
       {
         "name": "intel-oneapi-ccl-devel-2021.14",
         "sha256": "a5b64e3b077dec56b2a371ac920cc56ccba7256dede970e7a66a65f575cc7614",
@@ -86,19 +74,7 @@
     ],
     "version": "2021.14.0"
   },
-  "intel-oneapi-common-licensing-2025.0": {
-    "deps": [],
-    "components": [
-      {
-        "name": "intel-oneapi-common-licensing-2025.0",
-        "sha256": "334795d0324a18b676a0cc5e2720d39bc34ce27e78fdfe990eefd3a2cfbdc31a",
-        "url": "https://yum.repos.intel.com/oneapi/intel-oneapi-common-licensing-2025.0-2025.0.1-15.noarch.rpm",
-        "version": "2025.0.1"
-      }
-    ],
-    "version": "2025.0.1"
-  },
-  "intel-oneapi-common-licensing-2025.2": {
+  "intel-oneapi-common-licensing": {
     "deps": [],
     "components": [
       {
@@ -110,19 +86,7 @@
     ],
     "version": "2025.2.0"
   },
-  "intel-oneapi-common-oneapi-vars-2025.0": {
-    "deps": [],
-    "components": [
-      {
-        "name": "intel-oneapi-common-oneapi-vars-2025.0",
-        "sha256": "5fb3018586e32b50cf67f8f8723a15dbcb002733dcf553e96341d29129b5bedf",
-        "url": "https://yum.repos.intel.com/oneapi/intel-oneapi-common-oneapi-vars-2025.0-2025.0.1-15.noarch.rpm",
-        "version": "2025.0.1"
-      }
-    ],
-    "version": "2025.0.1"
-  },
-  "intel-oneapi-common-oneapi-vars-2025.2": {
+  "intel-oneapi-common-oneapi-vars": {
     "deps": [],
     "components": [
       {
@@ -136,8 +100,8 @@
   },
   "intel-oneapi-common-vars": {
     "deps": [
-      "intel-oneapi-common-licensing-2025.2",
-      "intel-oneapi-common-oneapi-vars-2025.2"
+      "intel-oneapi-common-licensing",
+      "intel-oneapi-common-oneapi-vars"
     ],
     "components": [
       {
@@ -149,10 +113,10 @@
     ],
     "version": "2025.2.0"
   },
-  "intel-oneapi-compiler-cpp-eclipse-cfg-2025.0": {
+  "intel-oneapi-compiler-cpp-eclipse-cfg": {
     "deps": [
-      "intel-oneapi-common-licensing-2025.0",
-      "intel-oneapi-common-oneapi-vars-2025.0",
+      "intel-oneapi-common-licensing",
+      "intel-oneapi-common-oneapi-vars",
       "intel-oneapi-common-vars"
     ],
     "components": [
@@ -165,13 +129,13 @@
     ],
     "version": "2025.0.4"
   },
-  "intel-oneapi-compiler-dpcpp-cpp-2025.0": {
+  "intel-oneapi-compiler-dpcpp-cpp": {
     "deps": [
-      "intel-oneapi-common-licensing-2025.0",
-      "intel-oneapi-common-oneapi-vars-2025.0",
+      "intel-oneapi-common-licensing",
+      "intel-oneapi-common-oneapi-vars",
       "intel-oneapi-common-vars",
-      "intel-oneapi-dpcpp-cpp-2025.0",
-      "intel-oneapi-libdpstd-devel-2022.7"
+      "intel-oneapi-dpcpp-cpp",
+      "intel-oneapi-libdpstd-devel"
     ],
     "components": [
       {
@@ -183,15 +147,15 @@
     ],
     "version": "2025.0.4"
   },
-  "intel-oneapi-compiler-dpcpp-cpp-common-2025.0": {
+  "intel-oneapi-compiler-dpcpp-cpp-common": {
     "deps": [
-      "intel-oneapi-common-licensing-2025.0",
-      "intel-oneapi-common-oneapi-vars-2025.0",
+      "intel-oneapi-common-licensing",
+      "intel-oneapi-common-oneapi-vars",
       "intel-oneapi-common-vars",
-      "intel-oneapi-compiler-cpp-eclipse-cfg-2025.0",
-      "intel-oneapi-compiler-dpcpp-eclipse-cfg-2025.0",
-      "intel-oneapi-compiler-shared-common-2025.0",
-      "intel-oneapi-icc-eclipse-plugin-cpp-2025.0"
+      "intel-oneapi-compiler-cpp-eclipse-cfg",
+      "intel-oneapi-compiler-dpcpp-eclipse-cfg",
+      "intel-oneapi-compiler-shared-common",
+      "intel-oneapi-icc-eclipse-plugin-cpp"
     ],
     "components": [
       {
@@ -203,13 +167,13 @@
     ],
     "version": "2025.0.4"
   },
-  "intel-oneapi-compiler-dpcpp-cpp-runtime-2025.0": {
+  "intel-oneapi-compiler-dpcpp-cpp-runtime": {
     "deps": [
-      "intel-oneapi-common-licensing-2025.0",
-      "intel-oneapi-common-oneapi-vars-2025.0",
+      "intel-oneapi-common-licensing",
+      "intel-oneapi-common-oneapi-vars",
       "intel-oneapi-common-vars",
-      "intel-oneapi-compiler-shared-runtime-2025.0",
-      "intel-oneapi-tbb-2022.0"
+      "intel-oneapi-compiler-shared-runtime",
+      "intel-oneapi-tbb"
     ],
     "components": [
       {
@@ -221,10 +185,10 @@
     ],
     "version": "2025.0.4"
   },
-  "intel-oneapi-compiler-dpcpp-eclipse-cfg-2025.0": {
+  "intel-oneapi-compiler-dpcpp-eclipse-cfg": {
     "deps": [
-      "intel-oneapi-common-licensing-2025.0",
-      "intel-oneapi-common-oneapi-vars-2025.0",
+      "intel-oneapi-common-licensing",
+      "intel-oneapi-common-oneapi-vars",
       "intel-oneapi-common-vars"
     ],
     "components": [
@@ -237,14 +201,14 @@
     ],
     "version": "2025.0.4"
   },
-  "intel-oneapi-compiler-shared-2025.0": {
+  "intel-oneapi-compiler-shared": {
     "deps": [
-      "intel-oneapi-common-licensing-2025.0",
-      "intel-oneapi-common-oneapi-vars-2025.0",
+      "intel-oneapi-common-licensing",
+      "intel-oneapi-common-oneapi-vars",
       "intel-oneapi-common-vars",
-      "intel-oneapi-compiler-shared-common-2025.0",
-      "intel-oneapi-compiler-shared-runtime-2025.0",
-      "intel-oneapi-dpcpp-debugger-2025.0"
+      "intel-oneapi-compiler-shared-common",
+      "intel-oneapi-compiler-shared-runtime",
+      "intel-oneapi-dpcpp-debugger"
     ],
     "components": [
       {
@@ -256,10 +220,10 @@
     ],
     "version": "2025.0.4"
   },
-  "intel-oneapi-compiler-shared-common-2025.0": {
+  "intel-oneapi-compiler-shared-common": {
     "deps": [
-      "intel-oneapi-common-licensing-2025.0",
-      "intel-oneapi-common-oneapi-vars-2025.0",
+      "intel-oneapi-common-licensing",
+      "intel-oneapi-common-oneapi-vars",
       "intel-oneapi-common-vars"
     ],
     "components": [
@@ -272,12 +236,12 @@
     ],
     "version": "2025.0.4"
   },
-  "intel-oneapi-compiler-shared-runtime-2025.0": {
+  "intel-oneapi-compiler-shared-runtime": {
     "deps": [
-      "intel-oneapi-common-licensing-2025.0",
-      "intel-oneapi-common-oneapi-vars-2025.0",
+      "intel-oneapi-common-licensing",
+      "intel-oneapi-common-oneapi-vars",
       "intel-oneapi-common-vars",
-      "intel-oneapi-openmp-2025.0"
+      "intel-oneapi-openmp"
     ],
     "components": [
       {
@@ -289,12 +253,12 @@
     ],
     "version": "2025.0.4"
   },
-  "intel-oneapi-dev-utilities-2025.0": {
+  "intel-oneapi-dev-utilities": {
     "deps": [
-      "intel-oneapi-common-licensing-2025.0",
-      "intel-oneapi-common-oneapi-vars-2025.0",
+      "intel-oneapi-common-licensing",
+      "intel-oneapi-common-oneapi-vars",
       "intel-oneapi-common-vars",
-      "intel-oneapi-dev-utilities-eclipse-cfg-2025.0"
+      "intel-oneapi-dev-utilities-eclipse-cfg"
     ],
     "components": [
       {
@@ -306,10 +270,10 @@
     ],
     "version": "2025.0.0"
   },
-  "intel-oneapi-dev-utilities-eclipse-cfg-2025.0": {
+  "intel-oneapi-dev-utilities-eclipse-cfg": {
     "deps": [
-      "intel-oneapi-common-licensing-2025.0",
-      "intel-oneapi-common-oneapi-vars-2025.0",
+      "intel-oneapi-common-licensing",
+      "intel-oneapi-common-oneapi-vars",
       "intel-oneapi-common-vars"
     ],
     "components": [
@@ -322,13 +286,13 @@
     ],
     "version": "2025.0.0"
   },
-  "intel-oneapi-dnnl-2025.0": {
+  "intel-oneapi-dnnl": {
     "deps": [
-      "intel-oneapi-common-licensing-2025.0",
-      "intel-oneapi-common-oneapi-vars-2025.0",
+      "intel-oneapi-common-licensing",
+      "intel-oneapi-common-oneapi-vars",
       "intel-oneapi-common-vars",
-      "intel-oneapi-compiler-dpcpp-cpp-runtime-2025.0",
-      "intel-oneapi-tbb-2022.0"
+      "intel-oneapi-compiler-dpcpp-cpp-runtime",
+      "intel-oneapi-tbb"
     ],
     "components": [
       {
@@ -336,19 +300,7 @@
         "sha256": "d078f3febb595feb9fb68904c0c6a021f1f6681a40d6961e5bbb0c694c972948",
         "url": "https://yum.repos.intel.com/oneapi/intel-oneapi-dnnl-2025.0-2025.0.2-27.x86_64.rpm",
         "version": "2025.0.2"
-      }
-    ],
-    "version": "2025.0.2"
-  },
-  "intel-oneapi-dnnl-devel-2025.0": {
-    "deps": [
-      "intel-oneapi-common-licensing-2025.0",
-      "intel-oneapi-common-oneapi-vars-2025.0",
-      "intel-oneapi-common-vars",
-      "intel-oneapi-dnnl-2025.0",
-      "intel-oneapi-tbb-devel-2022.0"
-    ],
-    "components": [
+      },
       {
         "name": "intel-oneapi-dnnl-devel-2025.0",
         "sha256": "a05e3756777f33f59f4a9cb4177c7cb858cbe0073b424e0216bdf0a5a20eaf22",
@@ -358,16 +310,16 @@
     ],
     "version": "2025.0.2"
   },
-  "intel-oneapi-dpcpp-cpp-2025.0": {
+  "intel-oneapi-dpcpp-cpp": {
     "deps": [
-      "intel-oneapi-common-licensing-2025.0",
-      "intel-oneapi-common-oneapi-vars-2025.0",
+      "intel-oneapi-common-licensing",
+      "intel-oneapi-common-oneapi-vars",
       "intel-oneapi-common-vars",
-      "intel-oneapi-compiler-dpcpp-cpp-common-2025.0",
-      "intel-oneapi-compiler-dpcpp-cpp-runtime-2025.0",
-      "intel-oneapi-compiler-shared-2025.0",
-      "intel-oneapi-dev-utilities-2025.0",
-      "intel-oneapi-tbb-devel-2022.0"
+      "intel-oneapi-compiler-dpcpp-cpp-common",
+      "intel-oneapi-compiler-dpcpp-cpp-runtime",
+      "intel-oneapi-compiler-shared",
+      "intel-oneapi-dev-utilities",
+      "intel-oneapi-tbb"
     ],
     "components": [
       {
@@ -379,10 +331,10 @@
     ],
     "version": "2025.0.4"
   },
-  "intel-oneapi-icc-eclipse-plugin-cpp-2025.0": {
+  "intel-oneapi-icc-eclipse-plugin-cpp": {
     "deps": [
-      "intel-oneapi-common-licensing-2025.0",
-      "intel-oneapi-common-oneapi-vars-2025.0",
+      "intel-oneapi-common-licensing",
+      "intel-oneapi-common-oneapi-vars",
       "intel-oneapi-common-vars"
     ],
     "components": [
@@ -395,10 +347,10 @@
     ],
     "version": "2025.0.4"
   },
-  "intel-oneapi-libdpstd-devel-2022.7": {
+  "intel-oneapi-libdpstd-devel": {
     "deps": [
-      "intel-oneapi-common-licensing-2025.0",
-      "intel-oneapi-common-oneapi-vars-2025.0",
+      "intel-oneapi-common-licensing",
+      "intel-oneapi-common-oneapi-vars",
       "intel-oneapi-common-vars"
     ],
     "components": [
@@ -411,14 +363,14 @@
     ],
     "version": "2022.7.1"
   },
-  "intel-oneapi-mkl-classic-devel-2025.0": {
+  "intel-oneapi-mkl-classic-devel": {
     "deps": [
-      "intel-oneapi-common-licensing-2025.0",
-      "intel-oneapi-common-oneapi-vars-2025.0",
+      "intel-oneapi-common-licensing",
+      "intel-oneapi-common-oneapi-vars",
       "intel-oneapi-common-vars",
-      "intel-oneapi-mkl-classic-include-2025.0",
-      "intel-oneapi-mkl-cluster-devel-2025.0",
-      "intel-oneapi-mkl-core-devel-2025.0"
+      "intel-oneapi-mkl-classic-include",
+      "intel-oneapi-mkl-cluster",
+      "intel-oneapi-mkl-core"
     ],
     "components": [
       {
@@ -430,10 +382,10 @@
     ],
     "version": "2025.0.1"
   },
-  "intel-oneapi-mkl-classic-include-2025.0": {
+  "intel-oneapi-mkl-classic-include": {
     "deps": [
-      "intel-oneapi-common-licensing-2025.0",
-      "intel-oneapi-common-oneapi-vars-2025.0",
+      "intel-oneapi-common-licensing",
+      "intel-oneapi-common-oneapi-vars",
       "intel-oneapi-common-vars"
     ],
     "components": [
@@ -446,12 +398,12 @@
     ],
     "version": "2025.0.1"
   },
-  "intel-oneapi-mkl-cluster-2025.0": {
+  "intel-oneapi-mkl-cluster": {
     "deps": [
-      "intel-oneapi-common-licensing-2025.0",
-      "intel-oneapi-common-oneapi-vars-2025.0",
+      "intel-oneapi-common-licensing",
+      "intel-oneapi-common-oneapi-vars",
       "intel-oneapi-common-vars",
-      "intel-oneapi-mkl-core-2025.0"
+      "intel-oneapi-mkl-core"
     ],
     "components": [
       {
@@ -459,19 +411,7 @@
         "sha256": "879792b331b8ce4588c864f59de0752f3cd0831f29435328c319d8415dd8f27a",
         "url": "https://yum.repos.intel.com/oneapi/intel-oneapi-mkl-cluster-2025.0-2025.0.1-14.x86_64.rpm",
         "version": "2025.0.1"
-      }
-    ],
-    "version": "2025.0.1"
-  },
-  "intel-oneapi-mkl-cluster-devel-2025.0": {
-    "deps": [
-      "intel-oneapi-common-licensing-2025.0",
-      "intel-oneapi-common-oneapi-vars-2025.0",
-      "intel-oneapi-common-vars",
-      "intel-oneapi-mkl-cluster-2025.0",
-      "intel-oneapi-mkl-core-devel-2025.0"
-    ],
-    "components": [
+      },
       {
         "name": "intel-oneapi-mkl-cluster-devel-2025.0",
         "sha256": "8acf529d0f38524a9d0c9b6aa01a24c6d5c0a0416f00a7e3b2ae20d8588a5af7",
@@ -481,13 +421,14 @@
     ],
     "version": "2025.0.1"
   },
-  "intel-oneapi-mkl-core-2025.0": {
+  "intel-oneapi-mkl-core": {
     "deps": [
-      "intel-oneapi-common-licensing-2025.0",
-      "intel-oneapi-common-oneapi-vars-2025.0",
+      "intel-oneapi-common-licensing",
+      "intel-oneapi-common-oneapi-vars",
       "intel-oneapi-common-vars",
-      "intel-oneapi-openmp-2025.0",
-      "intel-oneapi-tbb-2022.0"
+      "intel-oneapi-mkl-classic-include",
+      "intel-oneapi-openmp",
+      "intel-oneapi-tbb"
     ],
     "components": [
       {
@@ -495,19 +436,7 @@
         "sha256": "9ea5a0726024d6bb0ce2ce7c426c7528a202f5f62d6ddccfcf5231e13d488ab2",
         "url": "https://yum.repos.intel.com/oneapi/intel-oneapi-mkl-core-2025.0-2025.0.1-14.x86_64.rpm",
         "version": "2025.0.1"
-      }
-    ],
-    "version": "2025.0.1"
-  },
-  "intel-oneapi-mkl-core-devel-2025.0": {
-    "deps": [
-      "intel-oneapi-common-licensing-2025.0",
-      "intel-oneapi-common-oneapi-vars-2025.0",
-      "intel-oneapi-common-vars",
-      "intel-oneapi-mkl-classic-include-2025.0",
-      "intel-oneapi-mkl-core-2025.0"
-    ],
-    "components": [
+      },
       {
         "name": "intel-oneapi-mkl-core-devel-2025.0",
         "sha256": "10b66ace1e9e31c851730ddc4084206e8477015f227fe3817a886c19ae2d2d02",
@@ -517,13 +446,13 @@
     ],
     "version": "2025.0.1"
   },
-  "intel-oneapi-mkl-devel-2025.0": {
+  "intel-oneapi-mkl-devel": {
     "deps": [
-      "intel-oneapi-common-licensing-2025.0",
-      "intel-oneapi-common-oneapi-vars-2025.0",
+      "intel-oneapi-common-licensing",
+      "intel-oneapi-common-oneapi-vars",
       "intel-oneapi-common-vars",
-      "intel-oneapi-mkl-classic-devel-2025.0",
-      "intel-oneapi-mkl-sycl-devel-2025.0"
+      "intel-oneapi-mkl-classic-devel",
+      "intel-oneapi-mkl-sycl"
     ],
     "components": [
       {
@@ -535,19 +464,21 @@
     ],
     "version": "2025.0.1"
   },
-  "intel-oneapi-mkl-sycl-2025.0": {
+  "intel-oneapi-mkl-sycl": {
     "deps": [
-      "intel-oneapi-common-licensing-2025.0",
-      "intel-oneapi-common-oneapi-vars-2025.0",
+      "intel-oneapi-common-licensing",
+      "intel-oneapi-common-oneapi-vars",
       "intel-oneapi-common-vars",
-      "intel-oneapi-mkl-sycl-blas-2025.0",
-      "intel-oneapi-mkl-sycl-data-fitting-2025.0",
-      "intel-oneapi-mkl-sycl-dft-2025.0",
-      "intel-oneapi-mkl-sycl-lapack-2025.0",
-      "intel-oneapi-mkl-sycl-rng-2025.0",
-      "intel-oneapi-mkl-sycl-sparse-2025.0",
-      "intel-oneapi-mkl-sycl-stats-2025.0",
-      "intel-oneapi-mkl-sycl-vm-2025.0"
+      "intel-oneapi-mkl-core",
+      "intel-oneapi-mkl-sycl-blas",
+      "intel-oneapi-mkl-sycl-data-fitting",
+      "intel-oneapi-mkl-sycl-dft",
+      "intel-oneapi-mkl-sycl-include",
+      "intel-oneapi-mkl-sycl-lapack",
+      "intel-oneapi-mkl-sycl-rng",
+      "intel-oneapi-mkl-sycl-sparse",
+      "intel-oneapi-mkl-sycl-stats",
+      "intel-oneapi-mkl-sycl-vm"
     ],
     "components": [
       {
@@ -555,17 +486,23 @@
         "sha256": "3d5e774135c5774b331a1c5dcd1d4d696455dc8945431067154f1195bbf7fc47",
         "url": "https://yum.repos.intel.com/oneapi/intel-oneapi-mkl-sycl-2025.0-2025.0.1-14.x86_64.rpm",
         "version": "2025.0.1"
+      },
+      {
+        "name": "intel-oneapi-mkl-sycl-devel-2025.0",
+        "sha256": "d1c9350ce96fef2a7c1aa46af96b6f1b03d451b7ba853f0176edb9362ef0eab2",
+        "url": "https://yum.repos.intel.com/oneapi/intel-oneapi-mkl-sycl-devel-2025.0-2025.0.1-14.x86_64.rpm",
+        "version": "2025.0.1"
       }
     ],
     "version": "2025.0.1"
   },
-  "intel-oneapi-mkl-sycl-blas-2025.0": {
+  "intel-oneapi-mkl-sycl-blas": {
     "deps": [
-      "intel-oneapi-common-licensing-2025.0",
-      "intel-oneapi-common-oneapi-vars-2025.0",
+      "intel-oneapi-common-licensing",
+      "intel-oneapi-common-oneapi-vars",
       "intel-oneapi-common-vars",
-      "intel-oneapi-compiler-dpcpp-cpp-runtime-2025.0",
-      "intel-oneapi-mkl-core-2025.0"
+      "intel-oneapi-compiler-dpcpp-cpp-runtime",
+      "intel-oneapi-mkl-core"
     ],
     "components": [
       {
@@ -577,13 +514,13 @@
     ],
     "version": "2025.0.1"
   },
-  "intel-oneapi-mkl-sycl-data-fitting-2025.0": {
+  "intel-oneapi-mkl-sycl-data-fitting": {
     "deps": [
-      "intel-oneapi-common-licensing-2025.0",
-      "intel-oneapi-common-oneapi-vars-2025.0",
+      "intel-oneapi-common-licensing",
+      "intel-oneapi-common-oneapi-vars",
       "intel-oneapi-common-vars",
-      "intel-oneapi-compiler-dpcpp-cpp-runtime-2025.0",
-      "intel-oneapi-mkl-core-2025.0"
+      "intel-oneapi-compiler-dpcpp-cpp-runtime",
+      "intel-oneapi-mkl-core"
     ],
     "components": [
       {
@@ -595,32 +532,13 @@
     ],
     "version": "2025.0.1"
   },
-  "intel-oneapi-mkl-sycl-devel-2025.0": {
+  "intel-oneapi-mkl-sycl-dft": {
     "deps": [
-      "intel-oneapi-common-licensing-2025.0",
-      "intel-oneapi-common-oneapi-vars-2025.0",
+      "intel-oneapi-common-licensing",
+      "intel-oneapi-common-oneapi-vars",
       "intel-oneapi-common-vars",
-      "intel-oneapi-mkl-core-devel-2025.0",
-      "intel-oneapi-mkl-sycl-2025.0",
-      "intel-oneapi-mkl-sycl-include-2025.0"
-    ],
-    "components": [
-      {
-        "name": "intel-oneapi-mkl-sycl-devel-2025.0",
-        "sha256": "d1c9350ce96fef2a7c1aa46af96b6f1b03d451b7ba853f0176edb9362ef0eab2",
-        "url": "https://yum.repos.intel.com/oneapi/intel-oneapi-mkl-sycl-devel-2025.0-2025.0.1-14.x86_64.rpm",
-        "version": "2025.0.1"
-      }
-    ],
-    "version": "2025.0.1"
-  },
-  "intel-oneapi-mkl-sycl-dft-2025.0": {
-    "deps": [
-      "intel-oneapi-common-licensing-2025.0",
-      "intel-oneapi-common-oneapi-vars-2025.0",
-      "intel-oneapi-common-vars",
-      "intel-oneapi-compiler-dpcpp-cpp-runtime-2025.0",
-      "intel-oneapi-mkl-core-2025.0"
+      "intel-oneapi-compiler-dpcpp-cpp-runtime",
+      "intel-oneapi-mkl-core"
     ],
     "components": [
       {
@@ -632,12 +550,12 @@
     ],
     "version": "2025.0.1"
   },
-  "intel-oneapi-mkl-sycl-include-2025.0": {
+  "intel-oneapi-mkl-sycl-include": {
     "deps": [
-      "intel-oneapi-common-licensing-2025.0",
-      "intel-oneapi-common-oneapi-vars-2025.0",
+      "intel-oneapi-common-licensing",
+      "intel-oneapi-common-oneapi-vars",
       "intel-oneapi-common-vars",
-      "intel-oneapi-mkl-classic-include-2025.0"
+      "intel-oneapi-mkl-classic-include"
     ],
     "components": [
       {
@@ -649,14 +567,14 @@
     ],
     "version": "2025.0.1"
   },
-  "intel-oneapi-mkl-sycl-lapack-2025.0": {
+  "intel-oneapi-mkl-sycl-lapack": {
     "deps": [
-      "intel-oneapi-common-licensing-2025.0",
-      "intel-oneapi-common-oneapi-vars-2025.0",
+      "intel-oneapi-common-licensing",
+      "intel-oneapi-common-oneapi-vars",
       "intel-oneapi-common-vars",
-      "intel-oneapi-compiler-dpcpp-cpp-runtime-2025.0",
-      "intel-oneapi-mkl-core-2025.0",
-      "intel-oneapi-mkl-sycl-blas-2025.0"
+      "intel-oneapi-compiler-dpcpp-cpp-runtime",
+      "intel-oneapi-mkl-core",
+      "intel-oneapi-mkl-sycl-blas"
     ],
     "components": [
       {
@@ -668,13 +586,13 @@
     ],
     "version": "2025.0.1"
   },
-  "intel-oneapi-mkl-sycl-rng-2025.0": {
+  "intel-oneapi-mkl-sycl-rng": {
     "deps": [
-      "intel-oneapi-common-licensing-2025.0",
-      "intel-oneapi-common-oneapi-vars-2025.0",
+      "intel-oneapi-common-licensing",
+      "intel-oneapi-common-oneapi-vars",
       "intel-oneapi-common-vars",
-      "intel-oneapi-compiler-dpcpp-cpp-runtime-2025.0",
-      "intel-oneapi-mkl-core-2025.0"
+      "intel-oneapi-compiler-dpcpp-cpp-runtime",
+      "intel-oneapi-mkl-core"
     ],
     "components": [
       {
@@ -686,14 +604,14 @@
     ],
     "version": "2025.0.1"
   },
-  "intel-oneapi-mkl-sycl-sparse-2025.0": {
+  "intel-oneapi-mkl-sycl-sparse": {
     "deps": [
-      "intel-oneapi-common-licensing-2025.0",
-      "intel-oneapi-common-oneapi-vars-2025.0",
+      "intel-oneapi-common-licensing",
+      "intel-oneapi-common-oneapi-vars",
       "intel-oneapi-common-vars",
-      "intel-oneapi-compiler-dpcpp-cpp-runtime-2025.0",
-      "intel-oneapi-mkl-core-2025.0",
-      "intel-oneapi-mkl-sycl-blas-2025.0"
+      "intel-oneapi-compiler-dpcpp-cpp-runtime",
+      "intel-oneapi-mkl-core",
+      "intel-oneapi-mkl-sycl-blas"
     ],
     "components": [
       {
@@ -705,13 +623,13 @@
     ],
     "version": "2025.0.1"
   },
-  "intel-oneapi-mkl-sycl-stats-2025.0": {
+  "intel-oneapi-mkl-sycl-stats": {
     "deps": [
-      "intel-oneapi-common-licensing-2025.0",
-      "intel-oneapi-common-oneapi-vars-2025.0",
+      "intel-oneapi-common-licensing",
+      "intel-oneapi-common-oneapi-vars",
       "intel-oneapi-common-vars",
-      "intel-oneapi-compiler-dpcpp-cpp-runtime-2025.0",
-      "intel-oneapi-mkl-core-2025.0"
+      "intel-oneapi-compiler-dpcpp-cpp-runtime",
+      "intel-oneapi-mkl-core"
     ],
     "components": [
       {
@@ -723,13 +641,13 @@
     ],
     "version": "2025.0.1"
   },
-  "intel-oneapi-mkl-sycl-vm-2025.0": {
+  "intel-oneapi-mkl-sycl-vm": {
     "deps": [
-      "intel-oneapi-common-licensing-2025.0",
-      "intel-oneapi-common-oneapi-vars-2025.0",
+      "intel-oneapi-common-licensing",
+      "intel-oneapi-common-oneapi-vars",
       "intel-oneapi-common-vars",
-      "intel-oneapi-compiler-dpcpp-cpp-runtime-2025.0",
-      "intel-oneapi-mkl-core-2025.0"
+      "intel-oneapi-compiler-dpcpp-cpp-runtime",
+      "intel-oneapi-mkl-core"
     ],
     "components": [
       {
@@ -741,10 +659,10 @@
     ],
     "version": "2025.0.1"
   },
-  "intel-oneapi-mpi-2021.14": {
+  "intel-oneapi-mpi": {
     "deps": [
-      "intel-oneapi-common-licensing-2025.0",
-      "intel-oneapi-common-oneapi-vars-2025.0",
+      "intel-oneapi-common-licensing",
+      "intel-oneapi-common-oneapi-vars",
       "intel-oneapi-common-vars"
     ],
     "components": [
@@ -753,18 +671,7 @@
         "sha256": "266fb233af2ba7b3cd9c5fcfd6a1c4887df9746c8d0cac35ae6e167e307b9cd5",
         "url": "https://yum.repos.intel.com/oneapi/intel-oneapi-mpi-2021.14-2021.14.2-7.x86_64.rpm",
         "version": "2021.14.2"
-      }
-    ],
-    "version": "2021.14.2"
-  },
-  "intel-oneapi-mpi-devel-2021.14": {
-    "deps": [
-      "intel-oneapi-common-licensing-2025.0",
-      "intel-oneapi-common-oneapi-vars-2025.0",
-      "intel-oneapi-common-vars",
-      "intel-oneapi-mpi-2021.14"
-    ],
-    "components": [
+      },
       {
         "name": "intel-oneapi-mpi-devel-2021.14",
         "sha256": "5dc1fd80a94bc618105986e56419696a2c8bb480286b1db95e4e22a75baab9b5",
@@ -774,13 +681,13 @@
     ],
     "version": "2021.14.2"
   },
-  "intel-oneapi-openmp-2025.0": {
+  "intel-oneapi-openmp": {
     "deps": [
-      "intel-oneapi-common-licensing-2025.0",
-      "intel-oneapi-common-oneapi-vars-2025.0",
+      "intel-oneapi-common-licensing",
+      "intel-oneapi-common-oneapi-vars",
       "intel-oneapi-common-vars",
-      "intel-oneapi-openmp-common-2025.0",
-      "intel-oneapi-umf-0.9"
+      "intel-oneapi-openmp-common",
+      "intel-oneapi-umf"
     ],
     "components": [
       {
@@ -792,10 +699,10 @@
     ],
     "version": "2025.0.4"
   },
-  "intel-oneapi-openmp-common-2025.0": {
+  "intel-oneapi-openmp-common": {
     "deps": [
-      "intel-oneapi-common-licensing-2025.0",
-      "intel-oneapi-common-oneapi-vars-2025.0",
+      "intel-oneapi-common-licensing",
+      "intel-oneapi-common-oneapi-vars",
       "intel-oneapi-common-vars"
     ],
     "components": [
@@ -808,12 +715,12 @@
     ],
     "version": "2025.0.4"
   },
-  "intel-oneapi-tbb-2022.0": {
+  "intel-oneapi-tbb": {
     "deps": [
-      "intel-oneapi-common-licensing-2025.0",
-      "intel-oneapi-common-oneapi-vars-2025.0",
+      "intel-oneapi-common-licensing",
+      "intel-oneapi-common-oneapi-vars",
       "intel-oneapi-common-vars",
-      "intel-oneapi-tcm-1.2"
+      "intel-oneapi-tcm"
     ],
     "components": [
       {
@@ -821,18 +728,7 @@
         "sha256": "e4e00d9921ec57842acbdcb84a840c1c1b535453ef7993ea2ae0d90cf15ded1c",
         "url": "https://yum.repos.intel.com/oneapi/intel-oneapi-tbb-2022.0-2022.0.0-402.x86_64.rpm",
         "version": "2022.0.0"
-      }
-    ],
-    "version": "2022.0.0"
-  },
-  "intel-oneapi-tbb-devel-2022.0": {
-    "deps": [
-      "intel-oneapi-common-licensing-2025.0",
-      "intel-oneapi-common-oneapi-vars-2025.0",
-      "intel-oneapi-common-vars",
-      "intel-oneapi-tbb-2022.0"
-    ],
-    "components": [
+      },
       {
         "name": "intel-oneapi-tbb-devel-2022.0",
         "sha256": "a0ddd212ca23d370b9acb8c93bac7af8188c1d59f8305d99d4f6f68077418792",
@@ -842,10 +738,10 @@
     ],
     "version": "2022.0.0"
   },
-  "intel-oneapi-tcm-1.2": {
+  "intel-oneapi-tcm": {
     "deps": [
-      "intel-oneapi-common-licensing-2025.0",
-      "intel-oneapi-common-oneapi-vars-2025.0",
+      "intel-oneapi-common-licensing",
+      "intel-oneapi-common-oneapi-vars",
       "intel-oneapi-common-vars"
     ],
     "components": [
@@ -858,7 +754,7 @@
     ],
     "version": "1.2.0"
   },
-  "intel-oneapi-tlt-2025.0": {
+  "intel-oneapi-tlt": {
     "deps": [],
     "components": [
       {
@@ -870,12 +766,12 @@
     ],
     "version": "2025.0.0"
   },
-  "intel-oneapi-umf-0.9": {
+  "intel-oneapi-umf": {
     "deps": [
-      "intel-oneapi-common-licensing-2025.0",
-      "intel-oneapi-common-oneapi-vars-2025.0",
+      "intel-oneapi-common-licensing",
+      "intel-oneapi-common-oneapi-vars",
       "intel-oneapi-common-vars",
-      "intel-oneapi-tcm-1.2"
+      "intel-oneapi-tcm"
     ],
     "components": [
       {
@@ -887,10 +783,10 @@
     ],
     "version": "0.9.1"
   },
-  "intel-pti-0.10": {
+  "intel-pti": {
     "deps": [
-      "intel-oneapi-common-licensing-2025.0",
-      "intel-oneapi-common-oneapi-vars-2025.0",
+      "intel-oneapi-common-licensing",
+      "intel-oneapi-common-oneapi-vars",
       "intel-oneapi-common-vars"
     ],
     "components": [
@@ -903,12 +799,12 @@
     ],
     "version": "0.10.2"
   },
-  "intel-pti-dev-0.10": {
+  "intel-pti-dev": {
     "deps": [
-      "intel-oneapi-common-licensing-2025.0",
-      "intel-oneapi-common-oneapi-vars-2025.0",
+      "intel-oneapi-common-licensing",
+      "intel-oneapi-common-oneapi-vars",
       "intel-oneapi-common-vars",
-      "intel-pti-0.10"
+      "intel-pti"
     ],
     "components": [
       {

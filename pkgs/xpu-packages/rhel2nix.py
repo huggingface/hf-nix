@@ -4,6 +4,7 @@ import argparse
 import json
 import sys
 import gzip
+import re
 import xml.etree.ElementTree as ET
 from typing import Set, Dict
 from urllib.parse import urljoin
@@ -18,6 +19,8 @@ RPM_NAMESPACES = {
 }
 
 REPOMD_NAMESPACES = {"repo": "http://linux.duke.edu/metadata/repo"}
+
+VERSION_SUFFIX_RE = re.compile(r"-(\d+\.\d+(\.\d+)?)$")
 
 parser = argparse.ArgumentParser(description="Parse intel oneapi repository")
 parser.add_argument("version", help="oneAPI version")
@@ -207,7 +210,6 @@ def resolve_dependencies_recursively(
 
     return resolved_packages
 
-
 def main():
     args = parser.parse_args()
 
@@ -247,15 +249,22 @@ def main():
     packages = filtered_packages
     print(f"After filtering duplicates: {len(packages)} packages", file=sys.stderr)
 
-    # Step 5: Find -devel and -rpath packages that should be merged.
+    # Step 5: Find -devel packages that should be merged.
     dev_to_merge = {}
     for name in packages.keys():
-        if name.endswith("-devel") and name[:-6] in packages:
-            dev_to_merge[name] = name[:-6]
-        elif name.endswith("-devel-rpath") and name[:-12] in packages:
-            dev_to_merge[name] = name[:-12]
-        elif name.endswith("-rpath") and name[:-6] in packages:
-            dev_to_merge[name] = name[:-6]
+        base_name = VERSION_SUFFIX_RE.sub("", name)
+        if not base_name.endswith("-devel"):
+            continue
+
+        match = VERSION_SUFFIX_RE.search(name)
+        if match is None:
+            if base_name[:-6] in packages:
+                dev_to_merge[name] = base_name[:-6]
+        else:
+            version = match.group(1)
+            non_devel_name = f"{base_name[:-6]}-{version}"
+            if non_devel_name in packages:
+                dev_to_merge[name] = non_devel_name
 
     print(f"Found {len(dev_to_merge)} packages to merge", file=sys.stderr)
 
@@ -297,7 +306,6 @@ def main():
     for name, pkg_metadata in metadata.items():
         deps = pkg_metadata["deps"]
         deps -= {name, f"{name}-devel"}
-        deps -= {name, f"{name}-rpath"}
         pkg_metadata["deps"] = list(sorted(deps))
 
 
@@ -311,6 +319,11 @@ def main():
         for name, pkg in metadata.items()
         if not any(name.startswith(prefix) for prefix in unwanted_prefixes)
     }
+
+    # Step 8: remove version suffixes from package names.
+    filtered_metadata = {VERSION_SUFFIX_RE.sub("", name): pkg for name, pkg in filtered_metadata.items()}
+    for pkg in filtered_metadata.values():
+        pkg["deps"] = [VERSION_SUFFIX_RE.sub("", dep) for dep in pkg["deps"]]
 
     print(f"Generated metadata for {len(filtered_metadata)} packages", file=sys.stderr)
     print(json.dumps(filtered_metadata, indent=2))
