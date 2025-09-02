@@ -1,12 +1,14 @@
 final: prev:
 let
   gccVersions = final.callPackage ./pkgs/gcc/all.nix { noSysDirs = true; };
+  # For XPU we use MKL from the joined oneAPI toolkit.
+  useMKL = final.stdenv.isx86_64 && !final.config.xpuSupport;
 in
 rec {
   # Use MKL for BLAS/LAPACK on x86_64.
-  blas = if final.stdenv.isx86_64 then prev.blas.override { blasProvider = prev.mkl; } else prev.blas;
+  blas = if useMKL then prev.blas.override { blasProvider = prev.mkl; } else prev.blas;
   lapack =
-    if final.stdenv.isx86_64 then prev.lapack.override { lapackProvider = prev.mkl; } else prev.blas;
+    if useMKL then prev.lapack.override { lapackProvider = prev.mkl; } else prev.blas;
 
   build2cmake = final.callPackage ./pkgs/build2cmake { };
 
