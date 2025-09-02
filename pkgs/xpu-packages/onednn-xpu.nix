@@ -5,7 +5,6 @@
   cmake,
   ninja,
   gcc,
-  writeShellScriptBin,
   setupXpuHook,
   oneapi-torch-dev,
   intel-oneapi-dpcpp-cpp,
@@ -26,18 +25,6 @@ let
   oneDnnVersion =
     oneDnnVersions.${lib.versions.majorMinor dpcppVersion}
     or (throw "Unsupported DPC++ version: ${dpcppVersion}");
-  hostCompiler = (
-    writeShellScriptBin "g++" ''
-      exec ${gcc.cc}/bin/g++ \
-        -nostdinc  \
-        -isysroot ${stdenv.cc.libc_dev} \
-        -isystem${stdenv.cc.libc_dev}/include \
-        -I${gcc.cc}/include/c++/${gcc.version} \
-        -I${gcc.cc}/include/c++/${gcc.version}/x86_64-unknown-linux-gnu \
-        -I${gcc.cc}/lib/gcc/x86_64-unknown-linux-gnu/${gcc.version}/include \
-        "$@"
-    ''
-  );
 in
 stdenv.mkDerivation {
   pname = "onednn-xpu";
@@ -66,7 +53,7 @@ stdenv.mkDerivation {
     "-DDNNL_BUILD_EXAMPLES=OFF"
     "-DONEDNN_BUILD_GRAPH=ON"
     "-DDNNL_LIBRARY_TYPE=STATIC"
-    "-DDNNL_DPCPP_HOST_COMPILER=${hostCompiler}/bin/g++"
+    "-DDNNL_DPCPP_HOST_COMPILER=${oneapi-torch-dev.hostCompiler}/bin/g++"
     #"-DOpenCL_LIBRARY=${oneapi-torch-dev}/oneapi/compiler/latest/lib/libOpenCL.so"
     #"-DOpenCL_INCLUDE_DIR=${oneapi-torch-dev}/oneapi/compiler/latest/include"
   ];

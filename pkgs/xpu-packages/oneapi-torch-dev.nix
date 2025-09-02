@@ -2,9 +2,11 @@
   lib,
   stdenv,
 
+  makeSetupHook,
   makeWrapper,
   markForXpuRootHook,
   rsync,
+  writeShellScriptBin,
 
   gcc,
   intel-oneapi-dpcpp-cpp,
@@ -71,18 +73,29 @@ let
     intel-pti
   ];
 
+  hostCompiler = 
+    writeShellScriptBin "g++" ''
+      exec ${gcc.cc}/bin/g++ \
+        -nostdinc  \
+        -isysroot ${stdenv.cc.libc_dev} \
+        -isystem${stdenv.cc.libc_dev}/include \
+        -I${gcc.cc}/include/c++/${gcc.version} \
+        -I${gcc.cc}/include/c++/${gcc.version}/x86_64-unknown-linux-gnu \
+        -I${gcc.cc}/lib/gcc/x86_64-unknown-linux-gnu/${gcc.version}/include \
+        "$@"
+    '';
 in
 stdenv.mkDerivation {
   pname = "oneapi-torch-dev";
   version = intel-oneapi-dpcpp-cpp.version;
+
+  dontUnpack = true;
 
   nativeBuildInputs = [
     makeWrapper
     markForXpuRootHook
     rsync
   ];
-
-  dontUnpack = true;
 
   installPhase =
     let
@@ -121,6 +134,12 @@ stdenv.mkDerivation {
     '';
 
   dontStrip = true;
+
+  # We need to pass through the hostCompiler to oneDNN and Torch. Ideally,
+  # we would do this in the icx/icpx wrapping above. However, Torch etc. pass
+  # the sycl-host-compiler option, so we would have to filter out the flag
+  # to make it work.
+  passthru = { inherit hostCompiler; };
 
   meta = with lib; {
     description = "Intel oneAPI development environment for PyTorch (copied files)";

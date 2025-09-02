@@ -404,6 +404,12 @@ buildPythonPackage rec {
       # comment torch-xpu-ops git clone block in pytorch/caffe2/CMakeLists.txt
       sed -i '/set(TORCH_XPU_OPS_REPO_URL/,/^  endif()/s/^/#/' caffe2/CMakeLists.txt
       sed -i '/execute_process(/,/^  endif()/s/^/#/' caffe2/CMakeLists.txt
+      # Set sycl host compiler to one that does not pick up headers from oneAPI.
+      substituteInPlace torch/utils/cpp_extension.py \
+        --replace-fail 'sycl-host-compiler={host_cxx}' 'sycl-host-compiler=${xpuPackages.oneapi-torch-dev.hostCompiler}/bin/g++'
+      substituteInPlace third_party/torch-xpu-ops/cmake/Modules/FindSYCL.cmake \
+        --replace-fail 'SYCL_HOST_COMPILER "''${CMAKE_CXX_COMPILER}"' 'SYCL_HOST_COMPILER "${xpuPackages.oneapi-torch-dev.hostCompiler}/bin/g++"'
+      sed -i '2s;^;set(SYCL_HOST_COMPILER ${xpuPackages.oneapi-torch-dev.hostCompiler}/bin/g++)\n;' cmake/Modules/FindSYCLToolkit.cmake
     ''
     # error: no member named 'aligned_alloc' in the global namespace; did you mean simply 'aligned_alloc'
     # This lib overrided aligned_alloc hence the error message. Tltr: his function is linkable but not in header.
@@ -534,14 +540,18 @@ buildPythonPackage rec {
   }
   // lib.optionalAttrs stdenv.hostPlatform.isDarwin {
     USE_MPS = 1;
+  }
+  // lib.optionalAttrs xpuSupport {
+    MKLROOT = xpuPackages.oneapi-torch-dev;
+    SYCL_ROOT = xpuPackages.oneapi-torch-dev;
   };
 
   nativeBuildInputs = [
     cmake
-    which
     ninja
     pybind11
     removeReferencesTo
+    which
   ]
   ++ lib.optionals cudaSupport (
     with cudaPackages;
@@ -553,7 +563,11 @@ buildPythonPackage rec {
   ++ lib.optionals rocmSupport [
     rocmtoolkit_joined
     rocmPackages.setupRocmHook
-  ];
+  ]
+  ++ lib.optionals xpuSupport (with xpuPackages; [
+    ocloc
+    oneapi-torch-dev
+  ]);
 
   buildInputs = [
     blas
@@ -604,7 +618,7 @@ buildPythonPackage rec {
   ++ lib.optionals xpuSupport (
     with xpuPackages;
     [
-      oneapi-torch-dev
+      #oneapi-torch-dev
       onednn-xpu
     ]
   )
