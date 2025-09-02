@@ -107,7 +107,7 @@ stdenv.mkDerivation {
         "--add-flags '-isystem ${stdenv.cc.libc_dev}/include'"
         "--add-flags -I${gcc.cc}/include/c++/${gcc.version}"
         "--add-flags -I${gcc.cc}/include/c++/${gcc.version}/x86_64-unknown-linux-gnu"
-        "--set NIX_LIBGCC_S_PATH ${stdenv.cc.cc.lib}/lib"
+        #"--set NIX_LIBGCC_S_PATH ${stdenv.cc.cc.lib}/lib"
         "--add-flags -L${stdenv.cc.cc}/lib/gcc/${stdenv.hostPlatform.uname.processor}-unknown-linux-gnu/${stdenv.cc.cc.version}"
         "--add-flags -L${lib.getLib stdenv.cc.cc}/lib"
         #"--add-flags -L${stdenv.cc.cc.libgcc}/lib"
@@ -120,6 +120,11 @@ stdenv.mkDerivation {
       done
 
       chmod -R u+w $out
+
+      # The `complex` header is only compatible with Intel C++ compilers,
+      # but it often ends up in the include paths, causing g++ to fail. So
+      # let's just remove it.
+      rm $out/include/complex
 
       wrapProgram $out/bin/icx ${lib.concatStringsSep " " wrapperArgs}
       wrapProgram $out/bin/icpx ${lib.concatStringsSep " " wrapperArgs}
