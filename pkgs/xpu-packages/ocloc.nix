@@ -67,8 +67,6 @@ stdenv.mkDerivation (finalAttrs: {
     runHook postInstall
   '';
 
-
-
   # Some libraries like libigc.so are dlopen'ed from other shared
   # libraries in the package. So we need to add the library path
   # to RPATH. Ideally we'd want to use

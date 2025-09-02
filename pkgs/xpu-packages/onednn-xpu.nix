@@ -53,9 +53,6 @@ stdenv.mkDerivation (finalAttrs: {
     "-DDNNL_BUILD_EXAMPLES=OFF"
     "-DONEDNN_BUILD_GRAPH=ON"
     "-DDNNL_LIBRARY_TYPE=STATIC"
-    #"-DDNNL_DPCPP_HOST_COMPILER=${oneapi-torch-dev.hostCompiler}/bin/g++"
-    #"-DOpenCL_LIBRARY=${oneapi-torch-dev}/oneapi/compiler/latest/lib/libOpenCL.so"
-    #"-DOpenCL_INCLUDE_DIR=${oneapi-torch-dev}/oneapi/compiler/latest/include"
   ];
 
   postInstall = ''
@@ -65,17 +62,4 @@ stdenv.mkDerivation (finalAttrs: {
       cp -rn "$src/src/gpu/intel/sycl/l0/level_zero" "$out/include/"
     fi
   '';
-
-  #installPhase = ''
-  #  mkdir -p $out/lib $out/include
-  #  find . -name '*.a' -exec cp {} $out/lib/ \;
-  #  cp -rn $src/include/* $out/include/
-  #  chmod +w $out/include/oneapi/dnnl
-  #  cp -rn include/oneapi/dnnl/* $out/include/oneapi/dnnl/
-  #  if [ "$version" = "3.8.1" ]; then
-  #    cp -rn "$src/third_party/level_zero" "$out/include/"
-  #  else
-  #    cp -rn "$src/src/gpu/intel/sycl/l0/level_zero" "$out/include/"
-  #  fi
-  #'';
 })

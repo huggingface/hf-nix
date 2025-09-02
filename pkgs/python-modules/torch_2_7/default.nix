@@ -670,13 +670,7 @@ buildPythonPackage rec {
   ++ lib.optionals tritonSupport [ _tritonEffective ];
 
   propagatedCxxBuildInputs =
-    [ ]
-    ++ lib.optionals MPISupport [ mpi ]
-    ++ lib.optionals rocmSupport [ rocmtoolkit_joined ];
-    #++ lib.optionals xpuSupport [
-    #  xpuPackages.oneapi-torch-dev
-    #  xpuPackages.onednn-xpu
-    #];
+    [ ] ++ lib.optionals MPISupport [ mpi ] ++ lib.optionals rocmSupport [ rocmtoolkit_joined ];
 
   # Tests take a long time and may be flaky, so just sanity-check imports
   doCheck = false;

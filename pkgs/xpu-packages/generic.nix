@@ -45,19 +45,9 @@ stdenv.mkDerivation rec {
 
   installPhase = ''
     runHook preInstall
+
     mkdir -p $out
-
     find . -type d \( -name "bin" -o -name "include" -o -name "lib" -o -name "share" \) -prune -exec cp -r {} $out/ \;
-
-    # Check if opt/intel exists and copy content
-    #if [ -d "opt/intel" ]; then
-    #  cp -rT opt/intel $out
-    #elif [ -d "opt" ]; then
-    #  cp -rT opt $out
-    #else
-    #  # Fallback: copy everything if no opt directory found
-    #  cp -r . $out/
-    #fi
 
     runHook postInstall
   '';
