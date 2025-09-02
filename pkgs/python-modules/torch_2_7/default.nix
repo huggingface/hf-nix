@@ -445,9 +445,6 @@ buildPythonPackage rec {
     + lib.optionalString rocmSupport ''
       export PYTORCH_ROCM_ARCH="${gpuTargetString}"
       python tools/amd_build/build_amd.py
-    ''
-    + lib.optionalString xpuSupport ''
-      export LD_LIBRARY_PATH=${xpuPackages.ocloc}/lib:$LD_LIBRARY_PATH
     '';
 
   # Use pytorch's custom configurations
@@ -549,14 +546,18 @@ buildPythonPackage rec {
   }
   // lib.optionalAttrs stdenv.hostPlatform.isDarwin {
     USE_MPS = 1;
+  }
+  // lib.optionalAttrs xpuSupport {
+    MKLROOT = xpuPackages.oneapi-torch-dev;
+    SYCL_ROOT = xpuPackages.oneapi-torch-dev;
   };
 
   nativeBuildInputs = [
     cmake
-    which
     ninja
     pybind11
     removeReferencesTo
+    which
   ]
   ++ lib.optionals cudaSupport (
     with cudaPackages;
@@ -568,7 +569,14 @@ buildPythonPackage rec {
   ++ lib.optionals rocmSupport [
     rocmtoolkit_joined
     rocmPackages.setupRocmHook
-  ];
+  ]
+  ++ lib.optionals xpuSupport (
+    with xpuPackages;
+    [
+      ocloc
+      oneapi-torch-dev
+    ]
+  );
 
   buildInputs = [
     blas
@@ -664,11 +672,11 @@ buildPythonPackage rec {
   propagatedCxxBuildInputs =
     [ ]
     ++ lib.optionals MPISupport [ mpi ]
-    ++ lib.optionals rocmSupport [ rocmtoolkit_joined ]
-    ++ lib.optionals xpuSupport [
-      xpuPackages.oneapi-torch-dev
-      xpuPackages.onednn-xpu
-    ];
+    ++ lib.optionals rocmSupport [ rocmtoolkit_joined ];
+    #++ lib.optionals xpuSupport [
+    #  xpuPackages.oneapi-torch-dev
+    #  xpuPackages.onednn-xpu
+    #];
 
   # Tests take a long time and may be flaky, so just sanity-check imports
   doCheck = false;

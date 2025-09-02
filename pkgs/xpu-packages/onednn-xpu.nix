@@ -26,7 +26,7 @@ let
     oneDnnVersions.${lib.versions.majorMinor dpcppVersion}
     or (throw "Unsupported DPC++ version: ${dpcppVersion}");
 in
-stdenv.mkDerivation {
+stdenv.mkDerivation (finalAttrs: {
   pname = "onednn-xpu";
   inherit (oneDnnVersion) version;
 
@@ -58,6 +58,14 @@ stdenv.mkDerivation {
     #"-DOpenCL_INCLUDE_DIR=${oneapi-torch-dev}/oneapi/compiler/latest/include"
   ];
 
+  postInstall = ''
+    if [ "${finalAttrs.version}" = "3.8.1" ]; then
+      cp -rn "$src/third_party/level_zero" "$out/include/"
+    else
+      cp -rn "$src/src/gpu/intel/sycl/l0/level_zero" "$out/include/"
+    fi
+  '';
+
   #installPhase = ''
   #  mkdir -p $out/lib $out/include
   #  find . -name '*.a' -exec cp {} $out/lib/ \;
@@ -70,4 +78,4 @@ stdenv.mkDerivation {
   #    cp -rn "$src/src/gpu/intel/sycl/l0/level_zero" "$out/include/"
   #  fi
   #'';
-}
+})

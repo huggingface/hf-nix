@@ -13,6 +13,22 @@ applyOverrides {
       ];
     };
 
+  intel-oneapi-compiler-shared-common =
+    { intel-oneapi-openmp }:
+    prevAttrs: {
+      buildInputs = prevAttrs.buildInputs ++ [
+        intel-oneapi-openmp
+      ];
+    };
+
+  intel-oneapi-dpcpp-cpp =
+    { intel-oneapi-openmp }:
+    prevAttrs: {
+      buildInputs = prevAttrs.buildInputs ++ [
+        intel-oneapi-openmp
+      ];
+    };
+
   intel-oneapi-mkl-core =
     {
       intel-oneapi-openmp,
@@ -86,5 +102,16 @@ applyOverrides {
     { intel-oneapi-compiler-shared-runtime }:
     prevAttrs: {
       buildInputs = prevAttrs.buildInputs ++ [ intel-oneapi-compiler-shared-runtime ];
+      postInstall = (prevAttrs.postInstall or "") + ''
+        if [ ! -f "$out/lib/libpti_view.so" ]; then
+          versioned_pti_view=$(ls "$out/lib"/libpti_view.so.* 2>/dev/null | head -n1)
+          if [ -n "$versioned_pti_view" ]; then
+            ln -sf "$(basename "$versioned_pti_view")" "$out/lib/libpti_view.so"
+          else
+            >&2 echo "Cannot find (versioned) libpti_view.so"
+            exit 1
+          fi
+        fi
+      '';
     };
 }
