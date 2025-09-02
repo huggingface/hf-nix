@@ -433,9 +433,6 @@ buildPythonPackage rec {
     + lib.optionalString rocmSupport ''
       export PYTORCH_ROCM_ARCH="${gpuTargetString}"
       python tools/amd_build/build_amd.py
-    ''
-    + lib.optionalString xpuSupport ''
-      export LD_LIBRARY_PATH=${xpuPackages.ocloc}/lib:$LD_LIBRARY_PATH
     '';
 
   # Use pytorch's custom configurations

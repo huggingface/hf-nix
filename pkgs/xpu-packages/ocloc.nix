@@ -1,15 +1,15 @@
 {
+  lib,
   stdenv,
   fetchurl,
-  binutils,
-  gnutar,
-  zstd,
-  lib,
+  dpkg,
   autoPatchelfHook,
+  ocloc,
   zlib,
+  zstd,
 }:
 
-stdenv.mkDerivation {
+stdenv.mkDerivation (finalAttrs: {
   pname = "ocloc";
   version = "25.27";
 
@@ -42,30 +42,19 @@ stdenv.mkDerivation {
   dontStrip = true;
 
   nativeBuildInputs = [
-    binutils
-    gnutar
-    zstd
+    dpkg
     autoPatchelfHook
   ];
+
   buildInputs = [
     stdenv.cc.cc.lib
-    stdenv.cc.cc.libgcc
     zlib
+    zstd
   ];
 
   unpackPhase = ''
     for src in $srcs; do
-      ar x $src
-      if [ -f data.tar.zst ]; then
-        tar --zstd -xvf data.tar.zst
-      elif [ -f data.tar.xz ]; then
-        tar -xvf data.tar.xz
-      elif [ -f data.tar.gz ]; then
-        tar -xzvf data.tar.gz
-      fi
-      rm -f data.tar.*
-      rm -f control.tar.*
-      rm -f debian-binary
+      dpkg-deb -x "$src" .
     done
   '';
 
@@ -74,7 +63,22 @@ stdenv.mkDerivation {
     mkdir -p $out/bin $out/lib
     find . -name 'ocloc*' -exec cp {} $out/bin/ \;
     find . -name '*.so*' -exec cp {} $out/lib/ \;
-    ln -sf $out/bin/ocloc* $out/bin/ocloc
+    mv $out/bin/ocloc-${finalAttrs.version}* $out/bin/ocloc
     runHook postInstall
   '';
-}
+
+
+
+  # Some libraries like libigc.so are dlopen'ed from other shared
+  # libraries in the package. So we need to add the library path
+  # to RPATH. Ideally we'd want to use
+  #
+  # runtimeDependencies = [ (placeholder "out") ];
+  #
+  # But it only adds the dependency to binaries, not shared
+  # libraries, so we hack around it here.
+  doInstallCheck = true;
+  preInstallCheck = ''
+    patchelf --add-rpath ${placeholder "out"}/lib $out/lib/*.so*
+  '';
+})
