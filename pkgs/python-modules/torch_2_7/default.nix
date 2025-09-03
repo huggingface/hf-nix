@@ -83,6 +83,8 @@
       triton-cuda
     else if rocmSupport then
       python.pkgs.triton-rocm
+    else if xpuSupport then
+      python.pkgs.triton-xpu_2_7
     else
       triton,
   triton-cuda,
