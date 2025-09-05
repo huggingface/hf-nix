@@ -52,6 +52,7 @@
 
   # dependencies
   astunparse,
+  binutils,
   expecttest,
   filelock,
   fsspec,
@@ -344,6 +345,18 @@ buildPythonPackage rec {
     substituteInPlace third_party/gloo/cmake/Cuda.cmake \
       --replace-warn "find_package(CUDAToolkit 7.0" "find_package(CUDAToolkit"
 
+    # annotations (3.7), print_function (3.0), with_statement (2.6) are all supported
+    sed -i -e "/from __future__ import/d" **.py
+    substituteInPlace third_party/NNPACK/CMakeLists.txt \
+      --replace-fail "PYTHONPATH=" 'PYTHONPATH=$ENV{PYTHONPATH}:'
+    # flag from cmakeFlags doesn't work, not clear why
+    # setting it at the top of NNPACK's own CMakeLists does
+    sed -i '2s;^;set(PYTHON_SIX_SOURCE_DIR ${six.src})\n;' third_party/NNPACK/CMakeLists.txt
+
+    # Ensure that torch profiler unwind uses addr2line from nix
+    substituteInPlace torch/csrc/profiler/unwind/unwind.cpp \
+      --replace-fail 'addr2line_binary_ = "addr2line"' 'addr2line_binary_ = "${lib.getExe' binutils "addr2line"}"'
+
     # NCCL repo seems to be cloned unconditionally when third_party/nccl
     # does not exist.
     substituteInPlace tools/build_pytorch_libs.py \
@@ -443,9 +456,6 @@ buildPythonPackage rec {
   # Avoid using pybind11 from git submodule
   # Also avoids pytorch exporting the headers of pybind11
   USE_SYSTEM_PYBIND11 = true;
-
-  # NB technical debt: building without NNPACK as workaround for missing `six`
-  USE_NNPACK = 0;
 
   cmakeFlags = [
     # (lib.cmakeBool "CMAKE_FIND_DEBUG_MODE" true)
