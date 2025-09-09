@@ -783,6 +783,8 @@ buildPythonPackage rec {
       cxx11Abi
       rocmSupport
       rocmPackages
+      xpuSupport
+      xpuPackages
       ;
     cudaCapabilities = if cudaSupport then supportedCudaCapabilities else [ ];
     rocmArchs = if rocmSupport then supportedTorchRocmArchs else [ ];
