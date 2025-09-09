@@ -8,7 +8,6 @@
   rsync,
   writeShellScriptBin,
 
-  gcc,
   intel-oneapi-dpcpp-cpp,
   intel-oneapi-compiler-dpcpp-cpp-runtime,
   intel-oneapi-compiler-shared,
@@ -92,10 +91,11 @@ stdenv.mkDerivation {
         "--add-flags -B${stdenv.cc.cc}/lib/gcc/${stdenv.hostPlatform.uname.processor}-unknown-linux-gnu/${stdenv.cc.cc.version}"
         "--add-flags '-isysroot ${stdenv.cc.libc_dev}'"
         "--add-flags '-isystem ${stdenv.cc.libc_dev}/include'"
-        "--add-flags -I${gcc.cc}/include/c++/${gcc.version}"
-        "--add-flags -I${gcc.cc}/include/c++/${gcc.version}/x86_64-unknown-linux-gnu"
-        "--add-flags -L${stdenv.cc.cc}/lib/gcc/${stdenv.hostPlatform.uname.processor}-unknown-linux-gnu/${stdenv.cc.cc.version}"
-        "--add-flags -L${lib.getLib stdenv.cc.cc}/lib"
+        "--add-flags -I${stdenv.cc.cc}/include/c++/${stdenv.cc.version}"
+        "--add-flags -I${stdenv.cc.cc}/include/c++/${stdenv.cc.version}/x86_64-unknown-linux-gnu"
+        "--add-flags -L${stdenv.cc.cc}/lib"
+        "--add-flags -L${stdenv.cc.cc}/lib/gcc/${stdenv.hostPlatform.uname.processor}-unknown-linux-gnu/${stdenv.cc.version}"
+        "--add-flags -L${stdenv.cc.cc.libgcc}/lib"
       ];
     in
     ''
