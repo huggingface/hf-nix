@@ -89,7 +89,7 @@ stdenv.mkDerivation {
       wrapperArgs = [
         "--add-flags -B${stdenv.cc.libc}/lib"
         "--add-flags -B${placeholder "out"}/lib/crt"
-        #"--add-flags -B${stdenv.cc.cc}/lib/gcc/${stdenv.hostPlatform.uname.processor}-unknown-linux-gnu/${stdenv.cc.cc.version}"
+        "--add-flags -B${stdenv.cc.cc}/lib/gcc/${stdenv.hostPlatform.uname.processor}-unknown-linux-gnu/${stdenv.cc.cc.version}"
         "--add-flags '-isysroot ${stdenv.cc.libc_dev}'"
         "--add-flags '-isystem ${stdenv.cc.libc_dev}/include'"
         "--add-flags -I${gcc.cc}/include/c++/${gcc.version}"
