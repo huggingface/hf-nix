@@ -159,5 +159,17 @@
         minMajorVersion = "6";
       };
     };
+
+    # Maximum Clang version is 20, maximum GCC version is 15
+    "13.0" = {
+      clang = {
+        maxMajorVersion = "20";
+        minMajorVersion = "7";
+      };
+      gcc = {
+        maxMajorVersion = "15";
+        minMajorVersion = "6";
+      };
+    };
   };
 }

@@ -17,6 +17,7 @@ let
     "12.6" = "12.6.3";
     "12.8" = "12.8.1";
     "12.9" = "12.9.1";
+    "13.0" = "13.0.1";
   };
 
   # Check if the current CUDA version is supported.
