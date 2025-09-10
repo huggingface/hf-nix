@@ -74,10 +74,17 @@
         rec {
           formatter = pkgs.nixfmt-tree;
           packages = rec {
-            all = pkgs.symlinkJoin {
-              name = "all";
-              paths = builtins.filter (lib.meta.availableOn { inherit system; }) (lib.attrValues python3Packages);
-            };
+            all =
+              let
+                filterDist = lib.filter (output: output != "dist");
+              in
+              pkgs.symlinkJoin {
+                name = "all";
+                paths =
+                  # Ensure that we build all Torch outputs for caching.
+                  builtins.map (output: python3Packages.torch.${output}) (filterDist python3Packages.torch.outputs)
+                  ++ builtins.filter (lib.meta.availableOn { inherit system; }) (lib.attrValues python3Packages);
+              };
             lib = pkgs.lib;
             python3Packages = with pkgs.python3.pkgs; {
               inherit
