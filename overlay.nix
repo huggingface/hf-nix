@@ -233,6 +233,8 @@ rec {
       }
     )
   ];
+
+  xpuPackages = final.xpuPackages_2025_1;
 }
 // (import ./pkgs/cutlass { pkgs = final; })
 // (
