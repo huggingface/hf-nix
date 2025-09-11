@@ -1,8 +1,12 @@
 {
   lib,
   backendStdenv,
+  cudaAtLeast,
   cudaOlder,
   setupCudaHook,
+
+  # nvvm is split out of the nvcc package since CUDA 13.0
+  libnvvm ? null,
 }:
 prevAttrs: {
   # Merge "bin" and "dev" into "out" to avoid circular references
@@ -42,7 +46,7 @@ prevAttrs: {
           '$(TOP)/$(_NVVM_BRANCH_)' \
           "''${!outputBin}/nvvm"
     ''
-    + ''
+    + lib.optionalString (cudaOlder "13.0") ''
       cat << EOF >> bin/nvcc.profile
 
       # Fix a compatible backend compiler
@@ -52,14 +56,20 @@ prevAttrs: {
       LIBRARIES =+ "-L''${!outputBin}/nvvm/lib"
       INCLUDES =+ "-I''${!outputBin}/nvvm/include"
       EOF
+    ''
+    + lib.optionalString (cudaAtLeast "13.0") ''
+      substituteInPlace bin/nvcc.profile \
+        --replace-fail "\$(TOP)/nvvm" "${libnvvm}/nvvm"
     '';
 
   # Entries here will be in nativeBuildInputs when cuda_nvcc is in nativeBuildInputs.
   propagatedBuildInputs = prevAttrs.propagatedBuildInputs or [ ] ++ [ setupCudaHook ];
 
-  postInstall = prevAttrs.postInstall or "" + ''
-    moveToOutput "nvvm" "''${!outputBin}"
-  '';
+  postInstall =
+    prevAttrs.postInstall or ""
+    + lib.optionalString (cudaOlder "13.0") ''
+      moveToOutput "nvvm" "''${!outputBin}"
+    '';
 
   # The nvcc and cicc binaries contain hard-coded references to /usr
   allowFHSReferences = true;

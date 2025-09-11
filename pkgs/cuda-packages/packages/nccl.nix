@@ -22,10 +22,10 @@ let
     ;
   # versions 2.26+ with CUDA 11.x error with
   # fatal error: cuda/atomic: No such file or directory
-  version = if cudaAtLeast "12.0" then "2.27.6-1" else "2.25.1-1";
+  version = if cudaAtLeast "12.0" then "2.28.3-1" else "2.25.1-1";
   hash =
     if cudaAtLeast "12.0" then
-      "sha256-/BiLSZaBbVIqOfd8nQlgUJub0YR3SR4B93x2vZpkeiU="
+      "sha256-zVZKHYXxo5DdAKHJ1TnFYr+iVS26JmHN7gGpnG5Ujjk="
     else
       "sha256-3snh0xdL9I5BYqdbqdl+noizJoI38mZRVOJChgEE1I8=";
 in
@@ -56,6 +56,7 @@ backendStdenv.mkDerivation (finalAttrs: {
   ];
 
   buildInputs = [
+    cuda_cccl
     cuda_nvcc # crt/host_config.h
     cuda_cudart
   ]
@@ -70,6 +71,12 @@ backendStdenv.mkDerivation (finalAttrs: {
   postPatch = ''
     patchShebangs ./src/device/generate.py
     patchShebangs ./src/device/symmetric/generate.py
+  ''
+  + lib.optionalString (cudaAtLeast "13.0") ''
+    substituteInPlace makefiles/common.mk \
+      --replace-fail "\$(CUDA_INC)/cccl" "${lib.getDev cuda_cccl}/include/cccl"
+    substituteInPlace src/device/Makefile \
+      --replace-fail "-I../include/plugin" "-I../include/plugin -I${lib.getDev cuda_cccl}/include/cccl"
   '';
 
   makeFlags = [

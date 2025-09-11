@@ -17,16 +17,15 @@ rec {
   cudaPackages_11_8 = final.callPackage ./pkgs/cuda-packages { cudaMajorMinorVersion = "11.8"; };
   cudaPackages_11 = final.lib.recurseIntoAttrs cudaPackages_11_8;
 
-  cudaPackages_12_0 = final.callPackage ./pkgs/cuda-packages { cudaMajorMinorVersion = "12.0"; };
-  cudaPackages_12_1 = final.callPackage ./pkgs/cuda-packages { cudaMajorMinorVersion = "12.1"; };
-  cudaPackages_12_2 = final.callPackage ./pkgs/cuda-packages { cudaMajorMinorVersion = "12.2"; };
-  cudaPackages_12_3 = final.callPackage ./pkgs/cuda-packages { cudaMajorMinorVersion = "12.3"; };
   cudaPackages_12_4 = final.callPackage ./pkgs/cuda-packages { cudaMajorMinorVersion = "12.4"; };
   cudaPackages_12_5 = final.callPackage ./pkgs/cuda-packages { cudaMajorMinorVersion = "12.5"; };
   cudaPackages_12_6 = final.callPackage ./pkgs/cuda-packages { cudaMajorMinorVersion = "12.6"; };
   cudaPackages_12_8 = final.callPackage ./pkgs/cuda-packages { cudaMajorMinorVersion = "12.8"; };
   cudaPackages_12_9 = final.callPackage ./pkgs/cuda-packages { cudaMajorMinorVersion = "12.9"; };
   cudaPackages_12 = cudaPackages_12_9;
+
+  cudaPackages_13_0 = final.callPackage ./pkgs/cuda-packages { cudaMajorMinorVersion = "13.0"; };
+  cudaPackages_13 = cudaPackages_13_0;
 
   cudaPackages = final.lib.recurseIntoAttrs cudaPackages_12;
 
@@ -47,9 +46,7 @@ rec {
     }
   );
 
-  magma-cuda-static = prev.magma-cuda-static.overrideAttrs (
-    _: prevAttrs: { buildInputs = prevAttrs.buildInputs ++ [ (prev.lib.getLib prev.gfortran.cc) ]; }
-  );
+  magma = (prev.callPackage ./pkgs/magma { }).magma;
 
   magma-hip =
     (prev.callPackage ./pkgs/magma {
