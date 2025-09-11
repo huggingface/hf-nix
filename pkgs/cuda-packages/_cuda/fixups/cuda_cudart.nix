@@ -1,11 +1,20 @@
 # TODO(@connorbaker): cuda_cudart.dev depends on crt/host_config.h, which is from
 # (getDev cuda_nvcc). It would be nice to be able to encode that.
-{ addDriverRunpath, lib }:
+{
+  addDriverRunpath,
+  lib,
+  cudaAtLeast,
+  # Moved from nvcc to a separate package in CUDA 13.0.
+  cuda_crt ? null,
+}:
 prevAttrs: {
   # Remove once cuda-find-redist-features has a special case for libcuda
   outputs =
     prevAttrs.outputs or [ ]
     ++ lib.lists.optionals (!(builtins.elem "stubs" prevAttrs.outputs)) [ "stubs" ];
+
+  propagatedBuildInputs =
+    prevAttrs.propagateBuildInputs or [ ] ++ lib.optionals (cudaAtLeast "13.0") [ cuda_crt ];
 
   allowFHSReferences = false;
 

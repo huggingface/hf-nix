@@ -14,6 +14,7 @@
   cudaPackages_11 ? null,
   cudaPackages,
   cudaSupport ? config.cudaSupport,
+  fetchpatch,
   fetchurl,
   gfortran,
   gpuTargets ? [ ], # Non-CUDA targets, that is HIP
@@ -112,6 +113,14 @@ stdenv.mkDerivation {
   outputs = [
     "out"
     "test"
+  ];
+
+  patches = [
+    # Support CUDA 13.
+    (fetchpatch {
+      url = "https://github.com/icl-utk-edu/magma/commit/235aefb7b064954fce09d035c69907ba8a87cbcd.diff";
+      hash = "sha256-i9InbxD5HtfonB/GyF9nQhFmok3jZ73RxGcIciGBGvU=";
+    })
   ];
 
   # Fixup for the python test runners

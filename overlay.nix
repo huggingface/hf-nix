@@ -46,9 +46,7 @@ rec {
     }
   );
 
-  magma-cuda-static = prev.magma-cuda-static.overrideAttrs (
-    _: prevAttrs: { buildInputs = prevAttrs.buildInputs ++ [ (prev.lib.getLib prev.gfortran.cc) ]; }
-  );
+  magma = (prev.callPackage ./pkgs/magma { }).magma;
 
   magma-hip =
     (prev.callPackage ./pkgs/magma {
