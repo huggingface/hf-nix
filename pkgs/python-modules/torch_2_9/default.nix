@@ -4,6 +4,7 @@
   gcc11Stdenv,
   lib,
   fetchFromGitHub,
+  fetchpatch,
   buildPythonPackage,
   python,
   config,
@@ -279,8 +280,8 @@ let
     "Unsupported CUDA version" =
       cudaSupport
       && !(builtins.elem cudaPackages.cudaMajorVersion [
-        "11"
         "12"
+        "13"
       ]);
     "MPI cudatoolkit does not match cudaPackages.cudatoolkit" =
       MPISupport && cudaSupport && (mpi.cudatoolkit != cudaPackages.cudatoolkit);
@@ -330,6 +331,14 @@ buildPythonPackage rec {
 
   patches = [
     ./mkl-rpath.patch
+    # Include cstdint.h for uint8_t definition to fix gcc 14 compilation.
+    (fetchpatch {
+      name = "gloo-cstdint.diff";
+      url = "https://github.com/pytorch/gloo/commit/54cbae0d3a67fa890b4c3d9ee162b7860315e341.diff";
+      hash = "sha256-SsNN7wLhfpGgsdwZ+cS36tNLf8SKpMlJK6ya8y4AYnk=";
+      stripLen = 1;
+      extraPrefix = "third_party/gloo/";
+    })
   ]
   ++ lib.optionals cudaSupport [ ./fix-cmake-cuda-toolkit.patch ]
   ++ lib.optionals rocmSupport [ ./cmake-load-hip-invalid-state.diff ]
