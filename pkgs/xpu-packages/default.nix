@@ -29,7 +29,7 @@ let
       ocloc = final.callPackage ./ocloc.nix { };
     })
     (final: prev: {
-      cutlass_sycl = final.callPackage ./cutlass-sycl.nix { };
+      cutlass-sycl = final.callPackage ./cutlass-sycl.nix { };
     })
   ];
 in
