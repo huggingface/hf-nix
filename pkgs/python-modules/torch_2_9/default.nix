@@ -307,7 +307,7 @@ let
 in
 buildPythonPackage rec {
   pname = "torch";
-  version = "2.9.0";
+  version = "2.9.0-rc2";
   pyproject = true;
 
   stdenv = effectiveStdenv;
@@ -326,7 +326,7 @@ buildPythonPackage rec {
     repo = "pytorch";
     tag = "v${version}";
     fetchSubmodules = true;
-    hash = "sha256-uCHb3qmJTarG+kgn9AgJCsZWXihS+gjjGigIspO4YS8=";
+    hash = "sha256-s7m6DANNKanDxWLXI8sksNyLo1Y0xQgYy6/XJKKygaA=";
   };
 
   patches = [
