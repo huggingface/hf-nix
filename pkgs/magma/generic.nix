@@ -14,6 +14,7 @@
   cudaPackages_11 ? null,
   cudaPackages,
   cudaSupport ? config.cudaSupport,
+  fetchpatch,
   fetchurl,
   gfortran,
   gpuTargets ? [ ], # Non-CUDA targets, that is HIP
@@ -114,6 +115,14 @@ stdenv.mkDerivation {
     "test"
   ];
 
+  patches = [
+    # Support CUDA 13.
+    (fetchpatch {
+      url = "https://github.com/icl-utk-edu/magma/commit/235aefb7b064954fce09d035c69907ba8a87cbcd.diff";
+      hash = "sha256-i9InbxD5HtfonB/GyF9nQhFmok3jZ73RxGcIciGBGvU=";
+    })
+  ];
+
   # Fixup for the python test runners
   postPatch = ''
     patchShebangs ./testing/run_{tests,summarize}.py
@@ -146,6 +155,7 @@ stdenv.mkDerivation {
   ++ lists.optionals cudaSupport (
     with effectiveCudaPackages;
     [
+      cuda_cccl # <nv/target>
       cuda_cudart # cuda_runtime.h
       libcublas # cublas_v2.h
       libcusparse # cusparse.h
@@ -155,9 +165,6 @@ stdenv.mkDerivation {
     ]
     ++ lists.optionals (cudaAtLeast "11.8") [
       cuda_profiler_api # <cuda_profiler_api.h>
-    ]
-    ++ lists.optionals (cudaAtLeast "12.0") [
-      cuda_cccl # <nv/target>
     ]
   )
   ++ lists.optionals rocmSupport [

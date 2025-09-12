@@ -131,6 +131,13 @@
         url = "https://developer.download.nvidia.com/compute/cudnn/redist/cudnn/linux-sbsa/cudnn-linux-sbsa-9.11.0.98_cuda12-archive.tar.xz";
         hash = "sha256-X81kUdiKnTt/rLwASB+l4rsV8sptxvhuCysgG8QuzVY=";
       }
+      {
+        version = "9.13.0.50";
+        minCudaVersion = "13.0";
+        maxCudaVersion = "13.0";
+        url = "https://developer.download.nvidia.com/compute/cudnn/redist/cudnn/linux-sbsa/cudnn-linux-sbsa-9.13.0.50_cuda13-archive.tar.xz";
+        hash = "sha256-eJMQVzIquHtysKmIRiVoQS7f7Vve8er3F5YTUbU8s9A=";
+      }
 
     ];
     # x86_64
@@ -225,6 +232,13 @@
         maxCudaVersion = "12.9";
         url = "https://developer.download.nvidia.com/compute/cudnn/redist/cudnn/linux-x86_64/cudnn-linux-x86_64-9.11.0.98_cuda12-archive.tar.xz";
         hash = "sha256-tgyPrQH6FSHS5x7TiIe5BHjX8Hs9pJ/WirEYqf7k2kg=";
+      }
+      {
+        version = "9.13.0.50";
+        minCudaVersion = "13.0";
+        maxCudaVersion = "13.0";
+        url = "https://developer.download.nvidia.com/compute/cudnn/redist/cudnn/linux-x86_64/cudnn-linux-x86_64-9.13.0.50_cuda13-archive.tar.xz";
+        hash = "sha256-AvR9lFZ3PIDZftJF79nrIruYXc/bdFWSE1NgNSkeegE=";
       }
     ];
   };

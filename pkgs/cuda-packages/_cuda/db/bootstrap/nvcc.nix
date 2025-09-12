@@ -41,58 +41,6 @@
       };
     };
 
-    # Added support for GCC 12
-    # https://docs.nvidia.com/cuda/archive/12.0.1/cuda-installation-guide-linux/index.html#system-requirements
-    "12.0" = {
-      clang = {
-        maxMajorVersion = "14";
-        minMajorVersion = "7";
-      };
-      gcc = {
-        maxMajorVersion = "12";
-        minMajorVersion = "6";
-      };
-    };
-
-    # Added support for Clang 15
-    # https://docs.nvidia.com/cuda/archive/12.1.1/cuda-toolkit-release-notes/index.html#cuda-compilers-new-features
-    "12.1" = {
-      clang = {
-        maxMajorVersion = "15";
-        minMajorVersion = "7";
-      };
-      gcc = {
-        maxMajorVersion = "12";
-        minMajorVersion = "6";
-      };
-    };
-
-    # Added support for Clang 16
-    # https://docs.nvidia.com/cuda/archive/12.2.2/cuda-installation-guide-linux/index.html#host-compiler-support-policy
-    "12.2" = {
-      clang = {
-        maxMajorVersion = "16";
-        minMajorVersion = "7";
-      };
-      gcc = {
-        maxMajorVersion = "12";
-        minMajorVersion = "6";
-      };
-    };
-
-    # No changes from 12.2 to 12.3
-    # https://docs.nvidia.com/cuda/archive/12.3.2/cuda-installation-guide-linux/index.html#host-compiler-support-policy
-    "12.3" = {
-      clang = {
-        maxMajorVersion = "16";
-        minMajorVersion = "7";
-      };
-      gcc = {
-        maxMajorVersion = "12";
-        minMajorVersion = "6";
-      };
-    };
-
     # Maximum Clang version is 17
     # Minimum GCC version is still 6, but all versions prior to GCC 7.3 are deprecated.
     # Maximum GCC version is 13.2
@@ -156,6 +104,18 @@
       };
       gcc = {
         maxMajorVersion = "14";
+        minMajorVersion = "6";
+      };
+    };
+
+    # Maximum Clang version is 20, maximum GCC version is 15
+    "13.0" = {
+      clang = {
+        maxMajorVersion = "20";
+        minMajorVersion = "7";
+      };
+      gcc = {
+        maxMajorVersion = "15";
         minMajorVersion = "6";
       };
     };

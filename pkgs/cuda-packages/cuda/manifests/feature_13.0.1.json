@@ -1,25 +1,27 @@
 {
+  "collectx_bringup": {
+    "linux-sbsa": {
+      "outputs": {
+        "bin": false,
+        "dev": false,
+        "doc": false,
+        "lib": false,
+        "sample": false,
+        "static": false
+      }
+    },
+    "linux-x86_64": {
+      "outputs": {
+        "bin": false,
+        "dev": false,
+        "doc": false,
+        "lib": false,
+        "sample": false,
+        "static": false
+      }
+    }
+  },
   "cuda_cccl": {
-    "linux-aarch64": {
-      "outputs": {
-        "bin": false,
-        "dev": true,
-        "doc": false,
-        "lib": false,
-        "sample": false,
-        "static": false
-      }
-    },
-    "linux-ppc64le": {
-      "outputs": {
-        "bin": false,
-        "dev": true,
-        "doc": false,
-        "lib": false,
-        "sample": false,
-        "static": false
-      }
-    },
     "linux-sbsa": {
       "outputs": {
         "bin": false,
@@ -51,10 +53,62 @@
       }
     }
   },
-  "cuda_compat": {
-    "linux-aarch64": {
+  "cuda_crt": {
+    "linux-sbsa": {
       "outputs": {
         "bin": false,
+        "dev": true,
+        "doc": false,
+        "lib": false,
+        "sample": false,
+        "static": false
+      }
+    },
+    "linux-x86_64": {
+      "outputs": {
+        "bin": false,
+        "dev": true,
+        "doc": false,
+        "lib": false,
+        "sample": false,
+        "static": false
+      }
+    },
+    "windows-x86_64": {
+      "outputs": {
+        "bin": false,
+        "dev": true,
+        "doc": false,
+        "lib": false,
+        "sample": false,
+        "static": false
+      }
+    }
+  },
+  "cuda_ctadvisor": {
+    "linux-sbsa": {
+      "outputs": {
+        "bin": true,
+        "dev": false,
+        "doc": false,
+        "lib": false,
+        "sample": false,
+        "static": false
+      }
+    },
+    "linux-x86_64": {
+      "outputs": {
+        "bin": true,
+        "dev": false,
+        "doc": false,
+        "lib": false,
+        "sample": false,
+        "static": false
+      }
+    },
+    "windows-x86_64": {
+      "outputs": {
+        "bin": true,
         "dev": false,
         "doc": false,
         "lib": false,
@@ -64,26 +118,6 @@
     }
   },
   "cuda_cudart": {
-    "linux-aarch64": {
-      "outputs": {
-        "bin": false,
-        "dev": true,
-        "doc": false,
-        "lib": true,
-        "sample": false,
-        "static": true
-      }
-    },
-    "linux-ppc64le": {
-      "outputs": {
-        "bin": false,
-        "dev": true,
-        "doc": false,
-        "lib": true,
-        "sample": false,
-        "static": true
-      }
-    },
     "linux-sbsa": {
       "outputs": {
         "bin": false,
@@ -115,27 +149,29 @@
       }
     }
   },
+  "cuda_culibos": {
+    "linux-sbsa": {
+      "outputs": {
+        "bin": false,
+        "dev": false,
+        "doc": false,
+        "lib": false,
+        "sample": false,
+        "static": true
+      }
+    },
+    "linux-x86_64": {
+      "outputs": {
+        "bin": false,
+        "dev": false,
+        "doc": false,
+        "lib": false,
+        "sample": false,
+        "static": true
+      }
+    }
+  },
   "cuda_cuobjdump": {
-    "linux-aarch64": {
-      "outputs": {
-        "bin": true,
-        "dev": false,
-        "doc": false,
-        "lib": false,
-        "sample": false,
-        "static": false
-      }
-    },
-    "linux-ppc64le": {
-      "outputs": {
-        "bin": true,
-        "dev": false,
-        "doc": false,
-        "lib": false,
-        "sample": false,
-        "static": false
-      }
-    },
     "linux-sbsa": {
       "outputs": {
         "bin": true,
@@ -168,26 +204,6 @@
     }
   },
   "cuda_cupti": {
-    "linux-aarch64": {
-      "outputs": {
-        "bin": false,
-        "dev": true,
-        "doc": false,
-        "lib": true,
-        "sample": true,
-        "static": false
-      }
-    },
-    "linux-ppc64le": {
-      "outputs": {
-        "bin": false,
-        "dev": true,
-        "doc": false,
-        "lib": true,
-        "sample": true,
-        "static": false
-      }
-    },
     "linux-sbsa": {
       "outputs": {
         "bin": false,
@@ -195,7 +211,7 @@
         "doc": false,
         "lib": true,
         "sample": true,
-        "static": false
+        "static": true
       }
     },
     "linux-x86_64": {
@@ -220,26 +236,6 @@
     }
   },
   "cuda_cuxxfilt": {
-    "linux-aarch64": {
-      "outputs": {
-        "bin": true,
-        "dev": true,
-        "doc": false,
-        "lib": false,
-        "sample": false,
-        "static": true
-      }
-    },
-    "linux-ppc64le": {
-      "outputs": {
-        "bin": true,
-        "dev": true,
-        "doc": false,
-        "lib": false,
-        "sample": false,
-        "static": true
-      }
-    },
     "linux-sbsa": {
       "outputs": {
         "bin": true,
@@ -271,49 +267,7 @@
       }
     }
   },
-  "cuda_demo_suite": {
-    "linux-x86_64": {
-      "outputs": {
-        "bin": false,
-        "dev": false,
-        "doc": false,
-        "lib": false,
-        "sample": false,
-        "static": false
-      }
-    },
-    "windows-x86_64": {
-      "outputs": {
-        "bin": false,
-        "dev": false,
-        "doc": false,
-        "lib": false,
-        "sample": false,
-        "static": false
-      }
-    }
-  },
   "cuda_documentation": {
-    "linux-aarch64": {
-      "outputs": {
-        "bin": false,
-        "dev": false,
-        "doc": false,
-        "lib": false,
-        "sample": false,
-        "static": false
-      }
-    },
-    "linux-ppc64le": {
-      "outputs": {
-        "bin": false,
-        "dev": false,
-        "doc": false,
-        "lib": false,
-        "sample": false,
-        "static": false
-      }
-    },
     "linux-sbsa": {
       "outputs": {
         "bin": false,
@@ -346,26 +300,6 @@
     }
   },
   "cuda_gdb": {
-    "linux-aarch64": {
-      "outputs": {
-        "bin": true,
-        "dev": false,
-        "doc": false,
-        "lib": false,
-        "sample": false,
-        "static": false
-      }
-    },
-    "linux-ppc64le": {
-      "outputs": {
-        "bin": true,
-        "dev": false,
-        "doc": false,
-        "lib": false,
-        "sample": false,
-        "static": false
-      }
-    },
     "linux-sbsa": {
       "outputs": {
         "bin": true,
@@ -388,16 +322,6 @@
     }
   },
   "cuda_nsight": {
-    "linux-ppc64le": {
-      "outputs": {
-        "bin": true,
-        "dev": false,
-        "doc": false,
-        "lib": false,
-        "sample": false,
-        "static": false
-      }
-    },
     "linux-x86_64": {
       "outputs": {
         "bin": true,
@@ -410,26 +334,6 @@
     }
   },
   "cuda_nvcc": {
-    "linux-aarch64": {
-      "outputs": {
-        "bin": true,
-        "dev": true,
-        "doc": false,
-        "lib": false,
-        "sample": false,
-        "static": true
-      }
-    },
-    "linux-ppc64le": {
-      "outputs": {
-        "bin": true,
-        "dev": true,
-        "doc": false,
-        "lib": false,
-        "sample": false,
-        "static": true
-      }
-    },
     "linux-sbsa": {
       "outputs": {
         "bin": true,
@@ -437,7 +341,7 @@
         "doc": false,
         "lib": false,
         "sample": false,
-        "static": true
+        "static": false
       }
     },
     "linux-x86_64": {
@@ -447,7 +351,7 @@
         "doc": false,
         "lib": false,
         "sample": false,
-        "static": true
+        "static": false
       }
     },
     "windows-x86_64": {
@@ -462,26 +366,6 @@
     }
   },
   "cuda_nvdisasm": {
-    "linux-aarch64": {
-      "outputs": {
-        "bin": true,
-        "dev": false,
-        "doc": false,
-        "lib": false,
-        "sample": false,
-        "static": false
-      }
-    },
-    "linux-ppc64le": {
-      "outputs": {
-        "bin": true,
-        "dev": false,
-        "doc": false,
-        "lib": false,
-        "sample": false,
-        "static": false
-      }
-    },
     "linux-sbsa": {
       "outputs": {
         "bin": true,
@@ -514,26 +398,6 @@
     }
   },
   "cuda_nvml_dev": {
-    "linux-aarch64": {
-      "outputs": {
-        "bin": false,
-        "dev": true,
-        "doc": false,
-        "lib": true,
-        "sample": false,
-        "static": false
-      }
-    },
-    "linux-ppc64le": {
-      "outputs": {
-        "bin": false,
-        "dev": true,
-        "doc": false,
-        "lib": true,
-        "sample": false,
-        "static": false
-      }
-    },
     "linux-sbsa": {
       "outputs": {
         "bin": false,
@@ -541,7 +405,7 @@
         "doc": false,
         "lib": true,
         "sample": false,
-        "static": false
+        "static": true
       }
     },
     "linux-x86_64": {
@@ -551,45 +415,13 @@
         "doc": false,
         "lib": true,
         "sample": false,
-        "static": false
+        "static": true
       }
     },
     "windows-x86_64": {
       "outputs": {
         "bin": false,
         "dev": true,
-        "doc": false,
-        "lib": false,
-        "sample": false,
-        "static": false
-      }
-    }
-  },
-  "cuda_nvprof": {
-    "linux-ppc64le": {
-      "outputs": {
-        "bin": true,
-        "dev": false,
-        "doc": false,
-        "lib": true,
-        "sample": false,
-        "static": false
-      }
-    },
-    "linux-x86_64": {
-      "outputs": {
-        "bin": true,
-        "dev": false,
-        "doc": false,
-        "lib": true,
-        "sample": false,
-        "static": false
-      }
-    },
-    "windows-x86_64": {
-      "outputs": {
-        "bin": true,
-        "dev": false,
         "doc": false,
         "lib": false,
         "sample": false,
@@ -598,26 +430,6 @@
     }
   },
   "cuda_nvprune": {
-    "linux-aarch64": {
-      "outputs": {
-        "bin": true,
-        "dev": false,
-        "doc": false,
-        "lib": false,
-        "sample": false,
-        "static": false
-      }
-    },
-    "linux-ppc64le": {
-      "outputs": {
-        "bin": true,
-        "dev": false,
-        "doc": false,
-        "lib": false,
-        "sample": false,
-        "static": false
-      }
-    },
     "linux-sbsa": {
       "outputs": {
         "bin": true,
@@ -650,26 +462,6 @@
     }
   },
   "cuda_nvrtc": {
-    "linux-aarch64": {
-      "outputs": {
-        "bin": false,
-        "dev": true,
-        "doc": false,
-        "lib": true,
-        "sample": false,
-        "static": true
-      }
-    },
-    "linux-ppc64le": {
-      "outputs": {
-        "bin": false,
-        "dev": true,
-        "doc": false,
-        "lib": true,
-        "sample": false,
-        "static": true
-      }
-    },
     "linux-sbsa": {
       "outputs": {
         "bin": false,
@@ -702,26 +494,6 @@
     }
   },
   "cuda_nvtx": {
-    "linux-aarch64": {
-      "outputs": {
-        "bin": false,
-        "dev": true,
-        "doc": false,
-        "lib": true,
-        "sample": false,
-        "static": false
-      }
-    },
-    "linux-ppc64le": {
-      "outputs": {
-        "bin": false,
-        "dev": true,
-        "doc": false,
-        "lib": true,
-        "sample": false,
-        "static": false
-      }
-    },
     "linux-sbsa": {
       "outputs": {
         "bin": false,
@@ -746,38 +518,6 @@
       "outputs": {
         "bin": false,
         "dev": true,
-        "doc": false,
-        "lib": false,
-        "sample": false,
-        "static": false
-      }
-    }
-  },
-  "cuda_nvvp": {
-    "linux-ppc64le": {
-      "outputs": {
-        "bin": true,
-        "dev": false,
-        "doc": false,
-        "lib": false,
-        "sample": false,
-        "static": false
-      }
-    },
-    "linux-x86_64": {
-      "outputs": {
-        "bin": true,
-        "dev": false,
-        "doc": false,
-        "lib": false,
-        "sample": false,
-        "static": false
-      }
-    },
-    "windows-x86_64": {
-      "outputs": {
-        "bin": true,
-        "dev": false,
         "doc": false,
         "lib": false,
         "sample": false,
@@ -808,26 +548,6 @@
     }
   },
   "cuda_profiler_api": {
-    "linux-aarch64": {
-      "outputs": {
-        "bin": false,
-        "dev": true,
-        "doc": false,
-        "lib": false,
-        "sample": false,
-        "static": false
-      }
-    },
-    "linux-ppc64le": {
-      "outputs": {
-        "bin": false,
-        "dev": true,
-        "doc": false,
-        "lib": false,
-        "sample": false,
-        "static": false
-      }
-    },
     "linux-sbsa": {
       "outputs": {
         "bin": false,
@@ -859,27 +579,29 @@
       }
     }
   },
+  "cuda_sandbox_dev": {
+    "linux-sbsa": {
+      "outputs": {
+        "bin": false,
+        "dev": true,
+        "doc": false,
+        "lib": false,
+        "sample": false,
+        "static": true
+      }
+    },
+    "linux-x86_64": {
+      "outputs": {
+        "bin": false,
+        "dev": true,
+        "doc": false,
+        "lib": false,
+        "sample": false,
+        "static": true
+      }
+    }
+  },
   "cuda_sanitizer_api": {
-    "linux-aarch64": {
-      "outputs": {
-        "bin": true,
-        "dev": false,
-        "doc": false,
-        "lib": false,
-        "sample": false,
-        "static": false
-      }
-    },
-    "linux-ppc64le": {
-      "outputs": {
-        "bin": true,
-        "dev": false,
-        "doc": false,
-        "lib": false,
-        "sample": false,
-        "static": false
-      }
-    },
     "linux-sbsa": {
       "outputs": {
         "bin": true,
@@ -901,6 +623,18 @@
       }
     },
     "windows-x86_64": {
+      "outputs": {
+        "bin": false,
+        "dev": false,
+        "doc": false,
+        "lib": false,
+        "sample": false,
+        "static": false
+      }
+    }
+  },
+  "driver_assistant": {
+    "linux-all": {
       "outputs": {
         "bin": false,
         "dev": false,
@@ -933,27 +667,29 @@
       }
     }
   },
+  "imex": {
+    "linux-sbsa": {
+      "outputs": {
+        "bin": false,
+        "dev": false,
+        "doc": false,
+        "lib": false,
+        "sample": false,
+        "static": false
+      }
+    },
+    "linux-x86_64": {
+      "outputs": {
+        "bin": false,
+        "dev": false,
+        "doc": false,
+        "lib": false,
+        "sample": false,
+        "static": false
+      }
+    }
+  },
   "libcublas": {
-    "linux-aarch64": {
-      "outputs": {
-        "bin": false,
-        "dev": true,
-        "doc": false,
-        "lib": true,
-        "sample": false,
-        "static": true
-      }
-    },
-    "linux-ppc64le": {
-      "outputs": {
-        "bin": false,
-        "dev": true,
-        "doc": false,
-        "lib": true,
-        "sample": false,
-        "static": true
-      }
-    },
     "linux-sbsa": {
       "outputs": {
         "bin": false,
@@ -985,39 +721,7 @@
       }
     }
   },
-  "libcudla": {
-    "linux-aarch64": {
-      "outputs": {
-        "bin": false,
-        "dev": true,
-        "doc": false,
-        "lib": true,
-        "sample": false,
-        "static": false
-      }
-    }
-  },
   "libcufft": {
-    "linux-aarch64": {
-      "outputs": {
-        "bin": false,
-        "dev": true,
-        "doc": false,
-        "lib": true,
-        "sample": false,
-        "static": true
-      }
-    },
-    "linux-ppc64le": {
-      "outputs": {
-        "bin": false,
-        "dev": true,
-        "doc": false,
-        "lib": true,
-        "sample": false,
-        "static": true
-      }
-    },
     "linux-sbsa": {
       "outputs": {
         "bin": false,
@@ -1050,23 +754,13 @@
     }
   },
   "libcufile": {
-    "linux-aarch64": {
-      "outputs": {
-        "bin": false,
-        "dev": true,
-        "doc": false,
-        "lib": true,
-        "sample": true,
-        "static": true
-      }
-    },
     "linux-sbsa": {
       "outputs": {
         "bin": false,
         "dev": true,
         "doc": false,
         "lib": true,
-        "sample": true,
+        "sample": false,
         "static": true
       }
     },
@@ -1076,32 +770,12 @@
         "dev": true,
         "doc": false,
         "lib": true,
-        "sample": true,
+        "sample": false,
         "static": true
       }
     }
   },
   "libcurand": {
-    "linux-aarch64": {
-      "outputs": {
-        "bin": false,
-        "dev": true,
-        "doc": false,
-        "lib": true,
-        "sample": false,
-        "static": true
-      }
-    },
-    "linux-ppc64le": {
-      "outputs": {
-        "bin": false,
-        "dev": true,
-        "doc": false,
-        "lib": true,
-        "sample": false,
-        "static": true
-      }
-    },
     "linux-sbsa": {
       "outputs": {
         "bin": false,
@@ -1134,26 +808,6 @@
     }
   },
   "libcusolver": {
-    "linux-aarch64": {
-      "outputs": {
-        "bin": false,
-        "dev": true,
-        "doc": false,
-        "lib": true,
-        "sample": false,
-        "static": true
-      }
-    },
-    "linux-ppc64le": {
-      "outputs": {
-        "bin": false,
-        "dev": true,
-        "doc": false,
-        "lib": true,
-        "sample": false,
-        "static": true
-      }
-    },
     "linux-sbsa": {
       "outputs": {
         "bin": false,
@@ -1186,26 +840,6 @@
     }
   },
   "libcusparse": {
-    "linux-aarch64": {
-      "outputs": {
-        "bin": false,
-        "dev": true,
-        "doc": false,
-        "lib": true,
-        "sample": false,
-        "static": true
-      }
-    },
-    "linux-ppc64le": {
-      "outputs": {
-        "bin": false,
-        "dev": true,
-        "doc": false,
-        "lib": true,
-        "sample": false,
-        "static": true
-      }
-    },
     "linux-sbsa": {
       "outputs": {
         "bin": false,
@@ -1238,7 +872,7 @@
     }
   },
   "libnpp": {
-    "linux-aarch64": {
+    "linux-sbsa": {
       "outputs": {
         "bin": false,
         "dev": true,
@@ -1248,7 +882,7 @@
         "static": true
       }
     },
-    "linux-ppc64le": {
+    "linux-x86_64": {
       "outputs": {
         "bin": false,
         "dev": true,
@@ -1258,6 +892,18 @@
         "static": true
       }
     },
+    "windows-x86_64": {
+      "outputs": {
+        "bin": true,
+        "dev": true,
+        "doc": false,
+        "lib": false,
+        "sample": false,
+        "static": false
+      }
+    }
+  },
+  "libnvfatbin": {
     "linux-sbsa": {
       "outputs": {
         "bin": false,
@@ -1312,26 +958,6 @@
     }
   },
   "libnvjitlink": {
-    "linux-aarch64": {
-      "outputs": {
-        "bin": false,
-        "dev": true,
-        "doc": false,
-        "lib": true,
-        "sample": false,
-        "static": true
-      }
-    },
-    "linux-ppc64le": {
-      "outputs": {
-        "bin": false,
-        "dev": true,
-        "doc": false,
-        "lib": true,
-        "sample": false,
-        "static": true
-      }
-    },
     "linux-sbsa": {
       "outputs": {
         "bin": false,
@@ -1364,26 +990,6 @@
     }
   },
   "libnvjpeg": {
-    "linux-aarch64": {
-      "outputs": {
-        "bin": false,
-        "dev": true,
-        "doc": false,
-        "lib": true,
-        "sample": false,
-        "static": true
-      }
-    },
-    "linux-ppc64le": {
-      "outputs": {
-        "bin": false,
-        "dev": true,
-        "doc": false,
-        "lib": true,
-        "sample": false,
-        "static": true
-      }
-    },
     "linux-sbsa": {
       "outputs": {
         "bin": false,
@@ -1415,30 +1021,54 @@
       }
     }
   },
-  "nsight_compute": {
-    "linux-aarch64": {
-      "outputs": {
-        "bin": true,
-        "dev": false,
-        "doc": false,
-        "lib": false,
-        "sample": false,
-        "static": false
-      }
-    },
-    "linux-ppc64le": {
-      "outputs": {
-        "bin": true,
-        "dev": false,
-        "doc": false,
-        "lib": false,
-        "sample": false,
-        "static": false
-      }
-    },
+  "libnvptxcompiler": {
     "linux-sbsa": {
       "outputs": {
+        "bin": false,
+        "dev": true,
+        "doc": false,
+        "lib": false,
+        "sample": false,
+        "static": true
+      }
+    },
+    "linux-x86_64": {
+      "outputs": {
+        "bin": false,
+        "dev": true,
+        "doc": false,
+        "lib": false,
+        "sample": false,
+        "static": true
+      }
+    },
+    "windows-x86_64": {
+      "outputs": {
+        "bin": false,
+        "dev": true,
+        "doc": false,
+        "lib": false,
+        "sample": false,
+        "static": false
+      }
+    }
+  },
+  "libnvsdm": {
+    "linux-x86_64": {
+      "outputs": {
         "bin": true,
+        "dev": true,
+        "doc": false,
+        "lib": true,
+        "sample": false,
+        "static": false
+      }
+    }
+  },
+  "libnvvm": {
+    "linux-sbsa": {
+      "outputs": {
+        "bin": false,
         "dev": false,
         "doc": false,
         "lib": false,
@@ -1448,7 +1078,105 @@
     },
     "linux-x86_64": {
       "outputs": {
-        "bin": true,
+        "bin": false,
+        "dev": false,
+        "doc": false,
+        "lib": false,
+        "sample": false,
+        "static": false
+      }
+    },
+    "windows-x86_64": {
+      "outputs": {
+        "bin": false,
+        "dev": false,
+        "doc": false,
+        "lib": false,
+        "sample": false,
+        "static": false
+      }
+    }
+  },
+  "mft": {
+    "linux-sbsa": {
+      "outputs": {
+        "bin": false,
+        "dev": false,
+        "doc": false,
+        "lib": false,
+        "sample": false,
+        "static": false
+      }
+    },
+    "linux-x86_64": {
+      "outputs": {
+        "bin": false,
+        "dev": false,
+        "doc": false,
+        "lib": false,
+        "sample": false,
+        "static": false
+      }
+    }
+  },
+  "mft_autocomplete": {
+    "linux-sbsa": {
+      "outputs": {
+        "bin": false,
+        "dev": false,
+        "doc": false,
+        "lib": false,
+        "sample": false,
+        "static": false
+      }
+    },
+    "linux-x86_64": {
+      "outputs": {
+        "bin": false,
+        "dev": false,
+        "doc": false,
+        "lib": false,
+        "sample": false,
+        "static": false
+      }
+    }
+  },
+  "mft_oem": {
+    "linux-sbsa": {
+      "outputs": {
+        "bin": false,
+        "dev": false,
+        "doc": false,
+        "lib": false,
+        "sample": false,
+        "static": false
+      }
+    },
+    "linux-x86_64": {
+      "outputs": {
+        "bin": false,
+        "dev": false,
+        "doc": false,
+        "lib": false,
+        "sample": false,
+        "static": false
+      }
+    }
+  },
+  "nsight_compute": {
+    "linux-sbsa": {
+      "outputs": {
+        "bin": false,
+        "dev": false,
+        "doc": false,
+        "lib": false,
+        "sample": false,
+        "static": false
+      }
+    },
+    "linux-x86_64": {
+      "outputs": {
+        "bin": false,
         "dev": false,
         "doc": false,
         "lib": false,
@@ -1468,16 +1196,6 @@
     }
   },
   "nsight_systems": {
-    "linux-ppc64le": {
-      "outputs": {
-        "bin": true,
-        "dev": false,
-        "doc": false,
-        "lib": false,
-        "sample": false,
-        "static": false
-      }
-    },
     "linux-sbsa": {
       "outputs": {
         "bin": true,
@@ -1522,16 +1240,6 @@
     }
   },
   "nvidia_driver": {
-    "linux-ppc64le": {
-      "outputs": {
-        "bin": true,
-        "dev": false,
-        "doc": false,
-        "lib": true,
-        "sample": false,
-        "static": false
-      }
-    },
     "linux-sbsa": {
       "outputs": {
         "bin": true,
@@ -1554,16 +1262,6 @@
     }
   },
   "nvidia_fs": {
-    "linux-aarch64": {
-      "outputs": {
-        "bin": false,
-        "dev": false,
-        "doc": false,
-        "lib": false,
-        "sample": false,
-        "static": false
-      }
-    },
     "linux-sbsa": {
       "outputs": {
         "bin": false,
@@ -1580,6 +1278,28 @@
         "dev": false,
         "doc": false,
         "lib": false,
+        "sample": false,
+        "static": false
+      }
+    }
+  },
+  "nvlsm": {
+    "linux-sbsa": {
+      "outputs": {
+        "bin": false,
+        "dev": false,
+        "doc": false,
+        "lib": true,
+        "sample": false,
+        "static": false
+      }
+    },
+    "linux-x86_64": {
+      "outputs": {
+        "bin": false,
+        "dev": false,
+        "doc": false,
+        "lib": true,
         "sample": false,
         "static": false
       }
