@@ -214,6 +214,8 @@ rec {
 
         torch_2_8 = callPackage ./pkgs/python-modules/torch_2_8 { xpuPackages = final.xpuPackages_2025_1; };
 
+        torch_2_9 = callPackage ./pkgs/python-modules/torch_2_9 { xpuPackages = final.xpuPackages_2025_1; };
+
         transformers = callPackage ./pkgs/python-modules/transformers { };
 
         triton-rocm = callPackage ./pkgs/python-modules/triton-rocm { };
