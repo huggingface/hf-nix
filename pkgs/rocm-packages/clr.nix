@@ -11,6 +11,7 @@
   hip-runtime-amd,
   hsa-rocr,
   perl,
+  rocm-core,
   rocm-device-libs,
   rocm-opencl,
   rocminfo,
@@ -56,7 +57,7 @@ stdenv.mkDerivation {
 
     mkdir -p $out
 
-    for path in ${hipcc} ${hip-devel} ${hip-runtime-amd} ${rocm-opencl}; do
+    for path in ${hipcc} ${hip-devel} ${hip-runtime-amd} ${rocm-core} ${rocm-opencl}; do
       rsync -a --exclude=nix-support $path/ $out/
     done
 
