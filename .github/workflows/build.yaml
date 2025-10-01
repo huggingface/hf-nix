@@ -23,7 +23,7 @@ jobs:
           name: huggingface
         #    authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
         env:
-          USER: github_runner
+          USER: runner
       - name: Check formatting
         run: nix fmt -- --ci
       - name: Build
