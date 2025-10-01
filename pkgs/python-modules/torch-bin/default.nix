@@ -30,9 +30,9 @@ let
     else
       "cpu";
   torchVersions = builtins.fromJSON (builtins.readFile ./torch-versions-hash.json);
-  torchBySysem = torchVersions.${version} or (throw "Unsupported torch version: ${version}");
+  torchBySystem = torchVersions.${version} or (throw "Unsupported torch version: ${version}");
   torchByFramework =
-    torchBySysem.${system} or (throw "Unsupported system: ${system} for torch version: ${version}");
+    torchBySystem.${system} or (throw "Unsupported system: ${system} for torch version: ${version}");
   urlHash =
     torchByFramework.${framework}
       or (throw "Unsupported framework: ${framework} for torch version: ${version} on system: ${system}");
