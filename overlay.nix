@@ -208,7 +208,15 @@ rec {
           }
         );
 
-        torch = python-self.torch_2_8;
+        mkTorch = callPackage ./pkgs/python-modules/torch-bin { };
+
+        torch-bin = torch-bin_2_8;
+
+        torch-bin_2_7 = mkTorch { version = "2.7"; };
+
+        torch-bin_2_8 = mkTorch { version = "2.8"; };
+
+        torch = torch_2_8;
 
         torch_2_7 = callPackage ./pkgs/python-modules/torch_2_7 { xpuPackages = final.xpuPackages_2025_0; };
 

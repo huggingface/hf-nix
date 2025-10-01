@@ -4,6 +4,20 @@ let
     prev.lib.mapAttrs (name: value: prev.${name}.overrideAttrs (final.callPackage value { })) overrides;
 in
 applyOverrides {
+  intel-oneapi-ccl =
+    {
+      intel-oneapi-compiler-dpcpp-cpp-runtime,
+      intel-oneapi-compiler-shared-runtime,
+      intel-oneapi-openmp,
+    }:
+    prevAttrs: {
+      buildInputs = prevAttrs.buildInputs ++ [
+        intel-oneapi-compiler-dpcpp-cpp-runtime
+        intel-oneapi-compiler-shared-runtime
+        intel-oneapi-openmp
+      ];
+    };
+
   intel-oneapi-compiler-dpcpp-cpp-runtime =
     { intel-oneapi-compiler-shared-runtime, intel-oneapi-umf }:
     prevAttrs: {
