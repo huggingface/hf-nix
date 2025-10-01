@@ -121,12 +121,7 @@ def generate_pytorch_url(
     return f"https://download.pytorch.org/whl/{framework_dir}/{wheel_name}"
 
 
-def compute_nix_hash(url: str, existing_hashes: Dict[str, str]) -> str:
-    """Compute hash using nix-prefetch-url, with caching"""
-    if url in existing_hashes:
-        print(f"Using existing hash for: {url}")
-        return existing_hashes[url]
-
+def compute_nix_hash(url: str) -> str:
     try:
         print(f"Fetching hash for: {url}")
 
@@ -158,25 +153,23 @@ def compute_nix_hash(url: str, existing_hashes: Dict[str, str]) -> str:
             capture_output=True,
             text=True,
         )
-        sri_hash = convert_result.stdout.strip()
-
-        existing_hashes[url] = sri_hash
-        return sri_hash
+        return convert_result.stdout.strip()
     except subprocess.CalledProcessError as e:
         print(f"Error computing hash for {url}: {e.stderr}", file=sys.stderr)
-        return None
+        sys.exit(1)
     except FileNotFoundError as e:
         if "nix-prefetch-url" in str(e):
             print(
                 "Error: nix-prefetch-url not found. Please ensure Nix is installed.",
                 file=sys.stderr,
             )
+            sys.exit(1)
         else:
             print(
                 "Error: nix command not found. Please ensure Nix is installed.",
                 file=sys.stderr,
             )
-        return None
+            sys.exit(1)
 
 
 def main():
@@ -259,16 +252,18 @@ def main():
             url = generate_pytorch_url(
                 torch_version, framework_version, framework_type, PYTHON_VERSION, system
             )
-            print(f"    Generated URL: {url}")
+            print(f"    URL: {url}")
 
             was_cached = url in existing_hashes
-            hash_value = compute_nix_hash(url, existing_hashes)
+            if was_cached:
+                hash_value = existing_hashes[url]
+            else:
+                hash_value = compute_nix_hash(url)
 
-            if hash_value:
-                if was_cached:
-                    cache_hits += 1
-                else:
-                    cache_misses += 1
+            if was_cached:
+                cache_hits += 1
+            else:
+                cache_misses += 1
 
             urls_hashes[version_key][system][framework.replace(".", "")] = {
                 "url": url,
@@ -276,10 +271,7 @@ def main():
                 "version": torch_version,
             }
 
-            if hash_value:
-                print("    ✓ Hash computed successfully")
-            else:
-                print("    ✗ Failed to compute hash")
+            print(f"    Hash: {hash_value}")
 
     try:
         with open(OUTPUT_FILE, "w") as f:
