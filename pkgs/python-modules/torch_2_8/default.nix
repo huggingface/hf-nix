@@ -221,6 +221,8 @@ let
       throw "No GPU targets specified"
   );
 
+  # Use rocm/pytorch for ROCm 7, since it's not supported by PyTorch 2.8.
+  rocmTorch = rocmSupport && (lib.versions.majorMinor rocmPackages.rocm.version == "7.0");
   rocmtoolkit_joined = symlinkJoin {
     name = "rocm-merged";
 
@@ -236,6 +238,7 @@ let
       hiprand
       hipsolver
       hipsparse
+      hipsparselt
       hsa-rocr
       miopen-hip
       rccl
@@ -310,19 +313,29 @@ buildPythonPackage rec {
   cudaPropagateToOutput = "cxxdev";
   rocmPropagateToOutput = "cxxdev";
 
-  src = fetchFromGitHub {
-    owner = "pytorch";
-    repo = "pytorch";
-    tag = "v${version}";
-    fetchSubmodules = true;
-    hash = "sha256-5JDYFoBe6bC9Dz143Bm/5OEOWsQxjctAR9fI4f6G2W8=";
-  };
+  src =
+    if rocmTorch then
+      fetchFromGitHub {
+        owner = "ROCm";
+        repo = "pytorch";
+        rev = "245bf6edbc7e4b6aabbb4a218b518b853225956c";
+        fetchSubmodules = true;
+        hash = "sha256-vQL9rjrQjQDnMwNB0NNKuecp8PENOib9Y+K5J9ZaiFM=";
+      }
+    else
+      fetchFromGitHub {
+        owner = "pytorch";
+        repo = "pytorch";
+        tag = "v${version}";
+        fetchSubmodules = true;
+        hash = "sha256-5JDYFoBe6bC9Dz143Bm/5OEOWsQxjctAR9fI4f6G2W8=";
+      };
 
   patches = [
     ./mkl-rpath.patch
   ]
   ++ lib.optionals cudaSupport [ ./fix-cmake-cuda-toolkit.patch ]
-  ++ lib.optionals rocmSupport [ ./cmake-load-hip-invalid-state.diff ]
+  ++ lib.optionals (!rocmTorch) [ ./cmake-load-hip-invalid-state.diff ]
   ++ lib.optionals (stdenv.hostPlatform.isDarwin && stdenv.hostPlatform.isx86_64) [
     # pthreadpool added support for Grand Central Dispatch in April
     # 2020. However, this relies on functionality (DISPATCH_APPLY_AUTO)

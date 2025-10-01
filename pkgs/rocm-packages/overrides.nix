@@ -152,6 +152,12 @@ applyOverrides {
       buildInputs = prevAttrs.buildInputs ++ [ hip-runtime-amd ];
     };
 
+  rocsparse =
+    { roctracer }:
+    prevAttrs: {
+      buildInputs = prevAttrs.buildInputs ++ [ roctracer ];
+    };
+
   roctracer =
     { comgr, hsa-rocr }:
     prevAttr: {

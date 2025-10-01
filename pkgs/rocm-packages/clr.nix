@@ -11,6 +11,7 @@
   hip-runtime-amd,
   hsa-rocr,
   perl,
+  rocm,
   rocm-core,
   rocm-device-libs,
   rocm-opencl,
@@ -33,7 +34,7 @@ let
 in
 stdenv.mkDerivation {
   pname = "rocm-clr";
-  version = hipcc.version;
+  version = rocm.version;
 
   nativeBuildInputs = [
     markForRocmRootHook
@@ -69,8 +70,14 @@ stdenv.mkDerivation {
 
     wrapProgram $out/bin/hipcc ${lib.concatStringsSep " " wrapperArgs}
     wrapProgram $out/bin/hipconfig ${lib.concatStringsSep " " wrapperArgs}
-    wrapProgram $out/bin/hipcc.pl ${lib.concatStringsSep " " wrapperArgs}
-    wrapProgram $out/bin/hipconfig.pl ${lib.concatStringsSep " " wrapperArgs}
+
+    # Removed in ROCm 7.
+    if [ -f $out/bin/hipcc.pl ]; then
+      wrapProgram $out/bin/hipcc.pl ${lib.concatStringsSep " " wrapperArgs}
+    fi
+    if [ -f $out/bin/hipconfig.pl ]; then
+      wrapProgram $out/bin/hipconfig.pl ${lib.concatStringsSep " " wrapperArgs}
+    fi
 
     runHook postInstall
   '';

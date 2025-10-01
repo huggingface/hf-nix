@@ -14,6 +14,7 @@
   cudaPackages_11 ? null,
   cudaPackages,
   cudaSupport ? config.cudaSupport,
+  fetchFromGitHub,
   fetchpatch,
   fetchurl,
   gfortran,
@@ -102,11 +103,21 @@ stdenv.mkDerivation {
   pname = "magma";
   inherit version;
 
-  src = fetchurl {
-    name = "magma-${version}.tar.gz";
-    url = "https://icl.cs.utk.edu/projectsfiles/magma/downloads/magma-${version}.tar.gz";
-    inherit hash;
-  };
+  src =
+    if rocmSupport then
+      # For ROCm we need Git HEAD for the ROCm 7 patch to apply.
+      fetchFromGitHub {
+        owner = "icl-utk-edu";
+        repo = "magma";
+        rev = "07b2b05635f0510ea4538f7ab68e50dcf0c0c815";
+        hash = "sha256-yVpeOv3hXWnN+rEnoRUQSPNU7jr/E/jaWX95ue1ItAQ=";
+      }
+    else
+      fetchurl {
+        name = "magma-${version}.tar.gz";
+        url = "https://icl.cs.utk.edu/projectsfiles/magma/downloads/magma-${version}.tar.gz";
+        inherit hash;
+      };
 
   # Magma doesn't have anything which could be run under doCheck, but it does build test suite executables.
   # These are moved to $test/bin/ and $test/lib/ in postInstall.
@@ -115,24 +126,30 @@ stdenv.mkDerivation {
     "test"
   ];
 
-  patches = [
-    # Support CUDA 13.
-    (fetchpatch {
-      url = "https://github.com/icl-utk-edu/magma/commit/235aefb7b064954fce09d035c69907ba8a87cbcd.diff";
-      hash = "sha256-i9InbxD5HtfonB/GyF9nQhFmok3jZ73RxGcIciGBGvU=";
-    })
-  ];
+  patches =
+    lib.optionals cudaSupport [
+      # Support CUDA 13.
+      (fetchpatch {
+        url = "https://github.com/icl-utk-edu/magma/commit/235aefb7b064954fce09d035c69907ba8a87cbcd.diff";
+        hash = "sha256-i9InbxD5HtfonB/GyF9nQhFmok3jZ73RxGcIciGBGvU=";
+      })
+    ]
+    ++ lib.optionals rocmSupport [
+      ./rocm-7-pr65.diff
+    ];
 
   # Fixup for the python test runners
   postPatch = ''
+    patchShebangs ./tools/codegen.py
+    patchShebangs ./tools/hipify-perl
     patchShebangs ./testing/run_{tests,summarize}.py
-    patchShebangs ./tools/get-rocm-version.sh
-    substituteInPlace ./tools/get-rocm-version.sh \
+
+    # Not in MAGMA head anymore.
+    if [ -f ./tools/get-rocm-version.sh ]; then
+      patchShebangs ./tools/get-rocm-version.sh
+      substituteInPlace ./tools/get-rocm-version.sh \
         --replace-fail "/opt/rocm" "${rocmPackages.rocm-core}"
-    #substituteInPlace ./testing/run_tests.py \
-    #  --replace-fail \
-    #    "print >>sys.stderr, cmdp, \"doesn't exist (original name: \" + cmd + \", precision: \" + precision + \")\"" \
-    #    "print(f\"{cmdp} doesn't exist (original name: {cmd}, precision: {precision})\", file=sys.stderr)"
+    fi
   '';
 
   nativeBuildInputs = [
@@ -204,6 +221,13 @@ stdenv.mkDerivation {
     #ROCM_PATH = rocmPackages.rocminfo;
     #HIP_CLANG_PATH = "${rocmPackages.llvm.clang}/bin";
   };
+
+  # Source tarballs have all generated files, but for ROCm we are building
+  # from GitHub sources, so we have to generate them.
+  preConfigure = lib.optionals rocmSupport ''
+    echo -e 'GPU_TARGET = gfx700\nBACKEND = hip\nFORT = true' > make.inc
+    make generate
+  '';
 
   # Magma doesn't have a test suite we can easily run, just loose executables, all of which require a GPU.
   doCheck = false;
