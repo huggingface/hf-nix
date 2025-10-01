@@ -104,6 +104,7 @@
                 quantization-eetq
                 rotary
                 torch
+                torch-bin
                 transformers
                 ;
             };
