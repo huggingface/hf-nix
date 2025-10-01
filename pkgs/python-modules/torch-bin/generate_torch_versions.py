@@ -35,9 +35,7 @@ def load_existing_hashes() -> Dict[str, str]:
                                 and "url" in framework_data
                                 and "hash" in framework_data
                             ):
-                                if framework_data[
-                                    "hash"
-                                ]:  # Only cache successful hashes
+                                if framework_data["hash"]:
                                     url_to_hash[framework_data["url"]] = framework_data[
                                         "hash"
                                     ]
@@ -65,7 +63,7 @@ def version_to_major_minor(version: str) -> str:
     parts = version.split(".")
     if len(parts) >= 2:
         return f"{parts[0]}.{parts[1]}"
-    return version  # fallback if format is unexpected
+    return version
 
 
 def system_to_platform(system: str, framework_type: str = None) -> str:
@@ -77,7 +75,6 @@ def system_to_platform(system: str, framework_type: str = None) -> str:
         }
         return xpu_platform_map.get(system, system)
 
-    # Standard platform mapping for other frameworks
     platform_map = {
         "x86_64-linux": "manylinux_2_28_x86_64",
         "aarch64-linux": "manylinux_2_28_aarch64",
@@ -99,18 +96,16 @@ def generate_pytorch_url(
     # macOS uses CPU wheels (no CUDA/ROCm/XPU support)
     if "darwin" in system:
         framework_dir = "cpu"
-        version_part = torch_version  # No framework suffix for CPU builds
+        version_part = torch_version
         abi_tag = "none" if "darwin" in system else python_version
         wheel_name = f"torch-{version_part}-{python_version}-{abi_tag}-{platform}.whl"
     elif framework_type == "xpu":
-        # XPU wheels (Linux x86_64 only)
         framework = "xpu"
         framework_dir = framework
-        version_part = f"{torch_version}%2B{framework}"  # URL-encoded +
-        abi_tag = python_version  # Linux uses same python version for ABI
+        version_part = f"{torch_version}%2B{framework}"
+        abi_tag = python_version
         wheel_name = f"torch-{version_part}-{python_version}-{abi_tag}-{platform}.whl"
     else:
-        # Linux uses CUDA or ROCm wheels
         if framework_type == "cuda":
             framework = cuda_version_to_framework(framework_version)
         elif framework_type == "rocm":
@@ -119,17 +114,15 @@ def generate_pytorch_url(
             raise ValueError(f"Unsupported framework type: {framework_type}")
 
         framework_dir = framework
-        version_part = f"{torch_version}%2B{framework}"  # URL-encoded +
-        abi_tag = python_version  # Linux uses same python version for ABI
+        version_part = f"{torch_version}%2B{framework}"
+        abi_tag = python_version
         wheel_name = f"torch-{version_part}-{python_version}-{abi_tag}-{platform}.whl"
 
-    # PyTorch download URL format
     return f"https://download.pytorch.org/whl/{framework_dir}/{wheel_name}"
 
 
 def compute_nix_hash(url: str, existing_hashes: Dict[str, str]) -> str:
     """Compute hash using nix-prefetch-url, with caching"""
-    # Check existing hashes first
     if url in existing_hashes:
         print(f"Using existing hash for: {url}")
         return existing_hashes[url]
@@ -167,7 +160,6 @@ def compute_nix_hash(url: str, existing_hashes: Dict[str, str]) -> str:
         )
         sri_hash = convert_result.stdout.strip()
 
-        # Store SRI hash in existing_hashes for this session
         existing_hashes[url] = sri_hash
         return sri_hash
     except subprocess.CalledProcessError as e:
@@ -188,12 +180,10 @@ def compute_nix_hash(url: str, existing_hashes: Dict[str, str]) -> str:
 
 
 def main():
-    # Load existing hashes from previous output
     existing_hashes = load_existing_hashes()
     cache_hits = 0
     cache_misses = 0
 
-    # Read the torch-versions.json file
     try:
         with open("torch-versions.json", "r") as f:
             torch_versions = json.load(f)
@@ -204,14 +194,11 @@ def main():
         print(f"Error parsing torch-versions.json: {e}", file=sys.stderr)
         sys.exit(1)
 
-    # Initialize the nested attribute set
-    # Structure: torch_version -> system -> framework
     urls_hashes = {}
 
     print(f"Processing {len(torch_versions)} entries from torch-versions.json")
     print(f"Found {len(existing_hashes)} existing hashes")
 
-    # Process each entry in torch-versions.json
     for entry in torch_versions:
         torch_version = entry.get("torchVersion")
         cuda_version = entry.get("cudaVersion")
@@ -223,10 +210,8 @@ def main():
             print(f"Skipping entry without torchVersion: {entry}", file=sys.stderr)
             continue
 
-        # Convert to major.minor version for outer key
         version_key = version_to_major_minor(torch_version)
 
-        # Determine framework type and version
         if cuda_version:
             framework_type = "cuda"
             framework_version = cuda_version
@@ -240,7 +225,6 @@ def main():
             framework_version = xpu_version
             print(f"Processing torch {torch_version} with XPU {xpu_version}")
         else:
-            # CPU-only builds (typically macOS or explicit CPU builds)
             framework_type = "cpu"
             framework_version = "cpu"
             print(f"Processing torch {torch_version} (CPU-only build)")
@@ -248,17 +232,14 @@ def main():
         if version_key not in urls_hashes:
             urls_hashes[version_key] = {}
 
-        # Process each system
         for system in systems:
             print(f"  Processing system: {system}")
 
-            # Initialize nested structure
             if system not in urls_hashes[version_key]:
                 urls_hashes[version_key][system] = {}
 
-            # Determine framework key for this system
             if "darwin" in system:
-                framework = "cpu"  # macOS uses CPU wheels
+                framework = "cpu"
             else:
                 if framework_type == "cuda":
                     framework = cuda_version_to_framework(framework_version)
