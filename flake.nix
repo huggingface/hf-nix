@@ -122,7 +122,7 @@
 
             rocm = {
               python3Packages = with pkgsRocm.python3.pkgs; {
-                inherit torch;
+                inherit torch torch-bin;
               };
             };
           };

@@ -131,66 +131,17 @@ let
 
   setBool = v: if v then "1" else "0";
 
+  archs = (import ../../archs.nix)."2.8";
+
   supportedTorchCudaCapabilities =
     let
-      # https://github.com/pytorch/pytorch/blob/release/2.8/.ci/manywheel/build_cuda.sh
-      capsPerCudaVersion = {
-        "12.9" = [
-          "7.0"
-          "7.5"
-          "8.0"
-          "8.6"
-          "9.0"
-          "10.0"
-          "12.0"
-        ];
-        "12.8" = [
-          "7.0"
-          "7.5"
-          "8.0"
-          "8.6"
-          "9.0"
-          "10.0"
-          "12.0"
-        ];
-        "12.6" = [
-          "5.0"
-          "6.0"
-          "7.0"
-          "7.5"
-          "8.0"
-          "8.6"
-          "9.0"
-        ];
-        # Not a supported upstream configuration, but keep it around for
-        # builds that fail on newer CUDA versions.
-        "12.4" = [
-          "5.0"
-          "6.0"
-          "7.0"
-          "7.5"
-          "8.0"
-          "8.6"
-          "9.0"
-        ];
-      };
+      inherit (archs) capsPerCudaVersion;
       real = capsPerCudaVersion."${lib.versions.majorMinor cudaPackages.cudaMajorMinorVersion}";
       ptx = lists.map (x: "${x}+PTX") real;
     in
     real ++ ptx;
 
-  supportedTorchRocmArchs = [
-    # rocmPackages.clr.gpuTargets
-    # https://github.com/pytorch/pytorch/blob/374b762bbf3d8e00015de14b1ede47089d0b2fda/.ci/docker/manywheel/build.sh#L100
-    "gfx900"
-    "gfx906"
-    "gfx908"
-    "gfx90a"
-    "gfx942"
-    "gfx1030"
-    "gfx1100"
-    "gfx1101"
-  ];
+  inherit (archs) supportedTorchRocmArchs;
 
   # NOTE: The lists.subtractLists function is perhaps a bit unintuitive. It subtracts the elements
   #   of the first list *from* the second list. That means:
