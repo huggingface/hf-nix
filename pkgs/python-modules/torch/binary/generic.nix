@@ -66,7 +66,7 @@ let
       ptx = lib.map (x: "${x}+PTX") real;
     in
     real ++ ptx;
-  supportedCudaCapabilities = lib.intersectLists cudaPackages.cudaFlags.cudaCapabilities supportedTorchCudaCapabilities;
+  supportedCudaCapabilities = lib.intersectLists cudaPackages.flags.cudaCapabilities supportedTorchCudaCapabilities;
   inherit (archs) supportedTorchRocmArchs;
 in
 buildPythonPackage {
