@@ -257,6 +257,7 @@ rec {
       "6.2.4"
       "6.3.4"
       "6.4.2"
+      "7.0.1"
     ];
     newRocmPackages = final.callPackage ./pkgs/rocm-packages { };
   in
