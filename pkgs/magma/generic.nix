@@ -134,6 +134,7 @@ stdenv.mkDerivation {
         hash = "sha256-i9InbxD5HtfonB/GyF9nQhFmok3jZ73RxGcIciGBGvU=";
       })
     ]
+    # ROCm 7 support: https://github.com/icl-utk-edu/magma/pull/65
     ++ lib.optionals rocmSupport [
       ./rocm-7-pr65.diff
     ];
