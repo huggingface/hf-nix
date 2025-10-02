@@ -208,7 +208,7 @@ rec {
           }
         );
 
-        mkTorch = callPackage ./pkgs/python-modules/torch-bin { };
+        mkTorch = callPackage ./pkgs/python-modules/torch/binary { };
 
         torch-bin = torch-bin_2_8;
 
@@ -218,11 +218,17 @@ rec {
 
         torch = torch_2_8;
 
-        torch_2_7 = callPackage ./pkgs/python-modules/torch_2_7 { xpuPackages = final.xpuPackages_2025_0; };
+        torch_2_7 = callPackage ./pkgs/python-modules/torch/source/2_7 {
+          xpuPackages = final.xpuPackages_2025_0;
+        };
 
-        torch_2_8 = callPackage ./pkgs/python-modules/torch_2_8 { xpuPackages = final.xpuPackages_2025_1; };
+        torch_2_8 = callPackage ./pkgs/python-modules/torch/source/2_8 {
+          xpuPackages = final.xpuPackages_2025_1;
+        };
 
-        torch_2_9 = callPackage ./pkgs/python-modules/torch_2_9 { xpuPackages = final.xpuPackages_2025_2; };
+        torch_2_9 = callPackage ./pkgs/python-modules/torch/source/2_9 {
+          xpuPackages = final.xpuPackages_2025_2;
+        };
 
         transformers = callPackage ./pkgs/python-modules/transformers { };
 

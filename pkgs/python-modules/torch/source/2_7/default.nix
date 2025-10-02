@@ -4,7 +4,6 @@
   gcc11Stdenv,
   lib,
   fetchFromGitHub,
-  fetchpatch,
   buildPythonPackage,
   python,
   config,
@@ -34,7 +33,6 @@
   useSystemNccl ? (cudaSupport && !cudaPackages.nccl.meta.unsupported || rocmSupport),
   MPISupport ? false,
   mpi,
-  nvtx,
   buildDocs ? false,
   cxx11Abi ? true,
 
@@ -50,7 +48,6 @@
 
   # Build inputs
   apple-sdk_15,
-  libdrm,
   numactl,
 
   # dependencies
@@ -88,7 +85,7 @@
     else if rocmSupport then
       python.pkgs.triton-rocm
     else if xpuSupport then
-      python.pkgs.triton-xpu_2_9
+      python.pkgs.triton-xpu_2_7
     else
       triton,
   triton-cuda,
@@ -132,79 +129,17 @@ let
 
   setBool = v: if v then "1" else "0";
 
+  archs = (import ../../archs.nix)."2.7";
+
   supportedTorchCudaCapabilities =
     let
-      # https://github.com/pytorch/pytorch/blob/release/2.9/.ci/manywheel/build_cuda.sh
-      capsPerCudaVersion = {
-        "13.0" = [
-          "7.5"
-          "8.0"
-          "8.6"
-          "9.0"
-          "10.0"
-          "12.0"
-        ];
-        # NOTE: 12.9 does not seem to be in RC builds, check if needed for final release.
-        #       https://download.pytorch.org/whl/test/torch/
-        "12.9" = [
-          "7.0"
-          "7.5"
-          "8.0"
-          "8.6"
-          "9.0"
-          "10.0"
-          "12.0"
-        ];
-        "12.8" = [
-          "7.0"
-          "7.5"
-          "8.0"
-          "8.6"
-          "9.0"
-          "10.0"
-          "12.0"
-        ];
-        "12.6" = [
-          "5.0"
-          "6.0"
-          "7.0"
-          "7.5"
-          "8.0"
-          "8.6"
-          "9.0"
-        ];
-        # Not a supported upstream configuration, but keep it around for
-        # builds that fail on newer CUDA versions.
-        "12.4" = [
-          "5.0"
-          "6.0"
-          "7.0"
-          "7.5"
-          "8.0"
-          "8.6"
-          "9.0"
-        ];
-      };
+      inherit (archs) capsPerCudaVersion;
       real = capsPerCudaVersion."${lib.versions.majorMinor cudaPackages.cudaMajorMinorVersion}";
       ptx = lists.map (x: "${x}+PTX") real;
     in
     real ++ ptx;
 
-  supportedTorchRocmArchs = [
-    # rocmPackages.clr.gpuTargets
-    # https://github.com/pytorch/pytorch/blob/374b762bbf3d8e00015de14b1ede47089d0b2fda/.ci/docker/manywheel/build.sh#L100
-    "gfx900"
-    "gfx906"
-    "gfx908"
-    "gfx90a"
-    "gfx942"
-    "gfx1030"
-    "gfx1100"
-    "gfx1101"
-    "gfx1102"
-    "gfx1200"
-    "gfx1201"
-  ];
+  inherit (archs) supportedTorchRocmArchs;
 
   # NOTE: The lists.subtractLists function is perhaps a bit unintuitive. It subtracts the elements
   #   of the first list *from* the second list. That means:
@@ -239,7 +174,7 @@ let
     name = "rocm-merged";
 
     paths = with rocmPackages; [
-      aotriton_0_10
+      aotriton_0_9
       clr
       comgr
       hipblas
@@ -250,7 +185,6 @@ let
       hiprand
       hipsolver
       hipsparse
-      hipsparselt
       hsa-rocr
       miopen-hip
       rccl
@@ -258,7 +192,6 @@ let
       rocm-core
       rocm-device-libs
       rocm-hip-runtime
-      rocm-smi-lib
       rocminfo
       rocrand
       rocsolver
@@ -284,8 +217,8 @@ let
     "Unsupported CUDA version" =
       cudaSupport
       && !(builtins.elem cudaPackages.cudaMajorVersion [
+        "11"
         "12"
-        "13"
       ]);
     "MPI cudatoolkit does not match cudaPackages.cudatoolkit" =
       MPISupport && cudaSupport && (mpi.cudatoolkit != cudaPackages.cudatoolkit);
@@ -298,20 +231,22 @@ let
     #"Rocm support is currently broken because `rocmPackages.hipblaslt` is unpackaged. (2024-06-09)" =
     #  rocmSupport;
   };
+
   torchXpuOpsSrc =
     if xpuSupport then
       fetchFromGitHub {
         owner = "intel";
         repo = "torch-xpu-ops";
-        rev = "f8408a642da568051ab82e20f2947b89e491fbeb";
-        hash = "sha256-eoT8mvaPw1NFFTYFVT6NUqOFOo4rDdNrIseF+FDpXUk=";
+        rev = "3ee2bd2f13e1ed17a685986ff667a58bed5f2aa5";
+        hash = "sha256-PzD0twcZexQDDlThnzJm6kp9HeZpxRxozC25UswlLso=";
       }
     else
       null;
 in
 buildPythonPackage rec {
   pname = "torch";
-  version = "2.9.0-rc2";
+  # Don't forget to update torch-bin to the same version.
+  version = "2.7.1";
   pyproject = true;
 
   stdenv = effectiveStdenv;
@@ -330,19 +265,17 @@ buildPythonPackage rec {
     repo = "pytorch";
     tag = "v${version}";
     fetchSubmodules = true;
-    hash = "sha256-s7m6DANNKanDxWLXI8sksNyLo1Y0xQgYy6/XJKKygaA=";
+    hash = "sha256-wVzYx8YYoL8rVYb9DwF6ai16UzPvSO4WhNvddh09RXM=";
   };
 
   patches = [
     ./mkl-rpath.patch
-    # Include cstdint.h for uint8_t definition to fix gcc 14 compilation.
-    (fetchpatch {
-      name = "gloo-cstdint.diff";
-      url = "https://github.com/pytorch/gloo/commit/54cbae0d3a67fa890b4c3d9ee162b7860315e341.diff";
-      hash = "sha256-SsNN7wLhfpGgsdwZ+cS36tNLf8SKpMlJK6ya8y4AYnk=";
-      stripLen = 1;
-      extraPrefix = "third_party/gloo/";
-    })
+  ]
+  ++ lib.optionals tritonSupport [
+    # Manual backport of [inductor] Fix usage of launch_enter_hook/launch_exit_hook
+    # to fix AttributeError: type object 'CompiledKernel' has no attribute 'launch_enter_hook'
+    # https://github.com/pytorch/pytorch/pull/152457
+    ./triton-2.4-compat.patch
   ]
   ++ lib.optionals cudaSupport [ ./fix-cmake-cuda-toolkit.patch ]
   ++ lib.optionals (stdenv.hostPlatform.isDarwin && stdenv.hostPlatform.isx86_64) [
@@ -364,89 +297,94 @@ buildPythonPackage rec {
     patch -d $sourceRoot/third_party/torch-xpu-ops -p1 < ${./0001-patch-xpu-ops-CMake.patch}
   '';
 
-  postPatch =
-    let
-      pyiGenPath = "${typing-extensions}/${python.sitePackages}:${pyyaml}/${python.sitePackages}";
-    in
-    ''
-      substituteInPlace pyproject.toml \
-        --replace-fail "setuptools>=70.1.0,<80.0" \
-                       "setuptools>=70.1.0"
+  postPatch = ''
+    substituteInPlace cmake/public/cuda.cmake \
+      --replace-fail \
+        'message(FATAL_ERROR "Found two conflicting CUDA' \
+        'message(WARNING "Found two conflicting CUDA' \
+      --replace-warn \
+        "set(CUDAToolkit_ROOT" \
+        "# Upstream: set(CUDAToolkit_ROOT"
+    substituteInPlace third_party/gloo/cmake/Cuda.cmake \
+      --replace-warn "find_package(CUDAToolkit 7.0" "find_package(CUDAToolkit"
 
-      substituteInPlace cmake/public/cuda.cmake \
-        --replace-fail \
-          'message(FATAL_ERROR "Found two conflicting CUDA' \
-          'message(WARNING "Found two conflicting CUDA' \
-        --replace-warn \
-          "set(CUDAToolkit_ROOT" \
-          "# Upstream: set(CUDAToolkit_ROOT"
-      substituteInPlace third_party/gloo/cmake/Cuda.cmake \
-        --replace-warn "find_package(CUDAToolkit 7.0" "find_package(CUDAToolkit"
+    # annotations (3.7), print_function (3.0), with_statement (2.6) are all supported
+    sed -i -e "/from __future__ import/d" **.py
+    substituteInPlace third_party/NNPACK/CMakeLists.txt \
+      --replace-fail "PYTHONPATH=" 'PYTHONPATH=$ENV{PYTHONPATH}:'
+    # flag from cmakeFlags doesn't work, not clear why
+    # setting it at the top of NNPACK's own CMakeLists does
+    sed -i '2s;^;set(PYTHON_SIX_SOURCE_DIR ${six.src})\n;' third_party/NNPACK/CMakeLists.txt
 
-      # annotations (3.7), print_function (3.0), with_statement (2.6) are all supported
-      sed -i -e "/from __future__ import/d" **.py
-      #substituteInPlace third_party/NNPACK/CMakeLists.txt \
-      #  --replace-fail "PYTHONPATH=" 'PYTHONPATH=$ENV{PYTHONPATH}:'
-      # flag from cmakeFlags doesn't work, not clear why
-      # setting it at the top of NNPACK's own CMakeLists does
-      sed -i '2s;^;set(PYTHON_SIX_SOURCE_DIR ${six.src})\n;' third_party/NNPACK/CMakeLists.txt
+    # Ensure that torch profiler unwind uses addr2line from nix
+    substituteInPlace torch/csrc/profiler/unwind/unwind.cpp \
+      --replace-fail 'addr2line_binary_ = "addr2line"' 'addr2line_binary_ = "${lib.getExe' binutils "addr2line"}"'
 
-      # Ensure that torch profiler unwind uses addr2line from nix
-      substituteInPlace torch/csrc/profiler/unwind/unwind.cpp \
-        --replace-fail 'addr2line_binary_ = "addr2line"' 'addr2line_binary_ = "${lib.getExe' binutils "addr2line"}"'
+    # NCCL repo seems to be cloned unconditionally when third_party/nccl
+    # does not exist.
+    substituteInPlace tools/build_pytorch_libs.py \
+      --replace-fail "if not os.path.exists(nccl_basedir):" "if False:"
+  ''
+  + lib.optionalString rocmSupport ''
+    # https://github.com/facebookincubator/gloo/pull/297
+    substituteInPlace third_party/gloo/cmake/Hipify.cmake \
+      --replace-fail "\''${HIPIFY_COMMAND}" "python \''${HIPIFY_COMMAND}"
 
-      # gen_pyi needs typing-extensions.
-      #substituteInPlace torch/CMakeLists.txt \
-      #  --replace-fail "env PYTHONPATH=\"\''${TORCH_ROOT}\"" \
-      #                 "env PYTHONPATH=\"\''${TORCH_ROOT}:${pyiGenPath}\""
-    ''
-    + lib.optionalString rocmSupport ''
-      # https://github.com/facebookincubator/gloo/pull/297
-      substituteInPlace third_party/gloo/cmake/Hipify.cmake \
-        --replace-fail "\''${HIPIFY_COMMAND}" "python \''${HIPIFY_COMMAND}"
+    # Replace hard-coded rocm paths
+    substituteInPlace caffe2/CMakeLists.txt \
+      --replace-fail "/opt/rocm" "${rocmtoolkit_joined}" \
+      --replace-fail "hcc/include" "hip/include" \
+      --replace-fail "rocblas/include" "include/rocblas" \
+      --replace-fail "hipsparse/include" "include/hipsparse"
 
-      # Replace hard-coded rocm paths
-      substituteInPlace caffe2/CMakeLists.txt \
-        --replace-fail "/opt/rocm" "${rocmtoolkit_joined}"
-    ''
-    # Detection of NCCL version doesn't work particularly well when using the static binary.
-    + lib.optionalString cudaSupport ''
-      substituteInPlace cmake/Modules/FindNCCL.cmake \
-        --replace-fail \
-          'message(FATAL_ERROR "Found NCCL header version and library version' \
-          'message(WARNING "Found NCCL header version and library version'
-    ''
-    # Remove PyTorch's FindCUDAToolkit.cmake and use CMake's default.
-    # NOTE: Parts of pytorch rely on unmaintained FindCUDA.cmake with custom patches to support e.g.
-    # newer architectures (sm_90a). We do want to delete vendored patches, but have to keep them
-    # until https://github.com/pytorch/pytorch/issues/76082 is addressed
-    + lib.optionalString cudaSupport ''
-      rm cmake/Modules/FindCUDAToolkit.cmake
-    ''
-    + lib.optionalString xpuSupport ''
-      # replace oneapi DIR
-      substituteInPlace cmake/Modules/FindMKL.cmake \
-        --replace-fail 'SET(DEFAULT_INTEL_ONEAPI_DIR "/opt/intel/oneapi")' 'SET(DEFAULT_INTEL_ONEAPI_DIR ${xpuPackages.oneapi-torch-dev}/oneapi)'
-      # replace mkldnn build for xpu
-      sed -i '/ExternalProject_Add(xpu_mkldnn_proj/,/^ *)/s/^/#/' cmake/Modules/FindMKLDNN.cmake
-      substituteInPlace cmake/Modules/FindMKLDNN.cmake \
-        --replace-fail 'ExternalProject_Get_Property(xpu_mkldnn_proj SOURCE_DIR BINARY_DIR)' '# ExternalProject_Get_Property(xpu_mkldnn_proj SOURCE_DIR BINARY_DIR)' \
-        --replace-fail  "set(XPU_MKLDNN_LIBRARIES \''${BINARY_DIR}/src/\''${DNNL_LIB_NAME})" "set(XPU_MKLDNN_LIBRARIES ${xpuPackages.onednn-xpu}/lib/libdnnl.a)" \
-        --replace-fail  "set(XPU_MKLDNN_INCLUDE \''${SOURCE_DIR}/include \''${BINARY_DIR}/include)" "set(XPU_MKLDNN_INCLUDE ${xpuPackages.onednn-xpu}/include)"
-      # comment torch-xpu-ops git clone block in pytorch/caffe2/CMakeLists.txt
-      sed -i '/set(TORCH_XPU_OPS_REPO_URL/,/^  endif()/s/^/#/' caffe2/CMakeLists.txt
-      sed -i '/execute_process(/,/^  endif()/s/^/#/' caffe2/CMakeLists.txt
-    ''
-    # error: no member named 'aligned_alloc' in the global namespace; did you mean simply 'aligned_alloc'
-    # This lib overrided aligned_alloc hence the error message. Tltr: his function is linkable but not in header.
-    +
-      lib.optionalString
-        (stdenv.hostPlatform.isDarwin && lib.versionOlder stdenv.hostPlatform.darwinSdkVersion "11.0")
-        ''
-          substituteInPlace third_party/pocketfft/pocketfft_hdronly.h --replace-fail '#if (__cplusplus >= 201703L) && (!defined(__MINGW32__)) && (!defined(_MSC_VER))
-          inline void *aligned_alloc(size_t align, size_t size)' '#if 0
-          inline void *aligned_alloc(size_t align, size_t size)'
-        '';
+    # Doesn't pick up the environment variable?
+    #substituteInPlace third_party/kineto/libkineto/CMakeLists.txt \
+    #  --replace-fail "\''$ENV{ROCM_SOURCE_DIR}" "${rocmtoolkit_joined}" \
+    #  --replace-fail "/opt/rocm" "${rocmtoolkit_joined}"
+
+    # Strangely, this is never set in cmake
+    substituteInPlace cmake/public/LoadHIP.cmake \
+      --replace-fail "set(ROCM_PATH \$ENV{ROCM_PATH})" \
+        "set(ROCM_PATH \$ENV{ROCM_PATH})''\nset(ROCM_VERSION ${lib.concatStrings (lib.intersperse "0" (lib.splitVersion rocmPackages.clr.version))})"
+  ''
+  # Detection of NCCL version doesn't work particularly well when using the static binary.
+  + lib.optionalString cudaSupport ''
+    substituteInPlace cmake/Modules/FindNCCL.cmake \
+      --replace-fail \
+        'message(FATAL_ERROR "Found NCCL header version and library version' \
+        'message(WARNING "Found NCCL header version and library version'
+  ''
+  # Remove PyTorch's FindCUDAToolkit.cmake and use CMake's default.
+  # NOTE: Parts of pytorch rely on unmaintained FindCUDA.cmake with custom patches to support e.g.
+  # newer architectures (sm_90a). We do want to delete vendored patches, but have to keep them
+  # until https://github.com/pytorch/pytorch/issues/76082 is addressed
+  + lib.optionalString cudaSupport ''
+    rm cmake/Modules/FindCUDAToolkit.cmake
+  ''
+  + lib.optionalString xpuSupport ''
+    # replace oneapi DIR
+    substituteInPlace cmake/Modules/FindMKL.cmake \
+      --replace-fail 'SET(DEFAULT_INTEL_ONEAPI_DIR "/opt/intel/oneapi")' 'SET(DEFAULT_INTEL_ONEAPI_DIR ${xpuPackages.oneapi-torch-dev}/oneapi)'
+    # replace mkldnn build for xpu
+    sed -i '/ExternalProject_Add(xpu_mkldnn_proj/,/^ *)/s/^/#/' cmake/Modules/FindMKLDNN.cmake
+    substituteInPlace cmake/Modules/FindMKLDNN.cmake \
+      --replace-fail 'ExternalProject_Get_Property(xpu_mkldnn_proj SOURCE_DIR BINARY_DIR)' '# ExternalProject_Get_Property(xpu_mkldnn_proj SOURCE_DIR BINARY_DIR)' \
+      --replace-fail  "set(XPU_MKLDNN_LIBRARIES \''${BINARY_DIR}/src/\''${DNNL_LIB_NAME})" "set(XPU_MKLDNN_LIBRARIES ${xpuPackages.onednn-xpu}/lib/libdnnl.a)" \
+      --replace-fail  "set(XPU_MKLDNN_INCLUDE \''${SOURCE_DIR}/include \''${BINARY_DIR}/include)" "set(XPU_MKLDNN_INCLUDE ${xpuPackages.onednn-xpu}/include)"
+    # comment torch-xpu-ops git clone block in pytorch/caffe2/CMakeLists.txt
+    sed -i '/set(TORCH_XPU_OPS_REPO_URL/,/^  endif()/s/^/#/' caffe2/CMakeLists.txt
+    sed -i '/execute_process(/,/^  endif()/s/^/#/' caffe2/CMakeLists.txt
+  ''
+  # error: no member named 'aligned_alloc' in the global namespace; did you mean simply 'aligned_alloc'
+  # This lib overrided aligned_alloc hence the error message. Tltr: his function is linkable but not in header.
+  +
+    lib.optionalString
+      (stdenv.hostPlatform.isDarwin && lib.versionOlder stdenv.hostPlatform.darwinSdkVersion "11.0")
+      ''
+        substituteInPlace third_party/pocketfft/pocketfft_hdronly.h --replace-fail '#if (__cplusplus >= 201703L) && (!defined(__MINGW32__)) && (!defined(_MSC_VER))
+        inline void *aligned_alloc(size_t align, size_t size)' '#if 0
+        inline void *aligned_alloc(size_t align, size_t size)'
+      '';
 
   # NOTE(@connorbaker): Though we do not disable Gloo or MPI when building with CUDA support, caution should be taken
   # when using the different backends. Gloo's GPU support isn't great, and MPI and CUDA can't be used at the same time
@@ -559,7 +497,7 @@ buildPythonPackage rec {
     );
   }
   // lib.optionalAttrs rocmSupport {
-    AOTRITON_INSTALLED_PREFIX = rocmPackages.aotriton_0_10;
+    AOTRITON_INSTALLED_PREFIX = rocmPackages.aotriton_0_9;
   }
   // lib.optionalAttrs stdenv.hostPlatform.isDarwin {
     USE_MPS = 1;
@@ -608,8 +546,7 @@ buildPythonPackage rec {
       cuda_nvcc # crt/host_config.h; even though we include this in nativeBuildInputs, it's needed here too
       cuda_nvml_dev # <nvml.h>
       cuda_nvrtc
-      #cuda_nvtx # -llibNVToolsExt
-      nvtx
+      cuda_nvtx # -llibNVToolsExt
       libcublas
       libcufile
       libcufft
@@ -634,7 +571,6 @@ buildPythonPackage rec {
     [
       composablekernel-devel
       hipcub-devel
-      libdrm
       openmp
       rocmtoolkit_joined
       rocprim-devel
