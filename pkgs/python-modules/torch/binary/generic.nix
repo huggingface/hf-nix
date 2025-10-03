@@ -79,10 +79,11 @@ buildPythonPackage {
     inherit url hash;
   };
 
-  nativeBuildInputs = [
-    autoPatchelfHook
-  ]
-  ++ lib.optionals cudaSupport [ autoAddDriverRunpath ];
+  nativeBuildInputs =
+    lib.optionals stdenv.hostPlatform.isLinux [
+      autoPatchelfHook
+    ]
+    ++ lib.optionals cudaSupport [ autoAddDriverRunpath ];
 
   buildInputs =
     lib.optionals cudaSupport (
@@ -124,7 +125,6 @@ buildPythonPackage {
       ]
     );
 
-  # TODO: add triton
   dependencies = [
     filelock
     jinja2
@@ -134,8 +134,10 @@ buildPythonPackage {
     requests
     setuptools
     sympy
-    tritonEffective
     typing-extensions
+  ]
+  ++ lib.optionals tritonSupport [
+    tritonEffective
   ];
 
   postInstall =
