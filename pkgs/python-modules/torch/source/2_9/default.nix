@@ -249,7 +249,7 @@ let
 in
 buildPythonPackage rec {
   pname = "torch";
-  version = "2.9.0-rc5";
+  version = "2.9.0-rc6";
   pyproject = true;
 
   stdenv = effectiveStdenv;
@@ -268,7 +268,7 @@ buildPythonPackage rec {
     repo = "pytorch";
     tag = "v${version}";
     fetchSubmodules = true;
-    hash = "sha256-cL15938exhagTUtPS4HfsoZeGIkTRaSPq0WsOipn6Tc=";
+    hash = "sha256-gUAMuhxclRj8Zi7bWpxZJNMHYqJhNc4gm0v1gXcPNJ0=";
   };
 
   patches = [
