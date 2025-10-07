@@ -36,6 +36,7 @@
     flake-utils.lib.eachSystem
       (with flake-utils.lib.system; [
         aarch64-darwin
+        aarch64-linux
         x86_64-linux
       ])
       (
