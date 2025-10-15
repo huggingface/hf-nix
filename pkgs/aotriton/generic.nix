@@ -65,12 +65,14 @@ stdenv.mkDerivation (
 
     inherit version src patches;
 
-    env.CXX = compiler;
-    env.ROCM_PATH = "${rocmPackages.clr}";
-    # Since aotriton 0.10b, the generated source files contain a unicode
-    # asterisk character (＊). When using a reponse file, this somehow
-    # gets replaced by a octal representation of the UTF-8 encoding.
-    env.NIX_CC_USE_RESPONSE_FILE = 0;
+    env = {
+      CXX = compiler;
+      ROCM_PATH = "${rocmPackages.clr}";
+
+      # aotriton passes a lot of files to the linker.
+      NIX_LD_USE_RESPONSE_FILE = 1;
+    };
+
     requiredSystemFeatures = [ "big-parallel" ];
 
     outputs = [
@@ -210,6 +212,7 @@ stdenv.mkDerivation (
       "-DCMAKE_INSTALL_INCLUDEDIR=include"
       "-DAMDGPU_TARGETS=${gpuTargets'}"
       "-DGPU_TARGETS=${gpuTargets'}"
+      "-DAOTRITON_NO_PYTHON=ON"
     ]
     ++ lib.optionals buildTests [
       "-DBUILD_CLIENTS_TESTS=ON"

@@ -92,4 +92,33 @@ in
     extraPythonDepends = ps: [ ps.pandas ];
   };
 
+  aotriton_0_11 = generic rec {
+    version = "0.11b";
+
+    src = fetchFromGitHub {
+      owner = "ROCm";
+      repo = "aotriton";
+      rev = version;
+      hash = "sha256-5UEwiGQF3RZghIAZVJ72uWNml67uJ1vhZp6lC6uofMI=";
+      fetchSubmodules = true;
+    };
+
+    patches = [
+      # Fails with: ld.lld: error: unable to insert .comment after .comment
+      ./v0.11b-no-ld-script.diff
+    ];
+
+    gpuTargets = [
+      # aotriton GPU support list:
+      # https://github.com/ROCm/aotriton/blob/main/v2python/gpu_targets.py
+      "gfx90a"
+      "gfx942"
+      "gfx950"
+      "gfx1100"
+      "gfx1151"
+      "gfx1201"
+    ];
+
+    extraPythonDepends = ps: [ ps.pandas ];
+  };
 }

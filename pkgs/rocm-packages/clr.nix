@@ -88,7 +88,6 @@ stdenv.mkDerivation {
     export HIP_PATH="${placeholder "out"}"
     export HIP_PLATFORM=amd
     export HIP_DEVICE_LIB_PATH="${rocm-device-libs}/amdgcn/bitcode"
-    export NIX_CC_USE_RESPONSE_FILE=0
     export HIP_CLANG_PATH="${hipClangPath}"
     export HSA_PATH="${hsa-rocr}"' > $out/nix-support/setup-hook
 
