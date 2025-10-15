@@ -7,11 +7,11 @@
 
 buildPythonPackage rec {
   pname = "kernels";
-  version = "0.10.2";
+  version = "0.10.3";
 
   src = fetchPypi {
     inherit pname version;
-    hash = "sha256-0pDYJjmqPaCryaXjvYZ6YkR5cchqN7snc4jQ/a3Le24=";
+    hash = "sha256-MJciOc9jwOmp3ULCowNxj0cXnScJU/S7tj4n3xU4UHQ=";
   };
 
   pyproject = true;
