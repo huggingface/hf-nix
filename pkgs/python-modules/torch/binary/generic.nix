@@ -2,6 +2,7 @@
   config,
   lib,
   stdenv,
+  symlinkJoin,
   buildPythonPackage,
   fetchurl,
 
@@ -19,11 +20,6 @@
   cudaPackages,
   rocmPackages,
   xpuPackages,
-
-  pkgs, # For zstd, we do not want the Python package.
-  bzip2,
-  xz,
-  zlib,
 
   # Python dependencies
   filelock,
@@ -68,12 +64,76 @@ let
     real ++ ptx;
   supportedCudaCapabilities = lib.intersectLists cudaPackages.flags.cudaCapabilities supportedTorchCudaCapabilities;
   inherit (archs) supportedTorchRocmArchs;
+
+  aotritonVersions = with rocmPackages; {
+    "2.7" = aotriton_0_9;
+    "2.8" = aotriton_0_10;
+    "2.9" = aotriton_0_11;
+  };
+
+  aotriton =
+    let
+      torchMajorMinor = lib.versions.majorMinor version;
+    in
+    aotritonVersions.${torchMajorMinor}
+      or (throw "aotriton version is not specified Torch ${torchMajorMinor}");
+
+  rocmtoolkit_joined = symlinkJoin {
+    name = "rocm-merged";
+
+    paths = with rocmPackages; [
+      aotriton
+      clr
+      comgr
+      hipblas
+      hipblas-common-devel
+      hipblaslt
+      hipfft
+      hipify-clang
+      hiprand
+      hipsolver
+      hipsparse
+      hipsparselt
+      hsa-rocr
+      miopen-hip
+      rccl
+      rocblas
+      rocm-core
+      rocm-device-libs
+      rocm-hip-runtime
+      rocm-smi-lib
+      rocminfo
+      rocrand
+      rocsolver
+      rocsparse
+      roctracer
+    ];
+
+    postBuild = ''
+      # Fix `setuptools` not being found
+      rm -rf $out/nix-support
+
+      # Variables that we want to pass through to downstream derivations.
+      mkdir -p $out/nix-support
+      echo 'export ROCM_PATH="${placeholder "out"}"' >> $out/nix-support/setup-hook
+      echo 'export ROCM_SOURCE_DIR="${placeholder "out"}"' >> $out/nix-support/setup-hook
+      echo 'export CMAKE_CXX_FLAGS="-I${placeholder "out"}/include -I${placeholder "out"}/include/rocblas"' >> $out/nix-support/setup-hook
+    '';
+  };
+
 in
 buildPythonPackage {
   pname = "torch";
   inherit version;
 
   format = "wheel";
+
+  outputs = [
+    "out" # output standard python package
+    "cxxdev" # propagated deps for the cmake consumers of torch
+  ];
+  cudaPropagateToOutput = "cxxdev";
+  rocmPropagateToOutput = "cxxdev";
 
   src = fetchurl {
     inherit url hash;
@@ -83,7 +143,13 @@ buildPythonPackage {
     lib.optionals stdenv.hostPlatform.isLinux [
       autoPatchelfHook
     ]
-    ++ lib.optionals cudaSupport [ autoAddDriverRunpath ];
+    ++ lib.optionals cudaSupport [
+      autoAddDriverRunpath
+      cudaPackages.setupCudaHook
+    ]
+    ++ lib.optionals rocmSupport [
+      rocmPackages.setupRocmHook
+    ];
 
   buildInputs =
     lib.optionals cudaSupport (
@@ -105,10 +171,7 @@ buildPythonPackage {
       ]
     )
     ++ lib.optionals rocmSupport ([
-      bzip2
-      xz
-      zlib
-      pkgs.zstd
+      rocmtoolkit_joined
     ])
     ++ lib.optionals xpuSupport (
       with xpuPackages;
@@ -140,9 +203,15 @@ buildPythonPackage {
     tritonEffective
   ];
 
+  propagatedCxxBuildInputs = lib.optionals rocmSupport [ rocmtoolkit_joined ];
+
   postInstall =
     lib.optionalString rocmSupport ''
-      ln -sf "$out/${python.sitePackages}/torch/lib/librocblas.so" "$out/${python.sitePackages}/torch/lib/librocblas.so.4"
+      # Remove all ROCm libraries, we want to link against Nix packages.
+      # This keeps the outputs lean and requires downstream to specify
+      # dependencies.
+      rm -rf $out/${python.sitePackages}/torch/lib/{libamd*,libaotriton*,libdrm*,libelf*,libgomp*,libhip*,libhsa*,libMIOpen*,libnuma*,librccl*,libroc*,libtinfo*}.so
+      rm -rf $out/${python.sitePackages}/torch/lib/{rocblas,hipblaslt,hipsparselt}
     ''
     + lib.optionalString (xpuSupport && (lib.versions.majorMinor version) == "2.7") ''
       patchelf --replace-needed libpti_view.so.0.10 libpti_view.so $out/${python.sitePackages}/torch/lib/libtorch_cpu.so
@@ -167,6 +236,11 @@ buildPythonPackage {
     done < <(
       find "''${!outputLib}" "$out" -type f -iname '*.so' -print0
     )
+  '';
+
+  postFixup = ''
+    mkdir -p "$cxxdev/nix-support"
+    printWords "''${propagatedCxxBuildInputs[@]}" >> "$cxxdev/nix-support/propagated-build-inputs"
   '';
 
   dontStrip = true;
