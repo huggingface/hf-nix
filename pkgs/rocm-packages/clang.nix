@@ -9,7 +9,7 @@
   rsync,
 }:
 
-wrapCCWith rec {
+(wrapCCWith rec {
   inherit bintools;
 
   cc = stdenv.mkDerivation {
@@ -87,4 +87,10 @@ wrapCCWith rec {
     substituteInPlace $out/bin/{clang,clang++} \
       --replace-fail "-MM) dontLink=1 ;;" "-MM | --cuda-device-only) dontLink=1 ;;''\n--cuda-host-only | --cuda-compile-host-device) dontLink=0 ;;"
   '';
-}
+}).overrideAttrs
+  (_: {
+    # aotriton uses unicode characters and the standard nixpkgs wrapper
+    # script cannot deal with it. Also see:
+    # https://github.com/NixOS/nixpkgs/pull/226166
+    wrapper = ./cc-wrapper.sh;
+  })

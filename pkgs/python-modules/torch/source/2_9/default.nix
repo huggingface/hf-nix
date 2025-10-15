@@ -177,7 +177,7 @@ let
     name = "rocm-merged";
 
     paths = with rocmPackages; [
-      aotriton_0_10
+      aotriton_0_11
       clr
       comgr
       hipblas
