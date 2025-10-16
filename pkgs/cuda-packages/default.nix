@@ -39,6 +39,8 @@ let
     versions
     ;
 
+  cudaMajorVersion = lib.versions.major cudaMajorMinorVersion;
+
   cudaLib = _cuda.lib;
 
   # Since Jetson capabilities are never built by default, we can check if any of them were requested
@@ -210,6 +212,13 @@ let
           cudaLib
           lib
           redistSystem
+          ;
+      })
+      (import ./nvshmem/extension.nix {
+        inherit
+          cudaMajorVersion
+          lib
+          stdenv
           ;
       })
       (import ./generic-builders/multiplex.nix {
