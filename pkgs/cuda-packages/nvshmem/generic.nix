@@ -17,6 +17,13 @@
 }:
 let
   inherit (lib) lists strings;
+  cudaArch =
+    if backendStdenv.hostPlatform.isx86_64 then
+      "x86_64"
+    else if backendStdenv.hostPlatform.isAarch64 then
+      "sbsa"
+    else
+      throw "Unsupported platform";
 in
 backendStdenv.mkDerivation (finalAttrs: {
   strictDeps = true;
@@ -30,7 +37,7 @@ backendStdenv.mkDerivation (finalAttrs: {
   ];
 
   src = fetchurl {
-    url = "https://developer.download.nvidia.com/compute/nvshmem/redist/libnvshmem/linux-x86_64/lib${finalAttrs.pname}-linux-x86_64-${version}_cuda${cudaMajorVersion}-archive.tar.xz";
+    url = "https://developer.download.nvidia.com/compute/nvshmem/redist/libnvshmem/linux-${cudaArch}/lib${finalAttrs.pname}-linux-${cudaArch}-${version}_cuda${cudaMajorVersion}-archive.tar.xz";
     inherit hash;
   };
 
