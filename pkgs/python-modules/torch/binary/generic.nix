@@ -170,6 +170,9 @@ buildPythonPackage {
         nccl
       ]
     )
+    ++ lib.optionals (cudaSupport && lib.versionAtLeast version "2.9" && stdenv.hostPlatform.isx86_64) [
+      cudaPackages.nvshmem
+    ]
     ++ lib.optionals rocmSupport ([
       rocmtoolkit_joined
     ])

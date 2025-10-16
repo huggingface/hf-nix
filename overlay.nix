@@ -22,7 +22,7 @@ rec {
   cudaPackages_12_6 = final.callPackage ./pkgs/cuda-packages { cudaMajorMinorVersion = "12.6"; };
   cudaPackages_12_8 = final.callPackage ./pkgs/cuda-packages { cudaMajorMinorVersion = "12.8"; };
   cudaPackages_12_9 = final.callPackage ./pkgs/cuda-packages { cudaMajorMinorVersion = "12.9"; };
-  cudaPackages_12 = cudaPackages_12_9;
+  cudaPackages_12 = cudaPackages_12_8;
 
   cudaPackages_13_0 = final.callPackage ./pkgs/cuda-packages { cudaMajorMinorVersion = "13.0"; };
   cudaPackages_13 = cudaPackages_13_0;
@@ -210,13 +210,13 @@ rec {
 
         mkTorch = callPackage ./pkgs/python-modules/torch/binary { };
 
-        torch-bin = torch-bin_2_8;
-
-        torch-bin_2_7 = mkTorch { version = "2.7"; };
+        torch-bin = torch-bin_2_9;
 
         torch-bin_2_8 = mkTorch { version = "2.8"; };
 
-        torch = torch_2_8;
+        torch-bin_2_9 = mkTorch { version = "2.9"; };
+
+        torch = torch_2_9;
 
         torch_2_7 = callPackage ./pkgs/python-modules/torch/source/2_7 {
           xpuPackages = final.xpuPackages_2025_0;
