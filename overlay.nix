@@ -22,7 +22,7 @@ rec {
   cudaPackages_12_6 = final.callPackage ./pkgs/cuda-packages { cudaMajorMinorVersion = "12.6"; };
   cudaPackages_12_8 = final.callPackage ./pkgs/cuda-packages { cudaMajorMinorVersion = "12.8"; };
   cudaPackages_12_9 = final.callPackage ./pkgs/cuda-packages { cudaMajorMinorVersion = "12.9"; };
-  cudaPackages_12 = cudaPackages_12_9;
+  cudaPackages_12 = cudaPackages_12_8;
 
   cudaPackages_13_0 = final.callPackage ./pkgs/cuda-packages { cudaMajorMinorVersion = "13.0"; };
   cudaPackages_13 = cudaPackages_13_0;
