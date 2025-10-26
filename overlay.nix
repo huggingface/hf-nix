@@ -5,6 +5,11 @@ let
   useMKL = final.stdenv.isx86_64 && !(final.config.xpuSupport or false);
 in
 rec {
+  cmake3 = final.callPackage ./pkgs/cmake3/package.nix { };
+  cmake4 = final.callPackage ./pkgs/cmake4/package.nix { };
+
+  cmake = final.cmake4;
+
   # Use MKL for BLAS/LAPACK on x86_64.
   blas = if useMKL then prev.blas.override { blasProvider = prev.mkl; } else prev.blas;
   lapack = if useMKL then prev.lapack.override { lapackProvider = prev.mkl; } else prev.blas;
@@ -27,7 +32,7 @@ rec {
   cudaPackages_13_0 = final.callPackage ./pkgs/cuda-packages { cudaMajorMinorVersion = "13.0"; };
   cudaPackages_13 = cudaPackages_13_0;
 
-  cudaPackages = final.lib.recurseIntoAttrs cudaPackages_12;
+  cudaPackages = final.lib.recurseIntoAttrs cudaPackages_13;
 
   fetchKernel = final.callPackage ./pkgs/fetch-kernel { };
 
@@ -46,7 +51,10 @@ rec {
     }
   );
 
-  magma = (prev.callPackage ./pkgs/magma { }).magma;
+  magma =
+    (prev.callPackage ./pkgs/magma {
+      cmake = final.cmake3;
+    }).magma;
 
   magma-hip =
     (prev.callPackage ./pkgs/magma {
@@ -138,8 +146,6 @@ rec {
 
         moe-kernels = callPackage ./pkgs/python-modules/moe-kernels { };
 
-        #opentelemetry-proto = python-super.opentelemetry-proto.override { protobuf = super.protobuf3_24; };
-
         opentelemetry-instrumentation-grpc = python-super.opentelemetry-instrumentation-grpc.overrideAttrs (
           _: prevAttrs: {
             patches = [ ];
@@ -218,17 +224,7 @@ rec {
 
         torch = torch_2_9;
 
-        torch_2_7 = callPackage ./pkgs/python-modules/torch/source/2_7 {
-          xpuPackages = final.xpuPackages_2025_0;
-        };
-
-        torch_2_8 = callPackage ./pkgs/python-modules/torch/source/2_8 {
-          xpuPackages = final.xpuPackages_2025_1;
-        };
-
-        torch_2_9 = callPackage ./pkgs/python-modules/torch/source/2_9 {
-          xpuPackages = final.xpuPackages_2025_2;
-        };
+        torch_2_9 = callPackage ./pkgs/python-modules/torch/source/2_9 { };
 
         transformers = callPackage ./pkgs/python-modules/transformers { };
 
@@ -251,8 +247,6 @@ rec {
       }
     )
   ];
-
-  xpuPackages = final.xpuPackages_2025_1;
 }
 // (import ./pkgs/cutlass { pkgs = final; })
 // (
@@ -274,25 +268,5 @@ rec {
         packageMetadata = readPackageMetadata ./pkgs/rocm-packages/rocm-${version}-metadata.json;
       };
     }) versions
-  )
-)
-// (
-  let
-    flattenVersion = prev.lib.strings.replaceStrings [ "." ] [ "_" ];
-    readPackageMetadata = path: (builtins.fromJSON (builtins.readFile path));
-    xpuVersions = [
-      "2025.0.2"
-      "2025.1.3"
-      "2025.2.1"
-    ];
-    newXpuPackages = final.callPackage ./pkgs/xpu-packages { };
-  in
-  builtins.listToAttrs (
-    map (version: {
-      name = "xpuPackages_${flattenVersion (prev.lib.versions.majorMinor version)}";
-      value = newXpuPackages {
-        packageMetadata = readPackageMetadata ./pkgs/xpu-packages/intel-deep-learning-${version}.json;
-      };
-    }) xpuVersions
   )
 )

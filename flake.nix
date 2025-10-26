@@ -19,6 +19,7 @@
       cudaConfig = {
         allowUnfree = true;
         cudaSupport = true;
+        cudaCapabilities = [ "12.0" ];
       };
 
       rocmConfig = {
@@ -47,16 +48,6 @@
             config = cudaConfig;
             overlays = [ overlay ];
           };
-          pkgsRocm = import nixpkgs {
-            inherit system;
-            config = rocmConfig;
-            overlays = [ overlay ];
-          };
-          pkgsXpu = import nixpkgs {
-            inherit system;
-            config = xpuConfig;
-            overlays = [ overlay ];
-          };
           pkgsGeneric = import nixpkgs {
             inherit system;
             overlays = [ overlay ];
@@ -79,6 +70,9 @@
                   ++ builtins.filter (lib.meta.availableOn { inherit system; }) (lib.attrValues python3Packages);
               };
             lib = pkgs.lib;
+
+            inherit (pkgs) cudaPackages;
+
             python3Packages = with pkgs.python3.pkgs; {
               inherit
 
@@ -108,24 +102,6 @@
                 torch-bin
                 transformers
                 ;
-            };
-
-            xpu = {
-              python3Packages = with pkgsXpu.python3.pkgs; {
-                inherit
-                  torch
-                  torch-bin
-                  torch_2_7
-                  torch_2_8
-                  torch_2_9
-                  ;
-              };
-            };
-
-            rocm = {
-              python3Packages = with pkgsRocm.python3.pkgs; {
-                inherit torch torch-bin;
-              };
             };
           };
         }
