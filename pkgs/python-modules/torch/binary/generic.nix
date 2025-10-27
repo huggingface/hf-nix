@@ -40,10 +40,11 @@
   version,
   # Remove, needed for compat.
   cxx11Abi ? true,
+
+  effectiveStdenv ? if cudaSupport then cudaPackages.backendStdenv else stdenv,
 }:
 let
-
-  tritonEffective =
+  effectiveTriton =
     if cudaSupport then
       triton-cuda
     else if rocmSupport then
@@ -125,8 +126,9 @@ in
 buildPythonPackage {
   pname = "torch";
   inherit version;
-
   format = "wheel";
+
+  stdenv = effectiveStdenv;
 
   outputs = [
     "out" # output standard python package
@@ -203,7 +205,7 @@ buildPythonPackage {
     typing-extensions
   ]
   ++ lib.optionals tritonSupport [
-    tritonEffective
+    effectiveTriton
   ];
 
   propagatedCxxBuildInputs = lib.optionals rocmSupport [ rocmtoolkit_joined ];
