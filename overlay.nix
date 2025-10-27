@@ -212,9 +212,15 @@ rec {
 
         torch-bin = torch-bin_2_9;
 
-        torch-bin_2_8 = mkTorch { version = "2.8"; };
+        torch-bin_2_8 = mkTorch {
+          version = "2.8";
+          xpuPackages = final.xpuPackages_2025_1;
+        };
 
-        torch-bin_2_9 = mkTorch { version = "2.9"; };
+        torch-bin_2_9 = mkTorch {
+          version = "2.9";
+          xpuPackages = final.xpuPackages_2025_2;
+        };
 
         torch = torch_2_9;
 
@@ -250,6 +256,7 @@ rec {
         };
       }
     )
+    (import ./pkgs/python-modules/hooks)
   ];
 
   xpuPackages = final.xpuPackages_2025_1;

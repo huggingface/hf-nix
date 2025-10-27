@@ -10,11 +10,10 @@
   callPackage,
   cudaPackages,
   rocmPackages,
-  xpuPackages,
-
 }:
 
 {
+  xpuPackages,
   version,
 }:
 
@@ -38,5 +37,6 @@ let
       or (throw "Unsupported framework: ${framework} for torch version: ${version} on system: ${system}");
 in
 callPackage ./generic.nix {
+  inherit xpuPackages;
   inherit (urlHash) url hash version;
 }
