@@ -209,7 +209,11 @@ buildPythonPackage {
   propagatedCxxBuildInputs = lib.optionals rocmSupport [ rocmtoolkit_joined ];
 
   postInstall =
-    lib.optionalString rocmSupport ''
+    lib.optionalString cudaSupport ''
+      # Remove to use FindCUDAToolkit from CMake.
+      rm -f $out/${python.sitePackages}/torch/share/cmake/Caffe2/FindCUDAToolkit.cmake
+    ''
+    + lib.optionalString rocmSupport ''
       # Remove all ROCm libraries, we want to link against Nix packages.
       # This keeps the outputs lean and requires downstream to specify
       # dependencies.
