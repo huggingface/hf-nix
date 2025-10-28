@@ -11,10 +11,12 @@
   tritonSupport ? (!stdenv.hostPlatform.isDarwin),
   xpuSupport ? (config.xpuSupport or false),
 
-  # Navtive build inputs
+  # Native build inputs
   autoAddDriverRunpath,
   autoPatchelfHook,
   python,
+  pythonRelaxWheelDepsHook,
+  pythonWheelDepsCheckHook,
 
   # Build inputs
   cudaPackages,
@@ -23,6 +25,7 @@
 
   # Python dependencies
   filelock,
+  fsspec,
   jinja2,
   networkx,
   numpy,
@@ -141,17 +144,20 @@ buildPythonPackage {
     inherit url hash;
   };
 
-  nativeBuildInputs =
-    lib.optionals stdenv.hostPlatform.isLinux [
-      autoPatchelfHook
-    ]
-    ++ lib.optionals cudaSupport [
-      autoAddDriverRunpath
-      cudaPackages.setupCudaHook
-    ]
-    ++ lib.optionals rocmSupport [
-      rocmPackages.setupRocmHook
-    ];
+  nativeBuildInputs = [
+    pythonRelaxWheelDepsHook
+    pythonWheelDepsCheckHook
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isLinux [
+    autoPatchelfHook
+  ]
+  ++ lib.optionals cudaSupport [
+    autoAddDriverRunpath
+    cudaPackages.setupCudaHook
+  ]
+  ++ lib.optionals rocmSupport [
+    rocmPackages.setupRocmHook
+  ];
 
   buildInputs =
     lib.optionals cudaSupport (
@@ -195,6 +201,7 @@ buildPythonPackage {
 
   dependencies = [
     filelock
+    fsspec
     jinja2
     networkx
     numpy
@@ -207,6 +214,59 @@ buildPythonPackage {
   ++ lib.optionals tritonSupport [
     effectiveTriton
   ];
+
+  pythonRelaxWheelDeps = [
+    "sympy"
+    "triton"
+  ];
+
+  # These are framework dependencies that are normally installed as Python
+  # dependencies, but we don't need them or provide them because we burn
+  # the Nix store paths of the framework into the Torch libraries..
+  pythonRemoveWheelDeps =
+    lib.optionals cudaSupport [
+      "nvidia-cuda-runtime"
+      "nvidia-cuda-nvrtc"
+      "nvidia-cuda-cupti"
+      "nvidia-cudnn"
+      "nvidia-cublas"
+      "nvidia-cufft"
+      "nvidia-curand"
+      "nvidia-cusolver"
+      "nvidia-cusparse"
+      "nvidia-cusparselt"
+      "nvidia-nccl"
+      "nvidia-nvshmem"
+      "nvidia-nvtx"
+      "nvidia-nvjitlink"
+      "nvidia-cufile"
+    ]
+    ++ lib.optionals rocmSupport [
+      "pytorch-triton-rocm"
+    ]
+    ++ lib.optionals xpuSupport [
+      "intel-cmplr-lib-rt"
+      "intel-cmplr-lib-ur"
+      "intel-cmplr-lic-rt"
+      "intel-sycl-rt"
+      "oneccl-devel"
+      "oneccl"
+      "impi-rt"
+      "onemkl-sycl-blas"
+      "onemkl-sycl-dft"
+      "onemkl-sycl-lapack"
+      "onemkl-sycl-rng"
+      "onemkl-sycl-sparse"
+      "dpcpp-cpp-rt"
+      "intel-opencl-rt"
+      "mkl"
+      "intel-openmp"
+      "tbb"
+      "tcmlib"
+      "umf"
+      "intel-pti"
+      "pytorch-triton-xpu"
+    ];
 
   propagatedCxxBuildInputs = lib.optionals rocmSupport [ rocmtoolkit_joined ];
 
