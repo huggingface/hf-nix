@@ -99,6 +99,11 @@ def generate_pytorch_url(
         version_part = torch_version
         abi_tag = "none" if "darwin" in system else python_version
         wheel_name = f"torch-{version_part}-{python_version}-{abi_tag}-{platform}.whl"
+    elif framework_type == "cpu":
+        framework_dir = "cpu"
+        version_part = f"{torch_version}%2Bcpu"
+        abi_tag = python_version
+        wheel_name = f"torch-{version_part}-{python_version}-{abi_tag}-{platform}.whl"
     elif framework_type == "xpu":
         framework = "xpu"
         framework_dir = framework
@@ -197,6 +202,8 @@ def main():
         cuda_version = entry.get("cudaVersion")
         rocm_version = entry.get("rocmVersion")
         xpu_version = entry.get("xpuVersion")
+        cpu = entry.get("cpu", False)
+        metal = entry.get("metal", False)
         systems = entry.get("systems", [])
 
         if not torch_version:
@@ -217,10 +224,22 @@ def main():
             framework_type = "xpu"
             framework_version = xpu_version
             print(f"Processing torch {torch_version} with XPU {xpu_version}")
-        else:
+        elif cpu:
             framework_type = "cpu"
             framework_version = "cpu"
-            print(f"Processing torch {torch_version} (CPU-only build)")
+            print(f"Processing torch {torch_version} (CPU build)")
+        elif metal:
+            framework_type = "cpu"
+            framework_version = "cpu"
+            print(
+                f"Processing torch {torch_version} (CPU-only build with Metal support)"
+            )
+        else:
+            print(
+                f"Skipping entry without framework specification: {entry}",
+                file=sys.stderr,
+            )
+            continue
 
         if version_key not in urls_hashes:
             urls_hashes[version_key] = {}
