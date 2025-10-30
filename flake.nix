@@ -57,8 +57,14 @@
             config = xpuConfig;
             overlays = [ overlay ];
           };
+          cpuConfig = { allowUnfree = true; }; # enable unfree for CPU (MKL/blas)
           pkgsGeneric = import nixpkgs {
             inherit system;
+            overlays = [ overlay ];
+          };
+          pkgsCpu = import nixpkgs {
+            inherit system;
+            config = cpuConfig;
             overlays = [ overlay ];
           };
           pkgs = if isCudaSystem system then pkgsCuda else pkgsGeneric;
@@ -119,6 +125,30 @@
                   torch_2_8
                   torch_2_9
                   ;
+              };
+            };
+
+            cpu = {
+              # CPU environment: reuse the generic python3Packages attrset, only extend with torch-cpu override.
+              python3Packages = pkgsCpu.python3.pkgs // {
+                # Provide CPU-only builds for torch versions 2.7, 2.8, 2.9.
+                torch-cpu_2_7 = pkgsCpu.python3.pkgs.torch_2_7.override {
+                  cudaSupport = false;
+                  rocmSupport = false;
+                  xpuSupport = false;
+                };
+                torch-cpu_2_8 = pkgsCpu.python3.pkgs.torch_2_8.override {
+                  cudaSupport = false;
+                  rocmSupport = false;
+                  xpuSupport = false;
+                };
+                torch-cpu_2_9 = pkgsCpu.python3.pkgs.torch_2_9.override {
+                  cudaSupport = false;
+                  rocmSupport = false;
+                  xpuSupport = false;
+                };
+                # Default CPU torch points to latest (2.9) for convenience.
+                torch-cpu = pkgsCpu.python3.pkgs.torch-cpu_2_9;
               };
             };
 
