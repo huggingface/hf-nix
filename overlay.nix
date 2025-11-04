@@ -207,7 +207,7 @@ rec {
           xpuPackages = final.xpuPackages_2025_2;
         };
 
-        torch = torch_2_9;
+        torch = torch-bin_2_9;
 
         torch_2_8 = callPackage ./pkgs/python-modules/torch/source/2_8 {
           xpuPackages = final.xpuPackages_2025_1;
