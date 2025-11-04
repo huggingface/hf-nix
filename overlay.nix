@@ -78,14 +78,14 @@ rec {
 
         compressed-tensors = callPackage ./pkgs/python-modules/compressed-tensors { };
 
-        einops = python-super.einops.overrideAttrs (
-          _: prevAttrs: {
-            disabledTests = prevAttrs.disabledTests ++ [
-              # Times out...
-              "test_notebook_3"
-            ];
-          }
-        );
+        #einops = python-super.einops.overrideAttrs (
+        #  _: prevAttrs: {
+        #    disabledTests = prevAttrs.disabledTests ++ [
+        #      # Times out...
+        #      "test_notebook_3"
+        #    ];
+        #  }
+        #);
 
         exllamav2 = callPackage ./pkgs/python-modules/exllamav2 { };
 
