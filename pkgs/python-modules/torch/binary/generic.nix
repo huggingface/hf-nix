@@ -290,6 +290,10 @@ buildPythonPackage {
     "libcuda.so.1"
   ];
 
+  # We want to have glibc in RPATH as well, because kernel-builder build
+  # environments use an older glibc.
+  autoPatchelfFlags = [ "--keep-libc" ];
+
   # See https://github.com/NixOS/nixpkgs/issues/296179
   #
   # This is a quick hack to add `libnvrtc` to the runpath so that torch can find
