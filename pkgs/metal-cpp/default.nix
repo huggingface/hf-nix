@@ -6,7 +6,11 @@
 
 stdenv.mkDerivation rec {
   pname = "metal-cpp";
-  version = "26";
+
+  # TODO: update to version 26 when metal compiler support is resolved
+  # version = "26";
+
+  version = "17.4";
   outputs = [
     "out"
     "dev"
@@ -15,7 +19,10 @@ stdenv.mkDerivation rec {
   outputBin = "dev";
 
   src = fetchzip {
-    url = "https://developer.apple.com/metal/cpp/files/${pname}_${version}.zip";
+    # TODO: update URL when version is updated
+    # url = "https://developer.apple.com/metal/cpp/files/${pname}_${version}.zip";
+
+    url = "https://developer.apple.com/metal/cpp/files/${pname}_macOS${version}_iOS${version}.zip";
     hash = "sha256-7n2eI2lw/S+Us6l7YPAATKwcIbRRpaQ8VmES7S8ZjY8=";
     stripRoot = true;
   };
