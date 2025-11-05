@@ -55,6 +55,7 @@ rec {
     }).magma;
 
   nvtx = final.callPackage ./pkgs/nvtx { };
+  metal-cpp = final.callPackage ./pkgs/metal-cpp { };
 
   rocmPackages = final.rocmPackages_6_3;
 

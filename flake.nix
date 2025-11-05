@@ -67,6 +67,7 @@
         rec {
           formatter = pkgs.nixfmt-tree;
           packages = rec {
+            metal-cpp = pkgs.metal-cpp.dev;
             all =
               let
                 filterDist = lib.filter (output: output != "dist");
