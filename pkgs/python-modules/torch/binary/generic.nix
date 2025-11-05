@@ -35,7 +35,6 @@
   sympy,
   triton,
   triton-cuda,
-  triton-rocm,
   typing-extensions,
 
   url,
@@ -50,8 +49,6 @@ let
   effectiveTriton =
     if cudaSupport then
       triton-cuda
-    else if rocmSupport then
-      triton-rocm
     else if xpuSupport then
       python.pkgs.triton-xpu_2_8
     else

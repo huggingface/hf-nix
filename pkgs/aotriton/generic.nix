@@ -122,6 +122,7 @@ stdenv.mkDerivation (
       #cudaRtIncludes
 
       # Tensile deps - not optional, building without tensile isn't actually supported
+      python3Packages.numpy
       libxml2
       zlib
       zstd

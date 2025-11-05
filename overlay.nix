@@ -225,8 +225,6 @@ rec {
 
         transformers = callPackage ./pkgs/python-modules/transformers { };
 
-        triton-rocm = callPackage ./pkgs/python-modules/triton-rocm { };
-
         triton-xpu_2_8 = callPackage ./pkgs/python-modules/triton-xpu {
           torchVersion = "2.8";
           xpuPackages = final.xpuPackages_2025_1;
