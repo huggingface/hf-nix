@@ -122,9 +122,7 @@ stdenv.mkDerivation (
       #cudaRtIncludes
 
       # Tensile deps - not optional, building without tensile isn't actually supported
-      msgpack # FIXME: not included in cmake!
       libxml2
-      python3Packages.msgpack
       zlib
       zstd
       #python3Packages.joblib
