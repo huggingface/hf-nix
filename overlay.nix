@@ -55,6 +55,12 @@ rec {
 
   rocmPackages = final.rocmPackages_6_3;
 
+  ucx = prev.ucx.overrideAttrs (
+    _: prevAttrs: {
+      buildInputs = prevAttrs.buildInputs ++ [ final.cudaPackages.cuda_nvcc ];
+    }
+  );
+
   pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
     (
       python-self: python-super: with python-self; {
