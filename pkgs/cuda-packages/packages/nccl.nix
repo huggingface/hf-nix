@@ -22,12 +22,8 @@ let
     ;
   # versions 2.26+ with CUDA 11.x error with
   # fatal error: cuda/atomic: No such file or directory
-  version = if cudaAtLeast "12.0" then "2.28.3-1" else "2.25.1-1";
-  hash =
-    if cudaAtLeast "12.0" then
-      "sha256-zVZKHYXxo5DdAKHJ1TnFYr+iVS26JmHN7gGpnG5Ujjk="
-    else
-      "sha256-3snh0xdL9I5BYqdbqdl+noizJoI38mZRVOJChgEE1I8=";
+  version = "2.28.3-1";
+  hash = "sha256-zVZKHYXxo5DdAKHJ1TnFYr+iVS26JmHN7gGpnG5Ujjk=";
 in
 backendStdenv.mkDerivation (finalAttrs: {
   pname = "nccl";

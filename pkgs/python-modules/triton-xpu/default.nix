@@ -15,29 +15,11 @@
   triton-llvm,
   xpuPackages,
 
-  torchVersion ? "2.7",
+  torchVersion ? "2.8",
 }:
 
 let
   torchTritonVersions = {
-    "2.7" = {
-      llvm = {
-        rev = "1188b1ff7b956cb65d8ddda5f1e56c432f1a57c7";
-        hash = "sha256-iwG0bWnrVX9xbHB4eIe/JxQNFdDHb/COXo4d0joOlDE=";
-      };
-      triton = {
-        rev = "0bcc8265e677e5321606a3311bf71470f14456a8";
-        hash = "sha256-R5UbAVIjIBFuBB9Nf638MloZWddTk/sqFNFhqtuD/DI=";
-      };
-      spirv_llm = {
-        rev = "4eea290c449fca2efd28cfa46d3946c5feaf988c";
-        hash = "sha256-IBPlhtkFxghvq1FGRqQJYtA3P6vZmpkDANZaAhnLtKc=";
-      };
-      spirv_headers = {
-        rev = "2b2e05e088841c63c0b6fd4c9fb380d8688738d3";
-        hash = "sha256-EZrWquud9CFrDNdskObCQQCR0HsXOZmJohh/0ybaT7g=";
-      };
-    };
     "2.8" = {
       llvm = {
         rev = "e12cbd8339b89563059c2bb2a312579b652560d0";
@@ -129,7 +111,7 @@ buildPythonPackage rec {
     repo = "intel-xpu-backend-for-triton";
   };
 
-  sourceRoot = if torchVersion == "2.7" then "${src.name}/python" else "${src.name}";
+  sourceRoot = src.name;
 
   postPatch = ''
     chmod -R u+w $NIX_BUILD_TOP/source

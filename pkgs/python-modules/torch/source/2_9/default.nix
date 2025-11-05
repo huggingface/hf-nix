@@ -539,6 +539,7 @@ buildPythonPackage rec {
       cuda_nvml_dev # <nvml.h>
       cuda_nvrtc
       #cuda_nvtx # -llibNVToolsExt
+      cuda_profiler_api # <cuda_profiler_api.h>
       nvtx
       libcublas
       libcufile
@@ -551,12 +552,6 @@ buildPythonPackage rec {
     ++ lists.optionals useSystemNccl [
       # Some platforms do not support NCCL (i.e., Jetson)
       nccl # Provides nccl.h AND a static copy of NCCL!
-    ]
-    ++ lists.optionals (strings.versionOlder cudaMajorMinorVersion "11.8") [
-      cuda_nvprof # <cuda_profiler_api.h>
-    ]
-    ++ lists.optionals (strings.versionAtLeast cudaMajorMinorVersion "11.8") [
-      cuda_profiler_api # <cuda_profiler_api.h>
     ]
   )
   ++ lib.optionals rocmSupport (

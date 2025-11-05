@@ -43,12 +43,7 @@ let
     ;
   inherit (magmaRelease) version hash supportedGpuTargets;
 
-  # Per https://icl.utk.edu/magma/downloads, support for CUDA 12 wasn't added until 2.7.1.
-  # If we're building a version prior to that, use the latest release of the 11.x series.
-  effectiveCudaPackages =
-    if strings.versionOlder version "2.7.1" then cudaPackages_11 else cudaPackages;
-
-  inherit (effectiveCudaPackages) cudaAtLeast flags cudaOlder;
+  inherit (cudaPackages) cudaAtLeast flags cudaOlder;
 
   # NOTE: The lists.subtractLists function is perhaps a bit unintuitive. It subtracts the elements
   #   of the first list *from* the second list. That means:
@@ -160,7 +155,7 @@ stdenv.mkDerivation {
     gfortran
   ]
   ++ lists.optionals cudaSupport [
-    effectiveCudaPackages.cuda_nvcc
+    cudaPackages.cuda_nvcc
   ];
 
   buildInputs = [
@@ -171,18 +166,13 @@ stdenv.mkDerivation {
     (getLib gfortran.cc) # libgfortran.so
   ]
   ++ lists.optionals cudaSupport (
-    with effectiveCudaPackages;
+    with cudaPackages;
     [
       cuda_cccl # <nv/target>
       cuda_cudart # cuda_runtime.h
+      cuda_profiler_api # <cuda_profiler_api.h>
       libcublas # cublas_v2.h
       libcusparse # cusparse.h
-    ]
-    ++ lists.optionals (cudaOlder "11.8") [
-      cuda_nvprof # <cuda_profiler_api.h>
-    ]
-    ++ lists.optionals (cudaAtLeast "11.8") [
-      cuda_profiler_api # <cuda_profiler_api.h>
     ]
   )
   ++ lists.optionals rocmSupport [
@@ -264,7 +254,7 @@ stdenv.mkDerivation {
 
   passthru = {
     inherit cudaSupport rocmSupport gpuTargets;
-    cudaPackages = effectiveCudaPackages;
+    cudaPackages = cudaPackages;
   };
 
   meta = with lib; {
