@@ -13,10 +13,6 @@
 let
   dpcppVersion = oneapi-torch-dev.version;
   cutlassVersions = {
-    "2025.0" = {
-      version = "3.9-0.2";
-      hash = "sha256-4/Wo5iTN4d4uLJF6+S/mQlpU8KSGOXwtIRyl2PaV/UA=";
-    };
     "2025.1" = {
       version = "3.9-0.3";
       hash = "sha256-FLmTseMw31txptQkvWaN03xoaLzIbQz2Ip1xtCKH3ZE=";

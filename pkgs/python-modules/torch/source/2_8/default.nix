@@ -552,6 +552,7 @@ buildPythonPackage rec {
       cuda_cccl # <thrust/*>
       cuda_cudart # cuda_runtime.h and libraries
       cuda_cupti # For kineto
+      cuda_profiler_api # <cuda_profiler_api.h>
       cuda_nvcc # crt/host_config.h; even though we include this in nativeBuildInputs, it's needed here too
       cuda_nvml_dev # <nvml.h>
       cuda_nvrtc
@@ -568,12 +569,6 @@ buildPythonPackage rec {
     ++ lists.optionals useSystemNccl [
       # Some platforms do not support NCCL (i.e., Jetson)
       nccl # Provides nccl.h AND a static copy of NCCL!
-    ]
-    ++ lists.optionals (strings.versionOlder cudaMajorMinorVersion "11.8") [
-      cuda_nvprof # <cuda_profiler_api.h>
-    ]
-    ++ lists.optionals (strings.versionAtLeast cudaMajorMinorVersion "11.8") [
-      cuda_profiler_api # <cuda_profiler_api.h>
     ]
   )
   ++ lib.optionals rocmSupport (

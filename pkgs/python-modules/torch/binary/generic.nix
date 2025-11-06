@@ -70,7 +70,6 @@ let
   inherit (archs) supportedTorchRocmArchs;
 
   aotritonVersions = with rocmPackages; {
-    "2.7" = aotriton_0_9;
     "2.8" = aotriton_0_10;
     "2.9" = aotriton_0_11;
   };
@@ -281,9 +280,6 @@ buildPythonPackage {
       # dependencies.
       rm -rf $out/${python.sitePackages}/torch/lib/{libamd*,libaotriton*,libdrm*,libelf*,libgomp*,libhip*,libhsa*,libMIOpen*,libnuma*,librccl*,libroc*,libtinfo*}.so
       rm -rf $out/${python.sitePackages}/torch/lib/{rocblas,hipblaslt,hipsparselt}
-    ''
-    + lib.optionalString (xpuSupport && (lib.versions.majorMinor version) == "2.7") ''
-      patchelf --replace-needed libpti_view.so.0.10 libpti_view.so $out/${python.sitePackages}/torch/lib/libtorch_cpu.so
     '';
 
   autoPatchelfIgnoreMissingDeps = lib.optionals stdenv.hostPlatform.isLinux [

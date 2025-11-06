@@ -28,19 +28,6 @@
       ```
   */
   nvccCompatibilities = {
-    # Added support for Clang 14
-    # https://docs.nvidia.com/cuda/archive/11.8.0/cuda-installation-guide-linux/index.html#system-requirements
-    "11.8" = {
-      clang = {
-        maxMajorVersion = "14";
-        minMajorVersion = "7";
-      };
-      gcc = {
-        maxMajorVersion = "11";
-        minMajorVersion = "6";
-      };
-    };
-
     # Maximum Clang version is 17
     # Minimum GCC version is still 6, but all versions prior to GCC 7.3 are deprecated.
     # Maximum GCC version is 13.2

@@ -115,7 +115,6 @@
                 inherit
                   torch
                   torch-bin
-                  torch_2_7
                   torch_2_8
                   torch_2_9
                   ;

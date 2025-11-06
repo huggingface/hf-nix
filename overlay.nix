@@ -14,9 +14,6 @@ rec {
   # Top-level fix-point used in `cudaPackages`' internals
   _cuda = import ./pkgs/cuda-packages/_cuda { inherit (final) lib; };
 
-  cudaPackages_11_8 = final.callPackage ./pkgs/cuda-packages { cudaMajorMinorVersion = "11.8"; };
-  cudaPackages_11 = final.lib.recurseIntoAttrs cudaPackages_11_8;
-
   cudaPackages_12_4 = final.callPackage ./pkgs/cuda-packages { cudaMajorMinorVersion = "12.4"; };
   cudaPackages_12_5 = final.callPackage ./pkgs/cuda-packages { cudaMajorMinorVersion = "12.5"; };
   cudaPackages_12_6 = final.callPackage ./pkgs/cuda-packages { cudaMajorMinorVersion = "12.6"; };
@@ -57,18 +54,6 @@ rec {
   nvtx = final.callPackage ./pkgs/nvtx { };
 
   rocmPackages = final.rocmPackages_6_3;
-
-  # Remove when we remove ROCm 6.2.
-  suitesparse_4_4 = prev.suitesparse_4_4.overrideAttrs (
-    _: prevAttrs: {
-      postInstall = prevAttrs.postInstall + ''
-        ln -s $out/lib/libsuitesparse.so $out/lib/libsuitesparse.so.4
-        # All dynamic libraries are just symplinks to the main library.
-        ln -s $out/lib/libsuitesparse.so $out/lib/libcholmod.so.3
-        ln -s $out/lib/libsuitesparse.so $out/lib/libsuitesparseconfig.so.4
-      '';
-    }
-  );
 
   pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
     (
@@ -224,10 +209,6 @@ rec {
 
         torch = torch_2_9;
 
-        torch_2_7 = callPackage ./pkgs/python-modules/torch/source/2_7 {
-          xpuPackages = final.xpuPackages_2025_0;
-        };
-
         torch_2_8 = callPackage ./pkgs/python-modules/torch/source/2_8 {
           xpuPackages = final.xpuPackages_2025_1;
         };
@@ -239,11 +220,6 @@ rec {
         transformers = callPackage ./pkgs/python-modules/transformers { };
 
         triton-rocm = callPackage ./pkgs/python-modules/triton-rocm { };
-
-        triton-xpu_2_7 = callPackage ./pkgs/python-modules/triton-xpu {
-          torchVersion = "2.7";
-          xpuPackages = final.xpuPackages_2025_0;
-        };
 
         triton-xpu_2_8 = callPackage ./pkgs/python-modules/triton-xpu {
           torchVersion = "2.8";
@@ -267,7 +243,6 @@ rec {
     flattenVersion = prev.lib.strings.replaceStrings [ "." ] [ "_" ];
     readPackageMetadata = path: (builtins.fromJSON (builtins.readFile path));
     versions = [
-      "6.2.4"
       "6.3.4"
       "6.4.2"
       "7.0.1"
@@ -288,7 +263,6 @@ rec {
     flattenVersion = prev.lib.strings.replaceStrings [ "." ] [ "_" ];
     readPackageMetadata = path: (builtins.fromJSON (builtins.readFile path));
     xpuVersions = [
-      "2025.0.2"
       "2025.1.3"
       "2025.2.1"
     ];
