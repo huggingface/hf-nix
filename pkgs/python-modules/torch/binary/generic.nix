@@ -160,22 +160,22 @@ buildPythonPackage {
       with cudaPackages;
       [
         # Use lib output to avoid libcuda.so.1 stub getting used.
-        cuda_cudart.lib
+        cuda_cudart
         cuda_cupti
         cuda_nvrtc
         cudnn
-        cusparselt
         libcublas
         libcufft
         libcufile
         libcurand
         libcusolver
         libcusparse
+        libcusparse_lt
         nccl
       ]
     )
     ++ lib.optionals (cudaSupport && lib.versionAtLeast version "2.9") [
-      cudaPackages.nvshmem
+      cudaPackages.libnvshmem
     ]
     ++ lib.optionals rocmSupport ([
       rocmtoolkit_joined
