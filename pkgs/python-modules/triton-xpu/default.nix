@@ -134,6 +134,9 @@ buildPythonPackage rec {
               REQUIRED_VARS\n\
                   SPIRVToLLVMTranslator_SOURCE_DIR)\n\
       ' $NIX_BUILD_TOP/source/third_party/intel/cmake/FindSPIRVToLLVMTranslator.cmake
+
+      substituteInPlace $NIX_BUILD_TOP/source/pyproject.toml \
+        --replace-fail 'cmake>=3.20,<4.0' 'cmake>=3.20'
   '';
 
   nativeBuildInputs = [
