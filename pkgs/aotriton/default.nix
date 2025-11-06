@@ -1,64 +1,37 @@
 {
   callPackage,
   fetchFromGitHub,
+  fetchpatch,
+  fetchurl,
+  stdenvNoCC,
 }:
 
 let
   generic = callPackage ./generic.nix { };
+  postFetch = ''
+    cd $out                                                                                                                                                                                                                        
+    git reset --hard HEAD                                                                                                                                                                                                          
+    for submodule in $(git config --file .gitmodules --get-regexp path | awk '{print $2}' | grep '^third_party/' | grep -v '^third_party/triton$'); do                                                                             
+      git submodule update --init --recursive "$submodule"                                                                                                                                                                         
+    done                                                                                                                                                                                                                           
+    find "$out" -name .git -print0 | xargs -0 rm -rf                                                                                                                                                                               
+  '';
+  mkImages =
+    srcs:
+    stdenvNoCC.mkDerivation {
+      name = "images";
+
+      inherit srcs;
+
+      buildCommand = ''
+        mkdir -p $out
+        for src in $srcs; do
+          tar -C $out -zxf $src --strip-component=1 --wildcards "aotriton/lib/aotriton.images/*/"
+        done
+      '';
+    };
 in
 {
-  aotriton_0_8 = generic rec {
-    version = "0.8.2b";
-
-    src = fetchFromGitHub {
-      owner = "ROCm";
-      repo = "aotriton";
-      rev = "${version}";
-      hash = "sha256-gSzGYWfyUNLyzqpu3BM8rjFFL7cRVZ+w9L5pnh9QGz4=";
-      fetchSubmodules = true;
-    };
-
-    gpuTargets = [
-      # aotriton GPU support list:
-      # https://github.com/ROCm/aotriton/blob/main/v2python/gpu_targets.py
-      "gfx90a"
-      "gfx942"
-      "gfx1100"
-      "gfx1101"
-    ];
-  };
-
-  aotriton_0_9 = generic rec {
-    version = "0.9.2b";
-
-    src = fetchFromGitHub {
-      owner = "ROCm";
-      repo = "aotriton";
-      rev = version;
-      hash = "sha256-1Cf0olD3zRg9JESD6s/WaGifm3kfD12VUvjTZHpmGAE=";
-      fetchSubmodules = true;
-    };
-
-    patches = [
-      # This was not an issue in 0.8.0b, but appeared when updating to 0.9.xb:
-      #   error: non-constant-expression cannot be narrowed from type
-      #   'int32_t' (aka 'int') to 'uint32_t' (aka 'unsigned int') in
-      #   initializer list [-Wc++11-narrowing]
-      ./explicit-cast-for-narrowing.diff
-      # Fails with: ld.lld: error: unable to insert .comment after .comment
-      ./no-ld-script.diff
-    ];
-
-    gpuTargets = [
-      "gfx90a"
-      "gfx942"
-      "gfx950"
-      "gfx1100"
-      "gfx1151"
-      "gfx1201"
-    ];
-  };
-
   aotriton_0_10 = generic rec {
     version = "0.10b";
 
@@ -66,8 +39,9 @@ in
       owner = "ROCm";
       repo = "aotriton";
       rev = version;
-      hash = "sha256-R5LULmHFP50uI9S228opyg1+1SROxqx1hMPLuATNyoc=";
-      fetchSubmodules = true;
+      hash = "sha256-stAHnsqChkNv69wjlhM/qUetrJpNwI1i7rGnPMwsNz0=";
+      leaveDotGit = true;
+      inherit postFetch;
     };
 
     patches = [
@@ -76,6 +50,12 @@ in
       ./v0.10b-explicit-cast-for-narrowing.diff
       # Fails with: ld.lld: error: unable to insert .comment after .comment
       ./v0.10b-no-ld-script.diff
+
+      # CMakeLists.txt: AOTRITON_INHERIT_SYSTEM_SITE_TRITON flag
+      (fetchpatch {
+        url = "https://github.com/ROCm/aotriton/commit/9734c3e999c412a07d2b35671998650942b26ed4.patch";
+        hash = "sha256-tBmjjhRJmLv3K6F2+4OcMuwf8dH7efPPECMQjh6QdUA=";
+      })
     ];
 
     gpuTargets = [
@@ -87,6 +67,13 @@ in
       "gfx1100"
       "gfx1101"
       "gfx1201"
+    ];
+
+    images = mkImages [
+      (fetchurl {
+        url = "https://github.com/ROCm/aotriton/releases/download/0.10b/aotriton-0.10b-manylinux_2_28_x86_64-rocm6.3-shared.tar.gz";
+        hash = "sha256-hhzZ90ee7JQ5M8J8uGkgJH5bXdE5vHwTdsgYCKu31/4=";
+      })
     ];
 
     extraPythonDepends = ps: [ ps.pandas ];
@@ -99,8 +86,9 @@ in
       owner = "ROCm";
       repo = "aotriton";
       rev = version;
-      hash = "sha256-5UEwiGQF3RZghIAZVJ72uWNml67uJ1vhZp6lC6uofMI=";
-      fetchSubmodules = true;
+      hash = "sha256-QXkNB3vNmPg4/m23OMuBBX4cjZQ3zQPotaeimFMbclc=";
+      leaveDotGit = true;
+      inherit postFetch;
     };
 
     patches = [
@@ -117,6 +105,29 @@ in
       "gfx1100"
       "gfx1151"
       "gfx1201"
+    ];
+
+    images = mkImages [
+      (fetchurl {
+        url = "https://github.com/ROCm/aotriton/releases/download/0.11b/aotriton-0.11b-images-amd-gfx90a.tar.gz";
+        hash = "sha256-wZpByUgFEKsy5vsF5u0KODLWsHY08FC4NrdgIAvvpzU=";
+      })
+      (fetchurl {
+        url = "https://github.com/ROCm/aotriton/releases/download/0.11b/aotriton-0.11b-images-amd-gfx942.tar.gz";
+        hash = "sha256-OgapmXHd23cDowN48cXWtBRo2SbqUYIRVtG2hXuYW8Q=";
+      })
+      (fetchurl {
+        url = "https://github.com/ROCm/aotriton/releases/download/0.11b/aotriton-0.11b-images-amd-gfx950.tar.gz";
+        hash = "sha256-J/wh9nYdV5h6cAQ23ozynL3Z7u6RMY3+1ZbusUfSGa0=";
+      })
+      (fetchurl {
+        url = "https://github.com/ROCm/aotriton/releases/download/0.11b/aotriton-0.11b-images-amd-gfx11xx.tar.gz";
+        hash = "sha256-7BNAMghzRBdmlVBdtlk4c3TRkWrf7hbw20fe442chgM=";
+      })
+      (fetchurl {
+        url = "https://github.com/ROCm/aotriton/releases/download/0.11b/aotriton-0.11b-images-amd-gfx120x.tar.gz";
+        hash = "sha256-/sBSBXR/9RZJseFRVFJn1aogN7qdAzjK0oaIKRW5QbA=";
+      })
     ];
 
     extraPythonDepends = ps: [ ps.pandas ];
