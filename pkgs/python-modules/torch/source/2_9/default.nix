@@ -422,6 +422,10 @@ buildPythonPackage rec {
   USE_MKLDNN = setBool mklDnnSupport;
   USE_MKLDNN_CBLAS = setBool mklDnnSupport;
 
+  # Enable distributed support (c10d, gloo, etc.)
+  # Required for torch.distributed and dependencies like transformers
+  USE_DISTRIBUTED = setBool true;
+
   # Avoid using pybind11 from git submodule
   # Also avoids pytorch exporting the headers of pybind11
   USE_SYSTEM_PYBIND11 = true;
