@@ -1,7 +1,6 @@
 {
   stdenv,
   stdenvAdapters,
-  gcc11Stdenv,
   lib,
   fetchFromGitHub,
   buildPythonPackage,
@@ -19,11 +18,7 @@
       magma,
   effectiveStdenv ?
     if cudaSupport then
-      # XNNPACK fails on gcc > 11 on AArch64: https://github.com/pytorch/pytorch/issues/141083
-      if stdenv.isAarch64 then
-        stdenvAdapters.useLibsFrom stdenv gcc11Stdenv
-      else
-        cudaPackages.backendStdenv
+      cudaPackages.backendStdenv
     else
       stdenv,
   magma,
