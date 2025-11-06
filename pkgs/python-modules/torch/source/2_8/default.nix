@@ -16,11 +16,7 @@
       magma-hip
     else
       magma,
-  effectiveStdenv ?
-    if cudaSupport then
-      cudaPackages.backendStdenv
-    else
-      stdenv,
+  effectiveStdenv ? if cudaSupport then cudaPackages.backendStdenv else stdenv,
   magma,
   magma-hip,
   magma-cuda-static,
