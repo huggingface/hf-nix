@@ -1,5 +1,5 @@
 {
-  gcc12Stdenv,
+  gcc13Stdenv,
   wrapBintoolsWith,
   wrapCCWith,
   glibc,
@@ -22,7 +22,7 @@ let
   };
   clang = final.callPackage ./clang.nix {
     inherit bintools llvm;
-    stdenv = gcc12Stdenv;
+    stdenv = gcc13Stdenv;
   };
 in
 {

@@ -1,7 +1,7 @@
 {
   config,
   lib,
-  system,
+  stdenv,
 
   cudaSupport ? config.cudaSupport,
   rocmSupport ? config.rocmSupport,
@@ -18,6 +18,7 @@
 }:
 
 let
+  system = stdenv.hostPlatform.system;
   flattenVersion = version: lib.replaceStrings [ "." ] [ "" ] (lib.versions.pad 2 version);
   framework =
     if cudaSupport then

@@ -1,6 +1,5 @@
 final: prev:
 let
-  gccVersions = final.callPackage ./pkgs/gcc/all.nix { noSysDirs = true; };
   # For XPU we use MKL from the joined oneAPI toolkit.
   useMKL = final.stdenv.isx86_64 && !(final.config.xpuSupport or false);
 in
@@ -11,26 +10,9 @@ rec {
 
   build2cmake = final.callPackage ./pkgs/build2cmake { };
 
-  # Top-level fix-point used in `cudaPackages`' internals
-  _cuda = import ./pkgs/cuda-packages/_cuda { inherit (final) lib; };
-
-  cudaPackages_12_4 = final.callPackage ./pkgs/cuda-packages { cudaMajorMinorVersion = "12.4"; };
-  cudaPackages_12_5 = final.callPackage ./pkgs/cuda-packages { cudaMajorMinorVersion = "12.5"; };
-  cudaPackages_12_6 = final.callPackage ./pkgs/cuda-packages { cudaMajorMinorVersion = "12.6"; };
-  cudaPackages_12_8 = final.callPackage ./pkgs/cuda-packages { cudaMajorMinorVersion = "12.8"; };
-  cudaPackages_12_9 = final.callPackage ./pkgs/cuda-packages { cudaMajorMinorVersion = "12.9"; };
-  cudaPackages_12 = cudaPackages_12_8;
-
-  cudaPackages_13_0 = final.callPackage ./pkgs/cuda-packages { cudaMajorMinorVersion = "13.0"; };
-  cudaPackages_13 = cudaPackages_13_0;
-
-  cudaPackages = final.lib.recurseIntoAttrs cudaPackages_12;
+  cudaPackages = final.lib.recurseIntoAttrs final.cudaPackages_12;
 
   fetchKernel = final.callPackage ./pkgs/fetch-kernel { };
-
-  # These gcc versions are not in nixpkgs anymore, but we need them for older CUDA versions.
-  gcc11Stdenv = final.overrideCC final.gccStdenv gccVersions.gcc11;
-  gcc12Stdenv = final.overrideCC final.gccStdenv gccVersions.gcc12;
 
   # Used by ROCm.
   libffi_3_2 = final.libffi_3_3.overrideAttrs (
@@ -56,6 +38,12 @@ rec {
 
   rocmPackages = final.rocmPackages_6_3;
 
+  ucx = prev.ucx.overrideAttrs (
+    _: prevAttrs: {
+      buildInputs = prevAttrs.buildInputs ++ [ final.cudaPackages.cuda_nvcc ];
+    }
+  );
+
   pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
     (
       python-self: python-super: with python-self; {
@@ -79,14 +67,14 @@ rec {
 
         compressed-tensors = callPackage ./pkgs/python-modules/compressed-tensors { };
 
-        einops = python-super.einops.overrideAttrs (
-          _: prevAttrs: {
-            disabledTests = prevAttrs.disabledTests ++ [
-              # Times out...
-              "test_notebook_3"
-            ];
-          }
-        );
+        #einops = python-super.einops.overrideAttrs (
+        #  _: prevAttrs: {
+        #    disabledTests = prevAttrs.disabledTests ++ [
+        #      # Times out...
+        #      "test_notebook_3"
+        #    ];
+        #  }
+        #);
 
         exllamav2 = callPackage ./pkgs/python-modules/exllamav2 { };
 
@@ -208,7 +196,7 @@ rec {
           xpuPackages = final.xpuPackages_2025_2;
         };
 
-        torch = torch_2_9;
+        torch = torch-bin_2_9;
 
         torch_2_8 = callPackage ./pkgs/python-modules/torch/source/2_8 {
           xpuPackages = final.xpuPackages_2025_1;
@@ -219,8 +207,6 @@ rec {
         };
 
         transformers = callPackage ./pkgs/python-modules/transformers { };
-
-        triton-rocm = callPackage ./pkgs/python-modules/triton-rocm { };
 
         triton-xpu_2_8 = callPackage ./pkgs/python-modules/triton-xpu {
           torchVersion = "2.8";

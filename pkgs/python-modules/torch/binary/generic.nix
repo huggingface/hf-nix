@@ -35,7 +35,6 @@
   sympy,
   triton,
   triton-cuda,
-  triton-rocm,
   typing-extensions,
 
   url,
@@ -50,8 +49,6 @@ let
   effectiveTriton =
     if cudaSupport then
       triton-cuda
-    else if rocmSupport then
-      triton-rocm
     else if xpuSupport then
       python.pkgs.triton-xpu_2_8
     else
@@ -163,22 +160,22 @@ buildPythonPackage {
       with cudaPackages;
       [
         # Use lib output to avoid libcuda.so.1 stub getting used.
-        cuda_cudart.lib
+        cuda_cudart
         cuda_cupti
         cuda_nvrtc
         cudnn
-        cusparselt
         libcublas
         libcufft
         libcufile
         libcurand
         libcusolver
         libcusparse
+        libcusparse_lt
         nccl
       ]
     )
     ++ lib.optionals (cudaSupport && lib.versionAtLeast version "2.9") [
-      cudaPackages.nvshmem
+      cudaPackages.libnvshmem
     ]
     ++ lib.optionals rocmSupport ([
       rocmtoolkit_joined
@@ -278,7 +275,7 @@ buildPythonPackage {
       # Remove all ROCm libraries, we want to link against Nix packages.
       # This keeps the outputs lean and requires downstream to specify
       # dependencies.
-      rm -rf $out/${python.sitePackages}/torch/lib/{libamd*,libaotriton*,libdrm*,libelf*,libgomp*,libhip*,libhsa*,libMIOpen*,libnuma*,librccl*,libroc*,libtinfo*}.so
+      rm -rf $out/${python.sitePackages}/torch/lib/{libamd*,libaotriton*,libdrm*,libelf*,libgomp*,libhip*,libhsa*,libMIOpen*,libnuma*,librccl*,libroc*,libtinfo*}.so*
       rm -rf $out/${python.sitePackages}/torch/lib/{rocblas,hipblaslt,hipsparselt}
     '';
 
