@@ -9,7 +9,7 @@ jobs:
     runs-on:
       group: aws-highmemory-32-plus-nix
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
       - uses: DeterminateSystems/nix-installer-action@main
         with:
           extra-conf: |
@@ -18,7 +18,7 @@ jobs:
             sandbox-fallback = false
       - name: Nix info
         run: nix-shell -p nix-info --run "nix-info -m"
-      - uses: cachix/cachix-action@v16
+      - uses: cachix/cachix-action@3ba601ff5bbb07c7220846facfa2cd81eeee15a1 # v16
         with:
           name: huggingface
         #    authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
