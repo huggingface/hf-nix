@@ -4,8 +4,12 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
   cancel-in-progress: true
 
+permissions: {}
+
 jobs:
   tests:
+    permissions:
+      contents: read
     runs-on:
       group: aws-highmemory-32-plus-nix
     steps:
