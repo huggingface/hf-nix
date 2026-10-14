@@ -14,7 +14,7 @@ jobs:
       group: aws-highmemory-32-plus-nix
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
-      - uses: DeterminateSystems/nix-installer-action@main
+      - uses: DeterminateSystems/nix-installer-action@2cb76beab460be7e44442c7ebdcbc30b638416df  # main
         with:
           extra-conf: |
             max-jobs = 4
